@@ -135,14 +135,28 @@ republication, so none of their figures is here. Lectures 1 and 4–9 have no im
 - **Mathematics in the wiki is LaTeX**, `$...$` inline and `$$...$$` displayed on its own lines.
   Never inside a code fence. Define every symbol on first use and follow the course's notation. A
   literal dollar sign in prose must be escaped as `\$`.
-- **Write only what KaTeX accepts.** Cairn's chat renders math with KaTeX (MathML output) through
-  marked, recognising `$...$` / `\(...\)` inline and `$$...$$` / `\[...\]` as blocks. So: no space
-  just inside an inline `$`; `$$` blocks on their own lines with a blank line around them; and **at
-  most one `\tag{}` per `$$` block** — KaTeX rejects several tags in `aligned` and silently drops
-  them from `align`, so a multi-line equation with several numbers becomes one block per numbered
-  line, continuation lines starting with `\phantom{<left-hand side>}`. Notation in prose is math too:
-  write $\text{pass@}k$, best-of-$N$ and $14\times$, not plain `pass@k`, `best-of-N`, `14×` (verbatim
-  quotes excepted).
+- **Math must render in two places, and they disagree.** Cairn's chat renders `$...$` and `$$...$$`
+  with marked and KaTeX (MathML output). github.com first runs its markdown parser over the text and
+  hands whatever survives to MathJax. So write only what both accept:
+  - **No backslash before punctuation** — on GitHub markdown eats it. Write `\lbrace`/`\rbrace`, not
+    `\{`/`\}`; `\thinspace`, `\negthinspace`, `\mskip{5mu}`, not `\,`, `\!`, `\;`; `\Vert`, not
+    `\|`; `\cr`, not `\\`; `\verb|#|`, not `\#`; and put `%` outside the math (`$\leq 10$%`).
+  - **In inline math, no `<`, `>` or `*`, and no `_` straight after a non-letter.** GitHub
+    double-escapes `<` and `>` (write `\lt`, `\gt`, `\ll`, `\gg`) and pairs `*` and `_` into
+    italics across formulas (write `\ast`, and `\mathbb{E}_ {k}` with a space after the `_`). A `*`
+    breaks display math too.
+  - **Delimiters.** An inline `$` opens only after a space, `(` or the start of a line, and closes
+    only before a space or punctuation: write `$\text{best-of-}N$`, not `best-of-$N$`. No space just
+    inside `$`. Never put math inside `*italics*` — close the italics around it. `$$` goes on its own
+    lines with a blank line around the block.
+  - **At most one `\tag{}` per `$$` block.** KaTeX rejects several in `aligned` and silently drops
+    them from `align`, so a multi-line equation with several numbers becomes one block per numbered
+    line, continuation lines starting with `\phantom{<left-hand side>}`.
+  - **Notation in prose is math too:** $\text{pass@}k$, $\text{best-of-}N$ and $14\times$, not plain
+    `pass@k`, `best-of-N`, `14×` (verbatim quotes excepted).
+
+  The cairn-kb skill checks both: every formula is test-rendered in the chat's own KaTeX, and compared
+  one by one with what GitHub's markdown API renders and MathJax parses.
 - **Prose over fragments.** The chat quotes these pages to learners; bullet fragments quote badly.
 - **Never rank lectures against each other.** State the measurement for the lecture in front of you.
 

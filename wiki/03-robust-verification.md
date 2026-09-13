@@ -269,8 +269,8 @@ et al., §5, Table 1).
 - **What is majority voting here?** Sample $n$ solutions, use no reward model, and take the final
   answer that appears most often — matching on final answers, not reasoning (≈32:46–33:33). The
   lecturer assumes a single PRM is used across the generalisation tests (≈33:33).
-- **Can a generator game a PRM by skipping reasoning** — "let's call the numerator $x$", then
-  "$x = 14$"? The PRM scores each step given the previous ones, so it does not by itself encourage a
+- **Can a generator game a PRM by skipping reasoning** — "let's call the numerator $x$", then the bare step
+  $x = 14$? The PRM scores each step given the previous ones, so it does not by itself encourage a
   step-by-step process. When the generator is left unchanged this is not the failure mode, because the
   generator can simply be prompted to reason in steps. The risk arises when the generator is
   fine-tuned against the PRM: it may stop reasoning and emit whatever the PRM likes, so the chain of
@@ -293,16 +293,16 @@ optimisation through reinforcement learning (≈38:14).
 The paper defines a step's quality as its **potential to reach the correct final answer** (≈39:00;
 Wang et al., §3.3.1, inspired by Monte Carlo tree search). To estimate it for a step $s_i$, a
 "completer" model samples $N$ continuations from that step to a final answer, giving answers
-$A = \{a_1, \dots, a_N\}$, which are compared with the golden answer $a^*$ (≈39:00; §3.3.2). Two
+$A = \lbrace a_1, \dots, a_N\rbrace$, which are compared with the golden answer $a^{\ast}$ (≈39:00; §3.3.2). Two
 estimates follow (≈39:00–39:46; §3.3.2, Equations 3 and 4):
 
 - **Hard estimate (HE)** — the step is good if *any* continuation reaches the correct answer:
 
-$$y_{s_i}^{HE} = \begin{cases} 1 & \text{if } \exists\, a_j \in A,\ a_j = a^* \\ 0 & \text{otherwise} \end{cases}$$
+$$y_{s_i}^{HE} = \begin{cases} 1 & \text{if } \exists\thinspace  a_j \in A,\ a_j = a^{\ast} \cr  0 & \text{otherwise} \end{cases}$$
 
 - **Soft estimate (SE)** — the fraction of continuations that reach it:
 
-$$y_{s_i}^{SE} = \frac{\sum_{j=1}^{N} \mathbb{I}(a_j = a^*)}{N}$$
+$$y_{s_i}^{SE} = \frac{\sum_{j=1}^{N} \mathbb{I}(a_j = a^{\ast})}{N}$$
 
 where $\mathbb{I}$ is 1 when its condition holds and 0 otherwise. In the lecture's example, $N = 3$
 continuations are sampled from step 1 and two of them reach the correct answer, so the hard estimate
@@ -325,7 +325,7 @@ completion process demands a lot of compute — though far less than human annot
 
 ### Verification and reinforcement learning
 
-For verification, the recipe is the usual best-of-$N$: sample $N$ candidate solutions, score them with
+For verification, the recipe is the usual $\text{best-of-}N$: sample $N$ candidate solutions, score them with
 the PRM, and pick the highest (≈42:54). The paper represents a solution's PRM score by the **minimum**
 of its step scores (§3.4) — not the product that Lightman et al. use. The PRM also serves as the
 **reward model** for training the generator, encouraging it to produce steps the PRM scores highly
@@ -402,7 +402,7 @@ and PRMs of the earlier papers — and **LLMs as judges**, shown an answer and a
 correct, possibly with tools and rubrics (≈53:05).
 
 The paper makes the gap precise (Saad-Falcon et al., §3). For $n$ queries with $K$ sampled responses
-each, where $y_{ij} \in \{0, 1\}$ says whether response $j$ to query $i$ is correct,
+each, where $y_{ij} \in \lbrace 0, 1\rbrace$ says whether response $j$ to query $i$ is correct,
 
 $$Pass@K = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}\left(\exists j \in [K]: y_{ij} = 1\right)$$
 
@@ -463,9 +463,9 @@ lecturer's intuition for where the signal comes from: if every verifier always g
 same score, the pool would teach nothing new; the information is in how the verifiers agree and
 disagree with each other (≈57:51–58:36). Under the assumption, the posterior is (Equation 1):
 
-$$\Pr(Y = 1 \mid S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m) = \frac{\prod_{i=1}^{m} \Pr(S_i = \bar{s}_i \mid Y = 1)\,\Pr(Y = 1)}{\Pr(S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m)}$$
+$$\Pr(Y = 1 \mid S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m) = \frac{\prod_{i=1}^{m} \Pr(S_i = \bar{s}_i \mid Y = 1)\thinspace \Pr(Y = 1)}{\Pr(S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m)}$$
 
-where $\bar{s}_i$ is verifier $i$'s observed vote. $\Pr(Y = 1)$ is estimated from a small labelled
+where $\bar{s}_ i$ is verifier $i$'s observed vote. $\Pr(Y = 1)$ is estimated from a small labelled
 development set — 1% of the test set, for example 5 to 10 query–answer pairs (§3) — but each verifier's
 **accuracy parameter** $\Pr(S_i = 1 \mid Y = 1)$ cannot be computed directly, because $Y$ is unknown.
 
@@ -512,7 +512,7 @@ supervised Weaver variant, so the chart in the lecture may be a different versio
 
 ![Weaver, Figure 3](../raw/images/03-robust-verification/weaver-figure-3.jpg)
 
-*Saad-Falcon et al. (2025), Figure 3: the generation–verification gap shrinks as $K$ increases with Weaver, which outperforms the alternative verification methods by an average 18.3%.*
+*Saad-Falcon et al. (2025), Figure 3: the generation–verification gap shrinks as* $K$ *increases with Weaver, which outperforms the alternative verification methods by an average 18.3%.*
 
 **Against frontier models.** The lecturer points to "drastic" gains — from slightly over 40% to over
 70% on hard problems, matching o3-mini (≈1:01:40). The paper's Table 1 (Llama 3.3 70B Instruct
@@ -604,7 +604,7 @@ be distilled into a much smaller model that keeps much of the quality.
 
 - [Verifiers](verifiers.md) — the cross-lecture page: verifiable domains, the generation–verification
   gap, ORMs and PRMs, and this lecture's four approaches.
-- [Test-time scaling](test-time-scaling.md) — best-of-$N$ with a verifier, and why selection limits
+- [Test-time scaling](test-time-scaling.md) — $\text{best-of-}N$ with a verifier, and why selection limits
   what sampling can deliver.
 - [Self-improvement](self-improvement.md) — Math-Shepherd's model-generated labels and PRM-driven RL
   as a self-improvement loop.

@@ -127,7 +127,7 @@ For every benchmark explored, we found that the Fuser module substantially impro
 Additionally, we observed similar benefits in the Archon framework when adding multiple layers of Fusers (Figure 4).
 The number of Fuser layers needed to improve performance varied by task (Figure 12), with some tasks receiving limited benefits from added layers (1-2 point increase in accuracy for MixEval) while others experienced significant benefits with 3-4 fusion layers and more (10 to 15 point increase in win rate for MT Bench and Alpaca Eval 2.0).
 
-**Ranker** is an LLM that, given an instruction prompt and a set of proposed responses as input, ranks the candidate generations based on their quality, producing a ranked list of responses as output. This ranking is then used to filter the set of responses to the top-$K$, as specified.
+**Ranker** is an LLM that, given an instruction prompt and a set of proposed responses as input, ranks the candidate generations based on their quality, producing a ranked list of responses as output. This ranking is then used to filter the set of responses to the $\text{top-}K$, as specified.
 
 From our results in Table 5, Figure 6, and Figure 7, our results show the Ranker was most effective for instruction-following and reasoning tasks by using pair-wise comparisons that focus on style and prompt adherence.
 We found that on MT Bench and Arena-Hard-Auto benchmarks, the Ranker improved output quality by 10.8% over random selection while performing within 2.7% of oracle selection.
@@ -201,13 +201,13 @@ While alternative combinations and orderings of Archon components are technicall
 **Search Hyperparameters**: In this section, we explore how to automatically design inference-time architectures for target tasks via Archon's architecture search algorithms.
 Guided by the trends found in our analysis in Section 3.2, we establish six axes of hyperparameters for the search space:
 
-1. **Top-$K$ Generators for Ensemble**: The top-$K$ models for the initial Generator ensemble, ranging from 1 to 10 (**T1**).
-The top-$K$ models are selected greedily based on their individual performances on target task(s)(Table 35).
-2. **Top-$K$ Generator Samples**: The number of samples gathered from each ensemble generator (same for all the models), ranging from 1 to 5 (**T1**).
+1. **$\text{Top-}K$ Generators for Ensemble**: The $\text{top-}K$ models for the initial Generator ensemble, ranging from 1 to 10 (**T1**).
+The $\text{top-}K$ models are selected greedily based on their individual performances on target task(s)(Table 35).
+2. **$\text{Top-}K$ Generator Samples**: The number of samples gathered from each ensemble generator (same for all the models), ranging from 1 to 5 (**T1**).
 For CodeContests, we explore high-sample settings: [1, 10, 100, 500, 1000].
 3. **Number of Fusion Layers**: Ranges from 1 to 4.
 The last fusion layer will always have a single Fuser (**T2**).
-4. **Top-$K$ Fusers**: Number of models used for each fusion layer, ranges from 2 to 10 in increments of 2 (**T2,3**).
+4. **$\text{Top-}K$ Fusers**: Number of models used for each fusion layer, ranges from 2 to 10 in increments of 2 (**T2,3**).
 5. **Critic and Ranker Layers**: We add critic and ranker layers before each fuser layer since we find they provide added benefits across the benchmarks explored (**T3**) (Section 3.2; Figure 4; Figure 7).
 6. **Evaluation Layer**: Option to add Verifier, Unit Test Gen./Eval., or neither before the last Fuser layer (**T4**).
 

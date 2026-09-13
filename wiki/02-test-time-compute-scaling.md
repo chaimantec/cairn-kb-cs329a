@@ -69,7 +69,7 @@ how often the correct samples can be identified. In coding, coverage is the fami
 paper estimates it without bias from $N$ samples per problem, of which $C_i$ are correct for problem
 $i$ (§2, Equation 1):
 
-$$\text{pass@}k = \frac{1}{\#\text{ of problems}} \sum_{i=1}^{\#\text{ of problems}} \left(1 - \frac{\binom{N - C_i}{k}}{\binom{N}{k}}\right)$$
+$$\text{pass@}k = \frac{1}{\verb|#|\text{ of problems}} \sum_{i=1}^{\verb|#|\text{ of problems}} \left(1 - \frac{\binom{N - C_i}{k}}{\binom{N}{k}}\right)$$
 
 The headline is that repeated sampling lets weaker models overtake stronger ones. The lecture's
 example is Llama 3 8B or 70B, which with one attempt is not as capable as GPT-4o, but with repeated
@@ -104,7 +104,7 @@ lecture calls "an exponential power law", with coefficients found by curve fitti
 paper calls it an **exponentiated power law** and writes it for coverage $c$ with fitted parameters
 $a, b \in \mathbb{R}$ (§3.1, Equations 2–3):
 
-$$\log(c) \approx a k^{b} \qquad\Longleftrightarrow\qquad c \approx \exp\!\left(a k^{b}\right)$$
+$$\log(c) \approx a k^{b} \qquad\Longleftrightarrow\qquad c \approx \exp\negthinspace \left(a k^{b}\right)$$
 
 The lecture stresses that the predicted curve "for the most part, very closely follows" the measured
 coverage across Llama 3, Gemma and Pythia models from 70 million to 70 billion parameters, that even
@@ -123,21 +123,21 @@ closely.*
 
 The lecture then asks why coverage should follow a power law at all, since the single-problem
 calculation predicts something else (≈7:10). If problem $i$ is solved by one attempt with probability
-$\text{pass}_i@1$, then $k$ independent attempts all fail with probability $(1 - \text{pass}_i@1)^k$,
+$\text{pass}_ i@1$, then $k$ independent attempts all fail with probability $(1 - \text{pass}_ i@1)^k$,
 so
 
 $$\text{pass}_i@k = 1 - (1 - \text{pass}_i@1)^k ,$$
 
 which approaches 1 **exponentially** fast in $k$ (≈7:58). Yet across a whole suite of problems the
 observed behaviour is a power law (≈8:45). This is the puzzle Schaeffer et al. set up: on each problem
-$-\log(\text{pass}_i@k)$ falls exponentially with $k$, while the negative log of the *average* success
+$-\log(\text{pass}_ i@k)$ falls exponentially with $k$, while the negative log of the *average* success
 rate falls as a power law (Figure 3 caption), written
 
-$$-\log\big(\text{pass}_{\mathcal{D}}@k\big) \approx a\,k^{-b},$$
+$$-\log\big(\text{pass}_{\mathcal{D}}@k\big) \approx a\thinspace k^{-b},$$
 
-where $\text{pass}_{\mathcal{D}}@k$ averages $\text{pass}_i@k$ over the distribution $\mathcal{D}$ of
+where $\text{pass}_ {\mathcal{D}}@k$ averages $\text{pass}_ i@k$ over the distribution $\mathcal{D}$ of
 single-attempt success rates across the benchmark's problems (§3, Equation 10). This is the same law
-as Brown et al.'s: coverage $c$ is $\text{pass}_{\mathcal{D}}@k$, and since $\log c \le 0$ and falls in
+as Brown et al.'s: coverage $c$ is $\text{pass}_ {\mathcal{D}}@k$, and since $\log c \le 0$ and falls in
 magnitude as $k$ grows, their fitted $a$ and $b$ are negative — the sign convention differs, not the law.
 
 ![How Do Large Language Monkeys Get Their Power (Laws)?, Figure 2](../raw/images/02-test-time-compute-scaling/monkeys-power-laws-figure-2.png)
@@ -148,13 +148,13 @@ power-law tail of small values (right).*
 
 The answer the lecture gives is that "the sufficient and necessary condition" for the observed
 scaling law is **a long tail of hard problems** (≈9:32). The paper states it precisely (§3, Theorems
-3.1 and 3.2): $-\log(\text{pass}_{\mathcal{D}}@k)$ scales as a power law in $k$ with exponent $b$ if and
+3.1 and 3.2): $-\log(\text{pass}_ {\mathcal{D}}@k)$ scales as a power law in $k$ with exponent $b$ if and
 only if the density of single-attempt success rates behaves like a power law near zero,
 
-$$p_{\mathcal{D}}(\text{pass}_i@1) \propto (\text{pass}_i@1)^{\,b-1} \quad\text{as } \text{pass}_i@1 \to 0^+ .$$
+$$p_{\mathcal{D}}(\text{pass}_i@1) \propto (\text{pass}_i@1)^{\thinspace b-1} \quad\text{as } \text{pass}_i@1 \to 0^+ .$$
 
 Its intuition: every problem is being solved exponentially quickly, but some have
-$\text{pass}_i@1$ so small that they stay unsolved for many, many attempts, and polynomial density
+$\text{pass}_ i@1$ so small that they stay unsolved for many, many attempts, and polynomial density
 near zero "piles up" enough of them that the aggregate improves only at a power-law rate (§3). The
 lecture reports that this condition holds empirically: most problems are easy and solved at $\text{pass@}1$,
 and as difficulty rises there is a long tail of problems with lower and lower $\text{pass@}1$ (≈9:32–11:08).
@@ -166,9 +166,9 @@ left tails, well fit by scaled Beta-Binomial distributions; the caption notes Ll
 such a tail and correspondingly did not show aggregate power-law scaling under Best-of-N
 jailbreaking.*
 
-The paper goes a step beyond the lecture: fitting the distribution of $\text{pass}_i@1$ gives an
+The paper goes a step beyond the lecture: fitting the distribution of $\text{pass}_ i@1$ gives an
 estimator of the power-law exponent with "an order of magnitude lower relative error, or
-equivalently, $\sim$2-4 orders of magnitude less inference compute" (Abstract; §5).
+equivalently, $\sim 2$-4 orders of magnitude less inference compute" (Abstract; §5).
 
 ## Why this changes the economics
 
@@ -224,7 +224,7 @@ answer, against coverage, which is what a perfect selector would achieve (≈15:
 
 ![Large Language Monkeys, Figure 7](../raw/images/02-test-time-compute-scaling/large-language-monkeys-figure-7.png)
 
-*Brown et al. (2024), Figure 7: majority voting, reward-model best-of-$N$ and reward-model majority
+*Brown et al. (2024), Figure 7: majority voting, reward-model* $\text{best-of-}N$ *and reward-model majority
 voting all fail to reach the coverage upper bound and saturate before 100 samples.*
 
 Majority voting plateaus after 10 or 50 samples, and the gap is larger on the harder MATH dataset
@@ -292,7 +292,7 @@ here, while noting that reasoning models are now trained to show this behaviour 
 
 ![Scaling LLM Test-Time Compute Optimally, Figure 5](../raw/images/02-test-time-compute-scaling/scaling-test-time-compute-optimally-figure-5.png)
 
-*Snell et al. (2024), Figure 5: parallel sampling generates $N$ answers independently, sequential
+*Snell et al. (2024), Figure 5: parallel sampling generates* $N$ *answers independently, sequential
 revisions condition each on previous attempts, and a verifier can pick the best answer within and
 across chains.*
 
@@ -319,7 +319,7 @@ by the PRM (≈29:58–30:49).
 
 ![Scaling LLM Test-Time Compute Optimally, Figure 2](../raw/images/02-test-time-compute-scaling/scaling-test-time-compute-optimally-figure-2.png)
 
-*Snell et al. (2024), Figure 2: best-of-$N$ scores full answers with the PRM; beam search samples N
+*Snell et al. (2024), Figure 2:* $\text{best-of-}N$ *scores full answers with the PRM; beam search samples N
 candidates per step and keeps the top M; lookahead search adds a k-step lookahead and needs more
 compute.*
 
@@ -343,9 +343,9 @@ binned into five quantiles; the "oracle" version uses ground-truth correctness, 
 
 The **test-time compute-optimal strategy** chooses, for prompt $q$ and compute budget $N$, the
 test-time hyperparameters $\theta$ (such as the mix of revisions and parallel samples, or the search
-method) that maximize the chance the output $y$ matches the correct answer $y^*(q)$ (§3.1, Equation 1):
+method) that maximize the chance the output $y$ matches the correct answer $y^{\ast}(q)$ (§3.1, Equation 1):
 
-$$\theta^{*}_{q,y^*(q)}(N) = \operatorname{argmax}_{\theta} \left( \mathbb{E}_{y \sim \operatorname{Target}(\theta, N, q)} \left[ \mathbb{1}_{y = y^*(q)} \right] \right)$$
+$$\theta^{\ast}_{q,y^{\ast}(q)}(N) = \operatorname{argmax}_{\theta} \left( \mathbb{E}_{y \sim \operatorname{Target}(\theta, N, q)} \left[ \mathbb{1}_{y = y^{\ast}(q)} \right] \right)$$
 
 Difficulty stands in for $q$: the best strategy is picked per difficulty bin (§3.2). How best to mix
 revisions and parallel scaling "still is an open research" question, and the goal is the minimum
@@ -361,7 +361,7 @@ questions do best with fully sequential compute, harder ones with a balance of t
 
 The paper's explanation is that parallel sampling acts as a **global search** over different
 high-level approaches, while revisions act as **local refinement** of answers already on the right
-track (§6.2). Allocating compute by difficulty outperforms best-of-$N$ using up to **$4\times$** less test-time
+track (§6.2). Allocating compute by difficulty outperforms $\text{best-of-}N$ using up to **$4\times$** less test-time
 compute, for both revisions and PRM search (Abstract; Figures 4 and 8).
 
 ### Test-time compute versus a bigger model
@@ -375,8 +375,8 @@ lot like infinite budget" — or any reasonably large one (≈38:46–39:35).
 
 ![Scaling LLM Test-Time Compute Optimally, Figure 1](../raw/images/02-test-time-compute-scaling/scaling-test-time-compute-optimally-figure-1.png)
 
-*Snell et al. (2024), Figure 1: left, compute-optimal scaling against best-of-$N$ for revisions and PRM
-search; right, compute-optimal test-time scaling of PaLM 2-S* against a $\sim 14\times$ larger pretrained model
+*Snell et al. (2024), Figure 1: left, compute-optimal scaling against* $\text{best-of-}N$ *for revisions and PRM
+search; right, compute-optimal test-time scaling of PaLM 2-S\* against a* $\sim 14\times$ *larger pretrained model
 as the ratio of inference to pretraining tokens grows.*
 
 The paper frames this as a **FLOPs-matched** comparison (§7; Figure 9). With
@@ -433,7 +433,7 @@ paper (§3.1):
 | **Generator** | Takes the prompt and outputs candidate responses; can be sampled many times or run as an ensemble of models. | ≈48:11 |
 | **Fuser** | Given the prompt and a set of responses, combines them into one or more higher-quality responses. | ≈48:11–49:49 |
 | **Critic** | Produces strengths and weaknesses for each response, used to improve the final response. | ≈49:49 |
-| **Ranker** | Ranks candidates by quality and keeps the top-$K$. | ≈49:49–50:38 |
+| **Ranker** | Ranks candidates by quality and keeps the $\text{top-}K$. | ≈49:49–50:38 |
 | **Verifier** | In two stages, reasons about whether a response is correct and gives a verdict; only verified responses pass on. | ≈50:38 |
 | **Unit Test Generator / Evaluator** | The generator writes 5–10 concise test statements; the evaluator judges candidates against them, and only responses passing all tests proceed. | ≈54:30–56:04 |
 

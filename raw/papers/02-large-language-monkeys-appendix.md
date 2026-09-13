@@ -49,7 +49,7 @@ Our prompt consists of:
 
 1. Few shot examples.
 2. Header imports present in each problem in the HuggingFace dataset `cat-searcher/minif2f-lean4` dataset, an upload of the lean4 MiniF2F dataset.
-3. The theorem definition. In order to avoid leaking information about how to solve the theorem from its name, we replace the name of the theorem with `theorem_i`. $i \in \{1,2,3,4,5\}$ for the few-shot examples and $i=6$ for the current problem.
+3. The theorem definition. In order to avoid leaking information about how to solve the theorem from its name, we replace the name of the theorem with `theorem_i`. $i \in \lbrace 1,2,3,4,5\rbrace$ for the few-shot examples and $i=6$ for the current problem.
 
 We set 200 as the max token length for the generated solution. To grade solutions, we use the `lean-dojo 1.1.2` library with lean version `4.3.0-rc2`. We set a timeout of 10 seconds for every tactic step.
 

@@ -67,7 +67,7 @@ the combination the lecture credits for DeepSeek and the o1-series and Gemini Th
 Monkeys*, coverage $c$ as a function of the number of samples $k$ is fit by an **exponentiated power
 law**, $\log(c) \approx a k^{b}$ (lecture 2, ≈4:49–7:10; Brown et al. 2024, §3.1), across Llama 3,
 Gemma and Pythia models from 70M to 70B parameters. A follow-up reading explains the shape: each
-problem's success rate $\text{pass}_i@k = 1 - (1 - \text{pass}_i@1)^k$ improves exponentially in $k$,
+problem's success rate $\text{pass}_ i@k = 1 - (1 - \text{pass}_ i@1)^k$ improves exponentially in $k$,
 and the aggregate follows a power law exactly when the distribution of single-attempt success rates
 has a power-law tail of very hard problems (lecture 2, ≈7:58–11:08; Schaeffer et al. 2025, §3). Such a
 law lets you predict how many samples a target coverage needs (lecture 2, ≈6:23).
@@ -83,7 +83,7 @@ models.
 
 ## Selection sets the ceiling
 
-Best-of-$N$ is only as good as whatever picks the answer. In [lecture 3](03-robust-verification.md),
+$\text{Best-of-}N$ is only as good as whatever picks the answer. In [lecture 3](03-robust-verification.md),
 Cobbe et al.'s trained verifier keeps improving accuracy up to about 400 samples per problem and then
 declines, because with more candidates it is more often fooled by a wrong solution that looks right
 (≈14:05–17:58; Cobbe et al. 2021, §5.1) — against lecture 2's majority voting, which stopped tracking
@@ -118,5 +118,5 @@ into one was "surprisingly a very effective method", and adding layers helps, mu
   Large Language Monkeys and its inference scaling law, why the law is a power law, the
   generation–verification gap, Snell et al.'s revisions, PRM search and compute-optimal allocation, and
   Archon's inference-time architectures. Its four readings are transcribed in `raw/papers/`.
-- [Lecture 3 — Robust Verification](03-robust-verification.md): best-of-$N$ with a trained verifier and
+- [Lecture 3 — Robust Verification](03-robust-verification.md): $\text{best-of-}N$ with a trained verifier and
   where it stops helping, process reward models, and Weaver's scaling of verification by ensembling.

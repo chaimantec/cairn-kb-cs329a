@@ -50,7 +50,7 @@ training", now without changing parameter count (≈30:27–31:14). See
 With repeated sampling, coverage $c$ grows with the number of samples $k$ as an exponentiated power law,
 $c \approx \exp(a k^{b})$ (Brown et al. 2024, §3.1), fit across models from 70M to 70B parameters —
 though less exactly than training laws. The power law arises because a benchmark contains a long tail
-of very hard problems: Schaeffer et al. (2025, §3) prove that $-\log(\text{pass}_{\mathcal{D}}@k)$ is a
+of very hard problems: Schaeffer et al. (2025, §3) prove that $-\log(\text{pass}_ {\mathcal{D}}@k)$ is a
 power law in $k$ exactly when single-attempt success rates have a power-law density near zero. See
 [test-time scaling](test-time-scaling.md).
 

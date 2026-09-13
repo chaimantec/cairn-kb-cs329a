@@ -32,7 +32,7 @@ Full text of Schaeffer et al. (2025), transcribed from the arXiv LaTeX source an
 
 ## Abstract
 
-Recent research across mathematical problem solving, proof assistant programming and multimodal jailbreaking documents a striking finding: when (multimodal) language model tackle a suite of tasks with multiple attempts per task -- succeeding if any attempt is correct -- then the negative log of the average success rate scales a power law in the number of attempts. In this work, we identify an apparent puzzle: a simple mathematical calculation predicts that on each problem, the failure rate should fall exponentially with the number of attempts. We confirm this prediction empirically, raising a question: from where does aggregate polynomial scaling emerge? We then answer this question by demonstrating per-problem exponential scaling can be made consistent with aggregate polynomial scaling if the distribution of single-attempt success probabilities is heavy tailed such that a small fraction of tasks with extremely low success probabilities collectively warp the aggregate success trend into a power law - even as each problem scales exponentially on its own. We further demonstrate that this distributional perspective explains previously observed deviations from power law scaling, and provides a simple method for forecasting the power law exponent with an order of magnitude lower relative error, or equivalently, $\sim$2-4 orders of magnitude less inference compute. Overall, our work contributes to a better understanding of how neural language model performance improves with scaling inference compute and the development of scaling-predictable evaluations of (multimodal) language models.
+Recent research across mathematical problem solving, proof assistant programming and multimodal jailbreaking documents a striking finding: when (multimodal) language model tackle a suite of tasks with multiple attempts per task -- succeeding if any attempt is correct -- then the negative log of the average success rate scales a power law in the number of attempts. In this work, we identify an apparent puzzle: a simple mathematical calculation predicts that on each problem, the failure rate should fall exponentially with the number of attempts. We confirm this prediction empirically, raising a question: from where does aggregate polynomial scaling emerge? We then answer this question by demonstrating per-problem exponential scaling can be made consistent with aggregate polynomial scaling if the distribution of single-attempt success probabilities is heavy tailed such that a small fraction of tasks with extremely low success probabilities collectively warp the aggregate success trend into a power law - even as each problem scales exponentially on its own. We further demonstrate that this distributional perspective explains previously observed deviations from power law scaling, and provides a simple method for forecasting the power law exponent with an order of magnitude lower relative error, or equivalently, $\sim 2$-4 orders of magnitude less inference compute. Overall, our work contributes to a better understanding of how neural language model performance improves with scaling inference compute and the development of scaling-predictable evaluations of (multimodal) language models.
 
 ## 1 Introduction
 
@@ -49,28 +49,28 @@ Scaling behaviors of large neural language models have surprised and fascinated 
 One direction of renewed interest is inference-time compute scaling, whereby compute is controllably increased at inference to improve the performance of a model, e.g., Pachocki et al. (2024). In this direction, recent research discovered that language model success rates scale predictably with the number of independent attempts made at accomplishing a task. Specifically, in a paper titled, "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling," Brown et al. (2024) studied how language model performance changes at mathematical problem solving and coding problems when $k$ independent attempts are sampled per problem. Performance on the $i$-th problem was measured using the expected (over attempts) success rate (Kulal et al., 2019; Chen et al., 2021), defined as:
 
 $$
-\operatorname{pass_i@k} \;\stackrel{\text{def}}{=}\; \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attempt on $i$-th problem succeeds}] \Big]. \tag{1}
+\operatorname{pass_i@k} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attempt on $i$-th problem succeeds}] \Big]. \tag{1}
 $$
 
-Using the unbiased and numerically stable estimator of Chen et al. (2021) (for details, see Appendix B), Brown et al. (2024) found that the negative log averaged-over-$P$-problems success rate falls as a power law with the number of independent attempts per problem $k$:
+Using the unbiased and numerically stable estimator of Chen et al. (2021) (for details, see Appendix B), Brown et al. (2024) found that the negative log $\text{averaged-over-}P$-problems success rate falls as a power law with the number of independent attempts per problem $k$:
 
 $$
 -\log \Bigg( \frac{1}{P} \sum_{i=1}^P \operatorname{pass_i@k} \Bigg) \approx a k^{-b}, \tag{2}
 $$
 
-for model-specific and benchmark-specific constants $a, b > 0$ (Fig. 1 Top). Soon after, on a separate topic of jailbreaking multimodal language models via text, image and audio attacks, independent work by Hughes et al. (2024) studied jailbreaking success rates when $k$ independent attempts are made per harmful prompt. Performance was measured using Attack Success Rate (ASR) at $k$:
+for model-specific and benchmark-specific constants $a, b \gt  0$ (Fig. 1 Top). Soon after, on a separate topic of jailbreaking multimodal language models via text, image and audio attacks, independent work by Hughes et al. (2024) studied jailbreaking success rates when $k$ independent attempts are made per harmful prompt. Performance was measured using Attack Success Rate (ASR) at $k$:
 
 $$
-\operatorname{ASR_i@k} \;\stackrel{\text{def}}{=}\; \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attack on $i$-th prompt succeeds}] \Big]. \tag{3}
+\operatorname{ASR_i@k} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attack on $i$-th prompt succeeds}] \Big]. \tag{3}
 $$
 
-This "Best-of-N Jailbreaking" attack similarly discovered that the negative log averaged-over-$P$-prompts attack success rate fell as a power law with the number of jailbreak attempts per prompt $k$:
+This "Best-of-N Jailbreaking" attack similarly discovered that the negative log $\text{averaged-over-}P$-prompts attack success rate fell as a power law with the number of jailbreak attempts per prompt $k$:
 
 $$
 -\log \Bigg( \frac{1}{P} \sum_{i=1}^P \operatorname{ASR_i@k} \Bigg) \approx a k^{-b}, \tag{4}
 $$
 
-for model-specific and modality-specific constants $a, b > 0$ (Fig. 1 Bottom). For the specific coefficients from both papers, see Appendix. C. As a minor matter of terminology, both papers frame their results in terms of "coverage" -- the fraction of problems that can be solved after $k$ attempts per problem -- but as Brown et al. (2024) pointed out, coverage is equivalent to the average success rate (Appendix D); we prefer this latter framing as it avoids the binary implication that each problem either is or is not solved after $k$ attempts.
+for model-specific and modality-specific constants $a, b \gt  0$ (Fig. 1 Bottom). For the specific coefficients from both papers, see Appendix. C. As a minor matter of terminology, both papers frame their results in terms of "coverage" -- the fraction of problems that can be solved after $k$ attempts per problem -- but as Brown et al. (2024) pointed out, coverage is equivalent to the average success rate (Appendix D); we prefer this latter framing as it avoids the binary implication that each problem either is or is not solved after $k$ attempts.
 
 ## 2 Should Power Law Scaling Be Expected?
 
@@ -120,8 +120,8 @@ How does polynomial scaling of the negative log *average* success rate emerge fr
 
 $$
 \begin{aligned}
-\operatorname{pass_{\mathcal{D}}@k} &\stackrel{\text{def}}{=} \mathop{\mathbb{E}}_{\operatorname{pass_i@1} \sim \mathcal{D}} \Big[\operatorname{pass_i@k}(\operatorname{pass_i@1}) \Big]\\
-&= 1 - \int_0^1 (1 - \operatorname{pass_i@1})^k \, p_{\mathcal{D}}(\operatorname{pass_i@1}) \, d\!\operatorname{pass_i@1}.
+\operatorname{pass_{\mathcal{D}}@k} &\stackrel{\text{def}}{=} \mathop{\mathbb{E}}_{\operatorname{pass_i@1} \sim \mathcal{D}} \Big[\operatorname{pass_i@k}(\operatorname{pass_i@1}) \Big]\cr 
+&= 1 - \int_0^1 (1 - \operatorname{pass_i@1})^k \thinspace  p_{\mathcal{D}}(\operatorname{pass_i@1}) \thinspace  d\negthinspace \operatorname{pass_i@1}.
 \end{aligned} \tag{10}
 $$
 
@@ -129,10 +129,10 @@ Based on a known result that power laws can originate from an appropriately weig
 
 $$
 \begin{aligned}
--\log \Big(\operatorname{pass_{\mathrm{Uniform}(0,\, \beta \leq 1)}@k}\Big) &\propto k^{-1}.\\
--\log \Big(\operatorname{pass_{\operatorname{Beta}(\alpha, \beta)}@k}\Big) &\propto k^{-\alpha}.\\
--\log \Big(\operatorname{pass_{\operatorname{Kumaraswamy}(\alpha,\, \beta)}@k}\Big) &\propto k^{-\alpha}.\\
--\log \Big(\operatorname{pass_{\operatorname{ContinuousBernoulli}(\lambda < 1/2)}@k}\Big) &\propto k^{-1}.\\
+-\log \Big(\operatorname{pass_{\mathrm{Uniform}(0,\thinspace  \beta \leq 1)}@k}\Big) &\propto k^{-1}.\cr 
+-\log \Big(\operatorname{pass_{\operatorname{Beta}(\alpha, \beta)}@k}\Big) &\propto k^{-\alpha}.\cr 
+-\log \Big(\operatorname{pass_{\operatorname{Kumaraswamy}(\alpha,\thinspace  \beta)}@k}\Big) &\propto k^{-\alpha}.\cr 
+-\log \Big(\operatorname{pass_{\operatorname{ContinuousBernoulli}(\lambda < 1/2)}@k}\Big) &\propto k^{-1}.\cr 
 -\log \Big(\operatorname{pass_{\operatorname{Reciprocal}(0 < \alpha < \beta < 1)}@k}\Big) &\propto \dfrac{(1-\alpha)^k}{k}.
 \end{aligned}
 $$
@@ -141,33 +141,33 @@ To test this understanding, we examined whether the data of Brown et al. (2024) 
 
 More generally, what are the distributional properties that create such power law scaling and that set the specific power law exponent? As we now show, the negative log average success rate will exhibit power law scaling in $k$ with exponent $b$ if and only if the distribution over problems of single-attempt success probabilities itself behaves like a power law near $0$ with exponent $b-1$:
 
-**Theorem 3.1 (Sufficiency of Power-Law Left Tail in Distribution of Single-Attempt Success Rates).** Let $\mathcal{D}$ be a probability distribution on $[0,1]$ with PDF $p_{\mathcal{D}}(\operatorname{pass_i@1})$. Suppose there exist constants $b > 0$, $C > 0$, $\theta > 0$ and $\delta > 0$ such that, for all $0 < \operatorname{pass_i@1} < \delta$, we have
+**Theorem 3.1 (Sufficiency of Power-Law Left Tail in Distribution of Single-Attempt Success Rates).** Let $\mathcal{D}$ be a probability distribution on $[0,1]$ with PDF $p_{\mathcal{D}}(\operatorname{pass_i@1})$. Suppose there exist constants $b \gt  0$, $C \gt  0$, $\theta \gt  0$ and $\delta \gt  0$ such that, for all $0 \lt  \operatorname{pass_i@1} \lt  \delta$, we have
 
 $$
-p_{\mathcal{D}}(\operatorname{pass_i@1}) \;=\; C \cdot (\operatorname{pass_i@1})^{b-1} \;+\; O\bigl((\operatorname{pass_i@1})^{b-1+\theta}\bigr).
+p_{\mathcal{D}}(\operatorname{pass_i@1}) \mskip{5mu}=\mskip{5mu} C \cdot (\operatorname{pass_i@1})^{b-1} \mskip{5mu}+\mskip{5mu} O\bigl((\operatorname{pass_i@1})^{b-1+\theta}\bigr).
 $$
 
 Then, for large $k$,
 
 $$
--\log\big(\operatorname{pass_{\mathcal{D}}@k}\big) \;\sim\; C\,\Gamma(b) \;k^{-b}.
+-\log\big(\operatorname{pass_{\mathcal{D}}@k}\big) \mskip{5mu}\sim\mskip{5mu} C\thinspace \Gamma(b) \mskip{5mu}k^{-b}.
 $$
 
-**Theorem 3.2 (Necessity of Power-Law Left Tail in Distribution of Single-Attempt Success Rates).** Let $\mathcal{D}$ be a distribution over $\operatorname{pass_i@1} \in [0,1]$ with PDF $p_{\mathcal{D}}(\operatorname{pass_i@1})$. Suppose there exist constants $b > 0$ and $A > 0$ such that for large $k$,
+**Theorem 3.2 (Necessity of Power-Law Left Tail in Distribution of Single-Attempt Success Rates).** Let $\mathcal{D}$ be a distribution over $\operatorname{pass_i@1} \in [0,1]$ with PDF $p_{\mathcal{D}}(\operatorname{pass_i@1})$. Suppose there exist constants $b \gt  0$ and $A \gt  0$ such that for large $k$,
 
 $$
--\log\big(\operatorname{pass_{\mathcal{D}}@k}\big) \sim A\,k^{-b}.
+-\log\big(\operatorname{pass_{\mathcal{D}}@k}\big) \sim A\thinspace k^{-b}.
 $$
 
 Then, under mild regularity assumptions, the probability density must satisfy
 
 $$
-p_{\mathcal{D}}(\operatorname{pass_i@1}) \;\sim\; \frac{A}{\Gamma(b)} \, (\operatorname{pass_i@1})^{b - 1} \quad \text{as } \operatorname{pass_i@1} \to 0^+.
+p_{\mathcal{D}}(\operatorname{pass_i@1}) \mskip{5mu}\sim\mskip{5mu} \frac{A}{\Gamma(b)} \thinspace  (\operatorname{pass_i@1})^{b - 1} \quad \text{as } \operatorname{pass_i@1} \to 0^+.
 $$
 
-In Fig. 2, we illustrate this connection schematically. For proofs, see Appendices E.8 and E.9. These results clarify that whenever $-\log (\operatorname{pass_{\mathcal{D}}@k} )$ exhibits power-law decay in $k$ with exponent $b$, the distribution over problems of single-attempt success rates *must* have "polynomial weight" near $\operatorname{pass_i@1}=0$, i.e. $p_{\mathcal{D}}(p) = \Theta(p^{\,b-1})$.
+In Fig. 2, we illustrate this connection schematically. For proofs, see Appendices E.8 and E.9. These results clarify that whenever $-\log (\operatorname{pass_{\mathcal{D}}@k} )$ exhibits power-law decay in $k$ with exponent $b$, the distribution over problems of single-attempt success rates *must* have "polynomial weight" near $\operatorname{pass_i@1}=0$, i.e. $p_{\mathcal{D}}(p) = \Theta(p^{\thinspace b-1})$.
 
-To offer intuition, we know that each problem is being solved by the model (or equivalently, each prompt is jailbreaking the model) exponentially quickly. If one looks across all problems in the benchmark, some have $\operatorname{pass_i@1}$ so small that they remain unsolved for many, many attempts. Whether these "tiny-$\operatorname{pass_i@1}$" problems still matter at large $k$ depends on how *many* such problems there are. Polynomial density near $0$ "piles up" enough hard problems in just the right way such that even though each of those problems is being solved exponentially quickly, the *aggregate* success rate over problems decreases at only a power-law rate in $k$. A more succinct mathematical summary is that, for a compound binomial distribution, the lower tail probability controls the upper tail of the marginal survivor function.
+To offer intuition, we know that each problem is being solved by the model (or equivalently, each prompt is jailbreaking the model) exponentially quickly. If one looks across all problems in the benchmark, some have $\operatorname{pass_i@1}$ so small that they remain unsolved for many, many attempts. Whether these $\text{“tiny-}\operatorname{pass_i@1}\text{”}$ problems still matter at large $k$ depends on how *many* such problems there are. Polynomial density near $0$ "piles up" enough hard problems in just the right way such that even though each of those problems is being solved exponentially quickly, the *aggregate* success rate over problems decreases at only a power-law rate in $k$. A more succinct mathematical summary is that, for a compound binomial distribution, the lower tail probability controls the upper tail of the marginal survivor function.
 
 ## 4 Lack of Distributional Structure Explains Deviations from Power Law Scaling
 
@@ -177,27 +177,27 @@ To offer intuition, we know that each problem is being solved by the model (or e
 
 Notably, previous papers observed that not every model exhibits power law scaling in every setting. To highlight one, Hughes et al. (2024) observed that when jailbreaking Meta's Llama 3 8B Instruction Tuned (IT) model (Grattafiori et al., 2024), the $-\log (\operatorname{ASR_{\mathcal{D}}@k})$ fell faster than any power law (Fig. 1), i.e., the $\operatorname{ASR_{\mathcal{D}}@k}$ rose much more quickly than the other frontier AI systems. Based on our mathematical insights and the empirical per-problem single-attempt attack success rates (Fig. 4), we can understand why: Llama 3 8B IT could be successfully jailbroken on every prompt within the permitted sampling budget and thus had no heavy left tail necessary to create the aggregate power law scaling.
 
-**Figure 6.** **Comparing Estimators of Power Law Exponents.** We compare two estimators of the power law exponent $b$ in $-\log(\operatorname{pass_{\mathcal{D}}@k}) \approx a k^{-b}\;$: (1) the standard least-squares estimator between $k$ and $-\log(\operatorname{pass_{\mathcal{D}}@k})$ in log-log space, and (2) the distributional estimator of $\operatorname{pass_i@1}$ assuming a scaled Kumaraswamy-Binomial distribution. Using all available data to fit both estimators, we find agreement between the least-squares estimate (ordinate) and the distribution-derived estimate (abscissa) for both Pythia models on MATH (left) and for frontier AI systems on HarmBench (right). For an explanation of why the two estimators match more closely for Large Language Monkeys than for Best-of-N Jailbreaking, see Appendix A.
+**Figure 6.** **Comparing Estimators of Power Law Exponents.** We compare two estimators of the power law exponent $b$ in $-\log(\operatorname{pass_{\mathcal{D}}@k}) \approx a k^{-b}\mskip{5mu}$: (1) the standard least-squares estimator between $k$ and $-\log(\operatorname{pass_{\mathcal{D}}@k})$ in log-log space, and (2) the distributional estimator of $\operatorname{pass_i@1}$ assuming a scaled Kumaraswamy-Binomial distribution. Using all available data to fit both estimators, we find agreement between the least-squares estimate (ordinate) and the distribution-derived estimate (abscissa) for both Pythia models on MATH (left) and for frontier AI systems on HarmBench (right). For an explanation of why the two estimators match more closely for Large Language Monkeys than for Best-of-N Jailbreaking, see Appendix A.
 
 ![Figure 6 — least-squares vs. distributional estimates of the power-law exponent](../images/02-test-time-compute-scaling/monkeys-power-laws-figure-6.png)
 
-**Figure 7.** **Comparing Two Estimators of Power Law Parameters via Backtesting.** On synthetic data with known ground-truth power law $a \, k^{-b}$, we compare how well the least squares and the distributional estimator recover the scaling exponent $b$ as measured by the relative error $|\hat{b} - b| / b$ by backtesting: subsampling the number of problems and the number of samples per problem. We find that the distributional estimator obtains significantly better sample efficiency.
+**Figure 7.** **Comparing Two Estimators of Power Law Parameters via Backtesting.** On synthetic data with known ground-truth power law $a \thinspace  k^{-b}$, we compare how well the least squares and the distributional estimator recover the scaling exponent $b$ as measured by the relative error $|\hat{b} - b| / b$ by backtesting: subsampling the number of problems and the number of samples per problem. We find that the distributional estimator obtains significantly better sample efficiency.
 
 ![Figure 7 — backtested relative error of the two exponent estimators](../images/02-test-time-compute-scaling/monkeys-power-laws-figure-7.jpg)
 
 ## 5 A New Distributional Estimator for Predicting Power Law Scaling
 
-A natural consequence of this connection between the scaling of $-\log(\operatorname{pass_{\mathcal{D}}@k})$ and the left tail of the distribution $p_{\mathcal{D}}(\operatorname{pass_i@1})$ is that the distribution of single-attempt success rates can be used to predict whether power-law scaling will appear and if so, what the intercept and exponent of the power law will be. To do this, one can fit the distribution $\hat{p}_{\mathcal{D}}(\operatorname{pass_i@1})$ and then *simulate* how $\operatorname{pass_{\mathcal{D}}@k}$ will scale with $k$ (Fig. 5) using the relationship:
+A natural consequence of this connection between the scaling of $-\log(\operatorname{pass_{\mathcal{D}}@k})$ and the left tail of the distribution $p_{\mathcal{D}}(\operatorname{pass_i@1})$ is that the distribution of single-attempt success rates can be used to predict whether power-law scaling will appear and if so, what the intercept and exponent of the power law will be. To do this, one can fit the distribution $\hat{p}_ {\mathcal{D}}(\operatorname{pass_i@1})$ and then *simulate* how $\operatorname{pass_{\mathcal{D}}@k}$ will scale with $k$ (Fig. 5) using the relationship:
 
 $$
-\widehat{\operatorname{pass_{\mathcal{D}}@k}} \;\stackrel{\text{def}}{=}\; 1 - \int_0^1 (1 - \operatorname{pass_i@1})^k \, \hat{p}_{\mathcal{D}}(\operatorname{pass_i@1}) \, d\!\operatorname{pass_i@1}. \tag{11}
+\widehat{\operatorname{pass_{\mathcal{D}}@k}} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} 1 - \int_0^1 (1 - \operatorname{pass_i@1})^k \thinspace  \hat{p}_{\mathcal{D}}(\operatorname{pass_i@1}) \thinspace  d\negthinspace \operatorname{pass_i@1}. \tag{11}
 $$
 
 To empirically test this claim, we compared the standard least squares regression estimator (in log-log space) (Hoffmann et al., 2022; Caballero et al., 2022; Besiroglu et al., 2024b) against a *distributional estimator*. To motivate our distributional estimator, we first need explain a key obstacle and how the distributional estimator overcomes it. The obstacle is that there are problems or prompts whose single-attempt success probabilities $\operatorname{pass_i@1}$ lie between $(0, 1/\text{Number of Samples})$ such that, due to finite sampling, we lack the resolution to measure. While we do not know the true single-attempt success probability for the problems that lie in this interval, we *do* know *how many* problems fall into this left tail bucket, and we can fit a distribution's parameters such that the distribution's probability mass in the interval $(0, 1 / \text{Number of Samples})$ matches the empirical fraction of problems in this tail bucket. Thus, our distributional estimator works by first selecting a distribution (e.g., a scaled 3-parameter Beta distribution), discretizing the distribution according to the sampling resolution $1 / \text{Number of Samples}$ and performing maximum likelihood estimation under the discretized distribution's probability mass function.
 
 We tested this distributional estimator in two different ways. First, focusing on Large Language Monkeys, we used all available real data from all problems and all samples per problem to compare the standard least squares regression estimator against the distributional estimator. We found close agreement between the two estimators (Fig. 6), giving us a sense that the two estimators yield reasonably consistent estimates under large sampling budgets.
 
-Second, the distributional estimator also comes with another benefit: it directly provides an estimate of the power law's exponent $b$ in $a \, k^{-b}$. Estimating the power law's exponent is especially valuable because the exponent dictates how success rates are improving with increasing inference compute. To test how the distributional estimator and least squares estimator compare at recovering the true asymptotic power law exponent, we generated synthetic data so that we would have ground-truth knowledge of the true power law exponent, then backtested how the two scaling estimators compare at recovering the true exponent (Alabdulmohsin et al., 2022a; Owen, 2024) by subsampling data with fewer problems and fewer samples per problem. We found that the distributional estimator obtains significantly better sample efficiency, with approximately an order of magnitude lower relative error $\stackrel{\text{def}}{=} |\hat{b} - b| / b$ compared with the least squares estimator (Fig. 7), or equivalently, $\sim$2-4 orders of magnitude less inference-compute. The distributional estimator performs well even under distributional mismatch.
+Second, the distributional estimator also comes with another benefit: it directly provides an estimate of the power law's exponent $b$ in $a \thinspace  k^{-b}$. Estimating the power law's exponent is especially valuable because the exponent dictates how success rates are improving with increasing inference compute. To test how the distributional estimator and least squares estimator compare at recovering the true asymptotic power law exponent, we generated synthetic data so that we would have ground-truth knowledge of the true power law exponent, then backtested how the two scaling estimators compare at recovering the true exponent (Alabdulmohsin et al., 2022a; Owen, 2024) by subsampling data with fewer problems and fewer samples per problem. We found that the distributional estimator obtains significantly better sample efficiency, with approximately an order of magnitude lower relative error $\stackrel{\text{def}}{=} |\hat{b} - b| / b$ compared with the least squares estimator (Fig. 7), or equivalently, $\sim 2$-4 orders of magnitude less inference-compute. The distributional estimator performs well even under distributional mismatch.
 
 ## 6 Related Work
 
