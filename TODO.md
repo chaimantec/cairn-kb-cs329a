@@ -33,7 +33,8 @@ list readings but have no video in the catalog.
 ## Transcripts
 - [x] 01 Part 1 | Course Overview — video 6YnLB0XbTnI (verbatim → raw/transcripts/original/)
 - [x] 01 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
-- [ ] 02 Part 2 | Test-Time Compute Scaling — video -Ggc37xLj_Y
+- [x] 02 Part 2 | Test-Time Compute Scaling — video -Ggc37xLj_Y (verbatim → raw/transcripts/original/)
+- [x] 02 edited transcript (Sonnet copy-edit, last paragraph by parent after a session-limit kill; 81/81 timestamps, numbers match except deliberate GPT-4.0→GPT-4o and pass@1, ratio outliers 26:08/47:23 are [Ed] notes)
 - [ ] 03 Part 3 | Robust Verification — video p7TdPUcPoik
 - [ ] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0
 - [ ] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y
@@ -49,7 +50,13 @@ list readings but have no video in the catalog.
 
 ## Papers (course material — per lecture, only the site's own list)
 - [x] 01 — none listed; nothing to ingest
-- [ ] 02 — 4 readings
+- [x] 02 — mapping confirmed: the transcript covers all four row-2 readings (Monkeys ≈0:52, power laws ≈7:10, Snell et al. ≈26:55, Archon ≈45:03)
+- [x] 02 — arXiv LaTeX sources fetched to raw/pdfs/papers/src/ (gitignored); all four CC BY 4.0
+- [ ] 02 — raw/papers/02-large-language-monkeys{,-appendix}.md
+- [ ] 02 — raw/papers/02-monkeys-power-laws{,-appendix}.md
+- [ ] 02 — raw/papers/02-scaling-test-time-compute-optimally{,-appendix}.md
+- [ ] 02 — raw/papers/02-archon{,-appendix}.md
+- [ ] 02 — check_paper_file.py clean on all four; figure-description audit
 - [ ] 03 — 4 readings
 - [ ] 04 — 3 readings
 - [ ] 05 — 5 readings
@@ -59,10 +66,18 @@ list readings but have no video in the catalog.
 - [x] 09 — none listed; nothing to ingest
 
 ## Wiki
+- [ ] wiki/02-test-time-compute-scaling.md
+- [ ] Topic pages updated/added for lecture 2
+- [ ] INDEX.md — lecture 2, raw/papers
 - [x] wiki/01-course-overview.md
 - [x] Topic pages (cross-lecture concepts lecture 1 establishes): test-time-scaling, verifiers, chain-of-thought, reasoning-models, llm-training-pipeline, scaling-laws, agentic-workflows, self-improvement, course-logistics
 - [x] INDEX.md table of contents
 - [x] AGENTS.md — CS329A conventions (no slides, papers as material, numbering table)
+
+## Images (paper figures, cropped from the PDFs — user opted in for lecture 2)
+- [x] raw/images/02-test-time-compute-scaling/ — 63 figure crops (all four papers; power-laws Fig 8 is an algorithm box, transcribed not rendered)
+- [ ] Wire figures into wiki/02 (paper files embed them as written)
+- [ ] AGENTS.md — Images and raw/papers conventions
 
 ## Publish
 - [x] kb.json — coverage, materials.method, provenance caveats
