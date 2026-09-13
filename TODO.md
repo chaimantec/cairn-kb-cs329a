@@ -57,9 +57,9 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 02 — arXiv LaTeX sources fetched to raw/pdfs/papers/src/ (gitignored); all four CC BY 4.0
 - [x] 02 — raw/papers/02-large-language-monkeys.md + -appendix.md (full text; check_paper_file.py clean)
 - [x] 02 — raw/papers/02-monkeys-power-laws.md (main body only, by user decision to save budget; checker clean --main-only)
-- [ ] 02 — raw/papers/02-scaling-test-time-compute-optimally.md (main body only)
+- [x] 02 — raw/papers/02-scaling-test-time-compute-optimally.md (main body only; checker clean; Fig 9 re-cropped and its description rewritten after a parent check found wrong star values)
 - [ ] 02 — raw/papers/02-archon.md (main body only)
-- [ ] 02 — check_paper_file.py clean on all four; figure-description audit
+- [ ] 02 — figure-description audit of every figure in all four papers (one agent; Snell Fig 9 already checked by parent)
 - [ ] 03 — 4 readings
 - [ ] 04 — 3 readings
 - [ ] 05 — 5 readings
