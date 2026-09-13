@@ -13,7 +13,7 @@ companion: none — the appendices are not transcribed; see the arXiv version
 
 # Archon: An Architecture Search Framework for Inference-Time Techniques — main body
 
-Full text of Saad-Falcon et al. (2024), transcribed from the arXiv LaTeX source and reproduced under CC BY 4.0; copyright the authors. Figures are crops of the published PDF, each followed by a description written for this knowledge base (marked *Description*). Citations are resolved to author–year; the bibliography is omitted — follow the arXiv link for it. The appendices are not transcribed in this knowledge base; they are in the arXiv version linked above.
+Full text of Saad-Falcon et al. (2024), transcribed from the arXiv LaTeX source and reproduced under CC BY 4.0; copyright the authors. Figures are crops of the published PDF, shown with the paper's own caption; this knowledge base adds no description of its own, so what a figure shows is what its caption and the paper's text say. Citations are resolved to author–year; the bibliography is omitted — follow the arXiv link for it. The appendices are not transcribed in this knowledge base; they are in the arXiv version linked above.
 
 ## Contents
 
@@ -43,8 +43,6 @@ Inference-time techniques, such as repeated sampling or iterative revisions, are
 
 ![Figure 1 — Archon's performance scaling with inference token budget](../images/02-test-time-compute-scaling/archon-figure-1.jpg)
 
-*Description.* A single line chart titled "Averaged Performance: ArenaHardAuto, MATH, CodeContests." X-axis: "Max. Input/Output Token Budget", with five labelled points 10K, 25K, 50K, 75K, 100K. Y-axis: "Score (%)", range 40–80. Three plotted series (with circle markers) plus two horizontal reference lines. Series: Archon (blue) starts at about 53% (10K), rises to about 61% (25K), about 69% (50K), about 73% (75K), and ends at about 76% (100K); AFlow (orange) starts at about 51% (10K), about 54% (25K), about 60.5% (50K), about 63% (75K), and ends at about 63% (100K); ADAS (green) starts at about 53% (10K), about 58% (25K), about 63.5% (50K), about 65% (75K), and ends at about 65% (100K). Reference lines: MoA (red dashed), flat at about 60.5%; O1 (purple dotted), flat at about 68.5%. All crops clean.
-
 Inference-time techniques---strategies that use additional compute during model inference---are gaining traction as effective methods for improving model capabilities.
 LLMs, such as OpenAI's o1 (OpenAI, 2024), QwQ (Team, 2024), and Sky-T1 (Team, 2025), utilize such techniques to translate additional inference compute into better performance across a broad set of tasks.
 Example techniques include generation ensembling, ranking, and fusion, where models in the ensemble are queried in parallel, their responses are ranked, and the best ones are fused into a single, higher quality output, respectively (Jiang et al., 2023b; Wang et al., 2024a).
@@ -58,8 +56,6 @@ We argue that designing effective and generalizable inference-time architectures
 **Figure 2.** **Overview of Archon Framework**: Archon's search algorithm requires the following inputs: target benchmarks, inference call budget, available LLMs, and available inference-time techniques (**left**). The search algorithm uses Bayesian optimization (Snoek et al., 2012) to construct and evaluate different Archon configurations (**middle**) before returning the optimized Archon architecture (**right**) for the target benchmarks (Section 3.3).
 
 ![Figure 2 — inputs, optimizer, and outputs of the Archon search framework](../images/02-test-time-compute-scaling/archon-figure-2.png)
-
-*Description.* A three-column flow diagram. **Inputs** (left column, green boxes): "Target Benchmark(s)"; "Inference Call Budget"; "Available LLMs"; and a box "Inference Time Techniques" listing "Generator", "Fuser", "Critic", "Ranker", "Verifier", "Unit Test Generator", "Unit Test Evaluator" (with an ellipsis below for more). An arrow leads from the Inputs column to the **Optimizer** (middle column, navy boxes): "Architecture Optimizer (Hyperparameter Selection)" pointing right to "Proposed Archon Architecture", which points down to "Sample Benchmark Results", which loops back up (left arrow) into the Architecture Optimizer box. An arrow leads from the Optimizer column to the **Outputs** (right column): a box "Optimized Archon Architecture" containing, top to bottom: a row of white boxes labelled "G" (generators, with an ellipsis between the first two and last), feeding into a shaded row "C" (critic), then a white row "R" (ranker), then a shaded row "F" (fuser), then a white box "Output". All crops clean.
 
 - **Understanding the Utilities of Inference-Time Techniques**:
 Inference-time architectures typically delegate their additional inference budget towards more model sampling calls (Chen et al., 2024; Brown et al., 2024), which can be effective for math and coding tasks.
@@ -186,8 +182,6 @@ Additionally, a single state is transformed sequentially from the input layer to
 
 ![Figure 3 — example ten-generator Archon architecture with critic, ranker, fusers, and verifier](../images/02-test-time-compute-scaling/archon-figure-3.png)
 
-*Description.* A vertical flow diagram. "Prompt" (top) with an arrow down to a row of three "Generator" boxes (labelled "GPT 4o, n=1" marked "1", "Claude 3.5 Sonnet, n=1" marked "2", and "Llama 3.1 405B, n=1" marked "10", with an ellipsis between the second and last indicating more generators in between), all feeding down into a single "Critic" box ("Qwen2-72B"), which feeds into a "Ranker" box ("Claude 3.5 Sonnet"), which fans out to a row of three "Fuser" boxes ("Qwen1.5-110B" marked "1", "Llama3-70B" marked "2", "Claude 3 Haiku" marked "6", with an ellipsis indicating more fusers in between), which feed into a "Verifier" box ("GPT 4o"), which feeds into a final "Fuser" box ("Llama 3.1 405B"), with an arrow down to "Output". All crops clean.
-
 **Rules for Construction**: The LLM components in Section 3.1 can only be placed in specific orders (Table 4).
 While alternative combinations and orderings of Archon components are technically viable, we found these orderings to be optimal after conducting an ablation study of Archon components across seven benchmarks and two model classes (open-source and closed-source) (Appendix A.3).
 
@@ -201,8 +195,6 @@ While alternative combinations and orderings of Archon components are technicall
 **Figure 4.** **Performance Improves by Scaling *Layers* of Inference-Time Techniques**: When controlling for inference budget, generation ensembling and fusion across 8 different 70B LLMs is generally more effective than repeated sampling with only the top performing model. Furthermore, adding layers of critique and fusion led to a 18.8% boost in task performance, on average. However, the best inference-time architecture differed by task, such as MixEval and CodeContests (Section 4.3), which inspired us to develop architecture search techniques for Archon (Section 3.3).
 
 ![Figure 4 — performance across benchmarks as inference-time technique layers scale](../images/02-test-time-compute-scaling/archon-figure-4.png)
-
-*Description.* A bar chart, y-axis "Win Rate / Accuracy" 0.0–1.0, x-axis with seven benchmark groups: MT-Bench, AlpacaEval 2.0, Arena Hard Auto, MixEval Hard, MixEval, MATH, Code Contests. Each group has seven bars in legend order: "Best Open-Source 70B+ Model, Sampled Once" (blue), "Best Open-Source 70B+ Model, 8-Samples + Fuser" (orange), "Ensemble (Top-8 Best Models) + Fuser" (teal), "Ensemble + Critic + Fuser" (dark orange/red), "Ensemble + Critic + 2 Layers of Fusers" (magenta), "Ensemble + Critic + 4 Layers of Fusers" (brown), "Ensemble + 4 Layers of Critics and Fusers" (pink). Bars generally increase left-to-right within each group. Approximate readings per group (first bar to last bar): MT-Bench about 0.55 to 0.67; AlpacaEval 2.0 about 0.45 to 0.66; Arena Hard Auto about 0.46 to 0.65; MixEval Hard about 0.59 to 0.66; MixEval about 0.86 to 0.88 (narrow spread); MATH about 0.80 to 0.91; Code Contests about 0.27 to 0.29 (narrow spread, little separation between bars). All crops clean.
 
 ### 3.3 Architecture Search Algorithms
 
@@ -342,8 +334,6 @@ The generalized ADAS and AFlow architectures only achieve 66% and 74% of their s
 **Figure 5.** **Archon's Performance Exceeds Baselines across FLOP Budgets**: Across different FLOP budgets (Section 3.3), we compare Archon architectures against top-performing inference-time system baselines. The MoA architecture and OpenAI's o1 are static so they use the same number of tokens across budgets. The results were averaged over 10 independent evaluation runs. \*MATH and CodeContests use a subset of their test sets for evaluation (Section 4.1).
 
 ![Figure 5 — Archon vs. AFlow, ADAS, MoA and o1 across PFLOPs-per-query budgets on three benchmarks](../images/02-test-time-compute-scaling/archon-figure-5.jpg)
-
-*Description.* Three side-by-side line-chart panels sharing the x-axis "PFLOPs per Query" (range 10–50) and the same legend/colors: Archon (blue), AFlow (orange), ADAS (green), each plotted as a rising line with circle markers at 10, 20, 30, 40, 50; plus two flat reference lines, MoA (red dashed) and o1 (purple dashed), since those two are compute-budget-independent. **Left panel**, "Arena-Hard-Auto", y-axis "Win Rate (%)" 50–100: Archon rises from about 69% (10) to about 79% (20), about 88.5% (30), about 91% (40), ending about 93.5% (50); AFlow rises from about 63% to about 68%, about 77%, about 84%, ending about 83%; ADAS rises from about 64% to about 72.5%, about 82%, about 85%, ending about 85%; MoA reference line flat at about 84.5%; o1 reference line flat at about 82%. **Center panel**, "MATH\*", y-axis "Pass@1 (%)" 50–100: Archon rises from about 76% to about 85%, about 90%, about 92.5%, ending about 94%; AFlow rises from about 75% to about 80.5%, about 84.5%, about 84.5%, ending about 84.5%; ADAS rises from about 78% to about 83%, about 86%, about 86%, ending about 86%; MoA reference line flat at about 83%; o1 reference line flat at about 93%. **Right panel**, "CodeContests\*", y-axis "Pass@1 (%)" 0–50: Archon rises from about 18% to about 26%, about 31.5%, about 39%, ending about 44%; AFlow rises from about 16.5% to about 19%, about 21%, about 21.5%, ending about 21.5%; ADAS rises from about 18% to about 21%, about 24%, about 24%, ending about 24%; MoA reference line flat at about 15%; o1 reference line flat at about 31.5%. All crops clean.
 
 ### 4.3 Archon by Task
 

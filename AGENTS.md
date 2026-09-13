@@ -66,15 +66,17 @@ Each ingested reading is two files, named by the catalog lecture that lists it:
   opens with a Contents table mapping sections to their figures and tables. Cite a paper by section,
   figure or table — "Brown et al. (2024), Figure 7" — linking to the file, the way a slide file is
   cited by slide number.
-- **Every figure** appears where the LaTeX places it: the verbatim caption as `**Figure N.**`, the
-  image, then a `*Description.*` paragraph. **The description is the only text in these files
-  written by this KB rather than by the authors** — the axes, series and approximate values read off
-  the figure — so never quote it as the paper's own words.
+- **Every figure** appears where the LaTeX places it: the verbatim caption as `**Figure N.**`, then
+  the image. **This KB writes no figure descriptions of its own.** What a figure shows is what its
+  caption and the paper's text say. To answer a question about a chart, show the image and quote the
+  caption and the passage that discusses it — never read values off the chart. (Model-written chart
+  readings were tried for lecture 2 and removed: an audit found errors in 4 of the 20 it checked.)
 - Transcribed by Claude Sonnet 5 from the source and checked by `check_paper_file.py`: section,
   figure and table counts against the LaTeX; every number inside the LaTeX tables present in the
   markdown; every paragraph's wording against the source, so a paraphrased or dropped paragraph
-  fails; image links that resolve; no leftover `\cite`, `\ref` or macros. The figure descriptions
-  are audited separately against the images.
+  fails; image links that resolve; no leftover `\cite`, `\ref` or macros. Every figure crop was checked
+  against the PDF's text layer: no line of text cut by the crop edge, the caption's last words inside
+  the crop, and no body text below the caption.
 
 ### Images
 
@@ -93,7 +95,7 @@ belongs to. No other lecture has any.
   pattern, and never assume a figure has an image because its neighbours do: the power-laws paper's
   Figure 8 is an algorithm box, transcribed as text, with no image. The paper files carry every
   image; `grep -o 'raw/images/[^)]*' wiki/02-*.md` lists the ones a wiki page uses.
-- For numbers, prefer a paper's transcribed tables and text over values read off a figure.
+- For numbers, use a paper's transcribed tables and text. Never state a value read off a figure.
 
 ## Conventions
 

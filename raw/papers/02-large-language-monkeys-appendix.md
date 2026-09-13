@@ -13,7 +13,7 @@ companion: 02-large-language-monkeys.md
 
 # Large Language Monkeys: Scaling Inference Compute with Repeated Sampling — appendix
 
-Full text of Brown et al. (2024), transcribed from the arXiv LaTeX source and reproduced under CC BY 4.0; copyright the authors. Figures are crops of the published PDF, each followed by a description written for this knowledge base (marked *Description*). Citations are resolved to author–year; the bibliography is omitted — follow the arXiv link for it.
+Full text of Brown et al. (2024), transcribed from the arXiv LaTeX source and reproduced under CC BY 4.0; copyright the authors. Figures are crops of the published PDF, shown with the paper's own caption; this knowledge base adds no description of its own, so what a figure shows is what its caption and the paper's text say. Citations are resolved to author–year; the bibliography is omitted — follow the arXiv link for it.
 
 ## Contents
 
@@ -232,8 +232,6 @@ Here, we include results on a subset with the problems in Table 3 removed (266 p
 
 ![Figure 9 — SWE-bench Lite coverage with and without flaky tests](../images/02-test-time-compute-scaling/large-language-monkeys-figure-9.png)
 
-*Description.* Two panels sharing a 4-series legend and identical axes. Left panel, titled "SWE-bench Lite: Flaky Problems Removed"; right panel, titled "SWE-bench Lite: Flaky Problems Included." Both: x-axis "Number of samples (k)," log scale from 10^0 to a few hundred; y-axis "Coverage (pass@k)," 0 to 1.0. Four series: a blue solid line "Moatless Tools + DeepSeek-Coder-V2-Instruct"; a dark purple/black dashed reference line "CodeStory Aide + Mixed Models Single-Attempt (SOTA)"; an orange dashed reference line "Moatless Tools + Claude 3.5 Sonnet Single-Attempt"; a red dashed reference line "Moatless Tools + GPT-4o Single-Attempt." Left panel (flaky problems removed): the blue line rises from about 0.15 at k=1 to 54.14% at k=250 (labelled); the SOTA reference line sits at 41.35% (labelled); the Claude reference at 24.81% (labelled); the GPT-4o reference at 23.31% (labelled), just below the Claude line. Right panel (flaky problems included): the blue line rises from about 0.16 at k=1 to 56.00% at k=250 (labelled); the SOTA reference line sits at 43.00% (labelled); the Claude reference at 26.67% (labelled); the GPT-4o reference at 24.67% (labelled).
-
 ## C Scaling Law Details
 
 ### C.1 Experimental details
@@ -247,8 +245,6 @@ In Figure 10, we show additional results fitting power laws to coverage curves f
 **Figure 10.** Fitting exponentiated power laws to coverage curves for an expanded set of tasks and models.
 
 ![Figure 10 — power-law fits across expanded tasks and models](../images/02-test-time-compute-scaling/large-language-monkeys-figure-10.png)
-
-*Description.* A grid of 14 panels (5 rows × 3 columns, with the last row holding only 2 panels), sharing a 2-series legend: "Coverage" (blue) and "Power Law Fit, $c = \exp(ak^b)$" (orange). Each panel's x-axis is "Number of Samples (k)" on a log scale (1 to a few hundred for the SWE-bench Lite panel, 1 to 10^4 for all others); y-axis "Coverage (pass@k)," 0.0 to 1.0; each panel title states the model/task and the fitted (a, b) parameters, with the coverage curve and power-law fit line overlapping closely in every panel. Row 1: "DeepSeek-Coder-V2-Instruct + Moatless Tools, SWE-bench Lite" (a=-1.74, b=-0.21), rising from about 0.15 to about 0.57; "Llama-3-8B, MATH (Oracle Verifier)" (a=-1.98, b=-0.42), rising from about 0.13 to about 0.95; "Gemma-7B, MATH (Oracle Verifier)" (a=-1.66, b=-0.45), rising from about 0.2 to about 0.98. Row 2: "Pythia-160M, MATH (Oracle Verifier)" (a=-6.43, b=-0.27), rising from near 0 to about 0.58; "Pythia-410M, MATH (Oracle Verifier)" (a=-5.39, b=-0.28), rising from near 0 to about 0.65; "Pythia-1B, MATH (Oracle Verifier)" (a=-5.1, b=-0.29), rising from near 0 to about 0.73, with a small visible gap between the coverage curve (slightly higher) and the fit near the right edge. Row 3: "Pythia-1.4B, MATH (Oracle Verifier)" (a=-4.66, b=-0.32), rising from near 0 to about 0.79; "Pythia-2.8B, MATH (Oracle Verifier)" (a=-4.1, b=-0.33), rising from near 0 to about 0.81; "Pythia-6.9B, MATH (Oracle Verifier)" (a=-4.23, b=-0.34), rising from near 0 to about 0.83. Row 4: "Gemma-2B, CodeContests" (a=-8.54, b=-0.14), rising from near 0 to about 0.08; "Gemma-7B, CodeContests" (a=-4.56, b=-0.13), rising from near 0 to about 0.27; "Llama-3-70B-Instruct, MiniF2F-MATH" (a=-1.36, b=-0.09), rising from about 0.22 to about 0.52. Row 5 (2 panels only): "Llama-3-8B-Instruct, GSM8K (Oracle Verifier)" (a=-0.27, b=-0.87), rising from about 0.78 to about 1.0; "Llama-3-70B-Instruct, GSM8K (Oracle Verifier)" (a=-0.07, b=-0.9), rising from about 0.95 to about 1.0.
 
 ## D Precision Details
 

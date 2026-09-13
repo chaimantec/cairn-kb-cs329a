@@ -59,7 +59,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 02 — raw/papers/02-monkeys-power-laws.md (main body only, by user decision to save budget; checker clean --main-only)
 - [x] 02 — raw/papers/02-scaling-test-time-compute-optimally.md (main body only; checker clean; Fig 9 re-cropped and its description rewritten after a parent check found wrong star values)
 - [x] 02 — raw/papers/02-archon.md (main body only; written before a session-limit kill, checker clean except the spec-mandated italic \multirow note, a known checker artifact)
-- [~] 02 — figure-description audit, POSTPONED by the user (too expensive): 20 of 31 descriptions checked against their crops — Monkeys 1–10, power laws 1–7, Snell 1, 2 and 9 — with fixes to Monkeys Fig 3 and 6, power laws Fig 1 and Snell Fig 9. UNAUDITED: Snell Figs 3–8, Archon Figs 1–5. Log: raw/pdfs/papers/AUDIT_02.md (gitignored). Cheaper plan if resumed: the parent views only the crops the wiki embeds, no extra renders.
+- [x] 02 — figures: KB-written descriptions REMOVED by user decision (show the chart; say only what the caption and paper text say). Before removal an audit had found errors in 4 of 20. All 31 crops verified by a text-layer check (no text cut by the edge, caption complete, no body text below).
 - [ ] 03 — 4 readings
 - [ ] 04 — 3 readings
 - [ ] 05 — 5 readings
@@ -93,20 +93,21 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 
 **Done and committed locally (not pushed):** both transcripts; paper files for all four row-2 readings
 (Monkeys main + appendix; power laws, Snell, Archon main body only); `AGENTS.md` paper/image
-conventions; `sources.md` row 2. Images (31 crops) committed; 11 of their descriptions are unaudited. Checker: `check_paper_file.py` passes on all four; the one known
+conventions; `sources.md` row 2. Images (31 crops) committed; no KB-written figure descriptions (removed). Checker: `check_paper_file.py` passes on all four; the one known
 FAIL on archon is its italic `\multirow` note (a spec-mandated editorial line, not invented text).
 
 **Budget rules (user):** one subagent at a time; no appendices for the three later papers.
 
 **Still to do, in order**
-1. ~~Figure audit~~ postponed (see Papers section); ~~Monkeys footnote 4~~ fixed; images committed.
+1. ~~Figure audit~~ superseded — descriptions removed (see Papers section); ~~Monkeys footnote 4~~ fixed; images committed.
 3. Write `wiki/02-test-time-compute-scaling.md` (Opus, not delegated), embedding the
-   figures the lecture discusses with relative links `../raw/images/02-test-time-compute-scaling/…`.
+   figures the lecture discusses — describe a figure only through its caption, the paper's text and
+   what the lecturer says; never read values off a chart — with relative links `../raw/images/02-test-time-compute-scaling/…`.
 4. Topic pages: update test-time-scaling (dedicated lecture now), verifiers (ORM vs PRM, generation–
    verification gap), scaling-laws (inference scaling laws); consider new pages for reward models
    (ORM/PRM) and inference-time architectures (Archon) if the material stands alone.
 5. INDEX.md (coverage 2 of 9, lecture 2 entry, raw/papers section), kb.json (coverage, paperReadings,
-   materials.method, images: lecturesWithImages 1, files 31, byLecture {"2": 31}, figuresAudited false with a figureAudit object (20 of 31; unaudited Snell 3–8, Archon 1–5),
+   materials.method, images: lecturesWithImages 1, files 31, byLecture {"2": 31}, images note: no KB-written figure descriptions exist (removed), crops text-layer verified; figuresAudited false with a note saying why,
    caveats: main-body-only papers, "itest" unclear), verify_kb.py + read review, push.
 
 **Lecture 2 outline (edited transcript timestamps)**
