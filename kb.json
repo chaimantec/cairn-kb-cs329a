@@ -1,0 +1,49 @@
+{
+  "kbVersion": 1,
+  "course": {
+    "code": "CS329A",
+    "title": "Self-Improving AI Agents",
+    "instructor": "Aakanksha Chowdhery and Azalia Mirhoseini",
+    "term": "Autumn 2025",
+    "catalogId": "aa04e43f-37c5-4afd-8646-a5fdb8947098",
+    "courseUrl": "https://cs329a.stanford.edu/"
+  },
+  "coverage": {
+    "lecturesCovered": 1,
+    "lecturesTotal": 9,
+    "transcripts": 1,
+    "wikiLecturePages": 1,
+    "wikiTopicPages": 9
+  },
+  "materials": {
+    "primary": "papers",
+    "slideDecks": {
+      "available": 0,
+      "transcribed": 0
+    },
+    "paperReadings": {
+      "listedOnSite": 34,
+      "ingested": 0,
+      "downloadedLocally": 34,
+      "committed": false,
+      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Papers are cited at their original URL (sources.md); the PDFs are on the build machine under raw/pdfs/ and gitignored. Only the papers the site lists for a lecture are ingested for that lecture. Lecture 1 lists none."
+    },
+    "method": "none",
+    "figuresAudited": false
+  },
+  "provenance": {
+    "builtBy": [
+      "claude-opus-5",
+      "claude-sonnet-5"
+    ],
+    "caveats": [
+      "PARTIAL: covers catalog lecture 1 (Course Overview) of 9. Do not cite this KB as covering CS329A as a whole; it has no treatment of any later lecture or of any paper reading.",
+      "Lecture 1 is transcript-only: the course publishes no slides and the site lists no paper readings for it. Every claim on its pages is cited to a transcript timestamp or, on the logistics page, to the course website. figuresAudited is false because there are no figures in this KB at all, not because figures went unchecked.",
+      "The auto-captions garble some model and benchmark names in the Large Language Monkeys results (about 22:34-25:42) and a term in the reasoning-model steps (about 32:00). These are marked [Ed: unclear] in the edited transcript and left unnamed in the wiki rather than restored from outside knowledge.",
+      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. The mapping from position 2 onward is by title and tentative, and position 7 may correspond to site row 7, row 8 or both.",
+      "Lecture 1's wiki page names five papers the lecture previews that the site lists under later lectures; they are linked at their original URLs and have not been ingested."
+    ]
+  },
+  "entryPoint": "INDEX.md",
+  "updated": "2026-09-13"
+}
