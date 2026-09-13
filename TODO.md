@@ -88,3 +88,63 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] verify_kb.py clean, and its review section read
 - [x] Commit and push
 - [x] PATCH kbUrl onto the catalog entry
+
+## Resume notes — lecture 2 (written 2026-09-13, before the wiki step)
+
+**Done and committed locally (not pushed):** both transcripts; paper files for all four row-2 readings
+(Monkeys main + appendix; power laws, Snell, Archon main body only); `AGENTS.md` paper/image
+conventions; `sources.md` row 2. **Uncommitted:** `raw/images/02-test-time-compute-scaling/` (31 crops)
+— commit after the figure audit. Checker: `check_paper_file.py` passes on all four; the one known
+FAIL on archon is its italic `\multirow` note (a spec-mandated editorial line, not invented text).
+
+**Budget rules (user):** one subagent at a time; no appendices for the three later papers.
+
+**Still to do, in order**
+1. Figure audit: read `raw/pdfs/papers/AUDIT_02.md` (gitignored log). Every figure in the four paper
+   files should be logged (Snell Fig 9 and Monkeys Fig 7 were checked by the parent). Re-run the checker.
+2. Monkeys main footnote 4 adds author names not in the LaTeX: restore to
+   "\* Equal Contribution. Work done by BB as a visiting researcher at Stanford."
+3. Commit images. Write `wiki/02-test-time-compute-scaling.md` (Opus, not delegated), embedding the
+   figures the lecture discusses with relative links `../raw/images/02-test-time-compute-scaling/…`.
+4. Topic pages: update test-time-scaling (dedicated lecture now), verifiers (ORM vs PRM, generation–
+   verification gap), scaling-laws (inference scaling laws); consider new pages for reward models
+   (ORM/PRM) and inference-time architectures (Archon) if the material stands alone.
+5. INDEX.md (coverage 2 of 9, lecture 2 entry, raw/papers section), kb.json (coverage, paperReadings,
+   materials.method, images: lecturesWithImages 1, files 31, byLecture {"2": 31}, figuresAudited,
+   caveats: main-body-only papers, "itest" unclear), verify_kb.py + read review, push.
+
+**Lecture 2 outline (edited transcript timestamps)**
+- 0:05 three stages of LLM development; inference scaling changes no parameters.
+- 0:52–3:13 Large Language Monkeys: repeated sampling + verifier; Llama 3 8B/70B beat GPT-4o single-attempt.
+- 3:13–4:49 SWE-bench: "DeepSeek-V3" (speaker's "I believe") beats Claude 3.5 / o1-preview at 1,000
+  samples — this chart is NOT in the Monkeys paper (which uses DeepSeek-Coder-V2, 250 samples); do not
+  attribute it to a reading.
+- 4:49–7:10 inference scaling laws: coverage vs k follows an exponentiated power law, 70M–70B models.
+- 7:10–11:08 why: per-problem pass@k is exponential in k; aggregate power law needs a long tail of hard
+  problems (power-laws paper).
+- 11:08–11:53 economics: inference spend, offline agents.
+- 11:53–15:10 verifiable domains: formal proofs, unit tests, "AI as a compiler" (PyTorch→CUDA),
+  KernelBench (site row 13 reading — link forward, do not ingest), language translation.
+- 15:10–19:04 no verifier: majority vote and reward models plateau; generation–verification gap; rare
+  correct samples (Monkeys Fig 7, Fig 8).
+- 19:52–26:55 discussion 1: verifier quality; revisions; RAG; self-study; weak/cheap-to-refute verifiers,
+  simulations; 10,000-sample data on Hugging Face; ensembling verifiers → Weaver (row 3 reading, next
+  lecture); manual check of math coverage [Ed: unclear %]; unit-test coverage as a failure mode.
+- 26:55–34:00 Snell et al.: parallel sampling vs sequential revisions; ORM vs PRM (per step, not per
+  token); best-of-N with verifier; PRM beam search (budget 4, keep top 2); PRMs fine-tuned, in-domain.
+- 34:45–37:57 setup (MATH 12k train / 500 test, PaLM), 5 difficulty bins from pass@1, revision model;
+  majority/ORM/PRM/compute-optimal curves; sequential-to-parallel ratio by bin.
+- 37:57–41:53 test-time vs pretraining compute (Snell Fig 9): easy/medium favour test-time, hardest
+  favour pretraining; Q&A on pretraining-once vs per-query inference and the ratio R.
+- 42:41–45:03 discussion 2: tree search mixes both; easy → sequential, hard → parallel exploration.
+- 45:03–47:23 Archon (the course TA is a co-author): inference-time architecture design; inputs
+  (benchmarks, inference call budget, LLMs, techniques); the search optimizer ("itest" [Ed: unclear]).
+- 48:11–50:38 components: generator, fuser, critic, ranker, verifier; 54:30–56:04 unit test generator /
+  evaluator (balanced brackets example).
+- 50:38–54:30 fusion/ranking win-rate chart (random, ranker, oracle, fusion, rank-then-fuse; 1–10
+  samples from one model vs ensembles of 1–10 models) — this chart is in Archon's APPENDIX, not the
+  transcribed main body: cite the transcript and arXiv, no image.
+- 56:04–58:24 an optimized architecture; offline pruning of the search space; accuracy vs calls.
+- 58:24–59:12 more layers help (Archon Fig 4). 59:12–1:00:43 Bayesian optimization with construction
+  rules. 1:00:43–1:03:05 results: open-source Archon matches/exceeds closed models; task-specific vs
+  general-purpose; "14.1%" average pass@1 gain as spoken — compare with the paper's number and state both.
