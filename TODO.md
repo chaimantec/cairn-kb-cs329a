@@ -68,5 +68,5 @@ list readings but have no video in the catalog.
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
 - [x] verify_kb.py clean, and its review section read
-- [ ] Commit and push
-- [ ] PATCH kbUrl onto the catalog entry
+- [x] Commit and push
+- [x] PATCH kbUrl onto the catalog entry
