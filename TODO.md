@@ -35,7 +35,8 @@ list readings but have no video in the catalog.
 - [x] 01 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
 - [x] 02 Part 2 | Test-Time Compute Scaling — video -Ggc37xLj_Y (verbatim → raw/transcripts/original/)
 - [x] 02 edited transcript (Sonnet copy-edit, last paragraph by parent after a session-limit kill; 81/81 timestamps, numbers match except deliberate GPT-4.0→GPT-4o and pass@1, ratio outliers 26:08/47:23 are [Ed] notes)
-- [ ] 03 Part 3 | Robust Verification — video p7TdPUcPoik
+- [x] 03 Part 3 | Robust Verification — video p7TdPUcPoik (verbatim → raw/transcripts/original/, 94 paragraphs, [0:05]–[1:12:45])
+- [ ] 03 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
 - [ ] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0
 - [ ] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y
 - [ ] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck
@@ -60,7 +61,11 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 02 — raw/papers/02-scaling-test-time-compute-optimally.md (main body only; checker clean; Fig 9 re-cropped and its description rewritten after a parent check found wrong star values)
 - [x] 02 — raw/papers/02-archon.md (main body only; written before a session-limit kill, checker clean except the spec-mandated italic \multirow note, a known checker artifact)
 - [x] 02 — figures: KB-written descriptions REMOVED by user decision (show the chart; say only what the caption and paper text say). Before removal an audit had found errors in 4 of 20. All 31 crops verified by a text-layer check (no text cut by the edge, caption complete, no body text below).
-- [ ] 03 — 4 readings
+- [x] 03 — mapping confirmed: the transcript covers all four row-3 readings in order (Cobbe et al. ≈0:52, Lightman et al. ≈21:06, Math-Shepherd ≈37:27, Weaver ≈51:33)
+- [x] 03 — licences checked on the arXiv abstract pages (2026-09-13): only Weaver (2506.18203) is CC BY 4.0. Cobbe et al. (2110.14168), Lightman et al. (2305.20050) and Math-Shepherd (2312.08935) are arXiv non-exclusive licence → linked and discussed, NOT transcribed, no figures committed (AGENTS.md rule)
+- [x] 03 — Weaver LaTeX source fetched to raw/pdfs/papers/src/2506.18203/ (gitignored)
+- [x] 03 — Weaver figure crops 1–6 (main body) → raw/images/03-robust-verification/weaver-figure-N; text-layer check clean on all six
+- [ ] 03 — raw/papers/03-weaver.md (main body only; check_paper_file.py --main-only clean)
 - [ ] 04 — 3 readings
 - [ ] 05 — 5 readings
 - [ ] 06 — 3 readings
