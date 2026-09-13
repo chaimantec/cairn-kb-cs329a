@@ -59,13 +59,13 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 02 — raw/papers/02-large-language-monkeys.md + -appendix.md (full text; check_paper_file.py clean)
 - [x] 02 — raw/papers/02-monkeys-power-laws.md (main body only, by user decision to save budget; checker clean --main-only)
 - [x] 02 — raw/papers/02-scaling-test-time-compute-optimally.md (main body only; checker clean; Fig 9 re-cropped and its description rewritten after a parent check found wrong star values)
-- [x] 02 — raw/papers/02-archon.md (main body only; written before a session-limit kill, checker clean except the spec-mandated italic \multirow note, a known checker artifact)
+- [x] 02 — raw/papers/02-archon.md (main body only; written before a session-limit kill, checker clean except the spec-mandated italic `\multirow` note, a known checker artifact)
 - [x] 02 — figures: KB-written descriptions REMOVED by user decision (show the chart; say only what the caption and paper text say). Before removal an audit had found errors in 4 of 20. All 31 crops verified by a text-layer check (no text cut by the edge, caption complete, no body text below).
 - [x] 03 — mapping confirmed: the transcript covers all four row-3 readings in order (Cobbe et al. ≈0:52, Lightman et al. ≈21:06, Math-Shepherd ≈37:27, Weaver ≈51:33)
 - [x] 03 — licences checked on the arXiv abstract pages (2026-09-13): only Weaver (2506.18203) is CC BY 4.0. Cobbe et al. (2110.14168), Lightman et al. (2305.20050) and Math-Shepherd (2312.08935) are arXiv non-exclusive licence → linked and discussed, NOT transcribed, no figures committed (AGENTS.md rule)
 - [x] 03 — Weaver LaTeX source fetched to raw/pdfs/papers/src/2506.18203/ (gitignored)
 - [x] 03 — Weaver figure crops 1–6 (main body) → raw/images/03-robust-verification/weaver-figure-N; text-layer check clean on all six
-- [x] 03 — raw/papers/03-weaver.md (main body only). check_paper_file.py --main-only: all structural, figure, table, macro and wording checks pass except known artifacts, confirmed in the source — 5 "missing" numbers are \colXwidth column-width macros and a MATH\\500 header split; 3 "unmatched" paragraphs are the two spec-mandated italic table-flattening notes and Figure 3's caption (\weaver{} dropped on the LaTeX side)
+- [x] 03 — raw/papers/03-weaver.md (main body only). check_paper_file.py --main-only: all structural, figure, table, macro and wording checks pass except known artifacts, confirmed in the source — 5 "missing" numbers are `\colXwidth` column-width macros and a `MATH\\500` header split; 3 "unmatched" paragraphs are the two spec-mandated italic table-flattening notes and Figure 3's caption (`\weaver{}` dropped on the LaTeX side)
 - [x] 03 — non-CC papers (Cobbe, Lightman, Math-Shepherd): offered keep / drop quotes / lecture-only; user said "continue", so kept as is — summarised and cited by section, figure and table with numbers and a few short quotes, never transcribed, no images
 - [ ] 04 — 3 readings
 - [ ] 05 — 5 readings
