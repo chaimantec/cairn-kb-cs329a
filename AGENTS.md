@@ -135,6 +135,14 @@ republication, so none of their figures is here. Lectures 1 and 4–9 have no im
 - **Mathematics in the wiki is LaTeX**, `$...$` inline and `$$...$$` displayed on its own lines.
   Never inside a code fence. Define every symbol on first use and follow the course's notation. A
   literal dollar sign in prose must be escaped as `\$`.
+- **Write only what KaTeX accepts.** Cairn's chat renders math with KaTeX (MathML output) through
+  marked, recognising `$...$` / `\(...\)` inline and `$$...$$` / `\[...\]` as blocks. So: no space
+  just inside an inline `$`; `$$` blocks on their own lines with a blank line around them; and **at
+  most one `\tag{}` per `$$` block** — KaTeX rejects several tags in `aligned` and silently drops
+  them from `align`, so a multi-line equation with several numbers becomes one block per numbered
+  line, continuation lines starting with `\phantom{<left-hand side>}`. Notation in prose is math too:
+  write $\text{pass@}k$, best-of-$N$ and $14\times$, not plain `pass@k`, `best-of-N`, `14×` (verbatim
+  quotes excepted).
 - **Prose over fragments.** The chat quotes these pages to learners; bullet fragments quote badly.
 - **Never rank lectures against each other.** State the measurement for the lecture in front of you.
 

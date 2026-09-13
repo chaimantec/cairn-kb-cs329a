@@ -83,10 +83,11 @@ Should we expect large language monkeys to have such power (laws)? That is, shou
 Mathematically, on any given attempt, the model has probability $\operatorname{pass_i@1}$ of solving the $i$-th problem. Recalling that $\operatorname{pass_i@k}$ is defined as $1$ if *any* of the $k$ attempts succeed, 0 otherwise, by linearity of expectation and by independence of the $k$ attempts, we can rewrite $\operatorname{pass_i@k}$ as:
 
 $$
-\begin{aligned}
-\operatorname{pass_i@k} &= \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[1 - \mathbb{I}[\text{All $k$ Attempts Fail}] \Big] \tag{5}\\
-&= 1 - \prod_{j=1}^k \mathop{\mathbb{E}}_{1 \text{ Attempt}}\Big[ \mathbb{I}[\text{$j$-th Attempt Fails}] \Big]. \tag{6}
-\end{aligned}
+\operatorname{pass_i@k} = \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[1 - \mathbb{I}[\text{All $k$ Attempts Fail}] \Big] \tag{5}
+$$
+
+$$
+\phantom{\operatorname{pass_i@k}} = 1 - \prod_{j=1}^k \mathop{\mathbb{E}}_{1 \text{ Attempt}}\Big[ \mathbb{I}[\text{$j$-th Attempt Fails}] \Big]. \tag{6}
 $$
 
 The probability that the $j$-th attempt fails is one minus the probability that the $j$-th attempt succeeds. Since each attempt is i.i.d. with success probability $\operatorname{pass_i@1}$, we find
@@ -98,10 +99,11 @@ $$
 For large $k$, $(1 - \operatorname{pass_i@1})^k$ will be small. Recalling that the Taylor Series expansion of $\log (1 + x)$ for small $x$ is $\sum_{i=1}^{\infty} (-1)^{i-1} x^i / i \approx x$, we have:
 
 $$
-\begin{aligned}
--\log (\operatorname{pass_i@k} ) &= - \log \Big(1 - (1 - \operatorname{pass@1})^k \Big) \tag{8}\\
-&\approx (1 - \operatorname{pass_i@1})^k. \tag{9}
-\end{aligned}
+-\log (\operatorname{pass_i@k} ) = - \log \Big(1 - (1 - \operatorname{pass@1})^k \Big) \tag{8}
+$$
+
+$$
+\phantom{-\log (\operatorname{pass_i@k} )} \approx (1 - \operatorname{pass_i@1})^k. \tag{9}
 $$
 
 **Figure 4.** **Single-Attempt Success Rates Distributions Possess Power Law-Like Left Tails.** Pythia language models on 128 MATH problems (top) and frontier AI systems on 159 HarmBench prompts (bottom) exhibit distributions (over problems) of $\operatorname{pass_i@1}$ and $\operatorname{ASR_i@1}$ with power law-like tails that are well fit by scaled Beta-Binomial distributions (black dashed lines), which produce aggregate power law scaling. Note that Llama 3 8B Instruction Tuned (IT) does not possess a power law tail, explaining why the model did not exhibit aggregate power law scaling under Best-of-N jailbreaking (Sec. 4).

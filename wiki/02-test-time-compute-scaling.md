@@ -65,7 +65,7 @@ use a domain-specific verifier such as unit tests to select the final answer.*
 
 The paper names the two properties that decide whether this works (§1): **coverage** — as samples
 increase, what fraction of problems can be solved by *any* generated sample — and **precision** —
-how often the correct samples can be identified. In coding, coverage is the familiar pass@k. The
+how often the correct samples can be identified. In coding, coverage is the familiar $\text{pass@}k$. The
 paper estimates it without bias from $N$ samples per problem, of which $C_i$ are correct for problem
 $i$ (§2, Equation 1):
 
@@ -156,8 +156,8 @@ $$p_{\mathcal{D}}(\text{pass}_i@1) \propto (\text{pass}_i@1)^{\,b-1} \quad\text{
 Its intuition: every problem is being solved exponentially quickly, but some have
 $\text{pass}_i@1$ so small that they stay unsolved for many, many attempts, and polynomial density
 near zero "piles up" enough of them that the aggregate improves only at a power-law rate (§3). The
-lecture reports that this condition holds empirically: most problems are easy and solved at pass@1,
-and as difficulty rises there is a long tail of problems with lower and lower pass@1 (≈9:32–11:08).
+lecture reports that this condition holds empirically: most problems are easy and solved at $\text{pass@}1$,
+and as difficulty rises there is a long tail of problems with lower and lower $\text{pass@}1$ (≈9:32–11:08).
 
 ![How Do Large Language Monkeys Get Their Power (Laws)?, Figure 4](../raw/images/02-test-time-compute-scaling/monkeys-power-laws-figure-4.png)
 
@@ -224,7 +224,7 @@ answer, against coverage, which is what a perfect selector would achieve (≈15:
 
 ![Large Language Monkeys, Figure 7](../raw/images/02-test-time-compute-scaling/large-language-monkeys-figure-7.png)
 
-*Brown et al. (2024), Figure 7: majority voting, reward-model best-of-N and reward-model majority
+*Brown et al. (2024), Figure 7: majority voting, reward-model best-of-$N$ and reward-model majority
 voting all fail to reach the coverage upper bound and saturate before 100 samples.*
 
 Majority voting plateaus after 10 or 50 samples, and the gap is larger on the harder MATH dataset
@@ -292,7 +292,7 @@ here, while noting that reasoning models are now trained to show this behaviour 
 
 ![Scaling LLM Test-Time Compute Optimally, Figure 5](../raw/images/02-test-time-compute-scaling/scaling-test-time-compute-optimally-figure-5.png)
 
-*Snell et al. (2024), Figure 5: parallel sampling generates N answers independently, sequential
+*Snell et al. (2024), Figure 5: parallel sampling generates $N$ answers independently, sequential
 revisions condition each on previous attempts, and a verifier can pick the best answer within and
 across chains.*
 
@@ -319,7 +319,7 @@ by the PRM (≈29:58–30:49).
 
 ![Scaling LLM Test-Time Compute Optimally, Figure 2](../raw/images/02-test-time-compute-scaling/scaling-test-time-compute-optimally-figure-2.png)
 
-*Snell et al. (2024), Figure 2: best-of-N scores full answers with the PRM; beam search samples N
+*Snell et al. (2024), Figure 2: best-of-$N$ scores full answers with the PRM; beam search samples N
 candidates per step and keeps the top M; lookahead search adds a k-step lookahead and needs more
 compute.*
 
@@ -337,7 +337,7 @@ signs of over-optimizing the PRM (Figure 3 caption; §5.3).
 
 The experiments use MATH — the split with 12k training and 500 test questions — and a PaLM model
 (≈34:00–34:45; the paper specifies PaLM 2-S*, §4). The key move is a notion of **difficulty**: bin each
-question by the model's pass@1 on it (≈34:45). In the paper, pass@1 is estimated from 2048 samples and
+question by the model's $\text{pass@}1$ on it (≈34:45). In the paper, $\text{pass@}1$ is estimated from 2048 samples and
 binned into five quantiles; the "oracle" version uses ground-truth correctness, and a deployable
 "model-predicted" version uses a learned verifier's scores instead (§3.2).
 
@@ -361,7 +361,7 @@ questions do best with fully sequential compute, harder ones with a balance of t
 
 The paper's explanation is that parallel sampling acts as a **global search** over different
 high-level approaches, while revisions act as **local refinement** of answers already on the right
-track (§6.2). Allocating compute by difficulty outperforms best-of-N using up to **4×** less test-time
+track (§6.2). Allocating compute by difficulty outperforms best-of-$N$ using up to **$4\times$** less test-time
 compute, for both revisions and PRM search (Abstract; Figures 4 and 8).
 
 ### Test-time compute versus a bigger model
@@ -375,17 +375,17 @@ lot like infinite budget" — or any reasonably large one (≈38:46–39:35).
 
 ![Scaling LLM Test-Time Compute Optimally, Figure 1](../raw/images/02-test-time-compute-scaling/scaling-test-time-compute-optimally-figure-1.png)
 
-*Snell et al. (2024), Figure 1: left, compute-optimal scaling against best-of-N for revisions and PRM
-search; right, compute-optimal test-time scaling of PaLM 2-S* against a ~14× larger pretrained model
+*Snell et al. (2024), Figure 1: left, compute-optimal scaling against best-of-$N$ for revisions and PRM
+search; right, compute-optimal test-time scaling of PaLM 2-S* against a $\sim 14\times$ larger pretrained model
 as the ratio of inference to pretraining tokens grows.*
 
 The paper frames this as a **FLOPs-matched** comparison (§7; Figure 9). With
 $R = D_{\text{inference}} / D_{\text{pretrain}}$, the ratio of inference tokens to pretraining tokens, a
-~14× larger model's greedy pass@1 is placed at the FLOPs-equivalent test-time budget. On easy questions
+$\sim 14\times$ larger model's greedy $\text{pass@}1$ is placed at the FLOPs-equivalent test-time budget. On easy questions
 or with a low inference load ($R \ll 1$), test-time compute can generally beat scaling parameters; on
 hard questions or with a high inference load ($R \gg 1$), pretraining is more effective (Figure 9
 caption). The abstract's summary: on problems where the smaller model has "somewhat non-trivial" success
-rates, test-time compute can outperform a 14× larger model.
+rates, test-time compute can outperform a $14\times$ larger model.
 
 From the Q&A (≈39:35–41:53): pre-training happens once while test-time scaling is paid on every query —
 true, the lecturer agrees, and it makes the question of whether we are "done doing pre-training" an
@@ -455,7 +455,7 @@ generated answer against them (≈55:18). For the problem "check for balanceness
 generated tests include "given a string with an odd number of brackets, the solution should output no"
 and "when a closing bracket is encountered, it must match the most recently opened bracket that hasn't
 been matched yet"; the model can also be asked to write code for the tests (≈55:18–56:04). In the paper,
-more sampling plus unit-test generation and evaluation raised CodeContests pass@1 from 17.9% to 29.3%
+more sampling plus unit-test generation and evaluation raised CodeContests $\text{pass@}1$ from 17.9% to 29.3%
 (§3.1).
 
 ### Architectures are layers
@@ -500,7 +500,7 @@ than random search (§3.3).
 
 ### Results
 
-The architecture produces one response at the end, so what is optimized is pass@1 (≈1:00:43–1:01:29).
+The architecture produces one response at the end, so what is optimized is $\text{pass@}1$ (≈1:00:43–1:01:29).
 Using only open-source models, Archon could match or exceed the frontier closed-source models of the time
 by a large margin on many tasks (≈1:01:29). It can be optimized for one task or as a **general-purpose**
 architecture, and even the general-purpose one does well beyond the tasks it was searched on (≈1:01:29–1:02:17);

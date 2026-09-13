@@ -166,7 +166,7 @@ fine tuning the model to become better" is "the self-improving piece that we are
 about", and it is open-ended (≈29:40). See [self-improvement](self-improvement.md).
 
 Where Large Language Monkeys showed log-linear scaling of *coverage* with the number of samples
-(given a verifier), OpenAI's o1 release showed a log-linear relationship for **pass@1** accuracy on
+(given a verifier), OpenAI's o1 release showed a log-linear relationship for **$\text{pass@}1$** accuracy on
 the hard AIME math benchmark as test-time compute grows — the kind of scaling previously shown for
 training, now at test time without changing parameter count (≈29:40–31:14).
 
@@ -197,8 +197,8 @@ Questions from the floor on this section:
   backtracking and analysis are learned skills that generalize (≈35:53). Chowdhery adds a framing
   that recurs through the course: a base model can already produce some good reasoning chains among
   many, but does not know which is correct. Much of train-time and test-time scaling "really comes
-  down to it learns which is correct" — which raises **pass@1**, as in the reasoning-model results,
-  as opposed to **pass@k** or coverage, as in the repeated-sampling results (≈36:41).
+  down to it learns which is correct" — which raises **$\text{pass@}1$**, as in the reasoning-model results,
+  as opposed to **$\text{pass@}k$** or coverage, as in the repeated-sampling results (≈36:41).
 - **Could a different, smaller model produce the final answer?** Reasoning ability has grown with
   model size, so if anything you would use the larger model's traces and perhaps have a smaller
   one summarize. And models, "at least currently", prefer their own traces, even over traces from a
@@ -289,7 +289,7 @@ A student asks why RL produces such a large jump if the knowledge should already
 (≈51:24). Chowdhery's answer is that it is still an open research question: opinions differ on
 whether RL or pre-training's diverse data is doing the work, and both help. Restating the question —
 if repeated sampling of a pre-trained model already finds one correct answer, feedback should raise
-pass@1 but not really improve the model — she says "that whole loop is not completely well
+$\text{pass@}1$ but not really improve the model — she says "that whole loop is not completely well
 understood", though there are signs that continued RL keeps improving models (≈51:24–52:59).
 
 ## Where agents are used
