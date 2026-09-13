@@ -197,7 +197,7 @@ assigning labels to the parts of a solution than looking only at the output answ
 
 ### Why it matters for test-time scaling: false positives
 
-The lecturer singles out a property that "could be a pitfall for test-time scaling": a model can
+The lecturer singles out a property that "could be a pitfall for test time scaling": a model can
 hallucinate and still reach a correct final answer through a wrong process, and this happens
 surprisingly often. Outcome supervision rewards that; process supervision, which sees and scores
 every step, is much less likely to (≈25:00–25:46). Process supervision also encourages interpretable
@@ -386,7 +386,188 @@ enough to supervise the improved model, pointing to iterative RL as future work 
   decoding is the no-verification row. Repeating the whole process — new labels and a new verifier
   starting from the PPO-trained model — "would be interesting to see" (≈49:58–51:33).
 
-<!-- WEAVER SECTION: pending raw/papers/03-weaver.md -->
+## Weaver: Shrinking the Generation-Verification Gap with Weak Verifiers (Saad-Falcon et al., 2025)
+
+Full text: [raw/papers/03-weaver.md](../raw/papers/03-weaver.md) (main body).
+
+### Ensembling imperfect verifiers instead of training a new one
+
+The last paper is from Stanford, and the lecturer describes it as a NeurIPS 2025 paper (≈51:33). The
+motivation is still the generation–verification gap, but the approach differs from the three before
+it: no new verifier is trained. Instead the gap is attacked with inference compute — specifically an
+**ensemble of verifiers** (≈52:18). "Weak" does not mean verifiers chosen for being bad. These are the
+best verifiers available, and they are weak only in that none is perfect: their scores correlate with
+the true label, with imperfections (≈52:18–53:05). The pool mixes two kinds: reward models — the ORMs
+and PRMs of the earlier papers — and **LLMs as judges**, shown an answer and asked whether it is
+correct, possibly with tools and rubrics (≈53:05).
+
+The paper makes the gap precise (Saad-Falcon et al., §3). For $n$ queries with $K$ sampled responses
+each, where $y_{ij} \in \{0, 1\}$ says whether response $j$ to query $i$ is correct,
+
+$$Pass@K = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}\left(\exists j \in [K]: y_{ij} = 1\right)$$
+
+is the fraction of queries with at least one correct response — the best any selector could do. A
+verification strategy's **success rate** is how often the response it selects is correct, and the
+**generation–verification gap** is Pass@K minus the success rate.
+
+![Weaver, Figure 1](../raw/images/03-robust-verification/weaver-figure-1.jpg)
+
+*Saad-Falcon et al. (2025), Figure 1: the Weaver framework (left); Weaver against majority voting and the generation–verification gap (middle); distilling Weaver into a 400M cross-encoder (right).*
+
+### Weighted ensembles beat naive ones
+
+The first chart the lecture shows ensembles the top 1, top 5 and top 10 verifiers, ranked by how good
+they are, across four datasets: simply ensembling them does improve results, but not monotonically
+(≈53:52). What *always* helped was learning a weight for each verifier from labelled data — with
+methods as simple as **Naive Bayes** or **logistic regression**, one weight per verifier — and then
+applying those weights on the test set (≈54:41–55:29).
+
+The paper's version of this finding (§4.1): a naive ensemble selects the response with the highest
+*average* verifier score, which ignores that individual verifiers' success rates differ by up to
+37.5%. With Llama 3.3 70B Instruct generating responses and 33 reward models and LM judges of 7B–72B as
+verifiers, weighted ensembles reach up to 11.2 points higher success rate than the naive one. But
+those weighted ensembles are "oracle" methods, fitted with the labels of the whole test set; using
+labels for only 1% of it drops accuracy by 20.1% on average. The question Weaver answers is how to get
+good weights with very few labels.
+
+![Weaver, Figure 2](../raw/images/03-robust-verification/weaver-figure-2.jpg)
+
+*Saad-Falcon et al. (2025), Figure 2: keeping the best verifiers (top-K ensembles) or learning aggregation weights (supervised weighted ensembles), both using oracle data, improves on naive combinations by 3.6% and 7.8% on average.*
+
+### How Weaver works: score, weight, select
+
+The lecture summarises Weaver as **score, weight and select** (≈55:29–56:17):
+
+1. **Score and filter.** Collect every verifier's score for every response, normalise the scores onto
+   one scale, and filter out low-quality verifiers, using the very limited labels available to spot
+   verifiers that are simply bad against them. The lecturer says the team found this filtering a very
+   important step: a verifier must be above a certain quality to be let into the pool (≈55:29–56:17).
+   In the paper, scores are binarised into votes and low-quality verifiers discarded (§4.2; details in
+   its Appendices B.2 and B.3).
+2. **Weight.** Use **weak supervision** to estimate each verifier's accuracy from very little labelled
+   data (≈56:17).
+3. **Select.** Combine the verifiers' outputs with those weights into one score per response, and pick
+   the best (≈56:17).
+
+Weak supervision is a body of work the lecturer connects to Snorkel, by Alex Ratner and colleagues,
+and other work from Stanford (≈57:02); the paper builds on Ratner et al. (§2, §4.2.1).
+
+**The setup** (≈57:02–57:51; §3, §4.2.1). There are $n$ queries, $K$ responses per query and $m$
+verifiers, so $n \cdot K \cdot m$ scores in all. The goal is the probability that response $j$ to query
+$i$ is correct given every verifier's verdict on it. Let $Y$ be the unknown correctness of a response
+and $S_1, \dots, S_m$ the verifiers' binary votes on it.
+
+**The key assumption** is that each verifier captures an independent aspect of correctness — formally,
+any two votes $S_i$ and $S_j$ are conditionally independent given $Y$ (≈57:51; §4.2.1). The
+lecturer's intuition for where the signal comes from: if every verifier always gave every sample the
+same score, the pool would teach nothing new; the information is in how the verifiers agree and
+disagree with each other (≈57:51–58:36). Under the assumption, the posterior is (Equation 1):
+
+$$\Pr(Y = 1 \mid S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m) = \frac{\prod_{i=1}^{m} \Pr(S_i = \bar{s}_i \mid Y = 1)\,\Pr(Y = 1)}{\Pr(S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m)}$$
+
+where $\bar{s}_i$ is verifier $i$'s observed vote. $\Pr(Y = 1)$ is estimated from a small labelled
+development set — 1% of the test set, for example 5 to 10 query–answer pairs (§3) — but each verifier's
+**accuracy parameter** $\Pr(S_i = 1 \mid Y = 1)$ cannot be computed directly, because $Y$ is unknown.
+
+**Estimating accuracies without labels** (≈58:36–59:22; §4.2.1). Two sets of equations constrain them.
+The first holds because of the conditional-independence assumption (Equation 2):
+
+$$\Pr(S_i, S_j) = \Pr(S_i \mid Y = 1)\Pr(S_j \mid Y = 1)\Pr(Y = 1) + \Pr(S_i \mid Y = 0)\Pr(S_j \mid Y = 0)\Pr(Y = 0)$$
+
+The second needs no assumption — it is just how probability works (Equation 3):
+
+$$\Pr(S_i = 1) = \Pr(S_i = 1 \mid Y = 1)\Pr(Y = 1) + \Pr(S_i = 1 \mid Y = 0)\Pr(Y = 0)$$
+
+The left-hand sides can be measured from the verifiers' votes alone. Weaver fits the accuracy
+parameters so both sides match, by gradient descent on the combined squared error (Equation 5), then
+plugs them into Equation 1 and selects the response with the highest posterior. The lecture presents
+the same two equations and the resulting optimisation for the verifier weights (≈58:36–59:22).
+
+### Results
+
+**Against the naive ensemble**, Weaver helps, with larger gains on relatively hard datasets — the
+lecture names GPQA Diamond, MATH and MMLU Pro — where even a low baseline gets a large boost
+(≈59:22). In the paper's verifier-count experiment Weaver beats naive averaging by +2.4% to +10.1%,
+most on GPQA Diamond (+10.1%) and MMLU Pro (+5.1%) (§5.2, Figure 4).
+
+![Weaver, Figure 4](../raw/images/03-robust-verification/weaver-figure-4.png)
+
+*Saad-Falcon et al. (2025), Figure 4: Weaver and naive ensembles over the oracle top-5 verifiers and over all available verifiers; Weaver's improvements range from +2.4% to +10.1%.*
+
+**Ways to scale verification compute.** The lecture lists them: sample more generations (10, 100,
+1,000), use larger generator and verifier models, and add more verifiers to the pool (≈1:00:07). The
+paper's Table 2 sets out the same four dimensions — sample count, model size, verifier count and total
+inference compute — and adding verifiers is the axis Weaver introduces (§5.2).
+
+**More generations.** The lecture describes a comparison with a dashed Pass@K oracle line — what a
+perfect selector would achieve — a *supervised* Weaver fitted with a large labelled set, the
+*unsupervised* Weaver using 1% of each dataset's labels, a naive ensemble (still of filtered,
+good verifiers), majority voting, and Multi-Agent Verification (≈1:00:07–1:01:40). All the verifier
+ensembles do much better than majority voting and **Multi-Agent Verification (MAV)**, which prompts
+LLMs to score a response on different aspects, rubric-style, and does little better than majority
+voting — or worse, in two cases (≈1:01:40). In the paper's main-body version, Weaver keeps narrowing
+the gap to Pass@K as $K$ grows from $2^0$ to $2^{10}$, while the other verification strategies plateau
+after a few generations, most visibly on GPQA (§5.2, Figure 3). Figure 3's caption does not name a
+supervised Weaver variant, so the chart in the lecture may be a different version of it.
+
+![Weaver, Figure 3](../raw/images/03-robust-verification/weaver-figure-3.jpg)
+
+*Saad-Falcon et al. (2025), Figure 3: the generation–verification gap shrinks as $K$ increases with Weaver, which outperforms the alternative verification methods by an average 18.3%.*
+
+**Against frontier models.** The lecturer points to "drastic" gains — from slightly over 40% to over
+70% on hard problems, matching o3-mini (≈1:01:40). The paper's Table 1 (Llama 3.3 70B Instruct
+generating $K = 100$ responses) has a jump of that size on GPQA Diamond, from 42.9% for the first
+sample to 72.1% with Weaver, against 74.0% for o3-mini. Averaged over MATH500, GPQA Diamond, MMLU
+College and MMLU Pro:
+
+| Method (Table 1) | Average |
+|---|---|
+| First sample | 68.4% |
+| Majority voting (100 generations) | 72.2% |
+| Multi-Agent Verification | 71.6% |
+| Weaver | 87.7% |
+| o3-mini (one sample) | 86.7% |
+| Oracle verification (Pass@100) | 91.9% |
+
+**Weak to strong.** Weaver narrows the gap *between model classes* (≈1:02:29). With Llama 3.1 8B
+Instruct generating and a pool of verifiers of 8B and below, the lecture gives an average of 70%,
+almost the accuracy of majority voting with 70B models — an 8B system brought roughly into the 70B
+class by inference scaling and verification. The lecturer stresses that these are **end results** — the
+accuracy of the whole system — not coverage, unlike most of lecture 2 (≈1:02:29–1:03:19). Applying the
+same approach at 70B gives, in the lecture, an average of 86.2%, very comparable to o3-mini, a
+proprietary model of a different class (≈1:03:19–1:04:07). The paper's Table 3 has the 8B Weaver at
+70.0% against 71.6% for 70B majority voting — within 1.6% — and the 70B Weaver at **87.6%**, 1.0%
+above o3-mini's 86.7% (§5.2). The lecture's 86.2% for the 70B setting does not match the paper.
+
+### Distilling Weaver
+
+An ensemble is expensive: every LLM judge and reward model must run on every response, and with 100
+samples per query instead of one the cost multiplies (≈1:04:07). The proposal is to train Weaver once
+and **distill** it into a much smaller model. The lecture says the distilled model can be as small as
+about 400 million parameters, against a verifier pool in the 70B range, and captures 97% of the
+ensemble's accuracy while using over 99% less compute at test time; the distilled and original
+versions are open-sourced, with checkpoints available (≈1:04:07–1:05:42).
+
+The paper's figures differ slightly (§6). The distilled model is a cross-encoder, ModernBERT-Large
+(396M), trained on Weaver's pseudolabels: it takes a query–response pair and predicts Weaver's
+probability that the response is correct. It captures **98.2%** of Weaver's performance (the abstract
+and introduction say 98.7%). Running Weaver with all verifiers costs 35.35 exaFLOPs for a query's 100
+samples, the cross-encoder 1.01 — a saving of **99.97%** — and it needs a single A100 GPU rather than an
+8-GPU node per 70B verifier.
+
+![Weaver, Figure 6](../raw/images/03-robust-verification/weaver-figure-6.jpg)
+
+*Saad-Falcon et al. (2025), Figure 6: distilling Weaver into a 400M cross-encoder almost entirely captures its performance, with 99.97% compute savings.*
+
+The last chart compares success rate against total inference compute (≈1:05:42–1:06:30). The distilled
+model is far more efficient; and even the original Weaver, because it reaches higher accuracy, becomes
+more FLOP-efficient at those accuracy levels than the naive ensemble and majority voting. The paper
+reports that majority voting plateaus at around $2^2$ to $2^3$ ExaFLOPs per query while Weaver keeps
+improving up to 512 (§5.2, Figure 5).
+
+![Weaver, Figure 5](../raw/images/03-robust-verification/weaver-figure-5.jpg)
+
+*Saad-Falcon et al. (2025), Figure 5: success rate against total inference compute per query for different verification strategies; Weaver reaches the highest accuracy, and Weaver Distilled keeps most of its gains with 97.3% compute savings.*
 
 ## Recap
 

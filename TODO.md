@@ -36,7 +36,7 @@ list readings but have no video in the catalog.
 - [x] 02 Part 2 | Test-Time Compute Scaling — video -Ggc37xLj_Y (verbatim → raw/transcripts/original/)
 - [x] 02 edited transcript (Sonnet copy-edit, last paragraph by parent after a session-limit kill; 81/81 timestamps, numbers match except deliberate GPT-4.0→GPT-4o and pass@1, ratio outliers 26:08/47:23 are [Ed] notes)
 - [x] 03 Part 3 | Robust Verification — video p7TdPUcPoik (verbatim → raw/transcripts/original/, 94 paragraphs, [0:05]–[1:12:45])
-- [ ] 03 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
+- [x] 03 edited transcript (Sonnet copy-edit; 94/94 timestamps, ratios 0.93–1.01, numbers match except pass@1's added "1"s; parent turned the agent's "hacking" restoration at 35:08 back into an [Ed: unclear])
 - [ ] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0
 - [ ] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y
 - [ ] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck
@@ -65,7 +65,8 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 03 — licences checked on the arXiv abstract pages (2026-09-13): only Weaver (2506.18203) is CC BY 4.0. Cobbe et al. (2110.14168), Lightman et al. (2305.20050) and Math-Shepherd (2312.08935) are arXiv non-exclusive licence → linked and discussed, NOT transcribed, no figures committed (AGENTS.md rule)
 - [x] 03 — Weaver LaTeX source fetched to raw/pdfs/papers/src/2506.18203/ (gitignored)
 - [x] 03 — Weaver figure crops 1–6 (main body) → raw/images/03-robust-verification/weaver-figure-N; text-layer check clean on all six
-- [ ] 03 — raw/papers/03-weaver.md (main body only; check_paper_file.py --main-only clean)
+- [x] 03 — raw/papers/03-weaver.md (main body only). check_paper_file.py --main-only: all structural, figure, table, macro and wording checks pass except known artifacts, confirmed in the source — 5 "missing" numbers are \colXwidth column-width macros and a MATH\\500 header split; 3 "unmatched" paragraphs are the two spec-mandated italic table-flattening notes and Figure 3's caption (\weaver{} dropped on the LaTeX side)
+- [x] 03 — non-CC papers (Cobbe, Lightman, Math-Shepherd): offered keep / drop quotes / lecture-only; user said "continue", so kept as is — summarised and cited by section, figure and table with numbers and a few short quotes, never transcribed, no images
 - [ ] 04 — 3 readings
 - [ ] 05 — 5 readings
 - [ ] 06 — 3 readings
@@ -74,6 +75,9 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 09 — none listed; nothing to ingest
 
 ## Wiki
+- [x] wiki/03-robust-verification.md (Opus; all four readings, Weaver figures 1–6 embedded, lecture-vs-paper discrepancies stated)
+- [x] Topic pages updated for lecture 3 (verifiers: training a verifier, ORM/PRM evidence, step labels without humans, weak-verifier ensembles; test-time-scaling: selection sets the ceiling; self-improvement: model-labelled reward; no new pages)
+- [x] INDEX.md — lecture 3, coverage 3 of 9, verifiers one-liner, raw/papers and raw/images
 - [x] wiki/02-test-time-compute-scaling.md
 - [x] Topic pages updated for lecture 2 (test-time-scaling, verifiers, scaling-laws; no new pages)
 - [x] INDEX.md — lecture 2, raw/papers, raw/images
@@ -86,9 +90,12 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] raw/images/02-test-time-compute-scaling/ — figure crops for every figure in a transcribed part: Monkeys 1–10, power laws 1–7, Snell 1–9, Archon 1–5 (31). Appendix-only crops deleted when appendices were descoped.
 - [x] Wire figures into wiki/02 (14 embedded where the lecture discusses them; paper files carry all 31)
 - [x] AGENTS.md — Images and raw/papers conventions
+- [x] raw/images/03-robust-verification/ — Weaver Figures 1–6 (main body); embedded in raw/papers/03-weaver.md and all six in wiki/03. No images of the three non-CC readings.
+- [x] AGENTS.md — images now lectures 2 and 3; lecture 3 licence findings; positions 2 and 3 confirmed
 
 ## Publish
 - [x] Lecture 2: kb.json updated, verify_kb.py clean, committed and pushed (kbUrl already set)
+- [x] Lecture 3: kb.json updated (coverage 3, 5 readings ingested, 37 images, new caveats), sources.md row 3, verify_kb.py clean and review read, committed and pushed (kbUrl already set)
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
 - [x] verify_kb.py clean, and its review section read
