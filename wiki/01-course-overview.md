@@ -79,8 +79,10 @@ holding to this day" and underpins reasoning and thinking models (≈8:34).
 The property appears only with scale. On a results chart for three model families — LaMDA, GPT and
 PaLM — on a math dataset, the small versions (around 8 billion parameters for LaMDA, around 7
 billion for GPT) get nothing from chain of thought, while larger ones can use the reasoning in
-context to solve problems better (≈9:20). *The captions garble the PaLM part of that sentence, so
-the exact PaLM size quoted is not recoverable.* Other abilities show the same sudden appearance at
+context to solve problems better (≈9:20). *The PaLM clause is garbled in the captions ("a pull
+mother again at 8 billion"); the edited transcript reads it as "a PaLM model, again at 8 billion",
+but that would put an 8-billion-parameter PaLM on the side that benefits, against the sentence's own
+contrast, so this page does not state a PaLM size.* Other abilities show the same sudden appearance at
 a certain size, such as modular arithmetic and word unscrambling (≈10:06). This is why frontier
 labs keep pushing scale: not only for the smooth improvement, but for more emergent behaviours
 (≈10:06). See [chain of thought](chain-of-thought.md).

@@ -6,7 +6,7 @@ The Cairn catalog lists **9 recorded lectures** ("Part 1" … "Part 9"). The cou
 PDFs are downloaded to `raw/pdfs/` on disk and are **gitignored**; every paper is cited at its
 original URL as the course website links it.
 
-- **Run 1** (in progress): lecture 1 — Course Overview. The site lists **no readings** for it, so
+- **Run 1** (complete): lecture 1 — Course Overview. The site lists **no readings** for it, so
   it is transcript-only. Also: site crawl, download of every listed reading to disk, `sources.md`.
 
 ## Catalog position ↔ site schedule row
@@ -32,7 +32,7 @@ list readings but have no video in the catalog.
 
 ## Transcripts
 - [x] 01 Part 1 | Course Overview — video 6YnLB0XbTnI (verbatim → raw/transcripts/original/)
-- [ ] 01 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
+- [x] 01 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
 - [ ] 02 Part 2 | Test-Time Compute Scaling — video -Ggc37xLj_Y
 - [ ] 03 Part 3 | Robust Verification — video p7TdPUcPoik
 - [ ] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0
@@ -67,6 +67,6 @@ list readings but have no video in the catalog.
 ## Publish
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
-- [ ] verify_kb.py clean, and its review section read
+- [x] verify_kb.py clean, and its review section read
 - [ ] Commit and push
 - [ ] PATCH kbUrl onto the catalog entry
