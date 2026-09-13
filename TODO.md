@@ -49,13 +49,16 @@ list readings but have no video in the catalog.
 - [x] Write sources.md (original URLs, grouped by site schedule row)
 
 ## Papers (course material — per lecture, only the site's own list)
+
+Budget rules from the user (2026-09-13): **one subagent at a time**; for papers after Large Language Monkeys, **main bodies only** (appendices stay at arXiv).
+
 - [x] 01 — none listed; nothing to ingest
 - [x] 02 — mapping confirmed: the transcript covers all four row-2 readings (Monkeys ≈0:52, power laws ≈7:10, Snell et al. ≈26:55, Archon ≈45:03)
 - [x] 02 — arXiv LaTeX sources fetched to raw/pdfs/papers/src/ (gitignored); all four CC BY 4.0
-- [ ] 02 — raw/papers/02-large-language-monkeys{,-appendix}.md
-- [ ] 02 — raw/papers/02-monkeys-power-laws{,-appendix}.md
-- [ ] 02 — raw/papers/02-scaling-test-time-compute-optimally{,-appendix}.md
-- [ ] 02 — raw/papers/02-archon{,-appendix}.md
+- [x] 02 — raw/papers/02-large-language-monkeys.md + -appendix.md (full text; check_paper_file.py clean)
+- [x] 02 — raw/papers/02-monkeys-power-laws.md (main body only, by user decision to save budget; checker clean --main-only)
+- [ ] 02 — raw/papers/02-scaling-test-time-compute-optimally.md (main body only)
+- [ ] 02 — raw/papers/02-archon.md (main body only)
 - [ ] 02 — check_paper_file.py clean on all four; figure-description audit
 - [ ] 03 — 4 readings
 - [ ] 04 — 3 readings
@@ -75,7 +78,7 @@ list readings but have no video in the catalog.
 - [x] AGENTS.md — CS329A conventions (no slides, papers as material, numbering table)
 
 ## Images (paper figures, cropped from the PDFs — user opted in for lecture 2)
-- [x] raw/images/02-test-time-compute-scaling/ — 63 figure crops (all four papers; power-laws Fig 8 is an algorithm box, transcribed not rendered)
+- [x] raw/images/02-test-time-compute-scaling/ — figure crops for every figure in a transcribed part: Monkeys 1–10, power laws 1–7, Snell 1–9, Archon 1–5 (31). Appendix-only crops deleted when appendices were descoped.
 - [ ] Wire figures into wiki/02 (paper files embed them as written)
 - [ ] AGENTS.md — Images and raw/papers conventions
 

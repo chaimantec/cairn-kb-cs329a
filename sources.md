@@ -4,16 +4,16 @@ Every document the course website (<https://cs329a.stanford.edu/>) links as cour
 
 **The course publishes no slides** on its public site — the instructors upload lecture materials to Canvas — so the course material this knowledge base draws on is the **paper readings** listed per lecture in the site's schedule. **Cite every paper at the original URL below.** The PDFs were downloaded to `raw/pdfs/papers/` on the machine that built this KB, but that directory is **gitignored and not in this repo**: the local filenames are recorded so a future build can find them, and are not links.
 
-No paper has been ingested into the KB yet. Lecture 1 is the only lecture built, and the site lists no readings for it.
+**Ingested so far:** the four row-2 readings, for catalog lecture 2 — their full text, transcribed from the arXiv LaTeX source, is linked in the Row 2 table below. Lecture 1 lists no readings.
 
 ## Schedule rows and catalog positions
 
-The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. The mapping below is by title and is tentative from position 2 onward; see [INDEX](INDEX.md).
+The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Position 2 is confirmed against its transcript, which discusses all four row-2 readings; the rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
 
 | Site row | Date | Topic | Catalog position | Readings |
 |---|---|---|---|---|
 | 1 | Mon Sep 22 | Course Overview | 1 | none listed |
-| 2 | Fri Sep 26 | Test-time Compute Scaling | 2 | 4 |
+| 2 | Fri Sep 26 | Test-time Compute Scaling | 2 (confirmed) | 4 — ingested |
 | 3 | Mon Sep 29 | Robust Verification | 3 | 4 |
 | 4 | Fri Oct 3 | Learning from feedback with tools/code | 4 | 3 |
 | 5 | Mon Oct 6 | Multi-step Reasoning/Planning | 5 | 5 |
@@ -27,14 +27,16 @@ The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this K
 
 Rows 9, 15, 16, 18 and 19 are guest lectures and rows 10–12 are midterm presentations; none of them lists readings or appears in the catalog.
 
-## Row 2 — Test-time Compute Scaling (Fri Sep 26) — 4 readings
+## Row 2 — Test-time Compute Scaling (Fri Sep 26) — 4 readings, ingested
 
-| Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
-|---|---|---|---|
-| Large Language Monkeys: Scaling Inference Compute with Repeated Sampling (Brown et al. 2024) | <https://arxiv.org/abs/2407.21787> | `raw/pdfs/papers/2407.21787-large-language-monkeys.pdf` | 2026-09-13 |
-| Archon: An Architecture Search Framework for Inference-Time Techniques (Saad-Falcon et al. 2024) | <https://www.arxiv.org/abs/2409.15254> | `raw/pdfs/papers/2409.15254-archon.pdf` | 2026-09-13 |
-| Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Snell et al. 2024) | <https://arxiv.org/abs/2408.03314> | `raw/pdfs/papers/2408.03314-scaling-llm-test-time-compute-optimally-can-be-mor.pdf` | 2026-09-13 |
-| How Do Large Language Monkeys Get Their Power (Laws)? | <https://arxiv.org/abs/2502.17578> | `raw/pdfs/papers/2502.17578-how-do-large-language-monkeys-get-their-power-laws.pdf` | 2026-09-13 |
+All four are licensed CC BY 4.0. Their LaTeX sources were fetched from `https://arxiv.org/e-print/<id>` on 2026-09-13 to `raw/pdfs/papers/src/<id>/` (gitignored, not in repo).
+
+| Paper | Original URL | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
+|---|---|---|---|---|
+| Large Language Monkeys: Scaling Inference Compute with Repeated Sampling (Brown et al. 2024) | <https://arxiv.org/abs/2407.21787> | [main body](raw/papers/02-large-language-monkeys.md) · [appendix](raw/papers/02-large-language-monkeys-appendix.md) | `raw/pdfs/papers/2407.21787-large-language-monkeys.pdf` | 2026-09-13 |
+| Archon: An Architecture Search Framework for Inference-Time Techniques (Saad-Falcon et al. 2024) | <https://www.arxiv.org/abs/2409.15254> | [main body](raw/papers/02-archon.md) · [appendix](raw/papers/02-archon-appendix.md) | `raw/pdfs/papers/2409.15254-archon.pdf` | 2026-09-13 |
+| Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Snell et al. 2024) | <https://arxiv.org/abs/2408.03314> | [main body](raw/papers/02-scaling-test-time-compute-optimally.md) · [appendix](raw/papers/02-scaling-test-time-compute-optimally-appendix.md) | `raw/pdfs/papers/2408.03314-scaling-llm-test-time-compute-optimally-can-be-mor.pdf` | 2026-09-13 |
+| How Do Large Language Monkeys Get Their Power (Laws)? | <https://arxiv.org/abs/2502.17578> | [main body](raw/papers/02-monkeys-power-laws.md) · [appendix](raw/papers/02-monkeys-power-laws-appendix.md) | `raw/pdfs/papers/2502.17578-how-do-large-language-monkeys-get-their-power-laws.pdf` | 2026-09-13 |
 
 ## Row 3 — Robust Verification (Mon Sep 29) — 4 readings
 

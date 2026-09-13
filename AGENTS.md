@@ -5,9 +5,10 @@ taught by Aakanksha Chowdhery and Azalia Mirhoseini. It is read by Cairn's in-ex
 which fetches files over raw.githubusercontent.com and follows relative markdown links.
 
 It is written by **Claude Opus 5** and **Claude Sonnet 5** running as agents. Opus 5 writes the
-wiki prose and makes the editorial calls; Sonnet 5 does script-checkable bulk work — currently the
-copy-edit of the auto-generated captions, which the parent verifies mechanically (timestamp
-sequence, number inventory, per-paragraph word-count ratio). Keep that split if you extend it: the
+wiki prose and makes the editorial calls; Sonnet 5 does script-checkable bulk work — the copy-edit of the auto-generated
+captions, which the parent verifies mechanically (timestamp sequence, number inventory,
+per-paragraph word-count ratio), and the transcription of paper readings from LaTeX source, which
+`check_paper_file.py` verifies against that source. Keep that split if you extend it: the
 wiki prose is not delegated, because nothing scores it.
 
 ## Layout
@@ -18,12 +19,15 @@ wiki prose is not delegated, because nothing scores it.
 | `wiki/`             | Durable pages: one per lecture, plus cross-lecture topics.    |
 | `raw/transcripts/`  | Edited lecture transcripts with `[MM:SS]` paragraph marks.    |
 | `raw/transcripts/original/` | Verbatim captions. Reference only — prefer the edited ones. |
+| `raw/papers/`       | Full text of the ingested paper readings: `NN-<paper>.md` (main body) and `NN-<paper>-appendix.md`. |
+| `raw/images/NN-<lecture>/` | Figures cropped from those papers' PDFs, embedded in the paper files and the wiki. |
 | `sources.md`        | Every paper reading on the course site, with its original URL. |
 | `kb.json`           | Machine-readable coverage and provenance. Read this to know what this KB does and does not cover, and how far to trust a citation. |
 | `SEE_ALSO.md`       | Sibling KBs the chat may read with `kb_read(kb: ...)`.        |
 | `TODO.md`           | Build tracker. Unchecked boxes are outstanding work.          |
 
-There is no `raw/slides/` and no `raw/images/`: the course publishes no slides publicly.
+There is no `raw/slides/`: the course publishes no slides publicly. Paper readings take their place,
+in `raw/papers/`.
 
 ### This course has papers, not decks
 
@@ -43,11 +47,53 @@ the role slide decks play in other Cairn KBs.
 - When a lecture **previews** a paper that the site lists under a later lecture, link it at its
   original URL and say which schedule row lists it; do not ingest it for the earlier lecture.
   Lecture 1's page has a table of five such papers.
-- When paper material is ingested for a later lecture, give it its own `raw/papers/` directory
-  and cite it by section, figure or table, the way slide files are cited by slide number. As of
-  2026-09-13, 32 of the 34 listed papers are arXiv-hosted; of nine arXiv licences spot-checked,
-  eight were CC BY 4.0 while *Training Verifiers to Solve Math Word Problems* (Cobbe et al. 2021) is
-  arXiv's non-exclusive licence. Check each paper's licence before committing any of its text.
+- **Check each paper's licence before committing any of its text or figures.** As of 2026-09-13,
+  32 of the 34 listed papers are arXiv-hosted. The four lecture 2 readings are all CC BY 4.0, checked
+  on each abstract page. *Training Verifiers to Solve Math Word Problems* (Cobbe et al. 2021) is
+  arXiv's non-exclusive licence, which does not permit republishing its text or figures here — a
+  paper like that is linked and discussed, not transcribed.
+
+### Paper files (`raw/papers/`)
+
+Each ingested reading is two files, named by the catalog lecture that lists it:
+`raw/papers/NN-<paper>.md` (abstract and main body) and `raw/papers/NN-<paper>-appendix.md`.
+
+- **They are the paper's full text, not a summary.** Prose, equations, tables and footnotes are
+  transcribed from the **arXiv LaTeX source** (the e-print), so equations and table cells are exact
+  rather than read off page images. Custom macros are expanded so the math renders. Citations are
+  resolved to author–year and the bibliography is omitted.
+- **Headings carry the paper's printed numbering** (`## 3 …`, `### 3.1 …`, `## A …`), and each file
+  opens with a Contents table mapping sections to their figures and tables. Cite a paper by section,
+  figure or table — "Brown et al. (2024), Figure 7" — linking to the file, the way a slide file is
+  cited by slide number.
+- **Every figure** appears where the LaTeX places it: the verbatim caption as `**Figure N.**`, the
+  image, then a `*Description.*` paragraph. **The description is the only text in these files
+  written by this KB rather than by the authors** — the axes, series and approximate values read off
+  the figure — so never quote it as the paper's own words.
+- Transcribed by Claude Sonnet 5 from the source and checked by `check_paper_file.py`: section,
+  figure and table counts against the LaTeX; every number inside the LaTeX tables present in the
+  markdown; every paragraph's wording against the source, so a paraphrased or dropped paragraph
+  fails; image links that resolve; no leftover `\cite`, `\ref` or macros. The figure descriptions
+  are audited separately against the images.
+
+### Images
+
+Only **lecture 2** has images: figure crops from its four paper readings, in
+`raw/images/02-test-time-compute-scaling/`, each named `<paper>-figure-N` after the paper file it
+belongs to. No other lecture has any.
+
+- Each image is **one figure as published, cropped from the paper's PDF together with its
+  caption** — not the whole page. They are reproduced under the papers' CC BY 4.0 licences, and the
+  attribution is the paper file's front matter (authors, arXiv URL, licence), under which every image
+  sits beside its own caption.
+- **Link images relatively**, like every other file here: `../images/02-…` from `raw/papers/`,
+  `../raw/images/02-…` from `wiki/`. To show one in chat, read that path; the read returns the
+  renderable URL.
+- **Use an image path you have actually read in a file.** Never construct one from the naming
+  pattern, and never assume a figure has an image because its neighbours do: the power-laws paper's
+  Figure 8 is an algorithm box, transcribed as text, with no image. The paper files carry every
+  image; `grep -o 'raw/images/[^)]*' wiki/02-*.md` lists the ones a wiki page uses.
+- For numbers, prefer a paper's transcribed tables and text over values read off a figure.
 
 ## Conventions
 
@@ -64,8 +110,9 @@ the role slide decks play in other Cairn KBs.
   course website for logistics it states, and say when the two disagree.
 - **Files are named by Cairn catalog position**, not by the site's schedule row. The catalog has
   nine videos and the site twenty rows; by title, positions 1–6 are rows 1–6, position 8 is row 17,
-  position 9 is row 20, and position 7 may be row 7, row 8 or both. Confirm each against its
-  transcript before ingesting that lecture's readings, and record the resolution in the lecture page
+  position 9 is row 20, and position 7 may be row 7, row 8 or both. Position 2 is confirmed against its transcript, which
+  discusses all four row-2 readings; confirm each later position the same way before ingesting its
+  readings, and record the resolution in the lecture page
   and `sources.md`. Rows 13 and 14 list readings but have no video in the catalog.
 - **Never invent course content.** If a source is unclear, say so on the page. Do not fill the gap
   from outside knowledge — the chat presents these pages as authoritative material from this course.
