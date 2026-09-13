@@ -366,7 +366,7 @@ course site under a later schedule row.
 
 | Paper (original URL) | Where lecture 1 mentions it | Site schedule row |
 |---|---|---|
-| [Large Language Monkeys (Brown et al. 2024)](https://arxiv.org/abs/2407.21787) | Repeated sampling results, ≈19:21–28:06 | 2 · Test-time Compute Scaling |
+| [Large Language Monkeys (Brown et al. 2024)](https://arxiv.org/abs/2407.21787) | Repeated sampling results, ≈19:21–28:06 | 2 · Test-time Compute Scaling — now ingested: see [lecture 2](02-test-time-compute-scaling.md) |
 | [Shrinking the Generation-Verification Gap with Weak Verifiers](https://arxiv.org/abs/2506.18203) | "a paper that she did in her lab about how to combine verifiers", ≈50:38 | 3 · Robust Verification |
 | [SWiRL](https://arxiv.org/abs/2504.04736) | Using a different model for feedback, ≈38:15 | 5 · Multi-step Reasoning/Planning |
 | [The AI Scientist (Lu et al. 2024)](https://arxiv.org/abs/2408.06292) | AI-scientist workflow, ≈56:53 | 7 · Open-Ended Evolution of Self-Improving Agents |

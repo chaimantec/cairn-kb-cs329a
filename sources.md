@@ -34,9 +34,9 @@ All four are licensed CC BY 4.0. Their LaTeX sources were fetched from `https://
 | Paper | Original URL | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
 |---|---|---|---|---|
 | Large Language Monkeys: Scaling Inference Compute with Repeated Sampling (Brown et al. 2024) | <https://arxiv.org/abs/2407.21787> | [main body](raw/papers/02-large-language-monkeys.md) · [appendix](raw/papers/02-large-language-monkeys-appendix.md) | `raw/pdfs/papers/2407.21787-large-language-monkeys.pdf` | 2026-09-13 |
-| Archon: An Architecture Search Framework for Inference-Time Techniques (Saad-Falcon et al. 2024) | <https://www.arxiv.org/abs/2409.15254> | [main body](raw/papers/02-archon.md) · [appendix](raw/papers/02-archon-appendix.md) | `raw/pdfs/papers/2409.15254-archon.pdf` | 2026-09-13 |
-| Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Snell et al. 2024) | <https://arxiv.org/abs/2408.03314> | [main body](raw/papers/02-scaling-test-time-compute-optimally.md) · [appendix](raw/papers/02-scaling-test-time-compute-optimally-appendix.md) | `raw/pdfs/papers/2408.03314-scaling-llm-test-time-compute-optimally-can-be-mor.pdf` | 2026-09-13 |
-| How Do Large Language Monkeys Get Their Power (Laws)? | <https://arxiv.org/abs/2502.17578> | [main body](raw/papers/02-monkeys-power-laws.md) · [appendix](raw/papers/02-monkeys-power-laws-appendix.md) | `raw/pdfs/papers/2502.17578-how-do-large-language-monkeys-get-their-power-laws.pdf` | 2026-09-13 |
+| Archon: An Architecture Search Framework for Inference-Time Techniques (Saad-Falcon et al. 2024) | <https://www.arxiv.org/abs/2409.15254> | [main body](raw/papers/02-archon.md) (appendices not transcribed) | `raw/pdfs/papers/2409.15254-archon.pdf` | 2026-09-13 |
+| Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Snell et al. 2024) | <https://arxiv.org/abs/2408.03314> | [main body](raw/papers/02-scaling-test-time-compute-optimally.md) (appendices not transcribed) | `raw/pdfs/papers/2408.03314-scaling-llm-test-time-compute-optimally-can-be-mor.pdf` | 2026-09-13 |
+| How Do Large Language Monkeys Get Their Power (Laws)? | <https://arxiv.org/abs/2502.17578> | [main body](raw/papers/02-monkeys-power-laws.md) (appendices not transcribed) | `raw/pdfs/papers/2502.17578-how-do-large-language-monkeys-get-their-power-laws.pdf` | 2026-09-13 |
 
 ## Row 3 — Robust Verification (Mon Sep 29) — 4 readings
 

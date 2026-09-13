@@ -44,7 +44,19 @@ showed accuracy rising log-linearly with **test-time** compute — "previously, 
 training", now without changing parameter count (≈30:27–31:14). See
 [test-time scaling](test-time-scaling.md).
 
+## Inference scaling laws
+
+[Lecture 2](02-test-time-compute-scaling.md) argues that inference has scaling laws too (≈4:00–7:10).
+With repeated sampling, coverage $c$ grows with the number of samples $k$ as an exponentiated power law,
+$c \approx \exp(a k^{b})$ (Brown et al. 2024, §3.1), fit across models from 70M to 70B parameters —
+though less exactly than training laws. The power law arises because a benchmark contains a long tail
+of very hard problems: Schaeffer et al. (2025, §3) prove that $-\log(\text{pass}_{\mathcal{D}}@k)$ is a
+power law in $k$ exactly when single-attempt success rates have a power-law density near zero. See
+[test-time scaling](test-time-scaling.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the three axes, model-size history, few-shot
   learning and emergence.
+- [Lecture 2 — Test-Time Compute Scaling](02-test-time-compute-scaling.md): scaling laws for inference
+  compute and why they take a power-law form.

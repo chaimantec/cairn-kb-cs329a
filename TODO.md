@@ -69,9 +69,9 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 09 — none listed; nothing to ingest
 
 ## Wiki
-- [ ] wiki/02-test-time-compute-scaling.md
-- [ ] Topic pages updated/added for lecture 2
-- [ ] INDEX.md — lecture 2, raw/papers
+- [x] wiki/02-test-time-compute-scaling.md
+- [x] Topic pages updated for lecture 2 (test-time-scaling, verifiers, scaling-laws; no new pages)
+- [x] INDEX.md — lecture 2, raw/papers, raw/images
 - [x] wiki/01-course-overview.md
 - [x] Topic pages (cross-lecture concepts lecture 1 establishes): test-time-scaling, verifiers, chain-of-thought, reasoning-models, llm-training-pipeline, scaling-laws, agentic-workflows, self-improvement, course-logistics
 - [x] INDEX.md table of contents
@@ -79,10 +79,11 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 
 ## Images (paper figures, cropped from the PDFs — user opted in for lecture 2)
 - [x] raw/images/02-test-time-compute-scaling/ — figure crops for every figure in a transcribed part: Monkeys 1–10, power laws 1–7, Snell 1–9, Archon 1–5 (31). Appendix-only crops deleted when appendices were descoped.
-- [ ] Wire figures into wiki/02 (paper files embed them as written)
-- [ ] AGENTS.md — Images and raw/papers conventions
+- [x] Wire figures into wiki/02 (14 embedded where the lecture discusses them; paper files carry all 31)
+- [x] AGENTS.md — Images and raw/papers conventions
 
 ## Publish
+- [x] Lecture 2: kb.json updated, verify_kb.py clean, committed and pushed (kbUrl already set)
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
 - [x] verify_kb.py clean, and its review section read
@@ -90,6 +91,8 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] PATCH kbUrl onto the catalog entry
 
 ## Resume notes — lecture 2 (written 2026-09-13, before the wiki step)
+
+**Lecture 2 COMPLETE (2026-09-13):** wiki page, topic pages, INDEX, kb.json written; verify_kb.py clean; pushed. The notes below are kept for reference.
 
 **Done and committed locally (not pushed):** both transcripts; paper files for all four row-2 readings
 (Monkeys main + appendix; power laws, Snell, Archon main body only); `AGENTS.md` paper/image

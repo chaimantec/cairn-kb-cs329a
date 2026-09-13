@@ -9,10 +9,10 @@
     "courseUrl": "https://cs329a.stanford.edu/"
   },
   "coverage": {
-    "lecturesCovered": 1,
+    "lecturesCovered": 2,
     "lecturesTotal": 9,
-    "transcripts": 1,
-    "wikiLecturePages": 1,
+    "transcripts": 2,
+    "wikiLecturePages": 2,
     "wikiTopicPages": 9
   },
   "materials": {
@@ -23,13 +23,25 @@
     },
     "paperReadings": {
       "listedOnSite": 34,
-      "ingested": 0,
-      "downloadedLocally": 34,
-      "committed": false,
-      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Papers are cited at their original URL (sources.md); the PDFs are on the build machine under raw/pdfs/ and gitignored. Only the papers the site lists for a lecture are ingested for that lecture. Lecture 1 lists none."
+      "ingested": 4,
+      "pdfsCommitted": false,
+      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Lecture 2's four readings (all CC BY 4.0) are transcribed in raw/papers/ from their arXiv LaTeX sources: Large Language Monkeys in full including its appendix; How Do Large Language Monkeys Get Their Power (Laws)?, Snell et al. and Archon main body only (appendices left at arXiv to save budget). Lecture 1 lists no readings. PDFs are not committed; every paper is cited at its original URL (sources.md)."
     },
-    "method": "none",
-    "figuresAudited": false
+    "method": "source-text",
+    "figuresAudited": false,
+    "figureAudit": {
+      "note": "false because this KB writes no descriptions of figures at all, not because descriptions went unchecked. Model-written chart descriptions were tried for lecture 2 and removed after an audit found errors in 4 of the 20 it checked. Figures are the papers' own, shown with their printed captions; state only what the caption and paper text say. All 31 crops were verified against the PDF text layer (no text cut by the crop edge, caption complete, no body text below the caption)."
+    },
+    "images": {
+      "lecturesWithImages": 1,
+      "files": 31,
+      "byLecture": {
+        "2": 31
+      },
+      "format": "figure crops from the paper PDFs, caption included, ~1400px wide, PNG or JPEG",
+      "discovery": "inline in raw/papers/ and wiki/02-test-time-compute-scaling.md; no index file",
+      "note": "Only lecture 2 has images: every figure in the transcribed parts of its four readings — Large Language Monkeys Figures 1-10, How Do Large Language Monkeys Get Their Power (Laws)? Figures 1-7, Snell et al. Figures 1-9, Archon Figures 1-5. Reproduced under CC BY 4.0; attribution is each paper file's front matter."
+    }
   },
   "provenance": {
     "builtBy": [
@@ -37,11 +49,13 @@
       "claude-sonnet-5"
     ],
     "caveats": [
-      "PARTIAL: covers catalog lecture 1 (Course Overview) of 9. Do not cite this KB as covering CS329A as a whole; it has no treatment of any later lecture or of any paper reading.",
-      "Lecture 1 is transcript-only: the course publishes no slides and the site lists no paper readings for it. Every claim on its pages is cited to a transcript timestamp or, on the logistics page, to the course website. figuresAudited is false because there are no figures in this KB at all, not because figures went unchecked.",
-      "The auto-captions garble some model and benchmark names in the Large Language Monkeys results (about 22:34-25:42) and a term in the reasoning-model steps (about 32:00). These are marked [Ed: unclear] in the edited transcript and left unnamed in the wiki rather than restored from outside knowledge.",
-      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. The mapping from position 2 onward is by title and tentative, and position 7 may correspond to site row 7, row 8 or both.",
-      "Lecture 1's wiki page names five papers the lecture previews that the site lists under later lectures; they are linked at their original URLs and have not been ingested."
+      "PARTIAL: covers catalog lectures 1 (Course Overview) and 2 (Test-Time Compute Scaling) of 9. Do not cite this KB as covering CS329A as a whole.",
+      "Lecture 1 is transcript-only: the course publishes no slides and the site lists no paper readings for it.",
+      "Lecture 2's readings: three of the four (power laws, Snell et al., Archon) are transcribed main body only; their appendices are not in this KB. Lecture 2 shows two charts that are not in the transcribed text — a SWE-bench chart with a DeepSeek model the lecturer believes was DeepSeek-V3 (not in any reading) and Archon's fusion/ranking win-rate chart (in its appendix) — so those passages are cited to the transcript only.",
+      "No KB-written figure descriptions exist: the chat must not read values off a figure image; quote the caption and the paper's text.",
+      "The auto-captions garble some model and benchmark names in lecture 1's Large Language Monkeys results (about 22:34-25:42) and a term in its reasoning-model steps (about 32:00); in lecture 2 the Archon optimizer's name ('itest', about 47:23) and a percentage from a manual answer check (about 26:08). These are marked [Ed: unclear] in the edited transcripts and not restored from outside knowledge.",
+      "Lecture 2 states Archon's average improvement as 14.1%; the paper's abstract reports 15.1% (over o1, GPT-4o and Claude 3.5 Sonnet). The wiki gives both.",
+      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. Positions 1 and 2 are confirmed as rows 1 and 2; from position 3 the mapping is by title and tentative, and position 7 may correspond to site row 7, row 8 or both."
     ]
   },
   "entryPoint": "INDEX.md",

@@ -61,11 +61,48 @@ answers, or many solutions to coding problems, yields high-quality synthetic dat
 the combination the lecture credits for DeepSeek and the o1-series and Gemini Thinking models, and
 "the self-improving piece" (≈28:53–29:40). See [self-improvement](self-improvement.md).
 
+## An inference scaling law
+
+[Lecture 2](02-test-time-compute-scaling.md) makes the coverage curve quantitative. In *Large Language
+Monkeys*, coverage $c$ as a function of the number of samples $k$ is fit by an **exponentiated power
+law**, $\log(c) \approx a k^{b}$ (lecture 2, ≈4:49–7:10; Brown et al. 2024, §3.1), across Llama 3,
+Gemma and Pythia models from 70M to 70B parameters. A follow-up reading explains the shape: each
+problem's success rate $\text{pass}_i@k = 1 - (1 - \text{pass}_i@1)^k$ improves exponentially in $k$,
+and the aggregate follows a power law exactly when the distribution of single-attempt success rates
+has a power-law tail of very hard problems (lecture 2, ≈7:58–11:08; Schaeffer et al. 2025, §3). Such a
+law lets you predict how many samples a target coverage needs (lecture 2, ≈6:23).
+
+## Parallel samples, sequential revisions and search
+
+Repeated sampling is **parallel**. Snell et al. (2024) add two other ways to spend test-time compute
+(lecture 2, ≈26:55–34:00): **sequential revisions**, where the model keeps revising its own attempt, and
+**search against a process reward model**, such as beam search that keeps the highest-scoring partial
+solutions at each step. Parallel sampling behaves like a global search over approaches, revisions like
+local refinement (Snell et al., §6.2). See [verifiers](verifiers.md) for outcome and process reward
+models.
+
+## Allocating compute by difficulty
+
+Which strategy is best depends on the question. Binning questions by the model's pass@1 and choosing
+the best strategy per bin — the **compute-optimal** strategy — beats best-of-N with up to 4× less
+test-time compute; easy questions do best with fully sequential revisions, harder ones with a balance
+(lecture 2, ≈34:45–37:57; Snell et al., §3, §6.2). In a FLOPs-matched comparison, test-time compute on a
+small model can beat a ~14× larger pretrained model on easy and medium questions or at low inference
+load, but pretraining wins on the hardest questions (lecture 2, ≈37:57–41:53; Snell et al., §7).
+
+## Inference-time architectures
+
+*Archon* composes techniques — generators, fusers, critics, rankers, verifiers, unit-test generators and
+evaluators — into layered architectures, and searches for one with Bayesian optimization under an
+inference call budget (lecture 2, ≈45:03–1:01:29; Saad-Falcon et al. 2024, §3). Fusing several responses
+into one was "surprisingly a very effective method", and adding layers helps, much as in deep networks
+(lecture 2, ≈48:11, ≈58:24).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): repeated sampling, coverage, o1's
   log-linear pass@1 curve, and the questions about latency, temperature and verifiers.
-- Catalog lecture 2, *Test-Time Compute Scaling*, is the dedicated lecture; it is not yet in this
-  KB. The course site lists four readings for it, starting with
-  [Large Language Monkeys (Brown et al. 2024)](https://arxiv.org/abs/2407.21787) — see
-  [sources](../sources.md).
+- [Lecture 2 — Test-Time Compute Scaling](02-test-time-compute-scaling.md): the dedicated lecture —
+  Large Language Monkeys and its inference scaling law, why the law is a power law, the
+  generation–verification gap, Snell et al.'s revisions, PRM search and compute-optimal allocation, and
+  Archon's inference-time architectures. Its four readings are transcribed in `raw/papers/`.
