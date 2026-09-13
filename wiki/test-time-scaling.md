@@ -81,6 +81,18 @@ solutions at each step. Parallel sampling behaves like a global search over appr
 local refinement (Snell et al., §6.2). See [verifiers](verifiers.md) for outcome and process reward
 models.
 
+## Selection sets the ceiling
+
+Best-of-$N$ is only as good as whatever picks the answer. In [lecture 3](03-robust-verification.md),
+Cobbe et al.'s trained verifier keeps improving accuracy up to about 400 samples per problem and then
+declines, because with more candidates it is more often fooled by a wrong solution that looks right
+(≈14:05–17:58; Cobbe et al. 2021, §5.1) — against lecture 2's majority voting, which stopped tracking
+the correct answer well before that (lecture 3, ≈14:52–15:38). Process reward models push the limit
+further (Lightman et al. 2023, §3). Weaver scales the selection side itself: instead of sampling one
+verifier more, it adds verifiers to an ensemble, and the lecture lists more generations, larger
+generator and verifier models, and more verifiers as separate axes along which inference compute can
+be spent (lecture 3, ≈1:00:07).
+
 ## Allocating compute by difficulty
 
 Which strategy is best depends on the question. Binning questions by the model's pass@1 and choosing
@@ -106,3 +118,5 @@ into one was "surprisingly a very effective method", and adding layers helps, mu
   Large Language Monkeys and its inference scaling law, why the law is a power law, the
   generation–verification gap, Snell et al.'s revisions, PRM search and compute-optimal allocation, and
   Archon's inference-time architectures. Its four readings are transcribed in `raw/papers/`.
+- [Lecture 3 — Robust Verification](03-robust-verification.md): best-of-$N$ with a trained verifier and
+  where it stops helping, process reward models, and Weaver's scaling of verification by ensembling.

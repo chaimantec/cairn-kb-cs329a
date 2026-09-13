@@ -49,9 +49,11 @@ the role slide decks play in other Cairn KBs.
   Lecture 1's page has a table of five such papers.
 - **Check each paper's licence before committing any of its text or figures.** As of 2026-09-13,
   32 of the 34 listed papers are arXiv-hosted. The four lecture 2 readings are all CC BY 4.0, checked
-  on each abstract page. *Training Verifiers to Solve Math Word Problems* (Cobbe et al. 2021) is
-  arXiv's non-exclusive licence, which does not permit republishing its text or figures here — a
-  paper like that is linked and discussed, not transcribed.
+  on each abstract page. Of lecture 3's four, only Weaver is CC BY 4.0: *Training Verifiers to Solve
+  Math Word Problems* (Cobbe et al. 2021), *Let's Verify Step by Step* (Lightman et al. 2023) and
+  *Math-Shepherd* (Wang et al. 2023) carry arXiv's non-exclusive licence, which does not permit
+  republishing their text or figures here. A paper like that is linked at arXiv, discussed and cited
+  by section, figure and table in the wiki, and not transcribed; no image of it is committed.
 
 ### Paper files (`raw/papers/`)
 
@@ -80,9 +82,11 @@ Each ingested reading is two files, named by the catalog lecture that lists it:
 
 ### Images
 
-Only **lecture 2** has images: figure crops from its four paper readings, in
-`raw/images/02-test-time-compute-scaling/`, each named `<paper>-figure-N` after the paper file it
-belongs to. No other lecture has any.
+Only **lectures 2 and 3** have images, each named `<paper>-figure-N` after the paper file it belongs
+to. Lecture 2: every figure in the transcribed parts of its four readings, in
+`raw/images/02-test-time-compute-scaling/`. Lecture 3: **Weaver's Figures 1–6 only** (its main body),
+in `raw/images/03-robust-verification/` — the other three lecture 3 readings are not licensed for
+republication, so none of their figures is here. Lectures 1 and 4–9 have no images.
 
 - Each image is **one figure as published, cropped from the paper's PDF together with its
   caption** — not the whole page. They are reproduced under the papers' CC BY 4.0 licences, and the
@@ -112,9 +116,9 @@ belongs to. No other lecture has any.
   course website for logistics it states, and say when the two disagree.
 - **Files are named by Cairn catalog position**, not by the site's schedule row. The catalog has
   nine videos and the site twenty rows; by title, positions 1–6 are rows 1–6, position 8 is row 17,
-  position 9 is row 20, and position 7 may be row 7, row 8 or both. Position 2 is confirmed against its transcript, which
-  discusses all four row-2 readings; confirm each later position the same way before ingesting its
-  readings, and record the resolution in the lecture page
+  position 9 is row 20, and position 7 may be row 7, row 8 or both. Positions 2 and 3 are confirmed against their
+  transcripts, each of which discusses all four readings of its row; confirm each later position the
+  same way before ingesting its readings, and record the resolution in the lecture page
   and `sources.md`. Rows 13 and 14 list readings but have no video in the catalog.
 - **Never invent course content.** If a source is unclear, say so on the page. Do not fill the gap
   from outside knowledge — the chat presents these pages as authoritative material from this course.

@@ -39,6 +39,17 @@ self-improvement means that "when it makes mistakes, it needs to be able to corr
 the three capabilities, with planning and multi-step reasoning, that the course is organised around
 (≈47:33, ≈59:58).
 
+## A model-labelled reward
+
+[Lecture 3](03-robust-verification.md) shows the loop applied to the verifier itself. Math-Shepherd
+labels each solution step automatically, by sampling continuations from it and checking whether they
+reach the known answer; trains a process reward model on those labels; and uses that model both to
+rerank the generator's answers at test time and as the reward for PPO fine-tuning of the generator.
+The lecturer calls it "multiple levels" of the model generating data and reward signal for itself
+(≈46:50), while noting that the gains seem to plateau (≈47:38). Its labels are noisy in predictable
+ways, and a generator optimised against a model-labelled reward can learn to satisfy the reward
+rather than reason (≈40:34–42:54, ≈35:54–36:41). See [verifiers](verifiers.md).
+
 ## What is not understood
 
 A student asks why RL yields such a large jump if the underlying ability should already be in the
@@ -52,3 +63,5 @@ that continuing RL keeps improving models (≈52:12).
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the test-time-to-training loop, test
   generation in coding, the generator–verifier gap, and the open question about RL.
+- [Lecture 3 — Robust Verification](03-robust-verification.md): Math-Shepherd's automatically
+  labelled process reward model, used for verification and for PPO on the generator.

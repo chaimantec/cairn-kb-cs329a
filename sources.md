@@ -4,17 +4,17 @@ Every document the course website (<https://cs329a.stanford.edu/>) links as cour
 
 **The course publishes no slides** on its public site — the instructors upload lecture materials to Canvas — so the course material this knowledge base draws on is the **paper readings** listed per lecture in the site's schedule. **Cite every paper at the original URL below.** The PDFs were downloaded to `raw/pdfs/papers/` on the machine that built this KB, but that directory is **gitignored and not in this repo**: the local filenames are recorded so a future build can find them, and are not links.
 
-**Ingested so far:** the four row-2 readings, for catalog lecture 2 — their full text, transcribed from the arXiv LaTeX source, is linked in the Row 2 table below. Lecture 1 lists no readings.
+**Ingested so far:** the four row-2 readings, for catalog lecture 2, and Weaver, the one CC BY 4.0 reading of row 3, for catalog lecture 3 — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. Row 3's other three readings are arXiv non-exclusive licence and are linked only. Lecture 1 lists no readings.
 
 ## Schedule rows and catalog positions
 
-The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Position 2 is confirmed against its transcript, which discusses all four row-2 readings; the rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
+The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2 and 3 are confirmed against their transcripts, each of which discusses all four readings of its row; the rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
 
 | Site row | Date | Topic | Catalog position | Readings |
 |---|---|---|---|---|
 | 1 | Mon Sep 22 | Course Overview | 1 | none listed |
 | 2 | Fri Sep 26 | Test-time Compute Scaling | 2 (confirmed) | 4 — ingested |
-| 3 | Mon Sep 29 | Robust Verification | 3 | 4 |
+| 3 | Mon Sep 29 | Robust Verification | 3 (confirmed) | 4 — Weaver ingested; 3 linked only (licence) |
 | 4 | Fri Oct 3 | Learning from feedback with tools/code | 4 | 3 |
 | 5 | Mon Oct 6 | Multi-step Reasoning/Planning | 5 | 5 |
 | 6 | Fri Oct 10 | Train Time Scaling/Scaling RL | 6 | 3 |
@@ -38,14 +38,16 @@ All four are licensed CC BY 4.0. Their LaTeX sources were fetched from `https://
 | Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Snell et al. 2024) | <https://arxiv.org/abs/2408.03314> | [main body](raw/papers/02-scaling-test-time-compute-optimally.md) (appendices not transcribed) | `raw/pdfs/papers/2408.03314-scaling-llm-test-time-compute-optimally-can-be-mor.pdf` | 2026-09-13 |
 | How Do Large Language Monkeys Get Their Power (Laws)? | <https://arxiv.org/abs/2502.17578> | [main body](raw/papers/02-monkeys-power-laws.md) (appendices not transcribed) | `raw/pdfs/papers/2502.17578-how-do-large-language-monkeys-get-their-power-laws.pdf` | 2026-09-13 |
 
-## Row 3 — Robust Verification (Mon Sep 29) — 4 readings
+## Row 3 — Robust Verification (Mon Sep 29) — 4 readings, lecture built
 
-| Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
-|---|---|---|---|
-| Shrinking the Generation-Verification Gap with Weak Verifiers | <https://arxiv.org/abs/2506.18203> | `raw/pdfs/papers/2506.18203-shrinking-the-generation-verification-gap-with-wea.pdf` | 2026-09-13 |
-| Training Verifiers to Solve Math Word Problems (Cobbe et al. 2021) | <https://arxiv.org/abs/2110.14168> | `raw/pdfs/papers/2110.14168-training-verifiers-to-solve-math-word-problems-cob.pdf` | 2026-09-13 |
-| Let's Verify step by step (Lightman et al. 2023) | <https://arxiv.org/abs/2305.20050> | `raw/pdfs/papers/2305.20050-let-s-verify-step-by-step-lightman-et-al-2023.pdf` | 2026-09-13 |
-| Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations (Wang et al. 2023) | <https://arxiv.org/abs/2312.08935> | `raw/pdfs/papers/2312.08935-math-shepherd.pdf` | 2026-09-13 |
+Catalog position 3, confirmed: its transcript discusses all four readings. Licences were checked on each arXiv abstract page on 2026-09-13. **Only Weaver is CC BY 4.0**, and only its text and figures are in this KB (LaTeX source fetched from `https://arxiv.org/e-print/2506.18203` to `raw/pdfs/papers/src/2506.18203/`, gitignored). The other three carry arXiv's non-exclusive licence, which does not permit republishing them: they are linked, discussed and cited in [the lecture page](wiki/03-robust-verification.md), and not transcribed.
+
+| Paper | Original URL | Licence | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
+|---|---|---|---|---|---|
+| Shrinking the Generation-Verification Gap with Weak Verifiers | <https://arxiv.org/abs/2506.18203> | CC BY 4.0 | [main body](raw/papers/03-weaver.md) (appendices not transcribed) | `raw/pdfs/papers/2506.18203-shrinking-the-generation-verification-gap-with-wea.pdf` | 2026-09-13 |
+| Training Verifiers to Solve Math Word Problems (Cobbe et al. 2021) | <https://arxiv.org/abs/2110.14168> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2110.14168-training-verifiers-to-solve-math-word-problems-cob.pdf` | 2026-09-13 |
+| Let's Verify step by step (Lightman et al. 2023) | <https://arxiv.org/abs/2305.20050> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2305.20050-let-s-verify-step-by-step-lightman-et-al-2023.pdf` | 2026-09-13 |
+| Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations (Wang et al. 2023) | <https://arxiv.org/abs/2312.08935> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2312.08935-math-shepherd.pdf` | 2026-09-13 |
 
 ## Row 4 — Learning from feedback with tools/code (Fri Oct 3) — 3 readings
 

@@ -8,23 +8,26 @@ and memory, then multi-step reasoning, planning and evaluation, with guest lectu
 labs. Students read research papers for each lecture, do three homeworks, and carry out an original
 research project.
 
-> **Coverage note — partial.** This knowledge base covers **catalog lectures 1 and 2 of 9** (Course
-> Overview; Test-Time Compute Scaling). It says nothing about any later lecture. Do not cite it as
-> covering the course.
+> **Coverage note — partial.** This knowledge base covers **catalog lectures 1, 2 and 3 of 9** (Course
+> Overview; Test-Time Compute Scaling; Robust Verification). It says nothing about any later lecture.
+> Do not cite it as covering the course.
 >
 > **No slides; papers are the course material.** The course publishes no slides on its public site
 > (lecture materials go to Canvas). The course material is the **paper reading list** the site gives
 > for each lecture — exactly that list. **Lecture 1 lists no readings** and is built from its
 > transcript alone. **Lecture 2's four readings are transcribed in full text** in `raw/papers/`, from
 > their arXiv LaTeX sources (CC BY 4.0) — Large Language Monkeys with its appendix, the other three main
-> body only. Their figures are the papers' own, shown with their printed captions; this KB writes no
+> body only. **Of lecture 3's four readings only Weaver is CC BY 4.0**, and only its main body is
+> transcribed; the other three (Cobbe et al. 2021, Lightman et al. 2023, Math-Shepherd) carry arXiv's
+> non-exclusive licence, so they are linked, discussed and cited on the lecture page but not
+> reproduced. Figures are the papers' own, shown with their printed captions; this KB writes no
 > descriptions of charts. Papers are always cited at their **original URL**; see [sources.md](sources.md).
 >
 > **Numbering.** The Cairn catalog has nine videos, "Part 1" to "Part 9"; the site's schedule has
 > twenty rows, including guest lectures and midterm presentations that are not in the playlist.
 > Repo files use the **catalog position**. By title, positions 1–6 are site rows 1–6, position 8 is
 > row 17 and position 9 is row 20; position 7 ("Self-Improvement and Deep Research Agents") may be
-> row 7, row 8 or both. Position 2 is confirmed against its transcript; everything after it is tentative until built.
+> row 7, row 8 or both. Positions 2 and 3 are confirmed against their transcripts; everything after them is tentative until built.
 
 ## Lectures
 
@@ -41,6 +44,13 @@ research project.
   generation–verification gap, Snell et al.'s sequential revisions, ORM/PRM search, difficulty-based
   compute-optimal allocation and test-time compute vs a 14× larger model, and Archon's searched
   inference-time architectures. Embeds figures from all four readings where the lecture discusses them, and links their full text.
+- [Lecture 3 — Robust Verification](wiki/03-robust-verification.md) — how to pick the right answer
+  once a model can generate it: Cobbe et al.'s trained verifier and the GSM8K benchmark (token-level
+  scores, generator vs verifier size, why more samples eventually hurt), Lightman et al.'s outcome vs
+  process reward models, PRM800K and active learning, Math-Shepherd's automatic step labels (hard and
+  soft estimates) and PRM-driven PPO, and Weaver's weakly supervised ensemble of verifiers and its
+  distillation; plus the class Q&A on reward hacking, compute allocation and reasoning models. Embeds
+  Weaver's figures; the other three readings are linked only.
 
 ## Topics
 
@@ -51,8 +61,9 @@ as they are built.
   pass@1 vs pass@k, the inference scaling law, revisions and PRM search, compute-optimal allocation by
   difficulty, inference-time architectures, and o1's log-linear curve.
 - [Verifiers](wiki/verifiers.md) — what a verifier does, unit tests and other verifiable domains,
-  verifiers vs LLM judges, the generation–verification gap as measured in Large Language Monkeys, and
-  outcome vs process reward models.
+  verifiers vs LLM judges, the generation–verification gap as measured in Large Language Monkeys,
+  training a verifier, outcome vs process reward models, step labels without humans, and ensembles of
+  weak verifiers.
 - [Chain of thought](wiki/chain-of-thought.md) — the tennis-ball prompting example, why it only works
   in large models, chain-of-thought fine-tuning, and whether it was emergent or trained.
 - [Reasoning models](wiki/reasoning-models.md) — the thinking behaviours (analysis, decomposition,
@@ -80,12 +91,13 @@ as they are built.
   unrecoverable passages are marked `[Ed: unclear]` rather than guessed.
 - [`raw/transcripts/original/`](raw/transcripts/original/) — the verbatim auto-captions, kept as the
   reference for what was actually said.
-- [`raw/papers/`](raw/papers/) — full text of the paper readings ingested so far (lecture 2's four),
-  transcribed from arXiv LaTeX source with printed section, figure and table numbers. Cite a paper by
-  section, figure or table. Large Language Monkeys includes its appendix; the others are main body only.
+- [`raw/papers/`](raw/papers/) — full text of the paper readings ingested so far (lecture 2's four,
+  and Weaver for lecture 3), transcribed from arXiv LaTeX source with printed section, figure and table
+  numbers. Cite a paper by section, figure or table. Large Language Monkeys includes its appendix; the
+  others are main body only.
 - [`raw/images/`](raw/images/) — figures cropped from those papers' PDFs with their printed captions,
-  embedded in the paper files and the lecture 2 page. Only lecture 2 has images. Use an image path you
-  have read in a file; never construct one.
+  embedded in the paper files and the lecture pages. Only lectures 2 and 3 have images, and lecture 3's
+  are Weaver's alone. Use an image path you have read in a file; never construct one.
 - [`sources.md`](sources.md) — every paper reading on the course site, grouped by schedule row, with
   its original URL and the catalog position it tentatively belongs to.
 - [`kb.json`](kb.json) — machine-readable coverage and provenance, including known caveats.

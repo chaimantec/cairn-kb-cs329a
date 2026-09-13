@@ -3,8 +3,8 @@
 A **verifier** checks whether a model's output is correct. In CS329A verifiers are the hinge
 between generating many candidate answers and actually getting a better system: repeated sampling
 only helps if something can pick the right sample, and self-improvement only works where there is
-reliable feedback to learn from. The course gives verification a lecture of its own; lecture 1
-introduces the idea from several directions.
+reliable feedback to learn from. [Lecture 3](03-robust-verification.md) is verification's own
+lecture; lectures 1 and 2 introduce the idea from several directions.
 
 ## What a verifier does
 
@@ -62,6 +62,25 @@ from 82.9% to 98.44% between 100 and 10,000 samples while the best selector move
 (Brown et al., §1, §4.1). Majority voting fails because the hardest problems' correct answers are rare
 (lecture 2, ≈17:30–19:04).
 
+## Training a verifier
+
+The first learned verifier the course studies in detail is Cobbe et al.'s (2021), in
+[lecture 3](03-robust-verification.md): a language model with a small scalar head that outputs the
+probability a solution is correct. It is trained on the generator's own samples — 100 per training
+problem, each labelled by whether it reaches the known final answer — with the ordinary
+language-modelling loss alongside the correctness loss (lecture 3, ≈3:13–7:03). At test time it ranks
+many samples and the top one is returned (≈4:45). Three findings from that paper recur:
+
+- Verification beats plain fine-tuning once the training set is large enough (≈10:58–11:44; Cobbe et
+  al., §4.2, Figure 5).
+- A large generator with a small verifier does better than a small generator with a large verifier
+  (≈12:31–13:18; §4.3, Figure 6c).
+- Sampling more helps only up to a point — about 400 completions there — after which the verifier's
+  precision falls and it is fooled more often than helped (≈14:05–17:58; §5.1).
+
+A separate verifier also leaves the generator general: instead of fine-tuning the base model onto one
+dataset, the verifier guides it (≈19:33–21:06).
+
 ## Outcome and process reward models
 
 An **outcome reward model (ORM)** scores a final answer; a **process reward model (PRM)** scores each
@@ -69,14 +88,44 @@ step of a solution — per step, not per token (lecture 2, ≈28:27–33:13). A 
 beam search keeps the top-scoring partial solutions at each step (Snell et al. 2024, Figure 2). PRMs are
 fine-tuned from language models and work best in-domain, with some generalization (lecture 2, ≈31:36).
 
+Lecture 3 gives the comparison its evidence. Lightman et al. (2023) trained both kinds from GPT-4 on
+MATH, the PRM on human step labels (PRM800K, 800,000 of them), and the PRM beat both the ORM and
+majority voting, by a margin that widened as more solutions were sampled (lecture 3, ≈21:51–29:39;
+Lightman et al., §3). The case for process supervision is **false positives**: a model can reach a
+correct answer through wrong steps, which an outcome label rewards and step labels catch (≈25:00). A
+PRM scores a whole solution by combining its step scores — Lightman et al. multiply the step
+probabilities (§2.6), while Math-Shepherd takes the minimum (Wang et al., §3.4). The costs are labels,
+since a PRM needs one per step, and a score threshold to tune; newer systems often combine PRM and ORM
+signals (≈31:10–32:46).
+
+## Step labels without humans
+
+Math-Shepherd (Wang et al. 2023) labels steps automatically. From each step it samples $N$
+continuations to a final answer; the **hard estimate** calls the step good if any continuation reaches
+the known answer, and the **soft estimate** scores it by the fraction that do (lecture 3, ≈39:00–40:34).
+This trades human cost for noise: a valid but unusual path can score 0 when $N$ is small, hard
+problems give almost no signal, and a wrong step can still be labelled good if continuations from it
+reach the right answer (≈40:34–42:54). The resulting PRM beat one trained on PRM800K on MATH and
+served as the reward for step-by-step PPO (≈44:28–46:50). Once labels no longer come from humans, a
+generator trained against a PRM may learn to please it instead of reasoning — the caveat the class
+raises (≈35:54–36:41).
+
+## Ensembles of weak verifiers
+
+No verifier is perfect. Weaver, the lecturer's group's work in lecture 3, combines many — reward models
+and LLM judges — filtering out the weakest, estimating each one's accuracy with weak supervision from
+very few labels, and weighting their scores accordingly (lecture 3, ≈52:18–57:02). It scales
+verification by adding verifiers rather than sampling one verifier more, and the ensemble can be
+distilled into a model of about 400 million parameters (≈1:04:07–1:04:53). See
+[lecture 3](03-robust-verification.md) for the method and results.
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): verifiers in repeated sampling, the
   no-verifier question, verifiers vs judges in workflows, and the generator–verifier gap.
 - [Lecture 2 — Test-Time Compute Scaling](02-test-time-compute-scaling.md): verifiable domains, the
-  measured generation–verification gap, ORMs and PRMs, and the proposal to ensemble many weak verifiers.
-- Catalog lecture 3, *Robust Verification*, is the dedicated lecture; it is not yet in this KB.
-  Lecture 2 previews Weaver, a weakly supervised ensemble of verifiers from the lecturer's group
-  (≈24:34–25:22); the site lists
-  [Shrinking the Generation-Verification Gap with Weak Verifiers](https://arxiv.org/abs/2506.18203)
-  among lecture 3's readings — see [sources](../sources.md).
+  measured generation–verification gap, ORMs and PRMs, and a preview of Weaver (≈24:34–25:22).
+- [Lecture 3 — Robust Verification](03-robust-verification.md): the dedicated lecture — Cobbe et al.'s
+  trained verifier and GSM8K, Lightman et al.'s outcome vs process supervision and PRM800K,
+  Math-Shepherd's automatic step labels and PRM-driven RL, and Weaver's weakly supervised ensembles of
+  verifiers and their distillation.
