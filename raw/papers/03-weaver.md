@@ -118,7 +118,7 @@ In Weak Supervision, the input is an unlabeled dataset, where each entry has mul
 
 **WS model**  We can view all $y_{ij}$ across query-response pairs as samples of an unknown random variable $Y$ and each $\bar{s}_ {ijk}$ across $i, j$ as samples of a random variable $S_k$. WS then defines a latent variable graphical model over the random binary vector $\lbrace Y, S_1, \dots, S_m\rbrace$, where $Y$ is latent while $S_1, \dots S_m$ are observable. While existing WS methods assume various models, one common assumption is that $S_i \perp S_j | Y$ for each $S_i, S_j$. That is, $S_i$ and $S_j$ are conditionally independent given $Y$; intuitively, each verifier is assumed to capture independent aspects of the correctness of the response (Figure 22 in Appendix C.4). Under this assumption, we can write the posterior probability of a correct generation as the following, for some given binary verifier scores $\lbrace \bar{s}_ 1, \dots, \bar{s}_ m\rbrace$:
 
-$$\Pr(Y = 1 | S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m) = \frac{\prod_{i = 1}^m \Pr(S_i = \bar{s}_i | Y = 1) \Pr(Y = 1)}{\Pr(S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m)}. \tag{1}$$
+$$\Pr(Y = 1 | S_1 = \bar{s}_ 1, \dots, S_m = \bar{s}_ m) = \frac{\prod_{i = 1}^m \Pr(S_i = \bar{s}_ i | Y = 1) \Pr(Y = 1)}{\Pr(S_1 = \bar{s}_ 1, \dots, S_m = \bar{s}_ m)}. \tag{1}$$
 
 The weighted ensemble score for each query-response pair can thus be written in terms of: 1) $\Pr(S_1 = \bar{s}_ 1, \dots, S_m = \bar{s}_ m)$, which is intractable to compute from the data for large $m$; 2) $\Pr(Y = 1)$, which can be estimated from $\mathcal{D}^{\text{dev}}$; and 3) $\Pr(S_i = \bar{s}_ i | Y = 1)$, or equivalently $\Pr(S_i = 1 | Y = 1)$, which is the verifier's "accuracy parameter"—this cannot be computed directly since we do not have access to $Y$. Next, we discuss how to estimate these accuracy parameters, $\Pr(S_i = 1 | Y = 1)$, without labels.
 
@@ -136,7 +136,7 @@ $$\begin{aligned} \mu_{2i-1:2i, 1:2} &= \begin{bmatrix} \Pr(S_i = 0 | Y = 0) & \
 
 Let $\text{off-diag}$ denote the elements of a matrix that lie outside its $2\times 2$ block diagonal. Then, to estimate $\mu$ that satisfies both Equations (2) and (3), we have the following objective:
 
-$$\text{minimize}_{\mu} \bigl\Vert \thinspace O_{\text{off-diag}} - (\mu\thinspace P\thinspace \mu^T)_{\text{off-diag}}\bigr\Vert ^2 + \bigl\Vert \thinspace \mathrm{diag}(O) - \mu\thinspace P\thinspace \mathbf{1}^T\bigr\Vert ^2 \tag{5}$$
+$$\text{minimize}_ {\mu} \bigl\Vert \thinspace O_{\text{off-diag}} - (\mu\thinspace P\thinspace \mu^T)_ {\text{off-diag}}\bigr\Vert ^2 + \bigl\Vert \thinspace \mathrm{diag}(O) - \mu\thinspace P\thinspace \mathbf{1}^T\bigr\Vert ^2 \tag{5}$$
 
 We optimize Equation (5) using gradient descent to estimate the verifier accuracy parameters. These estimates are then used in Equation (1) to select the response with the highest estimated posterior. To further improve modeling of verifier accuracies, we explore whether partitioning the query distribution by empirical difficulty can yield better weak supervision estimates. As detailed in Appendix B.4, we cluster queries based on the observed ratio of correct to incorrect generations, and fit a separate Weaver model within each difficulty bucket. We provide more details in Section B.1.
 

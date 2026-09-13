@@ -126,14 +126,14 @@ calculation predicts something else (≈7:10). If problem $i$ is solved by one a
 $\text{pass}_ i@1$, then $k$ independent attempts all fail with probability $(1 - \text{pass}_ i@1)^k$,
 so
 
-$$\text{pass}_i@k = 1 - (1 - \text{pass}_i@1)^k ,$$
+$$\text{pass}_ i@k = 1 - (1 - \text{pass}_ i@1)^k ,$$
 
 which approaches 1 **exponentially** fast in $k$ (≈7:58). Yet across a whole suite of problems the
 observed behaviour is a power law (≈8:45). This is the puzzle Schaeffer et al. set up: on each problem
 $-\log(\text{pass}_ i@k)$ falls exponentially with $k$, while the negative log of the *average* success
 rate falls as a power law (Figure 3 caption), written
 
-$$-\log\big(\text{pass}_{\mathcal{D}}@k\big) \approx a\thinspace k^{-b},$$
+$$-\log\big(\text{pass}_ {\mathcal{D}}@k\big) \approx a\thinspace k^{-b},$$
 
 where $\text{pass}_ {\mathcal{D}}@k$ averages $\text{pass}_ i@k$ over the distribution $\mathcal{D}$ of
 single-attempt success rates across the benchmark's problems (§3, Equation 10). This is the same law
@@ -151,7 +151,7 @@ scaling law is **a long tail of hard problems** (≈9:32). The paper states it p
 3.1 and 3.2): $-\log(\text{pass}_ {\mathcal{D}}@k)$ scales as a power law in $k$ with exponent $b$ if and
 only if the density of single-attempt success rates behaves like a power law near zero,
 
-$$p_{\mathcal{D}}(\text{pass}_i@1) \propto (\text{pass}_i@1)^{\thinspace b-1} \quad\text{as } \text{pass}_i@1 \to 0^+ .$$
+$$p_{\mathcal{D}}(\text{pass}_ i@1) \propto (\text{pass}_ i@1)^{\thinspace b-1} \quad\text{as } \text{pass}_ i@1 \to 0^+ .$$
 
 Its intuition: every problem is being solved exponentially quickly, but some have
 $\text{pass}_ i@1$ so small that they stay unsolved for many, many attempts, and polynomial density
@@ -345,7 +345,7 @@ The **test-time compute-optimal strategy** chooses, for prompt $q$ and compute b
 test-time hyperparameters $\theta$ (such as the mix of revisions and parallel samples, or the search
 method) that maximize the chance the output $y$ matches the correct answer $y^{\ast}(q)$ (§3.1, Equation 1):
 
-$$\theta^{\ast}_{q,y^{\ast}(q)}(N) = \operatorname{argmax}_{\theta} \left( \mathbb{E}_{y \sim \operatorname{Target}(\theta, N, q)} \left[ \mathbb{1}_{y = y^{\ast}(q)} \right] \right)$$
+$$\theta^{\ast}_ {q,y^{\ast}(q)}(N) = \operatorname{argmax}_ {\theta} \left( \mathbb{E}_ {y \sim \operatorname{Target}(\theta, N, q)} \left[ \mathbb{1}_ {y = y^{\ast}(q)} \right] \right)$$
 
 Difficulty stands in for $q$: the best strategy is picked per difficulty bin (§3.2). How best to mix
 revisions and parallel scaling "still is an open research" question, and the goal is the minimum

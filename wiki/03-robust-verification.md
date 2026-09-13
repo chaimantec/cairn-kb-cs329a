@@ -463,7 +463,7 @@ lecturer's intuition for where the signal comes from: if every verifier always g
 same score, the pool would teach nothing new; the information is in how the verifiers agree and
 disagree with each other (≈57:51–58:36). Under the assumption, the posterior is (Equation 1):
 
-$$\Pr(Y = 1 \mid S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m) = \frac{\prod_{i=1}^{m} \Pr(S_i = \bar{s}_i \mid Y = 1)\thinspace \Pr(Y = 1)}{\Pr(S_1 = \bar{s}_1, \dots, S_m = \bar{s}_m)}$$
+$$\Pr(Y = 1 \mid S_1 = \bar{s}_ 1, \dots, S_m = \bar{s}_ m) = \frac{\prod_{i=1}^{m} \Pr(S_i = \bar{s}_ i \mid Y = 1)\thinspace \Pr(Y = 1)}{\Pr(S_1 = \bar{s}_ 1, \dots, S_m = \bar{s}_ m)}$$
 
 where $\bar{s}_ i$ is verifier $i$'s observed vote. $\Pr(Y = 1)$ is estimated from a small labelled
 development set — 1% of the test set, for example 5 to 10 query–answer pairs (§3) — but each verifier's

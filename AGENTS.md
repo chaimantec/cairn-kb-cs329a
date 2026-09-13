@@ -141,10 +141,10 @@ republication, so none of their figures is here. Lectures 1 and 4–9 have no im
   - **No backslash before punctuation** — on GitHub markdown eats it. Write `\lbrace`/`\rbrace`, not
     `\{`/`\}`; `\thinspace`, `\negthinspace`, `\mskip{5mu}`, not `\,`, `\!`, `\;`; `\Vert`, not
     `\|`; `\cr`, not `\\`; `\verb|#|`, not `\#`; and put `%` outside the math (`$\leq 10$%`).
-  - **In inline math, no `<`, `>` or `*`, and no `_` straight after a non-letter.** GitHub
-    double-escapes `<` and `>` (write `\lt`, `\gt`, `\ll`, `\gg`) and pairs `*` and `_` into
-    italics across formulas (write `\ast`, and `\mathbb{E}_ {k}` with a space after the `_`). A `*`
-    breaks display math too.
+  - **In inline math no `<` or `>`; in any math no `*`, and no `_` straight after a non-letter.**
+    GitHub double-escapes `<` and `>` in inline math (write `\lt`, `\gt`, `\ll`, `\gg`), and pairs
+    `*` and `_` into italics across formulas — even inside a `$$` block, where it double-escapes every
+    `&` of an `aligned` environment (write `\ast`, and `\mathbb{E}_ {k}` with a space after the `_`).
   - **Delimiters.** An inline `$` opens only after a space, `(` or the start of a line, and closes
     only before a space or punctuation: write `$\text{best-of-}N$`, not `best-of-$N$`. No space just
     inside `$`. Never put math inside `*italics*` — close the italics around it. `$$` goes on its own

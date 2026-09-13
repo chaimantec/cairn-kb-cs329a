@@ -91,7 +91,7 @@ In the case of verifiers, we also have the option to choose between different se
 In general, we would therefore like to select the *optimal* allocation of our test-time compute budget for a given problem. To this end, for any given approach of utilizing test-time compute (e.g., revisions and search against a verifier in this paper, various other methods elsewhere), we define the **"test-time compute-optimal scaling strategy"** as the strategy that chooses hyperparameters corresponding to a given test-time strategy for maximal performance benefits on a given prompt at test time. Formally, define $\operatorname{Target}(\theta, N, q)$ as the distribution over natural language output tokens induced by the model for a given prompt $q$, using test-time compute hyper-parameters $\theta$, and a compute budget of $N$. We would like to select the hyper-parameters $\theta$ which maximize the accuracy of the target distribution for a given problem. We express this formally as:
 
 $$
-\theta^{\ast}_{q,a^{\ast}(q)}(N) = \operatorname{argmax}_{\theta} \left( \mathbb{E}_{y \sim \operatorname{Target}(\theta, N, q)} \left[ \mathbb{1}_{y = y^{\ast}(q)} \right] \right), \tag{1}
+\theta^{\ast}_ {q,a^{\ast}(q)}(N) = \operatorname{argmax}_ {\theta} \left( \mathbb{E}_ {y \sim \operatorname{Target}(\theta, N, q)} \left[ \mathbb{1}_ {y = y^{\ast}(q)} \right] \right), \tag{1}
 $$
 
 where $y^{\ast}(q)$ denotes the ground-truth correct response for $q$, and $\theta^{\ast}_ {q,y^{\ast}(q)}(N)$ represents the test-time compute-optimal scaling strategy for the problem $q$ with compute budget $N$.

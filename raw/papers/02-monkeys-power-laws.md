@@ -49,7 +49,7 @@ Scaling behaviors of large neural language models have surprised and fascinated 
 One direction of renewed interest is inference-time compute scaling, whereby compute is controllably increased at inference to improve the performance of a model, e.g., Pachocki et al. (2024). In this direction, recent research discovered that language model success rates scale predictably with the number of independent attempts made at accomplishing a task. Specifically, in a paper titled, "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling," Brown et al. (2024) studied how language model performance changes at mathematical problem solving and coding problems when $k$ independent attempts are sampled per problem. Performance on the $i$-th problem was measured using the expected (over attempts) success rate (Kulal et al., 2019; Chen et al., 2021), defined as:
 
 $$
-\operatorname{pass_i@k} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attempt on $i$-th problem succeeds}] \Big]. \tag{1}
+\operatorname{pass_i@k} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} \mathop{\mathbb{E}}_ {k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attempt on $i$-th problem succeeds}] \Big]. \tag{1}
 $$
 
 Using the unbiased and numerically stable estimator of Chen et al. (2021) (for details, see Appendix B), Brown et al. (2024) found that the negative log $\text{averaged-over-}P$-problems success rate falls as a power law with the number of independent attempts per problem $k$:
@@ -61,7 +61,7 @@ $$
 for model-specific and benchmark-specific constants $a, b \gt  0$ (Fig. 1 Top). Soon after, on a separate topic of jailbreaking multimodal language models via text, image and audio attacks, independent work by Hughes et al. (2024) studied jailbreaking success rates when $k$ independent attempts are made per harmful prompt. Performance was measured using Attack Success Rate (ASR) at $k$:
 
 $$
-\operatorname{ASR_i@k} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attack on $i$-th prompt succeeds}] \Big]. \tag{3}
+\operatorname{ASR_i@k} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} \mathop{\mathbb{E}}_ {k \text{ Attempts}}\Big[ \mathbb{I}[\text{Any attack on $i$-th prompt succeeds}] \Big]. \tag{3}
 $$
 
 This "Best-of-N Jailbreaking" attack similarly discovered that the negative log $\text{averaged-over-}P$-prompts attack success rate fell as a power law with the number of jailbreak attempts per prompt $k$:
@@ -83,11 +83,11 @@ Should we expect large language monkeys to have such power (laws)? That is, shou
 Mathematically, on any given attempt, the model has probability $\operatorname{pass_i@1}$ of solving the $i$-th problem. Recalling that $\operatorname{pass_i@k}$ is defined as $1$ if *any* of the $k$ attempts succeed, 0 otherwise, by linearity of expectation and by independence of the $k$ attempts, we can rewrite $\operatorname{pass_i@k}$ as:
 
 $$
-\operatorname{pass_i@k} = \mathop{\mathbb{E}}_{k \text{ Attempts}}\Big[1 - \mathbb{I}[\text{All $k$ Attempts Fail}] \Big] \tag{5}
+\operatorname{pass_i@k} = \mathop{\mathbb{E}}_ {k \text{ Attempts}}\Big[1 - \mathbb{I}[\text{All $k$ Attempts Fail}] \Big] \tag{5}
 $$
 
 $$
-\phantom{\operatorname{pass_i@k}} = 1 - \prod_{j=1}^k \mathop{\mathbb{E}}_{1 \text{ Attempt}}\Big[ \mathbb{I}[\text{$j$-th Attempt Fails}] \Big]. \tag{6}
+\phantom{\operatorname{pass_i@k}} = 1 - \prod_{j=1}^k \mathop{\mathbb{E}}_ {1 \text{ Attempt}}\Big[ \mathbb{I}[\text{$j$-th Attempt Fails}] \Big]. \tag{6}
 $$
 
 The probability that the $j$-th attempt fails is one minus the probability that the $j$-th attempt succeeds. Since each attempt is i.i.d. with success probability $\operatorname{pass_i@1}$, we find
@@ -120,7 +120,7 @@ How does polynomial scaling of the negative log *average* success rate emerge fr
 
 $$
 \begin{aligned}
-\operatorname{pass_{\mathcal{D}}@k} &\stackrel{\text{def}}{=} \mathop{\mathbb{E}}_{\operatorname{pass_i@1} \sim \mathcal{D}} \Big[\operatorname{pass_i@k}(\operatorname{pass_i@1}) \Big]\cr 
+\operatorname{pass_{\mathcal{D}}@k} &\stackrel{\text{def}}{=} \mathop{\mathbb{E}}_ {\operatorname{pass_i@1} \sim \mathcal{D}} \Big[\operatorname{pass_i@k}(\operatorname{pass_i@1}) \Big]\cr 
 &= 1 - \int_0^1 (1 - \operatorname{pass_i@1})^k \thinspace  p_{\mathcal{D}}(\operatorname{pass_i@1}) \thinspace  d\negthinspace \operatorname{pass_i@1}.
 \end{aligned} \tag{10}
 $$
@@ -190,7 +190,7 @@ Notably, previous papers observed that not every model exhibits power law scalin
 A natural consequence of this connection between the scaling of $-\log(\operatorname{pass_{\mathcal{D}}@k})$ and the left tail of the distribution $p_{\mathcal{D}}(\operatorname{pass_i@1})$ is that the distribution of single-attempt success rates can be used to predict whether power-law scaling will appear and if so, what the intercept and exponent of the power law will be. To do this, one can fit the distribution $\hat{p}_ {\mathcal{D}}(\operatorname{pass_i@1})$ and then *simulate* how $\operatorname{pass_{\mathcal{D}}@k}$ will scale with $k$ (Fig. 5) using the relationship:
 
 $$
-\widehat{\operatorname{pass_{\mathcal{D}}@k}} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} 1 - \int_0^1 (1 - \operatorname{pass_i@1})^k \thinspace  \hat{p}_{\mathcal{D}}(\operatorname{pass_i@1}) \thinspace  d\negthinspace \operatorname{pass_i@1}. \tag{11}
+\widehat{\operatorname{pass_{\mathcal{D}}@k}} \mskip{5mu}\stackrel{\text{def}}{=}\mskip{5mu} 1 - \int_0^1 (1 - \operatorname{pass_i@1})^k \thinspace  \hat{p}_ {\mathcal{D}}(\operatorname{pass_i@1}) \thinspace  d\negthinspace \operatorname{pass_i@1}. \tag{11}
 $$
 
 To empirically test this claim, we compared the standard least squares regression estimator (in log-log space) (Hoffmann et al., 2022; Caballero et al., 2022; Besiroglu et al., 2024b) against a *distributional estimator*. To motivate our distributional estimator, we first need explain a key obstacle and how the distributional estimator overcomes it. The obstacle is that there are problems or prompts whose single-attempt success probabilities $\operatorname{pass_i@1}$ lie between $(0, 1/\text{Number of Samples})$ such that, due to finite sampling, we lack the resolution to measure. While we do not know the true single-attempt success probability for the problems that lie in this interval, we *do* know *how many* problems fall into this left tail bucket, and we can fit a distribution's parameters such that the distribution's probability mass in the interval $(0, 1 / \text{Number of Samples})$ matches the empirical fraction of problems in this tail bucket. Thus, our distributional estimator works by first selecting a distribution (e.g., a scaled 3-parameter Beta distribution), discretizing the distribution according to the sampling resolution $1 / \text{Number of Samples}$ and performing maximum likelihood estimation under the discretized distribution's probability mass function.
