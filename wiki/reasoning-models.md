@@ -62,7 +62,22 @@ Reasoning models are still essentially single-turn: they answer, but do not acco
 tasks in an environment (≈40:36). Agents need better planning, multi-step reasoning and
 self-correction than reasoning alone delivered (≈47:33). See [agentic workflows](agentic-workflows.md).
 
+## Planning and executing in parallel
+
+Reasoning models think longer on harder problems, and longer thinking goes with higher accuracy. But much
+of that thinking — trying alternative approaches, solving subtasks, checking earlier steps — is
+independent, and does not have to be generated one step after another
+([lecture 5](05-planning-and-multi-step-reasoning.md), ≈23:29–25:52). **SPRINT** fine-tunes
+DeepSeek-R1-Distill-Qwen-7B on reasoning traces rewritten as rounds of plans and parallel executions. On
+MATH-500 it slightly exceeded fine-tuning on the same traces in their ordinary form (92.5% against
+91.0%), with about 15% fewer sequential tokens, and 39% fewer on problems needing more than 8,000
+tokens. It carried over to Countdown and GPQA-Diamond without training on them (≈36:52–38:30; Biju et
+al. 2025, §4.2, Table 2). Harder problems took more rounds, and the model explored more plans in the
+early rounds than in later ones (≈40:48; Figure 5). See [test-time scaling](test-time-scaling.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): reasoning behaviours, the o1 example, o1 vs
   GPT-4o, and the Q&A on why reasoning models work.
+- [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md): SPRINT's
+  training of a reasoning model to plan and execute in parallel.

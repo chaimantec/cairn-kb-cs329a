@@ -74,6 +74,20 @@ feedback (**RLAIF**); its preference model still uses human labels for helpfulne
 also notes that post-training takes a much smaller share of compute than pre-training — maybe 5% — and
 is repeated fairly often (≈52:18).
 
+## Step-wise RL for multi-step tasks
+
+RLHF, RLAIF and RL from execution feedback reward a single final response.
+[Lecture 5](05-planning-and-multi-step-reasoning.md) presents **SWiRL**, which rewards **each step** of a
+multi-step trajectory instead. A generative reward model scores every action, whether a reasoning step
+with a tool call or the final answer, given the context before it, and the policy is optimised on these
+step-wise rewards using offline data (lecture 5, ≈52:24–1:04:18; Goldie et al. 2025, §1, §2.2). On the
+same data, multi-step RL beat supervised fine-tuning by a good amount, and the two did best on
+differently filtered data. SFT did best on trajectories with sound steps **and** correct answers; RL did
+best on trajectories with sound steps, whatever the answer. The lecturer's explanation is that SFT imitates
+what it is shown, while RL gives the model a new chance to act within the prior steps and rewards that
+action (≈1:12:15–1:13:02; §4.2, Figure 5). SPRINT, from the same lecture, is trained with supervised
+fine-tuning, and the lecturer names RL methods such as GRPO as its open direction (≈49:17).
+
 ## What came next
 
 Pre-training and fine-tuning "were the big pieces" until about a year and a half before the lecture,
@@ -84,3 +98,7 @@ back into fine-tuning (≈28:53). See [test-time scaling](test-time-scaling.md) 
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the full pipeline, ≈11:39–19:21.
+- [Lecture 4 — Learning from Feedback with Tools/Code](04-learning-from-feedback-with-tools-code.md):
+  RLHF's labelling cost and Constitutional AI's RLAIF.
+- [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md):
+  SWiRL's step-wise RL for multi-step tool use, and why RL and SFT want differently filtered data.

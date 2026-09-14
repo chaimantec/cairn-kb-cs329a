@@ -123,6 +123,22 @@ too large for the context window, the class's ideas — searching for what is re
 representation — are the kind of thing Claude Code does, and what SWE-bench targets (≈43:41–46:02). See
 [self-improvement](self-improvement.md).
 
+## Planning over many steps
+
+[Lecture 5](05-planning-and-multi-step-reasoning.md) is about agents that plan over several steps, and
+shows three designs. **LATS** turns ReAct's single trajectory into a tree search. At each state it samples
+several actions and executes them in the environment. It scores the resulting states with an LLM judge
+plus a self-consistency heuristic, chooses what to expand with UCT, and reflects on failed trajectories
+(lecture 5, ≈7:57–16:27; Zhou et al. 2024, §4.2). It relies on being able to return to an earlier state,
+which an action such as paying for a service does not allow (≈19:35; Zhou et al., §6). **SPRINT** trains a
+reasoning model to act as a **planner** that writes independent subtasks, and as a pool of **executors**
+that carry them out in parallel, round after round (≈25:52–26:38; Biju et al. 2025, §3.1). **SWiRL**
+trains a model for multi-step tool use: when to call a tool, what query to write, and when to stop and
+answer. It learns from its own offline trajectories, without calling tools during training
+(≈53:10–1:01:08; Goldie et al. 2025, §2). The site's reading list for the lecture also includes ADaPT,
+which decomposes a sub-task only when the executor cannot carry it out (Prasad et al. 2024, abstract);
+the recording does not discuss it.
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the LLM-to-agent transition, workflow
@@ -130,3 +146,6 @@ representation — are the kind of thing Claude Code does, and what SWE-bench ta
 - [Lecture 4 — Learning from Feedback with Tools/Code](04-learning-from-feedback-with-tools-code.md):
   ReAct's reason–act loop, RLEF's execution-feedback loop for coding agents, and the class discussion
   of what else an agent loop needs.
+- [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md):
+  LATS's tree search over actions, SPRINT's planner and parallel executors, and SWiRL's step-wise RL
+  for multi-step tool use.

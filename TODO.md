@@ -39,7 +39,8 @@ list readings but have no video in the catalog.
 - [x] 03 edited transcript (Sonnet copy-edit; 94/94 timestamps, ratios 0.93–1.01, numbers match except pass@1's added "1"s; parent turned the agent's "hacking" restoration at 35:08 back into an [Ed: unclear])
 - [x] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0 (verbatim → raw/transcripts/original/, 92 paragraphs, [0:05]–[1:10:52])
 - [x] 04 edited transcript (Sonnet copy-edit; 92/92 timestamps, ratios 0.92–1.07, number multisets identical; parent turned four guessed restorations back into [Ed: unclear] — "plot/plain" ← "Python" at 46:50, "AI" at 52:18, "more harmless" ← "less harmless" at 54:38 (kept as spoken, noted), "scratchpads" ← "sketches" at 1:06:12 — and trimmed an outside-knowledge note on GSPO)
-- [ ] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y
+- [x] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y (verbatim → raw/transcripts/original/, 96 paragraphs, [0:05]–[1:14:33])
+- [ ] 05 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
 - [ ] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck
 - [ ] 07 Part 7 | Self-Improvement and Deep Research Agents — video Uni9dqyuuDM
 - [ ] 08 Part 8 | Agentic Evaluations and Long Horizon Tasks — video 8JAqLnTaZu4
@@ -75,13 +76,23 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 04 — raw/papers/04-react.md (main body only; Sonnet). check_paper_file.py --main-only: sections, subsections, figure images, all 44 LaTeX paragraphs, macros and leftovers pass; 4 FAILs confirmed artifacts — Figure 2 is `\captionof` (not a figure env), Tables 3 and 4 share one table env, 8 "missing" numbers are minipage/includegraphics widths and a `2023` path, 4 unmatched paragraphs are the three italic `\multirow` notes and Table 3's caption (`BUTLER$_g$` written as GitHub-safe math). check_math clean (25 formulas)
 - [x] 04 — raw/papers/04-rlef.md (main body only; Sonnet). check_paper_file.py --main-only: sections, subsections, 4 figures, 3 tables, macros and leftovers pass; 3 FAILs confirmed artifacts — the 1 "missing" number is a `.44\linewidth` subtable width, the 2 "unfound" LaTeX paragraphs are Table 1's NiceTabular rows (all present in the markdown with their n@k and values), the 2 unmatched markdown paragraphs are the italic `\multicolumn` notes. check_math clean (55 formulas)
 - [x] 04 — raw/papers/04-constitutional-ai.md (main body only; Sonnet). check_paper_file.py --main-only: every check passes (7 sections, 16 subsections, 10 figures with images, 112/112 LaTeX paragraphs, 121/121 markdown paragraphs traced); check_math clean. Source quirks kept or noted by the agent: a stray `]` after an appendix reference dropped, "may note be" kept verbatim, Scheurer et al. cited as n.d. (no year in the .bbl or the PDF)
-- [ ] 05 — 5 readings
+- [x] 05 — mapping confirmed: the transcript covers three of the five row-5 readings, in order (LATS ≈0:05, SPRINT ≈23:29, SWiRL ≈50:03); ADaPT and Wider or Deeper? (AB-MCTS) are not discussed — every "adapt" in the captions is the verb
+- [x] 05 — licences checked on the arXiv abstract pages (2026-09-14): LATS (2310.04406) and SWiRL (2504.04736) CC BY 4.0; SPRINT (2506.05745) CC BY-NC-SA 4.0 → user chose link and discuss only; ADaPT (2311.05772) and Wider or Deeper? (2503.04412) arXiv non-exclusive → linked only, summarised from their abstracts
+- [x] 05 — LaTeX sources for all five fetched to raw/pdfs/papers/src/<id>/ (gitignored)
+- [x] 05 — figure crops, main bodies of the two CC BY readings → raw/images/05-planning-and-multi-step-reasoning/: lats-figure-1–2, swirl-figure-1–8 (10); text-layer check clean on all
+- [ ] 05 — raw/papers/05-swirl.md (main body only; Sonnet)
+- [ ] 05 — raw/papers/05-lats.md (main body only; Sonnet)
 - [ ] 06 — 3 readings
 - [ ] 07 — resolve site row 7 vs 8 first
 - [ ] 08 — 3 readings (site row 17)
 - [x] 09 — none listed; nothing to ingest
 
 ## Wiki
+- [x] wiki/05-planning-and-multi-step-reasoning.md (Opus; drafted from the verbatim captions and the LaTeX sources while the transcript agent ran; 9 figures embedded — LATS 1, 2; SWiRL 1–5, 7, 8; lecture-vs-paper discrepancies stated; ADaPT and Wider or Deeper? from abstracts)
+- [ ] 05 — page's quotes and garble-dependent wording re-checked against the edited transcript
+- [x] Topic pages updated for lecture 5 (agentic-workflows, test-time-scaling, self-improvement, llm-training-pipeline, reasoning-models, verifiers; no new pages; llm-training-pipeline also gained its missing lecture 4 entry)
+- [x] INDEX.md — lecture 5, coverage 5 of 9, readings, topic one-liners, raw/papers and raw/images
+- [x] sources.md row 5 (and the stale row-4 status and "ingested so far" line), AGENTS.md (licences, images, numbering), kb.json (coverage 5, 10 readings, 64 images, caveats) — pending re-verification once the two paper files exist
 - [x] wiki/04-learning-from-feedback-with-tools-code.md (Opus; drafted from the verbatim captions and the LaTeX sources while the transcript agent ran; 9 figures embedded — ReAct 1, 3; RLEF 1–3; Constitutional AI 1, 2, 5, 8; lecture-vs-paper discrepancies stated)
 - [x] 04 — page's quotes re-checked against the edited transcript (all 10 found); the closing-question line on a student's agent definition rewritten after "scratchpads" became [Ed: unclear]
 - [x] Topic pages updated for lecture 4 (agentic-workflows: ReAct loop, RLEF coding agents; self-improvement: where the feedback comes from; verifiers: tests inside an RL loop, AI feedback as a judge; chain-of-thought: grounding; llm-training-pipeline: RLAIF; no new pages)
@@ -104,6 +115,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] AGENTS.md — Images and raw/papers conventions
 - [x] raw/images/03-robust-verification/ — Weaver Figures 1–6 (main body); embedded in raw/papers/03-weaver.md and all six in wiki/03. No images of the three non-CC readings.
 - [x] AGENTS.md — images now lectures 2 and 3; lecture 3 licence findings; positions 2 and 3 confirmed
+- [x] raw/images/05-planning-and-multi-step-reasoning/ — LATS Figures 1–2, SWiRL Figures 1–8 (main bodies of the two CC BY readings); 9 embedded in wiki/05, all 10 to be embedded in the paper files
 
 ## Publish
 - [x] Lecture 2: kb.json updated, verify_kb.py clean, committed and pushed (kbUrl already set)
@@ -112,6 +124,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] Lecture 3: kb.json updated (coverage 3, 5 readings ingested, 37 images, new caveats), sources.md row 3, verify_kb.py clean and review read, committed and pushed (kbUrl already set)
 - [x] Lecture 4: kb.json updated (coverage 4, 8 readings ingested, 54 images, new caveats), sources.md row 4, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included) and review read — the 22 math warnings are pre-existing plain-text pass@k/× in pages from lectures 1–3; committed and pushed (kbUrl already set)
 - [x] Math notation pass (2026-09-14, user request): the 22 plain-text notations verify_kb flagged in lecture 1–3 pages (pass@1, pass@k, Pass@K, Pass@100, best-of-N, 30×, 2.6×, 4×, ~14×) converted to inline math in wiki/03, reasoning-models, self-improvement, test-time-scaling; check_math --github 0 errors, 0 warnings
+- [ ] Lecture 5: verify_kb.py clean and review read, committed and pushed (kbUrl already set)
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
 - [x] verify_kb.py clean, and its review section read

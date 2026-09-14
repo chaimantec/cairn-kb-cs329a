@@ -140,6 +140,21 @@ well calibrated, and chain-of-thought reasoning as significantly improving model
 comparisons of helpful, honest and harmless responses (§4.3, Figure 9; §2, Figure 4). See
 [the LLM training pipeline](llm-training-pipeline.md).
 
+## LLM judges inside search and RL
+
+[Lecture 5](05-planning-and-multi-step-reasoning.md) uses a model as a judge in two more places. **LATS**
+scores each state in its search tree by prompting the model to rate how promising it is, and adds a
+self-consistency score for actions that are sampled often. The paper combines the two as
+$V(s) = \lambda \cdot \text{LM}(s) + (1 - \lambda) \cdot \text{SC}(s)$, computed after the
+environment's feedback (lecture 5, ≈10:16–11:04; Zhou et al. 2024, §4.2). The lecture contrasts it with
+Math-Shepherd's verifier-guided search: in LATS the scores come from the outcomes of actions (≈5:37). Its
+HotPotQA experiments also use an oracle that tells the agent whether a submitted answer is correct
+(§5.1). **SWiRL** uses judges as **process rewards**. For filtering, a model decides whether each step is
+reasonable given the steps before it; during RL, a generative reward model scores each action
+(≈56:25–1:02:44; Goldie et al. 2025, §2.1, §2.2). The judge scores a tool call by its query, not by the
+tool's output, which it never sees during training (≈1:01:55–1:02:44). Neither judge was trained; both
+were prompted (≈1:01:08; Zhou et al., §4.2).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): verifiers in repeated sampling, the
@@ -150,3 +165,5 @@ comparisons of helpful, honest and harmless responses (§4.3, Figure 9; §2, Fig
   trained verifier and GSM8K, Lightman et al.'s outcome vs process supervision and PRM800K,
   Math-Shepherd's automatic step labels and PRM-driven RL, and Weaver's weakly supervised ensembles of
   verifiers and their distillation.
+- [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md): an
+  LLM judge as LATS's value function and as SWiRL's step-wise process reward.

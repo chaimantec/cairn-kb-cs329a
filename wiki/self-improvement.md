@@ -82,6 +82,25 @@ lecture. Self-critique can be hard, and a consensus of other models sometimes cr
 a model can be overconfident and not know what it knows (≈59:16–1:00:01). And holding a model to fixed
 principles trades some helpfulness for harmlessness (≈50:46–51:32).
 
+## Training on its own multi-step trajectories
+
+[Lecture 5](05-planning-and-multi-step-reasoning.md) applies the loop to multi-step tool use. **SWiRL**
+has a model generate its own multi-step trajectories offline, calling tools along the way. Another model
+judges each step (Gemini 1.5 Pro in the paper), and the first is trained with step-wise RL on those
+judgements, with no golden labels (lecture 5, ≈54:48–1:01:08; Goldie et al. 2025, §2). Two findings bear
+on what a model can learn from its own data. It learned best from trajectories whose steps were judged
+sound **whether or not** their final answers were correct; trajectories it already solved taught it less
+(≈1:06:44–1:08:14; §4.2, Figure 4). And what it learned transferred: training on math with a calculator
+improved question answering with search, and the reverse (≈1:08:14–1:09:03; Table 2). The fine-tuned
+model even beats its own reward model on some out-of-distribution benchmarks, which the authors read as
+more than distillation (§4.2, Figure 8).
+
+**SPRINT** uses models to restructure training data rather than to judge it. GPT-4o splits a reasoning
+model's traces into plans and executions, and another model works out which steps depend on which. The
+result is data that teaches the model to reason in parallel (≈27:24–29:45; Biju et al. 2025, §3.2). The
+lecturer offers this as a general pattern: to teach a model a behaviour, use LLMs to create the
+fine-tuning data (≈27:24).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the test-time-to-training loop, test
@@ -91,3 +110,6 @@ principles trades some helpfulness for harmlessness (≈50:46–51:32).
 - [Lecture 4 — Learning from Feedback with Tools/Code](04-learning-from-feedback-with-tools-code.md):
   feedback from the environment (ReAct), from code execution (RLEF) and from a constitution
   (Constitutional AI).
+- [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md):
+  SWiRL's step-wise RL on self-generated, model-judged trajectories, and SPRINT's LLM-restructured
+  training data.

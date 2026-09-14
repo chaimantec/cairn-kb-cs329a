@@ -110,6 +110,24 @@ inference call budget (lecture 2, ≈45:03–1:01:29; Saad-Falcon et al. 2024, �
 into one was "surprisingly a very effective method", and adding layers helps, much as in deep networks
 (lecture 2, ≈48:11, ≈58:24).
 
+## Tree search over actions
+
+[Lecture 5](05-planning-and-multi-step-reasoning.md) spends test-time compute on **search with feedback
+from the environment**. LATS runs Monte Carlo tree search over an agent's actions, with UCT balancing
+exploration and exploitation. The lecturer's point is that it turns more test-time compute into better
+solutions on multi-step tasks (lecture 5, ≈17:14–18:01). On HotPotQA its exact match rises from 0.44 to
+0.52 to 0.61 as the sampled trajectories go from 10 to 30 to 50 (Zhou et al. 2024, §5.4, Table 10). The
+price is cost, since every expansion and backpropagation adds inference, and the lecture names it as the
+method's main downside (≈19:35). The site's reading list for lecture 5 also includes *Wider or Deeper?*,
+whose AB-MCTS decides at each node whether to sample new candidate responses or revisit existing ones
+using feedback (Inoue et al. 2025, abstract); the recording does not discuss it.
+
+The same lecture puts parallelism to a different use. **SPRINT** does not sample more answers: it trains a
+reasoning model to run the independent parts of one reasoning trace in parallel. That cuts the number
+of sequential tokens, by 39% on problems where the baseline needs more than 8,000 tokens, at matched or
+better accuracy (≈25:04–26:38, ≈44:41; Biju et al. 2025, §4.2). See
+[reasoning models](reasoning-models.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): repeated sampling, coverage, o1's
@@ -120,3 +138,6 @@ into one was "surprisingly a very effective method", and adding layers helps, mu
   Archon's inference-time architectures. Its four readings are transcribed in `raw/papers/`.
 - [Lecture 3 — Robust Verification](03-robust-verification.md): $\text{best-of-}N$ with a trained verifier and
   where it stops helping, process reward models, and Weaver's scaling of verification by ensembling.
+- [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md): LATS's tree
+  search with environment feedback and its cost, and SPRINT's parallel execution within one reasoning
+  trace.

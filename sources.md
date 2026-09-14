@@ -4,19 +4,19 @@ Every document the course website (<https://cs329a.stanford.edu/>) links as cour
 
 **The course publishes no slides** on its public site — the instructors upload lecture materials to Canvas — so the course material this knowledge base draws on is the **paper readings** listed per lecture in the site's schedule. **Cite every paper at the original URL below.** The PDFs were downloaded to `raw/pdfs/papers/` on the machine that built this KB, but that directory is **gitignored and not in this repo**: the local filenames are recorded so a future build can find them, and are not links.
 
-**Ingested so far:** the four row-2 readings, for catalog lecture 2, and Weaver, the one CC BY 4.0 reading of row 3, for catalog lecture 3 — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. Row 3's other three readings are arXiv non-exclusive licence and are linked only. Lecture 1 lists no readings.
+**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); and LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5) — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3 and 5 are linked only, for licence reasons. Lecture 1 lists no readings.
 
 ## Schedule rows and catalog positions
 
-The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2 and 3 are confirmed against their transcripts, each of which discusses all four readings of its row; the rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
+The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–5 are confirmed against their transcripts: positions 2, 3 and 4 each discuss every reading of their row, and position 5 discusses three of its row's five. The rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
 
 | Site row | Date | Topic | Catalog position | Readings |
 |---|---|---|---|---|
 | 1 | Mon Sep 22 | Course Overview | 1 | none listed |
 | 2 | Fri Sep 26 | Test-time Compute Scaling | 2 (confirmed) | 4 — ingested |
 | 3 | Mon Sep 29 | Robust Verification | 3 (confirmed) | 4 — Weaver ingested; 3 linked only (licence) |
-| 4 | Fri Oct 3 | Learning from feedback with tools/code | 4 | 3 |
-| 5 | Mon Oct 6 | Multi-step Reasoning/Planning | 5 | 5 |
+| 4 | Fri Oct 3 | Learning from feedback with tools/code | 4 (confirmed) | 3 — ingested |
+| 5 | Mon Oct 6 | Multi-step Reasoning/Planning | 5 (confirmed) | 5 — LATS and SWiRL ingested; 3 linked only (licence) |
 | 6 | Fri Oct 10 | Train Time Scaling/Scaling RL | 6 | 3 |
 | 7 | Mon Oct 13 | Open-Ended Evolution of Self-Improving Agents | 7 (tentative — shares a video with row 8) | 3 |
 | 8 | Fri Oct 17 | Self improvement with Search & Deep Research Agents | 7 (tentative — shares a video with row 7) | 3 |
@@ -59,15 +59,17 @@ Catalog position 4, confirmed: its transcript discusses all three readings, in o
 | RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning | <https://arxiv.org/abs/2410.02089> | CC BY 4.0 | [main body](raw/papers/04-rlef.md) (appendices not transcribed) | `raw/pdfs/papers/2410.02089-rlef.pdf` | 2026-09-13 |
 | Constitutional AI: Harmlessness from AI Feedback | <https://arxiv.org/abs/2212.08073> | CC BY 4.0 | [main body](raw/papers/04-constitutional-ai.md) (appendices not transcribed) | `raw/pdfs/papers/2212.08073-constitutional-ai.pdf` | 2026-09-13 |
 
-## Row 5 — Multi-step Reasoning/Planning (Mon Oct 6) — 5 readings
+## Row 5 — Multi-step Reasoning/Planning (Mon Oct 6) — 5 readings, lecture built
 
-| Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
-|---|---|---|---|
-| SWiRL: Synthetic Data Generation & Multi-Step RL for Reasoning & Tool Use | <https://arxiv.org/abs/2504.04736> | `raw/pdfs/papers/2504.04736-swirl.pdf` | 2026-09-13 |
-| Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models (Zhou et al. 2023) | <https://arxiv.org/abs/2310.04406> | `raw/pdfs/papers/2310.04406-language-agent-tree-search-unifies-reasoning-actin.pdf` | 2026-09-13 |
-| SPRINT: Enabling Interleaved Planning and Parallelized Execution in Reasoning Models | <https://arxiv.org/abs/2506.05745> | `raw/pdfs/papers/2506.05745-sprint.pdf` | 2026-09-13 |
-| ADaPT: As-Needed Decomposition and Planning with Language Models (Prasad et al. 2024) | <https://arxiv.org/abs/2311.05772> | `raw/pdfs/papers/2311.05772-adapt.pdf` | 2026-09-13 |
-| Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search | <https://arxiv.org/abs/2503.04412> | `raw/pdfs/papers/2503.04412-wider-or-deeper-scaling-llm-inference-time-compute.pdf` | 2026-09-13 |
+Catalog position 5, confirmed: its transcript discusses LATS, SPRINT and SWiRL, in that order, and does not discuss ADaPT or *Wider or Deeper?*. Licences were checked on each arXiv abstract page on 2026-09-14. **LATS and SWiRL are CC BY 4.0**, and their main bodies are transcribed in this KB (the appendices are not). **SPRINT is CC BY-NC-SA 4.0**; it is linked and discussed in [the lecture page](wiki/05-planning-and-multi-step-reasoning.md), not transcribed, and none of its figures is committed. ADaPT and *Wider or Deeper?* carry arXiv's non-exclusive licence and are linked only. LaTeX sources for all five were fetched from `https://arxiv.org/e-print/<id>` on 2026-09-14 to `raw/pdfs/papers/src/<id>/` (gitignored, not in repo).
+
+| Paper | Original URL | Licence | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
+|---|---|---|---|---|---|
+| SWiRL: Synthetic Data Generation & Multi-Step RL for Reasoning & Tool Use | <https://arxiv.org/abs/2504.04736> | CC BY 4.0 | [main body](raw/papers/05-swirl.md) (appendices not transcribed) | `raw/pdfs/papers/2504.04736-swirl.pdf` | 2026-09-13 |
+| Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models (Zhou et al. 2023) | <https://arxiv.org/abs/2310.04406> | CC BY 4.0 | [main body](raw/papers/05-lats.md) (appendices not transcribed) | `raw/pdfs/papers/2310.04406-language-agent-tree-search-unifies-reasoning-actin.pdf` | 2026-09-13 |
+| SPRINT: Enabling Interleaved Planning and Parallelized Execution in Reasoning Models | <https://arxiv.org/abs/2506.05745> | CC BY-NC-SA 4.0 | not transcribed (licence) | `raw/pdfs/papers/2506.05745-sprint.pdf` | 2026-09-13 |
+| ADaPT: As-Needed Decomposition and Planning with Language Models (Prasad et al. 2024) | <https://arxiv.org/abs/2311.05772> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2311.05772-adapt.pdf` | 2026-09-13 |
+| Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search | <https://arxiv.org/abs/2503.04412> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2503.04412-wider-or-deeper-scaling-llm-inference-time-compute.pdf` | 2026-09-13 |
 
 ## Row 6 — Train Time Scaling/Scaling RL (Fri Oct 10) — 3 readings
 

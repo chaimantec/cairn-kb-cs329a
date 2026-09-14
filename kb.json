@@ -9,10 +9,10 @@
     "courseUrl": "https://cs329a.stanford.edu/"
   },
   "coverage": {
-    "lecturesCovered": 4,
+    "lecturesCovered": 5,
     "lecturesTotal": 9,
-    "transcripts": 4,
-    "wikiLecturePages": 4,
+    "transcripts": 5,
+    "wikiLecturePages": 5,
     "wikiTopicPages": 9
   },
   "materials": {
@@ -23,26 +23,27 @@
     },
     "paperReadings": {
       "listedOnSite": 34,
-      "ingested": 8,
+      "ingested": 10,
       "pdfsCommitted": false,
-      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Lecture 2's four readings (all CC BY 4.0) are transcribed in raw/papers/ from their arXiv LaTeX sources: Large Language Monkeys in full including its appendix; How Do Large Language Monkeys Get Their Power (Laws)?, Snell et al. and Archon main body only (appendices left at arXiv to save budget). Lecture 3's readings: only Weaver (Shrinking the Generation-Verification Gap with Weak Verifiers) is CC BY 4.0 and is transcribed, main body only; Cobbe et al. 2021, Lightman et al. 2023 and Math-Shepherd carry arXiv's non-exclusive licence and are linked and discussed in the wiki, not transcribed. Lecture 4's three readings (ReAct, RLEF, Constitutional AI) are all CC BY 4.0 and transcribed main body only. Lecture 1 lists no readings. PDFs are not committed; every paper is cited at its original URL (sources.md)."
+      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Lecture 2's four readings (all CC BY 4.0) are transcribed in raw/papers/ from their arXiv LaTeX sources: Large Language Monkeys in full including its appendix; How Do Large Language Monkeys Get Their Power (Laws)?, Snell et al. and Archon main body only (appendices left at arXiv to save budget). Lecture 3's readings: only Weaver (Shrinking the Generation-Verification Gap with Weak Verifiers) is CC BY 4.0 and is transcribed, main body only; Cobbe et al. 2021, Lightman et al. 2023 and Math-Shepherd carry arXiv's non-exclusive licence and are linked and discussed in the wiki, not transcribed. Lecture 4's three readings (ReAct, RLEF, Constitutional AI) are all CC BY 4.0 and transcribed main body only. Lecture 5's five readings: LATS and SWiRL (CC BY 4.0) are transcribed main body only; SPRINT (CC BY-NC-SA 4.0), ADaPT and Wider or Deeper? (arXiv non-exclusive) are linked and discussed, not transcribed. Lecture 1 lists no readings. PDFs are not committed; every paper is cited at its original URL (sources.md)."
     },
     "method": "source-text",
     "figuresAudited": false,
     "figureAudit": {
-      "note": "false because this KB writes no descriptions of figures at all, not because descriptions went unchecked. Model-written chart descriptions were tried for lecture 2 and removed after an audit found errors in 4 of the 20 it checked. Figures are the papers' own, shown with their printed captions; state only what the caption and paper text say. All 54 crops (lecture 2: 31, lecture 3: 6, lecture 4: 17) were verified against the PDF text layer (no text cut by the crop edge, caption complete, no body text below the caption)."
+      "note": "false because this KB writes no descriptions of figures at all, not because descriptions went unchecked. Model-written chart descriptions were tried for lecture 2 and removed after an audit found errors in 4 of the 20 it checked. Figures are the papers' own, shown with their printed captions; state only what the caption and paper text say. All 64 crops (lecture 2: 31, lecture 3: 6, lecture 4: 17, lecture 5: 10) were verified against the PDF text layer (no text cut by the crop edge, caption complete, no body text below the caption)."
     },
     "images": {
-      "lecturesWithImages": 3,
-      "files": 54,
+      "lecturesWithImages": 4,
+      "files": 64,
       "byLecture": {
         "2": 31,
         "3": 6,
-        "4": 17
+        "4": 17,
+        "5": 10
       },
       "format": "figure crops from the paper PDFs, caption included, ~1400px wide, PNG or JPEG",
-      "discovery": "inline in raw/papers/ and wiki/02-test-time-compute-scaling.md, wiki/03-robust-verification.md, wiki/04-learning-from-feedback-with-tools-code.md; no index file",
-      "note": "Only lectures 2, 3 and 4 have images. Lecture 2: every figure in the transcribed parts of its four readings — Large Language Monkeys Figures 1-10, How Do Large Language Monkeys Get Their Power (Laws)? Figures 1-7, Snell et al. Figures 1-9, Archon Figures 1-5. Lecture 3: Weaver Figures 1-6 only; its other three readings are not licensed for republication, so none of their figures is in this KB. Lecture 4: every main-body figure of its three readings — ReAct Figures 1-3, RLEF Figures 1-4, Constitutional AI Figures 1-10. Reproduced under CC BY 4.0; attribution is each paper file's front matter."
+      "discovery": "inline in raw/papers/ and wiki/02-test-time-compute-scaling.md, wiki/03-robust-verification.md, wiki/04-learning-from-feedback-with-tools-code.md, wiki/05-planning-and-multi-step-reasoning.md; no index file",
+      "note": "Only lectures 2-5 have images. Lecture 2: every figure in the transcribed parts of its four readings — Large Language Monkeys Figures 1-10, How Do Large Language Monkeys Get Their Power (Laws)? Figures 1-7, Snell et al. Figures 1-9, Archon Figures 1-5. Lecture 3: Weaver Figures 1-6 only; its other three readings are not licensed for republication, so none of their figures is in this KB. Lecture 4: every main-body figure of its three readings — ReAct Figures 1-3, RLEF Figures 1-4, Constitutional AI Figures 1-10. Lecture 5: the main-body figures of its two CC BY readings — LATS Figures 1-2, SWiRL Figures 1-8; SPRINT, ADaPT and Wider or Deeper? have no images. Reproduced under CC BY 4.0; attribution is each paper file's front matter."
     }
   },
   "provenance": {
@@ -51,7 +52,7 @@
       "claude-sonnet-5"
     ],
     "caveats": [
-      "PARTIAL: covers catalog lectures 1 (Course Overview), 2 (Test-Time Compute Scaling), 3 (Robust Verification) and 4 (Learning from Feedback with Tools/Code) of 9. Do not cite this KB as covering CS329A as a whole.",
+      "PARTIAL: covers catalog lectures 1 (Course Overview), 2 (Test-Time Compute Scaling), 3 (Robust Verification), 4 (Learning from Feedback with Tools/Code) and 5 (Planning and Multi-Step Reasoning) of 9. Do not cite this KB as covering CS329A as a whole.",
       "Lecture 1 is transcript-only: the course publishes no slides and the site lists no paper readings for it.",
       "Lecture 2's readings: three of the four (power laws, Snell et al., Archon) are transcribed main body only; their appendices are not in this KB. Lecture 2 shows two charts that are not in the transcribed text — a SWE-bench chart with a DeepSeek model the lecturer believes was DeepSeek-V3 (not in any reading) and Archon's fusion/ranking win-rate chart (in its appendix) — so those passages are cited to the transcript only.",
       "No KB-written figure descriptions exist: the chat must not read values off a figure image; quote the caption and the paper's text.",
@@ -62,7 +63,9 @@
       "Lecture 3's captions leave two words unclear, marked [Ed: unclear] in the edited transcript and not guessed: a term in a student question at about 16:25 and one at about 35:08 (likely 'hacking').",
       "Lecture 4's three readings (ReAct, RLEF, Constitutional AI) are transcribed main body only; their appendices, which hold the prompts, the constitution's principles and further ablations, are not in this KB.",
       "Lecture 4 differs from its readings in places, and the wiki states both: the lecturer says ReAct's thoughts are separate from the action space, where the paper's formalism puts them in an augmented action space; it glosses WebShop's score as covering intermediate steps, where the paper defines it by the attributes of the product chosen; and it glosses RLEF's n@k solve rate differently from the paper's definition. RLEF's own text gives the 70B model's test-set result as 38.0 where its Table 1 lists 40.1. A chart shown at about 46:50 (fine-tuning with and without RLHF across model sizes) has method names the captions garble, so the wiki does not tie it to a figure.",
-      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. Positions 1-4 are confirmed as rows 1-4; from position 5 the mapping is by title and tentative, and position 7 may correspond to site row 7, row 8 or both."
+      "Lecture 5's readings: LATS and SWiRL are transcribed main body only. SPRINT (CC BY-NC-SA 4.0) and ADaPT and Wider or Deeper? (arXiv non-exclusive) are NOT transcribed and have no images; the wiki cites SPRINT by section, figure and table, and summarises ADaPT and Wider or Deeper? from their abstracts only, because the recording does not discuss them.",
+      "Lecture 5 differs from its readings in places, and the wiki states both: it describes LATS's LM and self-consistency scores as added together, where the paper weights them with a hyperparameter; reflection as generated after success or failure, where the paper reflects on unsuccessful trajectories; and the paper as not analysing cost, where the version consulted (ICML 2024) has a sample-complexity and token-consumption analysis. It calls LATS's WebShop results close to human experts, which holds for the score (75.9 vs 82.1) but not the success rate (38.0 vs 59.6). LATS's HotPotQA experiments use an oracle that reports whether an answer is correct. The DeepSeek-R1 training curves shown at about 24:19 are not from any reading.",
+      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. Positions 1-5 are confirmed as rows 1-5; from position 6 the mapping is by title and tentative, and position 7 may correspond to site row 7, row 8 or both."
     ]
   },
   "entryPoint": "INDEX.md",
