@@ -729,9 +729,10 @@ trained on (≈1:02:21–1:03:06). See [self-improvement](self-improvement.md).
   reasoning space can be automated. Where the search space is well defined, as in games with limited
   action spaces, it can; most tasks given to these models are not in a well-defined search space, so
   the work happens in language (≈1:03:06–1:05:25).
-- **Do these techniques transfer from LLMs to agents?** Later lectures show this. An agent, in the
-  student's definition, has tools, memory and sessions; this lecture covers a fundamental building
-  block — getting LLMs to respond in a certain way (≈1:05:25–1:06:12). See
+- **Do these techniques transfer from LLMs to agents?** Later lectures show this. The student's
+  definition of an agent is partly inaudible but includes memory; the lecturer answers that what this
+  lecture shows is starting to be an agent, though without sessions or memory, and that it covers a
+  fundamental building block — getting LLMs to respond in a certain way (≈1:05:25–1:06:12). See
   [agentic workflows](agentic-workflows.md).
 - **Will handcrafted frameworks like ReAct become obsolete with RL post-training?** Yes and no. Yes
   where the space to explore can be defined; no because for tasks like an accountant's, or building a

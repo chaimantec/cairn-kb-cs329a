@@ -38,7 +38,7 @@ list readings but have no video in the catalog.
 - [x] 03 Part 3 | Robust Verification — video p7TdPUcPoik (verbatim → raw/transcripts/original/, 94 paragraphs, [0:05]–[1:12:45])
 - [x] 03 edited transcript (Sonnet copy-edit; 94/94 timestamps, ratios 0.93–1.01, numbers match except pass@1's added "1"s; parent turned the agent's "hacking" restoration at 35:08 back into an [Ed: unclear])
 - [x] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0 (verbatim → raw/transcripts/original/, 92 paragraphs, [0:05]–[1:10:52])
-- [ ] 04 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
+- [x] 04 edited transcript (Sonnet copy-edit; 92/92 timestamps, ratios 0.92–1.07, number multisets identical; parent turned four guessed restorations back into [Ed: unclear] — "plot/plain" ← "Python" at 46:50, "AI" at 52:18, "more harmless" ← "less harmless" at 54:38 (kept as spoken, noted), "scratchpads" ← "sketches" at 1:06:12 — and trimmed an outside-knowledge note on GSPO)
 - [ ] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y
 - [ ] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck
 - [ ] 07 Part 7 | Self-Improvement and Deep Research Agents — video Uni9dqyuuDM
@@ -83,7 +83,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 
 ## Wiki
 - [x] wiki/04-learning-from-feedback-with-tools-code.md (Opus; drafted from the verbatim captions and the LaTeX sources while the transcript agent ran; 9 figures embedded — ReAct 1, 3; RLEF 1–3; Constitutional AI 1, 2, 5, 8; lecture-vs-paper discrepancies stated)
-- [ ] 04 — re-check the page's quotes and restored terms against the edited transcript
+- [x] 04 — page's quotes re-checked against the edited transcript (all 10 found); the closing-question line on a student's agent definition rewritten after "scratchpads" became [Ed: unclear]
 - [x] Topic pages updated for lecture 4 (agentic-workflows: ReAct loop, RLEF coding agents; self-improvement: where the feedback comes from; verifiers: tests inside an RL loop, AI feedback as a judge; chain-of-thought: grounding; llm-training-pipeline: RLAIF; no new pages)
 - [x] INDEX.md — lecture 4, coverage 4 of 9, readings, topic one-liners, raw/papers and raw/images
 - [x] sources.md row 4, AGENTS.md (licences, images), kb.json (coverage 4, 8 readings, 54 images, caveats) — pending re-verification once the three paper files exist
