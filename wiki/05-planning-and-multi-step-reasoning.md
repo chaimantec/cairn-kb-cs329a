@@ -455,7 +455,7 @@ say. **Process and outcome filtering** keeps only trajectories that pass both.
 
 Training is reinforcement learning, and the lecture walks through the paper's figure with a question:
 *who is older*, a person named Glenn — "I don't know the last name," the lecturer says — or Ross Lynch
-(≈58:42). Action 1 decides to search first for the first person's age, and the judge gives it a
+(≈58:42); the paper's Figure 2 prints the name as Glenn Hughes. Action 1 decides to search first for the first person's age, and the judge gives it a
 reward. The model is shown that search's result, already in the training data, and its next action
 searches for the second person's age, which is rewarded too. Given both results, the model outputs the
 final answer inside answer tags, which is rewarded as well (≈58:42–59:29).

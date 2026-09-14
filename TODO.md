@@ -40,7 +40,7 @@ list readings but have no video in the catalog.
 - [x] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0 (verbatim → raw/transcripts/original/, 92 paragraphs, [0:05]–[1:10:52])
 - [x] 04 edited transcript (Sonnet copy-edit; 92/92 timestamps, ratios 0.92–1.07, number multisets identical; parent turned four guessed restorations back into [Ed: unclear] — "plot/plain" ← "Python" at 46:50, "AI" at 52:18, "more harmless" ← "less harmless" at 54:38 (kept as spoken, noted), "scratchpads" ← "sketches" at 1:06:12 — and trimmed an outside-knowledge note on GSPO)
 - [x] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y (verbatim → raw/transcripts/original/, 96 paragraphs, [0:05]–[1:14:33])
-- [ ] 05 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
+- [x] 05 edited transcript (Sonnet copy-edit; 96/96 timestamps, no ratio outliers, number multisets identical; parent returned the agent's outside-knowledge "AIME" ← "Amy" (≈24:19) to [Ed: unclear], corrected "GPQA domain" to GPQA Diamond (≈43:56), marked both "fork"s (≈20:21, ≈34:29) unclear, and fixed two header claims — a non-existent [Ed] note at ≈47:00, and "Glenn Hughes" being in SWiRL's appendix (it is in Figure 2))
 - [ ] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck
 - [ ] 07 Part 7 | Self-Improvement and Deep Research Agents — video Uni9dqyuuDM
 - [ ] 08 Part 8 | Agentic Evaluations and Long Horizon Tasks — video 8JAqLnTaZu4
@@ -89,7 +89,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 
 ## Wiki
 - [x] wiki/05-planning-and-multi-step-reasoning.md (Opus; drafted from the verbatim captions and the LaTeX sources while the transcript agent ran; 9 figures embedded — LATS 1, 2; SWiRL 1–5, 7, 8; lecture-vs-paper discrepancies stated; ADaPT and Wider or Deeper? from abstracts)
-- [ ] 05 — page's quotes and garble-dependent wording re-checked against the edited transcript
+- [x] 05 — page's quotes and garble-dependent wording re-checked against the edited transcript (two paraphrased quotes fixed; AIME name removed; RFT's paper expansion added)
 - [x] Topic pages updated for lecture 5 (agentic-workflows, test-time-scaling, self-improvement, llm-training-pipeline, reasoning-models, verifiers; no new pages; llm-training-pipeline also gained its missing lecture 4 entry)
 - [x] INDEX.md — lecture 5, coverage 5 of 9, readings, topic one-liners, raw/papers and raw/images
 - [x] sources.md row 5 (and the stale row-4 status and "ingested so far" line), AGENTS.md (licences, images, numbering), kb.json (coverage 5, 10 readings, 64 images, caveats) — pending re-verification once the two paper files exist
