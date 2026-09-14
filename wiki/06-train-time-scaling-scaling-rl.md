@@ -508,8 +508,8 @@ DeepSeekMath's GRPO setting (Shao et al., §4.2).
 
 GRPO computes its loss **per sample**: each answer counts once, so a very long garbage answer can weigh the same as a
 short good one. DAPO instead computes the loss **per token**, which the lecture presents as a way of shaping by
-length (≈57:01–58:32). The lecture ties the change to controlling entropy and mean response length (≈57:47; the
-captions are garbled on how each moved).
+length (≈57:01–58:32). The lecture ties the change to controlling entropy and mean response length (≈57:47; as
+captioned, the sentence on how response length moved is hard to follow).
 
 The paper spells out the consequence. With every sample weighted equally, the tokens of a long response
 each contribute *less*, which has two effects: the model learns less from the reasoning in high-quality long samples,

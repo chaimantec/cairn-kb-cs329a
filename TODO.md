@@ -42,7 +42,7 @@ list readings but have no video in the catalog.
 - [x] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y (verbatim → raw/transcripts/original/, 96 paragraphs, [0:05]–[1:14:33])
 - [x] 05 edited transcript (Sonnet copy-edit; 96/96 timestamps, no ratio outliers, number multisets identical; parent returned the agent's outside-knowledge "AIME" ← "Amy" (≈24:19) to [Ed: unclear], corrected "GPQA domain" to GPQA Diamond (≈43:56), marked both "fork"s (≈20:21, ≈34:29) unclear, and fixed two header claims — a non-existent [Ed] note at ≈47:00, and "Glenn Hughes" being in SWiRL's appendix (it is in Figure 2))
 - [x] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck (verbatim → raw/transcripts/original/, 94 paragraphs, [0:05]–[1:12:25])
-- [ ] 06 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
+- [x] 06 edited transcript (Sonnet copy-edit; 94/94 timestamps, number multisets identical except the declared CS320A→CS329A and "quantity to be model"→Qwen-32B; ratio outliers 11:42, 33:35, 1:10:06 are inserted [Ed] notes; parent returned the agent's outside-the-captions "Minerva" (≈41:27, no name is spoken) to an [Ed] note, marked "lower updates" (≈50:47) unclear, accepted "DAPO kind of techniques" ← "double" (≈1:02:22) from the passage's STaR→GRPO→DAPO order, and cut outside-knowledge remarks from the header — GPT-3.5's parameter count, the o1-series guess, and a wrong claim that the lecture gives 51.7% as a MATH figure)
 - [ ] 07 Part 7 | Self-Improvement and Deep Research Agents — video Uni9dqyuuDM
 - [ ] 08 Part 8 | Agentic Evaluations and Long Horizon Tasks — video 8JAqLnTaZu4
 - [ ] 09 Part 9 | Future Research Areas — video AyO6wyu4DEg
@@ -92,7 +92,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 
 ## Wiki
 - [x] wiki/06-train-time-scaling-scaling-rl.md (Opus; drafted from the verbatim captions and the three LaTeX sources while the transcript agent ran; no images; lecture-vs-paper discrepancies stated)
-- [ ] 06 — page's quotes and garble-dependent wording re-checked against the edited transcript
+- [x] 06 — page's quotes and garble-dependent wording re-checked against the edited transcript (every lecture quote in wiki/06, the RL page and the new topic-page sections found; ≈57:47 note reworded to match the transcript)
 - [x] New topic page wiki/reinforcement-learning.md (one objective, reward sources, PPO, GRPO, DAPO, outcome vs process, RL vs SFT, what RL improves — lectures 1, 3–6)
 - [x] Topic pages updated for lecture 6 (self-improvement, llm-training-pipeline, reasoning-models, chain-of-thought, test-time-scaling, verifiers, scaling-laws)
 - [x] INDEX.md — lecture 6, coverage 6 of 9, readings note, positions 2–6, topic one-liners, new RL page
@@ -134,7 +134,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] Lecture 4: kb.json updated (coverage 4, 8 readings ingested, 54 images, new caveats), sources.md row 4, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included) and review read — the 22 math warnings are pre-existing plain-text pass@k/× in pages from lectures 1–3; committed and pushed (kbUrl already set)
 - [x] Math notation pass (2026-09-14, user request): the 22 plain-text notations verify_kb flagged in lecture 1–3 pages (pass@1, pass@k, Pass@K, Pass@100, best-of-N, 30×, 2.6×, 4×, ~14×) converted to inline math in wiki/03, reasoning-models, self-improvement, test-time-scaling; check_math --github 0 errors, 0 warnings
 - [x] Lecture 5: kb.json updated (coverage 5, 10 readings ingested, 64 images, new caveats), sources.md row 5, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included) and review read — numeric claims (images only in lectures 2–5; LATS 1–2 + SWiRL 1–8 = 10 on disk, 9 in wiki) match the measured distribution; committed and pushed (kbUrl already set)
-- [ ] Lecture 6: verify_kb.py clean and review read, committed and pushed (kbUrl already set)
+- [x] Lecture 6: kb.json updated (coverage 6, 10 topic pages, readings still 10 ingested — lecture 6's three are linked only, images unchanged at 64, new caveats), sources.md row 6, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included; 984 formulas) and review read — numeric claims (images only in lectures 2–5, none for lecture 6) match the measured distribution; committed and pushed (kbUrl already set)
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
 - [x] verify_kb.py clean, and its review section read
