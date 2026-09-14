@@ -80,7 +80,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 05 — licences checked on the arXiv abstract pages (2026-09-14): LATS (2310.04406) and SWiRL (2504.04736) CC BY 4.0; SPRINT (2506.05745) CC BY-NC-SA 4.0 → user chose link and discuss only; ADaPT (2311.05772) and Wider or Deeper? (2503.04412) arXiv non-exclusive → linked only, summarised from their abstracts
 - [x] 05 — LaTeX sources for all five fetched to raw/pdfs/papers/src/<id>/ (gitignored)
 - [x] 05 — figure crops, main bodies of the two CC BY readings → raw/images/05-planning-and-multi-step-reasoning/: lats-figure-1–2, swirl-figure-1–8 (10); text-layer check clean on all
-- [ ] 05 — raw/papers/05-swirl.md (main body only; Sonnet)
+- [x] 05 — raw/papers/05-swirl.md (main body only; Sonnet). check_paper_file.py --main-only: 5 sections, 5 subsections, 8/8 figures with images, 3/3 tables, 67/67 table numbers, every LaTeX paragraph found; 1 FAIL confirmed artifact — the 3 unmatched markdown paragraphs are the italic table-flattening notes. check_math clean (26 formulas). Parent moved the three table captions above their tables (spec), replaced `<br>` in two-row headers with spaces, and cut a LaTeX-internal remark from a note. Source quirks kept: "Section 4" for a figure label after "Section" (as the PDF prints), "Gemini-2-27b", "GSM8k", two .bbl keys for BeerQA (Qi et al., 2021a/b)
 - [ ] 05 — raw/papers/05-lats.md (main body only; Sonnet)
 - [ ] 06 — 3 readings
 - [ ] 07 — resolve site row 7 vs 8 first
