@@ -37,7 +37,8 @@ list readings but have no video in the catalog.
 - [x] 02 edited transcript (Sonnet copy-edit, last paragraph by parent after a session-limit kill; 81/81 timestamps, numbers match except deliberate GPT-4.0→GPT-4o and pass@1, ratio outliers 26:08/47:23 are [Ed] notes)
 - [x] 03 Part 3 | Robust Verification — video p7TdPUcPoik (verbatim → raw/transcripts/original/, 94 paragraphs, [0:05]–[1:12:45])
 - [x] 03 edited transcript (Sonnet copy-edit; 94/94 timestamps, ratios 0.93–1.01, numbers match except pass@1's added "1"s; parent turned the agent's "hacking" restoration at 35:08 back into an [Ed: unclear])
-- [ ] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0
+- [x] 04 Part 4 | Learning from Feedback with Tools/Code — video Lxh9RF5S-K0 (verbatim → raw/transcripts/original/, 92 paragraphs, [0:05]–[1:10:52])
+- [ ] 04 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
 - [ ] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y
 - [ ] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck
 - [ ] 07 Part 7 | Self-Improvement and Deep Research Agents — video Uni9dqyuuDM
@@ -67,7 +68,13 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 03 — Weaver figure crops 1–6 (main body) → raw/images/03-robust-verification/weaver-figure-N; text-layer check clean on all six
 - [x] 03 — raw/papers/03-weaver.md (main body only). check_paper_file.py --main-only: all structural, figure, table, macro and wording checks pass except known artifacts, confirmed in the source — 5 "missing" numbers are `\colXwidth` column-width macros and a `MATH\\500` header split; 3 "unmatched" paragraphs are the two spec-mandated italic table-flattening notes and Figure 3's caption (`\weaver{}` dropped on the LaTeX side)
 - [x] 03 — non-CC papers (Cobbe, Lightman, Math-Shepherd): offered keep / drop quotes / lecture-only; user said "continue", so kept as is — summarised and cited by section, figure and table with numbers and a few short quotes, never transcribed, no images
-- [ ] 04 — 3 readings
+- [x] 04 — mapping confirmed: the transcript covers all three row-4 readings in order (ReAct ≈0:50, RLEF ≈27:18, Constitutional AI ≈46:02)
+- [x] 04 — licences checked on the arXiv abstract pages (2026-09-14): all three CC BY 4.0 (ReAct 2210.03629, RLEF 2410.02089, Constitutional AI 2212.08073)
+- [x] 04 — LaTeX sources fetched to raw/pdfs/papers/src/<id>/ (gitignored)
+- [x] 04 — figure crops, main bodies only → raw/images/04-learning-from-feedback-with-tools-code/: react-figure-1–3, rlef-figure-1–4, constitutional-ai-figure-1–10 (17, 2.3MB); text-layer check clean on all. Constitutional AI's captions use `labelsep=quad` (no colon), so they were cropped with a copy of extract_paper_figures.py whose caption regex also accepts "Figure N" + capitalised text
+- [ ] 04 — raw/papers/04-react.md (main body only; one Sonnet agent, after the transcript agent)
+- [ ] 04 — raw/papers/04-rlef.md (main body only; one Sonnet agent)
+- [ ] 04 — raw/papers/04-constitutional-ai.md (main body only; one Sonnet agent)
 - [ ] 05 — 5 readings
 - [ ] 06 — 3 readings
 - [ ] 07 — resolve site row 7 vs 8 first
