@@ -73,7 +73,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 04 — LaTeX sources fetched to raw/pdfs/papers/src/<id>/ (gitignored)
 - [x] 04 — figure crops, main bodies only → raw/images/04-learning-from-feedback-with-tools-code/: react-figure-1–3, rlef-figure-1–4, constitutional-ai-figure-1–10 (17, 2.3MB); text-layer check clean on all. Constitutional AI's captions use `labelsep=quad` (no colon), so they were cropped with a copy of extract_paper_figures.py whose caption regex also accepts "Figure N" + capitalised text
 - [x] 04 — raw/papers/04-react.md (main body only; Sonnet). check_paper_file.py --main-only: sections, subsections, figure images, all 44 LaTeX paragraphs, macros and leftovers pass; 4 FAILs confirmed artifacts — Figure 2 is `\captionof` (not a figure env), Tables 3 and 4 share one table env, 8 "missing" numbers are minipage/includegraphics widths and a `2023` path, 4 unmatched paragraphs are the three italic `\multirow` notes and Table 3's caption (`BUTLER$_g$` written as GitHub-safe math). check_math clean (25 formulas)
-- [ ] 04 — raw/papers/04-rlef.md (main body only; one Sonnet agent)
+- [x] 04 — raw/papers/04-rlef.md (main body only; Sonnet). check_paper_file.py --main-only: sections, subsections, 4 figures, 3 tables, macros and leftovers pass; 3 FAILs confirmed artifacts — the 1 "missing" number is a `.44\linewidth` subtable width, the 2 "unfound" LaTeX paragraphs are Table 1's NiceTabular rows (all present in the markdown with their n@k and values), the 2 unmatched markdown paragraphs are the italic `\multicolumn` notes. check_math clean (55 formulas)
 - [ ] 04 — raw/papers/04-constitutional-ai.md (main body only; one Sonnet agent)
 - [ ] 05 — 5 readings
 - [ ] 06 — 3 readings
