@@ -124,7 +124,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] Lecture 3: kb.json updated (coverage 3, 5 readings ingested, 37 images, new caveats), sources.md row 3, verify_kb.py clean and review read, committed and pushed (kbUrl already set)
 - [x] Lecture 4: kb.json updated (coverage 4, 8 readings ingested, 54 images, new caveats), sources.md row 4, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included) and review read — the 22 math warnings are pre-existing plain-text pass@k/× in pages from lectures 1–3; committed and pushed (kbUrl already set)
 - [x] Math notation pass (2026-09-14, user request): the 22 plain-text notations verify_kb flagged in lecture 1–3 pages (pass@1, pass@k, Pass@K, Pass@100, best-of-N, 30×, 2.6×, 4×, ~14×) converted to inline math in wiki/03, reasoning-models, self-improvement, test-time-scaling; check_math --github 0 errors, 0 warnings
-- [ ] Lecture 5: verify_kb.py clean and review read, committed and pushed (kbUrl already set)
+- [x] Lecture 5: kb.json updated (coverage 5, 10 readings ingested, 64 images, new caveats), sources.md row 5, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included) and review read — numeric claims (images only in lectures 2–5; LATS 1–2 + SWiRL 1–8 = 10 on disk, 9 in wiki) match the measured distribution; committed and pushed (kbUrl already set)
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
 - [x] verify_kb.py clean, and its review section read
