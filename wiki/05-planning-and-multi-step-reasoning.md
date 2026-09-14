@@ -271,8 +271,8 @@ as a way to use the model itself to think better **in parallel** (≈23:29).
 
 Reasoning models such as o1 and Gemini 2.5 Pro think more on harder problems, and longer thinking
 goes with higher accuracy (≈23:29–24:19). The lecture shows two training curves from DeepSeek-R1:
-accuracy on AIME math problems rising through training, and average response length rising with it
-(≈24:19). Those charts come from DeepSeek-R1's work, not from SPRINT's main body, so this page cites
+accuracy on math problems rising through training, and average response length rising with it
+(≈24:19); the captions garble the benchmark's name. Those charts come from DeepSeek-R1's work, not from SPRINT's main body, so this page cites
 them to the transcript only.
 
 These long reasoning steps help, but many of them are **independent of each other**. The model tries
@@ -334,7 +334,8 @@ more parallelization, and fine-tune **DeepSeek-R1-Distill-Qwen-7B** on the refor
 In the paper the 6,000 are DeepSeek-R1 trajectories on MATH's training set; filtering for correct
 answers and running the pipeline leaves about 1,700 training samples (§4.1). The main baseline is
 **RFT**, the same 7B model fine-tuned on the same 1,700 trajectories without the plan–execution
-format (§4.1). The lecture calls it the rejection fine-tuning baseline (≈45:27).
+format (§4.1). The lecture calls RFT a rejection fine-tuning method (≈45:27); the paper expands it as
+"reasoning fine-tuned model" (§4.1).
 
 **Accuracy went up as well.** The project set out to reduce sequential token generation, but the
 structured format also raised accuracy: "the model seems to like these more structured way of
@@ -482,7 +483,7 @@ algorithm Gemma 2 used for human-feedback reward (§2.2).
 
 **Questions.** *Was the judge trained?* No; it was prompted (≈1:01:08). *How can a judge that never
 sees the tool's output give a sensible score?* It judges the **query** the model wrote for the tool, not
-the tool's result. Whether "what is this person's age?" is a good search query can be judged without
+the tool's result. Whether a query asking for this person's age is a good search query can be judged without
 knowing the age. This is process feedback — a process reward per step — and the earlier tool results
 are already in the prior context (≈1:01:55–1:02:44). See [verifiers](verifiers.md) for process rewards.
 
@@ -592,7 +593,7 @@ average 15% over baselines across the multi-hop question-answering and math task
 ## What connects the three
 
 The lecturer draws some of the lines explicitly. Using **LLMs to create training data** for a
-behaviour is presented in SPRINT as a pattern "we're seeing in the following work" (≈27:24), and SWiRL is
+behaviour is presented in SPRINT as a pattern "we're seeing it in the following work" (≈27:24), and SWiRL is
 introduced as a continuation of multi-step synthetic data generation (≈50:03). **Generalisation beyond
 the training domain** appears in both: SPRINT trained on math improves on Countdown and GPQA Diamond
 (≈38:30), and SWiRL trained on math improves question answering and vice versa, "something that we are
