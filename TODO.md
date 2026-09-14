@@ -41,7 +41,8 @@ list readings but have no video in the catalog.
 - [x] 04 edited transcript (Sonnet copy-edit; 92/92 timestamps, ratios 0.92–1.07, number multisets identical; parent turned four guessed restorations back into [Ed: unclear] — "plot/plain" ← "Python" at 46:50, "AI" at 52:18, "more harmless" ← "less harmless" at 54:38 (kept as spoken, noted), "scratchpads" ← "sketches" at 1:06:12 — and trimmed an outside-knowledge note on GSPO)
 - [x] 05 Part 5 | Planning and Multi-Step Reasoning — video Ml_fp9XkB8Y (verbatim → raw/transcripts/original/, 96 paragraphs, [0:05]–[1:14:33])
 - [x] 05 edited transcript (Sonnet copy-edit; 96/96 timestamps, no ratio outliers, number multisets identical; parent returned the agent's outside-knowledge "AIME" ← "Amy" (≈24:19) to [Ed: unclear], corrected "GPQA domain" to GPQA Diamond (≈43:56), marked both "fork"s (≈20:21, ≈34:29) unclear, and fixed two header claims — a non-existent [Ed] note at ≈47:00, and "Glenn Hughes" being in SWiRL's appendix (it is in Figure 2))
-- [ ] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck
+- [x] 06 Part 6 | Train Time Scaling/Scaling RL — video yVnmHSAy3ck (verbatim → raw/transcripts/original/, 94 paragraphs, [0:05]–[1:12:25])
+- [ ] 06 edited transcript (Sonnet copy-edit; parent checks timestamps, numbers, per-paragraph ratio)
 - [ ] 07 Part 7 | Self-Improvement and Deep Research Agents — video Uni9dqyuuDM
 - [ ] 08 Part 8 | Agentic Evaluations and Long Horizon Tasks — video 8JAqLnTaZu4
 - [ ] 09 Part 9 | Future Research Areas — video AyO6wyu4DEg
@@ -82,12 +83,20 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 05 — figure crops, main bodies of the two CC BY readings → raw/images/05-planning-and-multi-step-reasoning/: lats-figure-1–2, swirl-figure-1–8 (10); text-layer check clean on all
 - [x] 05 — raw/papers/05-swirl.md (main body only; Sonnet). check_paper_file.py --main-only: 5 sections, 5 subsections, 8/8 figures with images, 3/3 tables, 67/67 table numbers, every LaTeX paragraph found; 1 FAIL confirmed artifact — the 3 unmatched markdown paragraphs are the italic table-flattening notes. check_math clean (26 formulas). Parent moved the three table captions above their tables (spec), replaced `<br>` in two-row headers with spaces, and cut a LaTeX-internal remark from a note. Source quirks kept: "Section 4" for a figure label after "Section" (as the PDF prints), "Gemini-2-27b", "GSM8k", two .bbl keys for BeerQA (Qi et al., 2021a/b)
 - [x] 05 — raw/papers/05-lats.md (main body only; Sonnet). check_paper_file.py --main-only: every check passes (6 sections, 8 subsections, 2 figures with images, 10 tables, 144/144 table numbers, 61/61 LaTeX paragraphs, 59/59 markdown paragraphs traced); check_math clean (156 formulas). Source quirk kept verbatim: Table 5 cites ReAct's row as (Wei et al., 2022), as the published PDF also prints
-- [ ] 06 — 3 readings
+- [x] 06 — mapping confirmed: the transcript covers all three row-6 readings in order (STaR ≈15:37, DeepSeekMath ≈40:41, DAPO ≈53:06)
+- [x] 06 — licences checked on the arXiv abstract pages (2026-09-15): STaR (2203.14465), DeepSeekMath (2402.03300) and DAPO (2503.14476) all arXiv non-exclusive → linked, discussed and cited by section, figure, table and equation only; NOT transcribed, no figures (AGENTS.md rule, lecture 3 precedent)
+- [x] 06 — LaTeX sources fetched to raw/pdfs/papers/src/<id>/ (gitignored) and main bodies read for the wiki; printed figure and table numbers taken from the PDFs' text layer
 - [ ] 07 — resolve site row 7 vs 8 first
 - [ ] 08 — 3 readings (site row 17)
 - [x] 09 — none listed; nothing to ingest
 
 ## Wiki
+- [x] wiki/06-train-time-scaling-scaling-rl.md (Opus; drafted from the verbatim captions and the three LaTeX sources while the transcript agent ran; no images; lecture-vs-paper discrepancies stated)
+- [ ] 06 — page's quotes and garble-dependent wording re-checked against the edited transcript
+- [x] New topic page wiki/reinforcement-learning.md (one objective, reward sources, PPO, GRPO, DAPO, outcome vs process, RL vs SFT, what RL improves — lectures 1, 3–6)
+- [x] Topic pages updated for lecture 6 (self-improvement, llm-training-pipeline, reasoning-models, chain-of-thought, test-time-scaling, verifiers, scaling-laws)
+- [x] INDEX.md — lecture 6, coverage 6 of 9, readings note, positions 2–6, topic one-liners, new RL page
+- [x] sources.md row 6 (and schedule table, "ingested so far", AlphaCode evidence for position 7), AGENTS.md (licences, numbering, images), kb.json (coverage 6, 10 topic pages, lecture 6 caveats, mapping caveat)
 - [x] wiki/05-planning-and-multi-step-reasoning.md (Opus; drafted from the verbatim captions and the LaTeX sources while the transcript agent ran; 9 figures embedded — LATS 1, 2; SWiRL 1–5, 7, 8; lecture-vs-paper discrepancies stated; ADaPT and Wider or Deeper? from abstracts)
 - [x] 05 — page's quotes and garble-dependent wording re-checked against the edited transcript (two paraphrased quotes fixed; AIME name removed; RFT's paper expansion added)
 - [x] Topic pages updated for lecture 5 (agentic-workflows, test-time-scaling, self-improvement, llm-training-pipeline, reasoning-models, verifiers; no new pages; llm-training-pipeline also gained its missing lecture 4 entry)
@@ -125,6 +134,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] Lecture 4: kb.json updated (coverage 4, 8 readings ingested, 54 images, new caveats), sources.md row 4, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included) and review read — the 22 math warnings are pre-existing plain-text pass@k/× in pages from lectures 1–3; committed and pushed (kbUrl already set)
 - [x] Math notation pass (2026-09-14, user request): the 22 plain-text notations verify_kb flagged in lecture 1–3 pages (pass@1, pass@k, Pass@K, Pass@100, best-of-N, 30×, 2.6×, 4×, ~14×) converted to inline math in wiki/03, reasoning-models, self-improvement, test-time-scaling; check_math --github 0 errors, 0 warnings
 - [x] Lecture 5: kb.json updated (coverage 5, 10 readings ingested, 64 images, new caveats), sources.md row 5, AGENTS.md, verify_kb.py clean (all hard checks, GitHub math included) and review read — numeric claims (images only in lectures 2–5; LATS 1–2 + SWiRL 1–8 = 10 on disk, 9 in wiki) match the measured distribution; committed and pushed (kbUrl already set)
+- [ ] Lecture 6: verify_kb.py clean and review read, committed and pushed (kbUrl already set)
 - [x] kb.json — coverage, materials.method, provenance caveats
 - [x] SEE_ALSO.md, if a sibling KB is genuinely relevant
 - [x] verify_kb.py clean, and its review section read

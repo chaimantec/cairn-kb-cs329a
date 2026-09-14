@@ -155,6 +155,21 @@ reasonable given the steps before it; during RL, a generative reward model score
 tool's output, which it never sees during training (≈1:01:55–1:02:44). Neither judge was trained; both
 were prompted (≈1:01:08; Zhou et al., §4.2).
 
+## The known answer as a reward
+
+[Lecture 6](06-train-time-scaling-scaling-rl.md) returns to the simplest verifier, a known final answer. **STaR** uses
+it as a filter: rationales that reach the correct answer are kept for training, on the assumption that a correct answer
+means sound reasoning — which lets invalid intermediate steps through (lecture 6, ≈19:29–20:16, ≈32:46–33:35).
+**DAPO** uses it as the whole reward — 1 if the predicted answer is equivalent to the ground truth, −1 otherwise —
+instead of a learned reward model, to avoid reward hacking, and rewrites its training problems so that every answer is
+an integer such a rule can check (Yu et al. 2025, §2.4, §3.5). **DeepSeekMath**, by contrast, trains reward models, and
+finds process supervision better than outcome supervision inside RL (Shao et al. 2024, §5.2.1).
+
+The lecture frames the tradeoff for any reward used in RL: a model that is too capable hacks the reward, and a reward
+with too little signal cannot drive the loop. Math and code have final answers, execution feedback and unit tests; how
+many domains have signals that good, and whether an ensemble of verifiers can cover one verifier's gaps, are open
+questions (≈1:04:40–1:06:11). See [reinforcement learning](reinforcement-learning.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): verifiers in repeated sampling, the
@@ -167,3 +182,5 @@ were prompted (≈1:01:08; Zhou et al., §4.2).
   verifiers and their distillation.
 - [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md): an
   LLM judge as LATS's value function and as SWiRL's step-wise process reward.
+- [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): the final answer as STaR's
+  filter and DAPO's rule-based reward, and reward hacking versus too little signal.

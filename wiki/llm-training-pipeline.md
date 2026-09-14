@@ -88,6 +88,22 @@ what it is shown, while RL gives the model a new chance to act within the prior 
 action (≈1:12:15–1:13:02; §4.2, Figure 5). SPRINT, from the same lecture, is trained with supervised
 fine-tuning, and the lecturer names RL methods such as GRPO as its open direction (≈49:17).
 
+## Preparing a model for RL, and choosing between SFT and RL
+
+[Lecture 6](06-train-time-scaling-scaling-rl.md) shows the stages feeding each other in DeepSeekMath. Before any RL
+the model is primed in its domain: continued pre-training on 120B math tokens curated from Common Crawl, starting from
+a code model because code training helped math reasoning, and without leaning on arXiv papers, which the paper found
+brought no notable improvement (lecture 6, ≈41:27–43:01; Shao et al. 2024, §2, §5.1). Instruction tuning on 776K math
+examples follows (§3.1), and only then RL with GRPO, which raised MATH accuracy from 46.8% to 51.7% (≈46:09; Table 5).
+If a model is weak in a domain, its capability there has to be built before RL can help (≈43:01).
+
+On the choice between the last two stages, the lecturer's answer is that RL lets a model hill-climb with fewer examples
+where the reward signal is strong, but takes a lot of work to get right; supervised fine-tuning on plenty of
+high-quality data is often faster, but does not bring or boost reasoning in the same way (≈1:00:52–1:01:37). Asked how
+much of a frontier model's training is now RL, the lecturer recalls about 1% against 99% for pre-training a year
+earlier, and perhaps 5% now (≈1:08:30). The RL algorithms themselves — PPO, GRPO and DAPO — are on
+[reinforcement learning](reinforcement-learning.md).
+
 ## What came next
 
 Pre-training and fine-tuning "were the big pieces" until about a year and a half before the lecture,
@@ -102,3 +118,5 @@ back into fine-tuning (≈28:53). See [test-time scaling](test-time-scaling.md) 
   RLHF's labelling cost and Constitutional AI's RLAIF.
 - [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md):
   SWiRL's step-wise RL for multi-step tool use, and why RL and SFT want differently filtered data.
+- [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): DeepSeekMath's math
+  pre-training and instruction tuning before RL, and SFT versus RL.

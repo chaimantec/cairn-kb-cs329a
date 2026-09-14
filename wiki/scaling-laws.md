@@ -54,9 +54,21 @@ of very hard problems: Schaeffer et al. (2025, §3) prove that $-\log(\text{pass
 power law in $k$ exactly when single-attempt success rates have a power-law density near zero. See
 [test-time scaling](test-time-scaling.md).
 
+## Training compute in place of parameters
+
+[Lecture 6](06-train-time-scaling-scaling-rl.md) adds a third kind of compute. One of its opening insights is that the
+compute spent training a model on its own outputs "can substitute for the model parameters", as compute spent on more
+data for smaller models already had (lecture 6, ≈3:11–3:56). Its motivating chart shows reasoning benchmarks no longer
+tracking parameter count: 7B and 32B models trained this way reach high scores (≈1:39–2:25). DeepSeekMath makes a
+related point about data: its 7B base model, pre-trained on curated math web data, outperforms Minerva 540B, a model 77
+times larger, which the authors take as showing that "the number of parameters is not the only key factor in
+mathematical reasoning capability" (Shao et al. 2024, §1.1, §2.3). See [reinforcement learning](reinforcement-learning.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the three axes, model-size history, few-shot
   learning and emergence.
 - [Lecture 2 — Test-Time Compute Scaling](02-test-time-compute-scaling.md): scaling laws for inference
   compute and why they take a power-law form.
+- [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): training compute on a model's own
+  outputs as a substitute for parameters.

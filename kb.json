@@ -9,11 +9,11 @@
     "courseUrl": "https://cs329a.stanford.edu/"
   },
   "coverage": {
-    "lecturesCovered": 5,
+    "lecturesCovered": 6,
     "lecturesTotal": 9,
-    "transcripts": 5,
-    "wikiLecturePages": 5,
-    "wikiTopicPages": 9
+    "transcripts": 6,
+    "wikiLecturePages": 6,
+    "wikiTopicPages": 10
   },
   "materials": {
     "primary": "papers",
@@ -25,7 +25,7 @@
       "listedOnSite": 34,
       "ingested": 10,
       "pdfsCommitted": false,
-      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Lecture 2's four readings (all CC BY 4.0) are transcribed in raw/papers/ from their arXiv LaTeX sources: Large Language Monkeys in full including its appendix; How Do Large Language Monkeys Get Their Power (Laws)?, Snell et al. and Archon main body only (appendices left at arXiv to save budget). Lecture 3's readings: only Weaver (Shrinking the Generation-Verification Gap with Weak Verifiers) is CC BY 4.0 and is transcribed, main body only; Cobbe et al. 2021, Lightman et al. 2023 and Math-Shepherd carry arXiv's non-exclusive licence and are linked and discussed in the wiki, not transcribed. Lecture 4's three readings (ReAct, RLEF, Constitutional AI) are all CC BY 4.0 and transcribed main body only. Lecture 5's five readings: LATS and SWiRL (CC BY 4.0) are transcribed main body only; SPRINT (CC BY-NC-SA 4.0), ADaPT and Wider or Deeper? (arXiv non-exclusive) are linked and discussed, not transcribed. Lecture 1 lists no readings. PDFs are not committed; every paper is cited at its original URL (sources.md)."
+      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Lecture 2's four readings (all CC BY 4.0) are transcribed in raw/papers/ from their arXiv LaTeX sources: Large Language Monkeys in full including its appendix; How Do Large Language Monkeys Get Their Power (Laws)?, Snell et al. and Archon main body only (appendices left at arXiv to save budget). Lecture 3's readings: only Weaver (Shrinking the Generation-Verification Gap with Weak Verifiers) is CC BY 4.0 and is transcribed, main body only; Cobbe et al. 2021, Lightman et al. 2023 and Math-Shepherd carry arXiv's non-exclusive licence and are linked and discussed in the wiki, not transcribed. Lecture 4's three readings (ReAct, RLEF, Constitutional AI) are all CC BY 4.0 and transcribed main body only. Lecture 5's five readings: LATS and SWiRL (CC BY 4.0) are transcribed main body only; SPRINT (CC BY-NC-SA 4.0), ADaPT and Wider or Deeper? (arXiv non-exclusive) are linked and discussed, not transcribed. Lecture 6's three readings (STaR, DeepSeekMath, DAPO) all carry arXiv's non-exclusive licence and are linked and discussed in the wiki, not transcribed. Lecture 1 lists no readings. PDFs are not committed; every paper is cited at its original URL (sources.md)."
     },
     "method": "source-text",
     "figuresAudited": false,
@@ -52,7 +52,7 @@
       "claude-sonnet-5"
     ],
     "caveats": [
-      "PARTIAL: covers catalog lectures 1 (Course Overview), 2 (Test-Time Compute Scaling), 3 (Robust Verification), 4 (Learning from Feedback with Tools/Code) and 5 (Planning and Multi-Step Reasoning) of 9. Do not cite this KB as covering CS329A as a whole.",
+      "PARTIAL: covers catalog lectures 1 (Course Overview), 2 (Test-Time Compute Scaling), 3 (Robust Verification), 4 (Learning from Feedback with Tools/Code), 5 (Planning and Multi-Step Reasoning) and 6 (Train Time Scaling/Scaling RL) of 9. Do not cite this KB as covering CS329A as a whole.",
       "Lecture 1 is transcript-only: the course publishes no slides and the site lists no paper readings for it.",
       "Lecture 2's readings: three of the four (power laws, Snell et al., Archon) are transcribed main body only; their appendices are not in this KB. Lecture 2 shows two charts that are not in the transcribed text — a SWE-bench chart with a DeepSeek model the lecturer believes was DeepSeek-V3 (not in any reading) and Archon's fusion/ranking win-rate chart (in its appendix) — so those passages are cited to the transcript only.",
       "No KB-written figure descriptions exist: the chat must not read values off a figure image; quote the caption and the paper's text.",
@@ -66,9 +66,12 @@
       "Lecture 5's readings: LATS and SWiRL are transcribed main body only. SPRINT (CC BY-NC-SA 4.0) and ADaPT and Wider or Deeper? (arXiv non-exclusive) are NOT transcribed and have no images; the wiki cites SPRINT by section, figure and table, and summarises ADaPT and Wider or Deeper? from their abstracts only, because the recording does not discuss them.",
       "Lecture 5 differs from its readings in places, and the wiki states both: it describes LATS's LM and self-consistency scores as added together, where the paper weights them with a hyperparameter; reflection as generated after success or failure, where the paper reflects on unsuccessful trajectories; and the paper as not analysing cost, where the version consulted (ICML 2024) has a sample-complexity and token-consumption analysis. It calls LATS's WebShop results close to human experts, which holds for the score (75.9 vs 82.1) but not the success rate (38.0 vs 59.6). LATS's HotPotQA experiments use an oracle that reports whether an answer is correct. The DeepSeek-R1 training curves shown at about 24:19 are not from any reading.",
       "Lecture 5's captions leave some words unclear, marked [Ed: unclear] in the edited transcript and not guessed: the benchmark named on the DeepSeek-R1 training curves (about 24:19), a word in the contrast with Math-Shepherd (about 5:37), a word at about 15:40, and 'fork' twice (about 20:21 and 34:29).",
-      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. Positions 1-5 are confirmed as rows 1-5; from position 6 the mapping is by title and tentative, and position 7 may correspond to site row 7, row 8 or both."
+      "Lecture 6's readings (STaR, DeepSeekMath, DAPO) all carry arXiv's non-exclusive licence: they are NOT transcribed and have no images; the wiki cites them by section, figure, table and equation at their arXiv URLs.",
+      "Lecture 6 differs from its readings in places, and the wiki states both: it places DeepSeekMath's 51.7% (and about 60% with further tricks) on AIME, where the paper reports 51.7% and 60.9% on MATH and gives no AIME score; it quotes STaR at 51.7%, which is not a STaR result; it attaches generalized advantage estimation to GRPO, where the paper uses GAE in PPO and replaces it with a group baseline; and it describes DAPO's 47-point comparison as DeepSeek-R1 distilled into Qwen 32B, where the paper's is DeepSeek-R1-Zero-Qwen-32B, RL on the base model.",
+      "Lecture 6's closing figures on the share of RL versus pre-training in frontier models (including a Grok 4 claim) are the lecturer's recollection, not from any reading.",
+      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. Positions 1-6 are confirmed as rows 1-6; from position 7 the mapping is by title and tentative. Position 7 may correspond to site row 7, row 8 or both; lecture 6 previews AlphaCode, a row 8 reading, for 'next Friday', which is row 8's date."
     ]
   },
   "entryPoint": "INDEX.md",
-  "updated": "2026-09-14"
+  "updated": "2026-09-15"
 }

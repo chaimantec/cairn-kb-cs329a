@@ -101,6 +101,31 @@ result is data that teaches the model to reason in parallel (≈27:24–29:45; B
 lecturer offers this as a general pattern: to teach a model a behaviour, use LLMs to create the
 fine-tuning data (≈27:24).
 
+## Bootstrapping reasoning from its own answers
+
+[Lecture 6](06-train-time-scaling-scaling-rl.md) opens with the loop in its barest form. **STaR** few-shot prompts a
+model to write a rationale and an answer for many problems whose answers are known, keeps only the rationales that
+reached the correct answer, fine-tunes on them, and repeats (lecture 6, ≈17:54). Problems the model cannot solve give
+it no signal, so STaR adds **rationalization**: show the model the correct answer as a hint, ask it to explain its way
+there, and train on that rationale as if it had been produced without the hint (≈18:42–19:29). On CommonsenseQA a 6B
+model trained this way reached 72.5% using 86.7% of the training data, against 73.0% for a GPT-3 model 30 times larger
+fine-tuned to answer directly (Zelikman et al. 2022, §4.4, Table 1).
+
+The loop rests on assumptions that bound every method in this family: that a correct final answer means sound
+reasoning, that the model can produce a valid rationale once it is given the answer, and that it is strong enough to
+start (≈19:29–21:02). It learns only from successes: "learning from negative examples has not been nailed. Learning
+from positive examples has been" (≈23:24).
+
+## More consistent, not more capable
+
+Lecture 6 also marks a limit on what these loops achieve. In DeepSeekMath's analysis, RL raised majority-vote accuracy,
+$\text{Maj@}K$, but not $\text{Pass@}K$ — "the model actually became more consistent, not fundamentally smarter"
+(≈52:19; Shao et al. 2024, §5.2.2, Figure 7). The lecturer extends this to all three of the lecture's methods: they
+improve majority voting, formatting and coherence over multiple steps, and none yet improves fundamental capability or
+generalizes far out of domain (≈1:03:08). RL gets better at what a model can already do, exploring "the design space of
+what it knows" (≈1:10:06–1:10:52). This sharpens the open question from lecture 1 above; see
+[reinforcement learning](reinforcement-learning.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the test-time-to-training loop, test
@@ -113,3 +138,5 @@ fine-tuning data (≈27:24).
 - [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md):
   SWiRL's step-wise RL on self-generated, model-judged trajectories, and SPRINT's LLM-restructured
   training data.
+- [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): STaR's bootstrapped rationales
+  and rationalization, and RL making a model more consistent rather than more capable.

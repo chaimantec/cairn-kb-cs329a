@@ -54,12 +54,24 @@ A second form scales how long a single model thinks. OpenAI's o1 release showed 
 on the AIME math benchmark rising log-linearly with test-time compute — the kind of curve previously
 shown only for training compute (≈30:27–31:14). See [reasoning models](reasoning-models.md).
 
+[Lecture 6](06-train-time-scaling-scaling-rl.md) shows the release's other panel: $\text{pass@}1$ on AIME also rises
+log-linearly with **train-time** compute, so generating outputs and feeding them back into training forms a loop
+(lecture 6, ≈6:15–7:05). Asked whether test-time compute buys more than train-time compute on that chart, the lecturer
+says there is no intuition that one should beat the other (≈10:57–12:29).
+
 ## Feeding it back into training
 
 Test-time scaling is also a data engine. Sampling many solutions to math problems with known
 answers, or many solutions to coding problems, yields high-quality synthetic data to fine-tune on —
 the combination the lecture credits for DeepSeek and the o1-series and Gemini Thinking models, and
 "the self-improving piece" (≈28:53–29:40). See [self-improvement](self-improvement.md).
+
+Lecture 6 makes this loop its subject and calls it **train-time scaling**: take the model's outputs after test-time
+scaling has filtered them, and fine-tune on them (≈4:42–5:29). It also separates the two. Test-time compute is cheap to
+add and can scale almost without limit when a good verifier exists, since repeated sampling shows a correct solution is
+there to be found. Train-time scaling has to be scaled correctly and needs enough successes in its feedback loop, and
+what it buys is a higher $\text{pass@}1$ (≈12:29–14:49). DeepSeekMath's analysis finds that its RL raised majority-vote
+accuracy but not $\text{Pass@}K$ (Shao et al. 2024, §5.2.2). See [reinforcement learning](reinforcement-learning.md).
 
 ## An inference scaling law
 
@@ -141,3 +153,5 @@ better accuracy (≈25:04–26:38, ≈44:41; Biju et al. 2025, §4.2). See
 - [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md): LATS's tree
   search with environment feedback and its cost, and SPRINT's parallel execution within one reasoning
   trace.
+- [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): o1's train-time curve, and
+  the loop from test-time outputs back into training.

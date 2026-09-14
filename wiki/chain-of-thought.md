@@ -66,6 +66,17 @@ judging which of two responses is more harmless. This improves its judgements, b
 fully to one answer, so its probabilities are clamped to 40–60% before use as labels (Bai et al. 2022,
 §2, §4.1).
 
+## Bootstrapping rationales instead of writing them
+
+[Lecture 6](06-train-time-scaling-scaling-rl.md) takes up the data problem behind chain-of-thought fine-tuning:
+internet-scale data rarely contains reasoning steps, annotating them by hand is very expensive, templates work only in
+narrow domains, and few-shot prompting with a handful of rationales underperforms fine-tuning on a larger dataset
+without them (lecture 6, ≈16:24–17:09). **STaR** has the model generate the rationales itself from a few examples, keeps
+those that reach the correct answer, and fine-tunes on them; for problems it gets wrong, it is shown the answer and asked
+for a rationale (≈17:54–19:29). The few-shot rationales it starts from can bias the style of everything it learns
+(≈32:01–32:46). On GSM8K rationalization added little: 10.7% with it, 10.1% without, and 5.8% for fine-tuning to answer
+directly (Zelikman et al. 2022, §4.5, Table 2). See [self-improvement](self-improvement.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the tennis-ball example, emergence with
@@ -73,3 +84,5 @@ fully to one answer, so its probabilities are clamped to 40–60% before use as 
 - [Lecture 4 — Learning from Feedback with Tools/Code](04-learning-from-feedback-with-tools-code.md):
   ungrounded reasoning, ReAct's comparison with chain of thought, and chain of thought in a feedback
   model.
+- [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): STaR's bootstrapping of
+  rationales from a model's own correct answers.

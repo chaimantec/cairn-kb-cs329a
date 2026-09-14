@@ -75,9 +75,27 @@ tokens. It carried over to Countdown and GPQA-Diamond without training on them (
 al. 2025, §4.2, Table 2). Harder problems took more rounds, and the model explored more plans in the
 early rounds than in later ones (≈40:48; Figure 5). See [test-time scaling](test-time-scaling.md).
 
+## Are the behaviours learned?
+
+[Lecture 6](06-train-time-scaling-scaling-rl.md) returns to the same behaviours — problem analysis, task
+decomposition, self-evaluation, backtracking, and trying different approaches in "a somewhat parallel search" — with
+the o1 transpose example and a chemistry problem in which the model stops mid-calculation because the formula it was
+using is wrong (lecture 6, ≈7:52–10:10). It repeats the domain split: in programming, data analysis and mathematical
+calculation people preferred the thinking model over GPT-4o more than half the time, and in personal writing much less
+(≈10:10–10:57).
+
+Whether those behaviours are learned is one of the lecture's open problems: are they emerging, or were they already
+present and simply becoming statistically more prevalent (≈1:06:11–1:06:57)? The readings bear on it from two sides.
+DAPO's authors report that checking and reflecting on earlier steps was virtually absent early in RL training on a base
+model and appeared as training progressed (Yu et al. 2025, §4.4, Table 2). DeepSeekMath's analysis finds that RL raised
+majority-vote accuracy but not $\text{Pass@}K$, making its model more consistent rather than more capable (Shao et al.
+2024, §5.2.2). See [reinforcement learning](reinforcement-learning.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): reasoning behaviours, the o1 example, o1 vs
   GPT-4o, and the Q&A on why reasoning models work.
 - [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md): SPRINT's
   training of a reasoning model to plan and execute in parallel.
+- [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): the thinking patterns again,
+  and whether reflection emerges during RL.

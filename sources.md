@@ -4,11 +4,11 @@ Every document the course website (<https://cs329a.stanford.edu/>) links as cour
 
 **The course publishes no slides** on its public site — the instructors upload lecture materials to Canvas — so the course material this knowledge base draws on is the **paper readings** listed per lecture in the site's schedule. **Cite every paper at the original URL below.** The PDFs were downloaded to `raw/pdfs/papers/` on the machine that built this KB, but that directory is **gitignored and not in this repo**: the local filenames are recorded so a future build can find them, and are not links.
 
-**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); and LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5) — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3 and 5 are linked only, for licence reasons. Lecture 1 lists no readings.
+**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); and LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5) — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3 and 5, and all three readings of row 6 (lecture 6), are linked only, for licence reasons. Lecture 1 lists no readings.
 
 ## Schedule rows and catalog positions
 
-The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–5 are confirmed against their transcripts: positions 2, 3 and 4 each discuss every reading of their row, and position 5 discusses three of its row's five. The rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
+The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–6 are confirmed against their transcripts: positions 2, 3, 4 and 6 each discuss every reading of their row, and position 5 discusses three of its row's five. The rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
 
 | Site row | Date | Topic | Catalog position | Readings |
 |---|---|---|---|---|
@@ -17,7 +17,7 @@ The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this K
 | 3 | Mon Sep 29 | Robust Verification | 3 (confirmed) | 4 — Weaver ingested; 3 linked only (licence) |
 | 4 | Fri Oct 3 | Learning from feedback with tools/code | 4 (confirmed) | 3 — ingested |
 | 5 | Mon Oct 6 | Multi-step Reasoning/Planning | 5 (confirmed) | 5 — LATS and SWiRL ingested; 3 linked only (licence) |
-| 6 | Fri Oct 10 | Train Time Scaling/Scaling RL | 6 | 3 |
+| 6 | Fri Oct 10 | Train Time Scaling/Scaling RL | 6 (confirmed) | 3 — linked only (licence) |
 | 7 | Mon Oct 13 | Open-Ended Evolution of Self-Improving Agents | 7 (tentative — shares a video with row 8) | 3 |
 | 8 | Fri Oct 17 | Self improvement with Search & Deep Research Agents | 7 (tentative — shares a video with row 7) | 3 |
 | 13 | Mon Nov 3 | Agentic Frameworks for Software Engineering | — (no video in catalog) | 3 |
@@ -26,6 +26,8 @@ The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this K
 | 20 | Fri Dec 5 | Future Research Areas | 9 | none listed |
 
 Rows 9, 15, 16, 18 and 19 are guest lectures and rows 10–12 are midterm presentations; none of them lists readings or appears in the catalog.
+
+Evidence for position 7, not yet confirmation: lecture 6 (row 6, Fri Oct 10) previews AlphaCode — a row 8 reading — as one of the papers for "next Friday", which is row 8's date (lecture 6 transcript, ≈12:29).
 
 ## Row 2 — Test-time Compute Scaling (Fri Sep 26) — 4 readings, ingested
 
@@ -71,13 +73,15 @@ Catalog position 5, confirmed: its transcript discusses LATS, SPRINT and SWiRL, 
 | ADaPT: As-Needed Decomposition and Planning with Language Models (Prasad et al. 2024) | <https://arxiv.org/abs/2311.05772> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2311.05772-adapt.pdf` | 2026-09-13 |
 | Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search | <https://arxiv.org/abs/2503.04412> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2503.04412-wider-or-deeper-scaling-llm-inference-time-compute.pdf` | 2026-09-13 |
 
-## Row 6 — Train Time Scaling/Scaling RL (Fri Oct 10) — 3 readings
+## Row 6 — Train Time Scaling/Scaling RL (Fri Oct 10) — 3 readings, lecture built
 
-| Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
-|---|---|---|---|
-| STaR: Bootstrapping Reasoning With Reasoning (Zelikman et al. 2022) | <https://arxiv.org/pdf/2203.14465> | `raw/pdfs/papers/2203.14465-star.pdf` | 2026-09-13 |
-| DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models | <https://arxiv.org/abs/2402.03300> | `raw/pdfs/papers/2402.03300-deepseekmath.pdf` | 2026-09-13 |
-| DAPO: An Open-Source LLM Reinforcement Learning System at Scale | <https://arxiv.org/abs/2503.14476> | `raw/pdfs/papers/2503.14476-dapo.pdf` | 2026-09-13 |
+Catalog position 6, confirmed: its transcript discusses all three readings, in order. Licences were checked on each arXiv abstract page on 2026-09-15: **all three carry arXiv's non-exclusive licence**, which does not permit republishing them. They are linked, discussed and cited by section, figure, table and equation in [the lecture page](wiki/06-train-time-scaling-scaling-rl.md); none is transcribed and none of their figures is committed. LaTeX sources were fetched from `https://arxiv.org/e-print/<id>` on 2026-09-15 to `raw/pdfs/papers/src/<id>/` (gitignored, not in repo) and read for the wiki.
+
+| Paper | Original URL | Licence | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
+|---|---|---|---|---|---|
+| STaR: Bootstrapping Reasoning With Reasoning (Zelikman et al. 2022) | <https://arxiv.org/pdf/2203.14465> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2203.14465-star.pdf` | 2026-09-13 |
+| DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models | <https://arxiv.org/abs/2402.03300> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2402.03300-deepseekmath.pdf` | 2026-09-13 |
+| DAPO: An Open-Source LLM Reinforcement Learning System at Scale | <https://arxiv.org/abs/2503.14476> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2503.14476-dapo.pdf` | 2026-09-13 |
 
 ## Row 7 — Open-Ended Evolution of Self-Improving Agents (Mon Oct 13) — 3 readings
 

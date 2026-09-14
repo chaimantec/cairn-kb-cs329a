@@ -58,7 +58,9 @@ the role slide decks play in other Cairn KBs.
   Lecture 5's five were checked on 2026-09-14: LATS and SWiRL are CC BY 4.0 and transcribed; ADaPT and
   *Wider or Deeper?* carry the non-exclusive licence and are linked only. SPRINT is **CC BY-NC-SA
   4.0**, whose non-commercial and share-alike terms would attach to a transcription in a KB that a
-  commercial product reads, so it too is linked and discussed only, with no figures.
+  commercial product reads, so it too is linked and discussed only, with no figures. Lecture 6's three (STaR,
+  DeepSeekMath, DAPO) were checked on 2026-09-15 and all carry the non-exclusive licence, so all three are linked,
+  discussed and cited only.
 
 ### Paper files (`raw/papers/`)
 
@@ -95,7 +97,8 @@ republication, so none of their figures is here. Lecture 4: every main-body figu
 readings — ReAct Figures 1–3, RLEF Figures 1–4, Constitutional AI Figures 1–10 — in
 `raw/images/04-learning-from-feedback-with-tools-code/`. Lecture 5: the main-body figures of its two CC BY
 readings only — LATS Figures 1–2 and SWiRL Figures 1–8 — in `raw/images/05-planning-and-multi-step-reasoning/`;
-SPRINT, ADaPT and *Wider or Deeper?* have none. Lectures 1 and 6–9 have no images.
+SPRINT, ADaPT and *Wider or Deeper?* have none. Lectures 1 and 6–9 have no images; lecture 6's three readings are
+not licensed for republication.
 
 Constitutional AI prints its figure labels with no colon ("Figure 1" then the caption), which the
 skill's `extract_paper_figures.py` did not recognise as a caption when lecture 4 was built. Its crops
@@ -131,8 +134,8 @@ pattern, regression-tested to give identical crops on the other ten lecture 2–
   course website for logistics it states, and say when the two disagree.
 - **Files are named by Cairn catalog position**, not by the site's schedule row. The catalog has
   nine videos and the site twenty rows; by title, positions 1–6 are rows 1–6, position 8 is row 17,
-  position 9 is row 20, and position 7 may be row 7, row 8 or both. Positions 2–5 are confirmed against their
-  transcripts — 2, 3 and 4 each discuss every reading of their row, and 5 discusses three of its five; confirm each later position the
+  position 9 is row 20, and position 7 may be row 7, row 8 or both. Positions 2–6 are confirmed against their
+  transcripts — 2, 3, 4 and 6 each discuss every reading of their row, and 5 discusses three of its five; confirm each later position the
   same way before ingesting its readings, and record the resolution in the lecture page
   and `sources.md`. Rows 13 and 14 list readings but have no video in the catalog.
 - **Never invent course content.** If a source is unclear, say so on the page. Do not fill the gap
