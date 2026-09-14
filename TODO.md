@@ -81,7 +81,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 05 — LaTeX sources for all five fetched to raw/pdfs/papers/src/<id>/ (gitignored)
 - [x] 05 — figure crops, main bodies of the two CC BY readings → raw/images/05-planning-and-multi-step-reasoning/: lats-figure-1–2, swirl-figure-1–8 (10); text-layer check clean on all
 - [x] 05 — raw/papers/05-swirl.md (main body only; Sonnet). check_paper_file.py --main-only: 5 sections, 5 subsections, 8/8 figures with images, 3/3 tables, 67/67 table numbers, every LaTeX paragraph found; 1 FAIL confirmed artifact — the 3 unmatched markdown paragraphs are the italic table-flattening notes. check_math clean (26 formulas). Parent moved the three table captions above their tables (spec), replaced `<br>` in two-row headers with spaces, and cut a LaTeX-internal remark from a note. Source quirks kept: "Section 4" for a figure label after "Section" (as the PDF prints), "Gemini-2-27b", "GSM8k", two .bbl keys for BeerQA (Qi et al., 2021a/b)
-- [ ] 05 — raw/papers/05-lats.md (main body only; Sonnet)
+- [x] 05 — raw/papers/05-lats.md (main body only; Sonnet). check_paper_file.py --main-only: every check passes (6 sections, 8 subsections, 2 figures with images, 10 tables, 144/144 table numbers, 61/61 LaTeX paragraphs, 59/59 markdown paragraphs traced); check_math clean (156 formulas). Source quirk kept verbatim: Table 5 cites ReAct's row as (Wei et al., 2022), as the published PDF also prints
 - [ ] 06 — 3 readings
 - [ ] 07 — resolve site row 7 vs 8 first
 - [ ] 08 — 3 readings (site row 17)
@@ -92,7 +92,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 05 — page's quotes and garble-dependent wording re-checked against the edited transcript (two paraphrased quotes fixed; AIME name removed; RFT's paper expansion added)
 - [x] Topic pages updated for lecture 5 (agentic-workflows, test-time-scaling, self-improvement, llm-training-pipeline, reasoning-models, verifiers; no new pages; llm-training-pipeline also gained its missing lecture 4 entry)
 - [x] INDEX.md — lecture 5, coverage 5 of 9, readings, topic one-liners, raw/papers and raw/images
-- [x] sources.md row 5 (and the stale row-4 status and "ingested so far" line), AGENTS.md (licences, images, numbering), kb.json (coverage 5, 10 readings, 64 images, caveats) — pending re-verification once the two paper files exist
+- [x] sources.md row 5 (and the stale row-4 status and "ingested so far" line), AGENTS.md (licences, images, numbering), kb.json (coverage 5, 10 readings, 64 images, caveats) — re-verified by verify_kb.py once both paper files existed
 - [x] wiki/04-learning-from-feedback-with-tools-code.md (Opus; drafted from the verbatim captions and the LaTeX sources while the transcript agent ran; 9 figures embedded — ReAct 1, 3; RLEF 1–3; Constitutional AI 1, 2, 5, 8; lecture-vs-paper discrepancies stated)
 - [x] 04 — page's quotes re-checked against the edited transcript (all 10 found); the closing-question line on a student's agent definition rewritten after "scratchpads" became [Ed: unclear]
 - [x] Topic pages updated for lecture 4 (agentic-workflows: ReAct loop, RLEF coding agents; self-improvement: where the feedback comes from; verifiers: tests inside an RL loop, AI feedback as a judge; chain-of-thought: grounding; llm-training-pipeline: RLAIF; no new pages)
