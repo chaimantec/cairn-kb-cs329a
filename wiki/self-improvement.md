@@ -59,9 +59,35 @@ pre-trained model already finds a correct answer, feedback should raise pass@1 w
 improving the model — yet "that whole loop is not completely well understood", and there are signs
 that continuing RL keeps improving models (≈52:12).
 
+## Where the feedback comes from
+
+[Lecture 4](04-learning-from-feedback-with-tools-code.md) presents three ways for a model to improve
+itself and sorts them by the source of the feedback (≈0:50–1:36):
+
+- **The environment.** ReAct grounds a model's reasoning in observations from tool calls. Fine-tuning
+  small PaLM models on 3,000 of ReAct's own trajectories with correct answers made them beat much
+  larger prompted models (Yao et al. 2023, §3.3, Figure 3).
+- **Execution.** RLEF runs generated code against public tests during generation and rewards the final
+  solution on private tests, training the model with PPO. The lecturer's lesson is that "the
+  self-improvement loop works", at least on simple enough problems with a binary reward (≈39:43);
+  whether harder problems need richer feedback, such as error traces, is left open (≈38:09).
+- **Principles.** Constitutional AI has a model critique and revise its own responses, and label its
+  own preference data, against a human-written constitution; humans write only the principles
+  (≈47:36). In the paper the harmlessness labels come entirely from AI while the helpfulness labels are
+  still human (Bai et al. 2022, §1.2).
+
+The recap puts the common idea plainly: when a feedback loop on top of a model has enough signal, the
+model can improve beyond the data it was trained on (≈1:02:21–1:03:06). Its limits appear in the same
+lecture. Self-critique can be hard, and a consensus of other models sometimes critiques better, because
+a model can be overconfident and not know what it knows (≈59:16–1:00:01). And holding a model to fixed
+principles trades some helpfulness for harmlessness (≈50:46–51:32).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the test-time-to-training loop, test
   generation in coding, the generator–verifier gap, and the open question about RL.
 - [Lecture 3 — Robust Verification](03-robust-verification.md): Math-Shepherd's automatically
   labelled process reward model, used for verification and for PPO on the generator.
+- [Lecture 4 — Learning from Feedback with Tools/Code](04-learning-from-feedback-with-tools-code.md):
+  feedback from the environment (ReAct), from code execution (RLEF) and from a constitution
+  (Constitutional AI).

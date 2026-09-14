@@ -61,6 +61,19 @@ and are weighted according to what the model's builders care about most (≈17:4
 idea of a learned judge reappears in [verifiers](verifiers.md) and agentic
 [evaluators](agentic-workflows.md).
 
+## RLAIF: AI feedback in place of human labels
+
+[Lecture 4](04-learning-from-feedback-with-tools-code.md) returns to RLHF to show its limit: humans rank
+pairs of outputs, a reward model is built from their preferences, and the model hill-climbs on it — but
+collecting tens of thousands of human labels is extremely time-consuming (lecture 4, ≈46:50–47:36).
+**Constitutional AI** replaces the human harmlessness labels with AI feedback guided by a short list of
+human-written principles. A supervised stage fine-tunes on the model's own critiqued and revised
+responses; an RL stage trains a preference model on AI judgements of which response is less harmful,
+and trains the policy against it (≈48:22–49:09; Bai et al. 2022, §1.2). The paper calls this RL from AI
+feedback (**RLAIF**); its preference model still uses human labels for helpfulness (§1.2). The lecturer
+also notes that post-training takes a much smaller share of compute than pre-training — maybe 5% — and
+is repeated fairly often (≈52:18).
+
 ## What came next
 
 Pre-training and fine-tuning "were the big pieces" until about a year and a half before the lecture,

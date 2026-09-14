@@ -82,6 +82,11 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 09 — none listed; nothing to ingest
 
 ## Wiki
+- [x] wiki/04-learning-from-feedback-with-tools-code.md (Opus; drafted from the verbatim captions and the LaTeX sources while the transcript agent ran; 9 figures embedded — ReAct 1, 3; RLEF 1–3; Constitutional AI 1, 2, 5, 8; lecture-vs-paper discrepancies stated)
+- [ ] 04 — re-check the page's quotes and restored terms against the edited transcript
+- [x] Topic pages updated for lecture 4 (agentic-workflows: ReAct loop, RLEF coding agents; self-improvement: where the feedback comes from; verifiers: tests inside an RL loop, AI feedback as a judge; chain-of-thought: grounding; llm-training-pipeline: RLAIF; no new pages)
+- [x] INDEX.md — lecture 4, coverage 4 of 9, readings, topic one-liners, raw/papers and raw/images
+- [x] sources.md row 4, AGENTS.md (licences, images), kb.json (coverage 4, 8 readings, 54 images, caveats) — pending re-verification once the three paper files exist
 - [x] wiki/03-robust-verification.md (Opus; all four readings, Weaver figures 1–6 embedded, lecture-vs-paper discrepancies stated)
 - [x] Topic pages updated for lecture 3 (verifiers: training a verifier, ORM/PRM evidence, step labels without humans, weak-verifier ensembles; test-time-scaling: selection sets the ceiling; self-improvement: model-labelled reward; no new pages)
 - [x] INDEX.md — lecture 3, coverage 3 of 9, verifiers one-liner, raw/papers and raw/images

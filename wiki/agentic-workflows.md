@@ -89,7 +89,44 @@ See [self-improvement](self-improvement.md).
 - **AI scientists** — idea generation, experiment iteration and paper write-up; useful for
   brainstorming beyond a researcher's usual range despite hallucinations (≈56:53–57:39).
 
+## Reasoning and acting: ReAct
+
+[Lecture 4](04-learning-from-feedback-with-tools-code.md) goes back to one of the first designs for a
+language model that uses tools. **ReAct** prompts a model to interleave verbal reasoning with actions —
+tool calls such as searching Wikipedia or navigating a shopping site — so that each observation feeds
+the next thought (lecture 4, ≈4:40–7:47). Reasoning alone is ungrounded and hallucinates; acting alone
+cannot reason about what it has seen. Interleaving the two gave more grounded and more interpretable
+trajectories (≈19:28; Yao et al. 2023, §3.3). Formally, ReAct adds the space of language to the agent's
+action space: a thought is an action that changes no part of the environment, only the context the
+next step sees (Yao et al., §2).
+
+Its costs are the ones any agent loop pays: tasks with large action spaces need more demonstrations than
+fit in context, and every reasoning step adds inference cost (≈21:47). The lecturer notes that the
+thinking modes of today's open-source models do this out of the box, having been distilled on such
+traces (≈11:39).
+
+The class discussion of ReAct lists what an agent loop may need beyond reasoning and acting: reflection
+on noisy environment feedback, backtracking out of repetitive loops, confidence from repeated attempts,
+task decomposition, parallel approaches, memory, and routing subtasks to the models best at them —
+"almost like building a compound system" (≈22:34–27:18). Asked whether RL post-training will make
+handcrafted frameworks like ReAct obsolete, the lecturer answers yes where the space to explore can be
+defined, and no where the workflow is domain-specific, as for a finance or legal agent
+(≈1:06:12–1:08:34).
+
+## Coding agents that learn from their test runs
+
+Lecture 4's second paper, **RLEF**, trains a code model with reinforcement learning on the loop a coding
+agent runs: write code, run it against public tests, read the feedback, try again, and be rewarded by
+hidden private tests (≈29:36; Gehring et al. 2025, §2.1). Before that training, iterating on feedback
+did not beat sampling independently at the same budget (≈35:49; Gehring et al., §3.3). For code bases
+too large for the context window, the class's ideas — searching for what is relevant, summaries, a graph
+representation — are the kind of thing Claude Code does, and what SWE-bench targets (≈43:41–46:02). See
+[self-improvement](self-improvement.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the LLM-to-agent transition, workflow
   building blocks and patterns, coding agents and applications.
+- [Lecture 4 — Learning from Feedback with Tools/Code](04-learning-from-feedback-with-tools-code.md):
+  ReAct's reason–act loop, RLEF's execution-feedback loop for coding agents, and the class discussion
+  of what else an agent loop needs.

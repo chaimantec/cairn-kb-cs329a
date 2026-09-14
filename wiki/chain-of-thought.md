@@ -51,7 +51,25 @@ producing this chain of thought" (≈33:34). A student question — whether the 
 generating the reasoning out loud or from being asked to decompose at all — is answered in
 [reasoning models](reasoning-models.md).
 
+## Grounding chain of thought
+
+[Lecture 4](04-learning-from-feedback-with-tools-code.md) points out what chain of thought lacks: its
+steps come from the model's internal state and get no feedback from the outside world (lecture 4,
+≈3:54). ReAct interleaves the reasoning with tool calls. On HotpotQA the paper's hand analysis
+attributes 56% of chain of thought's failures to hallucination and none of ReAct's; but ReAct's rigid
+thought–action structure causes more reasoning errors, 47% of its failures against 16%, and chain of
+thought still scores higher on HotpotQA. The best prompting methods combine the two, backing off from
+one to the other (Yao et al. 2023, §3.3, Tables 1 and 2; lecture 4, ≈18:41–19:28).
+
+Chain of thought also appears in Constitutional AI, where a feedback model reasons step by step before
+judging which of two responses is more harmless. This improves its judgements, but it commits almost
+fully to one answer, so its probabilities are clamped to 40–60% before use as labels (Bai et al. 2022,
+§2, §4.1).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the tennis-ball example, emergence with
   scale, and the emergent-or-trained question.
+- [Lecture 4 — Learning from Feedback with Tools/Code](04-learning-from-feedback-with-tools-code.md):
+  ungrounded reasoning, ReAct's comparison with chain of thought, and chain of thought in a feedback
+  model.

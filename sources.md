@@ -49,13 +49,15 @@ Catalog position 3, confirmed: its transcript discusses all four readings. Licen
 | Let's Verify step by step (Lightman et al. 2023) | <https://arxiv.org/abs/2305.20050> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2305.20050-let-s-verify-step-by-step-lightman-et-al-2023.pdf` | 2026-09-13 |
 | Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations (Wang et al. 2023) | <https://arxiv.org/abs/2312.08935> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2312.08935-math-shepherd.pdf` | 2026-09-13 |
 
-## Row 4 — Learning from feedback with tools/code (Fri Oct 3) — 3 readings
+## Row 4 — Learning from feedback with tools/code (Fri Oct 3) — 3 readings, lecture built
 
-| Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
-|---|---|---|---|
-| ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al. 2022) | <https://arxiv.org/abs/2210.03629> | `raw/pdfs/papers/2210.03629-react.pdf` | 2026-09-13 |
-| RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning | <https://arxiv.org/abs/2410.02089> | `raw/pdfs/papers/2410.02089-rlef.pdf` | 2026-09-13 |
-| Constitutional AI: Harmlessness from AI Feedback | <https://arxiv.org/abs/2212.08073> | `raw/pdfs/papers/2212.08073-constitutional-ai.pdf` | 2026-09-13 |
+Catalog position 4, confirmed: its transcript discusses all three readings, in order. Licences were checked on each arXiv abstract page on 2026-09-14: **all three are CC BY 4.0**. Their LaTeX sources were fetched from `https://arxiv.org/e-print/<id>` on 2026-09-14 to `raw/pdfs/papers/src/<id>/` (gitignored, not in repo); each main body is transcribed in this KB, and the appendices are not.
+
+| Paper | Original URL | Licence | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
+|---|---|---|---|---|---|
+| ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al. 2022) | <https://arxiv.org/abs/2210.03629> | CC BY 4.0 | [main body](raw/papers/04-react.md) (appendices not transcribed) | `raw/pdfs/papers/2210.03629-react.pdf` | 2026-09-13 |
+| RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning | <https://arxiv.org/abs/2410.02089> | CC BY 4.0 | [main body](raw/papers/04-rlef.md) (appendices not transcribed) | `raw/pdfs/papers/2410.02089-rlef.pdf` | 2026-09-13 |
+| Constitutional AI: Harmlessness from AI Feedback | <https://arxiv.org/abs/2212.08073> | CC BY 4.0 | [main body](raw/papers/04-constitutional-ai.md) (appendices not transcribed) | `raw/pdfs/papers/2212.08073-constitutional-ai.pdf` | 2026-09-13 |
 
 ## Row 5 — Multi-step Reasoning/Planning (Mon Oct 6) — 5 readings
 

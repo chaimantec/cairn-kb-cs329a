@@ -119,6 +119,27 @@ verification by adding verifiers rather than sampling one verifier more, and the
 distilled into a model of about 400 million parameters (≈1:04:07–1:04:53). See
 [lecture 3](03-robust-verification.md) for the method and results.
 
+## Tests inside a training loop
+
+In [lecture 4](04-learning-from-feedback-with-tools-code.md), unit tests are both the feedback and the
+reward. RLEF splits a problem's tests in two: **public tests** give execution feedback while the model
+iterates, and **private tests**, hidden from it, decide the reward for its final solution (lecture 4,
+≈29:36–31:55). The split stops the model from copying expected outputs it saw in feedback into later
+answers, and keeps iteration cheap (Gehring et al. 2025, §2.1). The paper's own limitation is the one
+every test-based verifier shares: it needs test cases, which may not exist, and it suggests pairing the
+method with automatic unit-test generation (§5).
+
+## AI feedback as a judge
+
+Constitutional AI uses a model as the judge for harmlessness. A **feedback model** is shown two responses
+and a principle as a multiple-choice question, and the probabilities it gives each option become the
+labels a preference model is trained on (Bai et al. 2022, §4.1). Asked how to know such feedback is
+accurate, the lecturer says to hold out a validation set and check the preference model's scores for
+consistency with humans (lecture 4, ≈57:41). The paper reports the feedback model's labels as reasonably
+well calibrated, and chain-of-thought reasoning as significantly improving models' judgements on 438
+comparisons of helpful, honest and harmless responses (§4.3, Figure 9; §2, Figure 4). See
+[the LLM training pipeline](llm-training-pipeline.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): verifiers in repeated sampling, the

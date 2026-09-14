@@ -49,7 +49,8 @@ the role slide decks play in other Cairn KBs.
   Lecture 1's page has a table of five such papers.
 - **Check each paper's licence before committing any of its text or figures.** As of 2026-09-13,
   32 of the 34 listed papers are arXiv-hosted. The four lecture 2 readings are all CC BY 4.0, checked
-  on each abstract page. Of lecture 3's four, only Weaver is CC BY 4.0: *Training Verifiers to Solve
+  on each abstract page, and so are lecture 4's three (ReAct, RLEF, Constitutional AI), checked on
+  2026-09-14. Of lecture 3's four, only Weaver is CC BY 4.0: *Training Verifiers to Solve
   Math Word Problems* (Cobbe et al. 2021), *Let's Verify Step by Step* (Lightman et al. 2023) and
   *Math-Shepherd* (Wang et al. 2023) carry arXiv's non-exclusive licence, which does not permit
   republishing their text or figures here. A paper like that is linked at arXiv, discussed and cited
@@ -82,11 +83,18 @@ Each ingested reading is two files, named by the catalog lecture that lists it:
 
 ### Images
 
-Only **lectures 2 and 3** have images, each named `<paper>-figure-N` after the paper file it belongs
-to. Lecture 2: every figure in the transcribed parts of its four readings, in
+Only **lectures 2, 3 and 4** have images, each named `<paper>-figure-N` after the paper file it
+belongs to. Lecture 2: every figure in the transcribed parts of its four readings, in
 `raw/images/02-test-time-compute-scaling/`. Lecture 3: **Weaver's Figures 1–6 only** (its main body),
 in `raw/images/03-robust-verification/` — the other three lecture 3 readings are not licensed for
-republication, so none of their figures is here. Lectures 1 and 4–9 have no images.
+republication, so none of their figures is here. Lecture 4: every main-body figure of its three
+readings — ReAct Figures 1–3, RLEF Figures 1–4, Constitutional AI Figures 1–10 — in
+`raw/images/04-learning-from-feedback-with-tools-code/`. Lectures 1 and 5–9 have no images.
+
+Constitutional AI prints its figure labels with no colon ("Figure 1" then the caption), which the
+skill's `extract_paper_figures.py` does not recognise as a caption. Its crops were made with a copy
+whose caption pattern also accepts "Figure N" followed by capitalised text, and they passed the same
+text-layer check as every other crop.
 
 - Each image is **one figure as published, cropped from the paper's PDF together with its
   caption** — not the whole page. They are reproduced under the papers' CC BY 4.0 licences, and the
@@ -116,8 +124,8 @@ republication, so none of their figures is here. Lectures 1 and 4–9 have no im
   course website for logistics it states, and say when the two disagree.
 - **Files are named by Cairn catalog position**, not by the site's schedule row. The catalog has
   nine videos and the site twenty rows; by title, positions 1–6 are rows 1–6, position 8 is row 17,
-  position 9 is row 20, and position 7 may be row 7, row 8 or both. Positions 2 and 3 are confirmed against their
-  transcripts, each of which discusses all four readings of its row; confirm each later position the
+  position 9 is row 20, and position 7 may be row 7, row 8 or both. Positions 2, 3 and 4 are confirmed against their
+  transcripts, each of which discusses every reading of its row; confirm each later position the
   same way before ingesting its readings, and record the resolution in the lecture page
   and `sources.md`. Rows 13 and 14 list readings but have no video in the catalog.
 - **Never invent course content.** If a source is unclear, say so on the page. Do not fill the gap

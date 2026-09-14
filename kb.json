@@ -9,10 +9,10 @@
     "courseUrl": "https://cs329a.stanford.edu/"
   },
   "coverage": {
-    "lecturesCovered": 3,
+    "lecturesCovered": 4,
     "lecturesTotal": 9,
-    "transcripts": 3,
-    "wikiLecturePages": 3,
+    "transcripts": 4,
+    "wikiLecturePages": 4,
     "wikiTopicPages": 9
   },
   "materials": {
@@ -23,25 +23,26 @@
     },
     "paperReadings": {
       "listedOnSite": 34,
-      "ingested": 5,
+      "ingested": 8,
       "pdfsCommitted": false,
-      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Lecture 2's four readings (all CC BY 4.0) are transcribed in raw/papers/ from their arXiv LaTeX sources: Large Language Monkeys in full including its appendix; How Do Large Language Monkeys Get Their Power (Laws)?, Snell et al. and Archon main body only (appendices left at arXiv to save budget). Lecture 3's readings: only Weaver (Shrinking the Generation-Verification Gap with Weak Verifiers) is CC BY 4.0 and is transcribed, main body only; Cobbe et al. 2021, Lightman et al. 2023 and Math-Shepherd carry arXiv's non-exclusive licence and are linked and discussed in the wiki, not transcribed. Lecture 1 lists no readings. PDFs are not committed; every paper is cited at its original URL (sources.md)."
+      "note": "The course publishes no slides publicly, so its course material is the per-lecture paper reading list on the site. Lecture 2's four readings (all CC BY 4.0) are transcribed in raw/papers/ from their arXiv LaTeX sources: Large Language Monkeys in full including its appendix; How Do Large Language Monkeys Get Their Power (Laws)?, Snell et al. and Archon main body only (appendices left at arXiv to save budget). Lecture 3's readings: only Weaver (Shrinking the Generation-Verification Gap with Weak Verifiers) is CC BY 4.0 and is transcribed, main body only; Cobbe et al. 2021, Lightman et al. 2023 and Math-Shepherd carry arXiv's non-exclusive licence and are linked and discussed in the wiki, not transcribed. Lecture 4's three readings (ReAct, RLEF, Constitutional AI) are all CC BY 4.0 and transcribed main body only. Lecture 1 lists no readings. PDFs are not committed; every paper is cited at its original URL (sources.md)."
     },
     "method": "source-text",
     "figuresAudited": false,
     "figureAudit": {
-      "note": "false because this KB writes no descriptions of figures at all, not because descriptions went unchecked. Model-written chart descriptions were tried for lecture 2 and removed after an audit found errors in 4 of the 20 it checked. Figures are the papers' own, shown with their printed captions; state only what the caption and paper text say. All 37 crops (lecture 2: 31, lecture 3: 6) were verified against the PDF text layer (no text cut by the crop edge, caption complete, no body text below the caption)."
+      "note": "false because this KB writes no descriptions of figures at all, not because descriptions went unchecked. Model-written chart descriptions were tried for lecture 2 and removed after an audit found errors in 4 of the 20 it checked. Figures are the papers' own, shown with their printed captions; state only what the caption and paper text say. All 54 crops (lecture 2: 31, lecture 3: 6, lecture 4: 17) were verified against the PDF text layer (no text cut by the crop edge, caption complete, no body text below the caption)."
     },
     "images": {
-      "lecturesWithImages": 2,
-      "files": 37,
+      "lecturesWithImages": 3,
+      "files": 54,
       "byLecture": {
         "2": 31,
-        "3": 6
+        "3": 6,
+        "4": 17
       },
       "format": "figure crops from the paper PDFs, caption included, ~1400px wide, PNG or JPEG",
-      "discovery": "inline in raw/papers/ and wiki/02-test-time-compute-scaling.md, wiki/03-robust-verification.md; no index file",
-      "note": "Only lectures 2 and 3 have images. Lecture 2: every figure in the transcribed parts of its four readings — Large Language Monkeys Figures 1-10, How Do Large Language Monkeys Get Their Power (Laws)? Figures 1-7, Snell et al. Figures 1-9, Archon Figures 1-5. Lecture 3: Weaver Figures 1-6 only; its other three readings are not licensed for republication, so none of their figures is in this KB. Reproduced under CC BY 4.0; attribution is each paper file's front matter."
+      "discovery": "inline in raw/papers/ and wiki/02-test-time-compute-scaling.md, wiki/03-robust-verification.md, wiki/04-learning-from-feedback-with-tools-code.md; no index file",
+      "note": "Only lectures 2, 3 and 4 have images. Lecture 2: every figure in the transcribed parts of its four readings — Large Language Monkeys Figures 1-10, How Do Large Language Monkeys Get Their Power (Laws)? Figures 1-7, Snell et al. Figures 1-9, Archon Figures 1-5. Lecture 3: Weaver Figures 1-6 only; its other three readings are not licensed for republication, so none of their figures is in this KB. Lecture 4: every main-body figure of its three readings — ReAct Figures 1-3, RLEF Figures 1-4, Constitutional AI Figures 1-10. Reproduced under CC BY 4.0; attribution is each paper file's front matter."
     }
   },
   "provenance": {
@@ -50,7 +51,7 @@
       "claude-sonnet-5"
     ],
     "caveats": [
-      "PARTIAL: covers catalog lectures 1 (Course Overview), 2 (Test-Time Compute Scaling) and 3 (Robust Verification) of 9. Do not cite this KB as covering CS329A as a whole.",
+      "PARTIAL: covers catalog lectures 1 (Course Overview), 2 (Test-Time Compute Scaling), 3 (Robust Verification) and 4 (Learning from Feedback with Tools/Code) of 9. Do not cite this KB as covering CS329A as a whole.",
       "Lecture 1 is transcript-only: the course publishes no slides and the site lists no paper readings for it.",
       "Lecture 2's readings: three of the four (power laws, Snell et al., Archon) are transcribed main body only; their appendices are not in this KB. Lecture 2 shows two charts that are not in the transcribed text — a SWE-bench chart with a DeepSeek model the lecturer believes was DeepSeek-V3 (not in any reading) and Archon's fusion/ranking win-rate chart (in its appendix) — so those passages are cited to the transcript only.",
       "No KB-written figure descriptions exist: the chat must not read values off a figure image; quote the caption and the paper's text.",
@@ -59,7 +60,9 @@
       "Lecture 3's readings: three of the four (Cobbe et al. 2021, Lightman et al. 2023, Math-Shepherd) are arXiv non-exclusive licence and are NOT transcribed; the wiki cites them by section, figure and table at their arXiv URLs, and has no images of them. Weaver is transcribed main body only.",
       "Lecture 3 differs from its readings in places, and the wiki states both: the lecture gives Weaver-at-70B as 86.2% (paper Table 3: 87.6%) and the distilled verifier as keeping 97% of accuracy with 99%+ less compute (paper: 98.2%, or 98.7% in its abstract, and 99.97%); it describes Lightman et al.'s 'convincing wrong-answer' samples as having correct final answers, where the paper defines them as reaching incorrect ones; and its claim that majority voting generalises better than the ORM holds in Lightman et al.'s Table 1 on the three AP exams but not on AMC10/12 or in aggregate.",
       "Lecture 3's captions leave two words unclear, marked [Ed: unclear] in the edited transcript and not guessed: a term in a student question at about 16:25 and one at about 35:08 (likely 'hacking').",
-      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. Positions 1-3 are confirmed as rows 1-3; from position 4 the mapping is by title and tentative, and position 7 may correspond to site row 7, row 8 or both."
+      "Lecture 4's three readings (ReAct, RLEF, Constitutional AI) are transcribed main body only; their appendices, which hold the prompts, the constitution's principles and further ablations, are not in this KB.",
+      "Lecture 4 differs from its readings in places, and the wiki states both: the lecturer says ReAct's thoughts are separate from the action space, where the paper's formalism puts them in an augmented action space; it glosses WebShop's score as covering intermediate steps, where the paper defines it by the attributes of the product chosen; and it glosses RLEF's n@k solve rate differently from the paper's definition. RLEF's own text gives the 70B model's test-set result as 38.0 where its Table 1 lists 40.1. A chart shown at about 46:50 (fine-tuning with and without RLHF across model sizes) has method names the captions garble, so the wiki does not tie it to a figure.",
+      "The catalog's 9 videos do not map 1:1 onto the site's 20 schedule rows. Files are named by catalog position. Positions 1-4 are confirmed as rows 1-4; from position 5 the mapping is by title and tentative, and position 7 may correspond to site row 7, row 8 or both."
     ]
   },
   "entryPoint": "INDEX.md",
