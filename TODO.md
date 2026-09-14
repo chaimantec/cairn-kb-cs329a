@@ -72,7 +72,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 04 — licences checked on the arXiv abstract pages (2026-09-14): all three CC BY 4.0 (ReAct 2210.03629, RLEF 2410.02089, Constitutional AI 2212.08073)
 - [x] 04 — LaTeX sources fetched to raw/pdfs/papers/src/<id>/ (gitignored)
 - [x] 04 — figure crops, main bodies only → raw/images/04-learning-from-feedback-with-tools-code/: react-figure-1–3, rlef-figure-1–4, constitutional-ai-figure-1–10 (17, 2.3MB); text-layer check clean on all. Constitutional AI's captions use `labelsep=quad` (no colon), so they were cropped with a copy of extract_paper_figures.py whose caption regex also accepts "Figure N" + capitalised text
-- [ ] 04 — raw/papers/04-react.md (main body only; one Sonnet agent, after the transcript agent)
+- [x] 04 — raw/papers/04-react.md (main body only; Sonnet). check_paper_file.py --main-only: sections, subsections, figure images, all 44 LaTeX paragraphs, macros and leftovers pass; 4 FAILs confirmed artifacts — Figure 2 is `\captionof` (not a figure env), Tables 3 and 4 share one table env, 8 "missing" numbers are minipage/includegraphics widths and a `2023` path, 4 unmatched paragraphs are the three italic `\multirow` notes and Table 3's caption (`BUTLER$_g$` written as GitHub-safe math). check_math clean (25 formulas)
 - [ ] 04 — raw/papers/04-rlef.md (main body only; one Sonnet agent)
 - [ ] 04 — raw/papers/04-constitutional-ai.md (main body only; one Sonnet agent)
 - [ ] 05 — 5 readings
