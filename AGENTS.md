@@ -92,9 +92,10 @@ readings — ReAct Figures 1–3, RLEF Figures 1–4, Constitutional AI Figures 
 `raw/images/04-learning-from-feedback-with-tools-code/`. Lectures 1 and 5–9 have no images.
 
 Constitutional AI prints its figure labels with no colon ("Figure 1" then the caption), which the
-skill's `extract_paper_figures.py` does not recognise as a caption. Its crops were made with a copy
-whose caption pattern also accepts "Figure N" followed by capitalised text, and they passed the same
-text-layer check as every other crop.
+skill's `extract_paper_figures.py` did not recognise as a caption when lecture 4 was built. Its crops
+were made with a copy whose caption pattern also accepts "Figure N" followed by capitalised text, and
+they passed the same text-layer check as every other crop. The skill's script has since taken the same
+pattern, regression-tested to give identical crops on the other ten lecture 2–4 paper PDFs.
 
 - Each image is **one figure as published, cropped from the paper's PDF together with its
   caption** — not the whole page. They are reproduced under the papers' CC BY 4.0 licences, and the
