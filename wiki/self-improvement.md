@@ -55,7 +55,7 @@ rather than reason (≈40:34–42:54, ≈35:54–36:41). See [verifiers](verifie
 A student asks why RL yields such a large jump if the underlying ability should already be in the
 pre-trained model. Chowdhery says this is an active research question with no consensus on whether RL
 or pre-training's diverse data does the work, and both help (≈51:24). If repeated sampling of the
-pre-trained model already finds a correct answer, feedback should raise pass@1 without really
+pre-trained model already finds a correct answer, feedback should raise $\text{pass@}1$ without really
 improving the model — yet "that whole loop is not completely well understood", and there are signs
 that continuing RL keeps improving models (≈52:12).
 

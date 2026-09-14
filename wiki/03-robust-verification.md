@@ -124,7 +124,7 @@ verification works better as the training set grows and eventually outperforms f
 with small training sets, below about 1,000 problems for the 175B model, it does not help much
 (≈10:58–11:44; Cobbe et al., §4.2, Figure 5). The paper attributes the small-data failure to
 overfitting to the correct final answer before learning more general properties of correct
-reasoning, and summarises that verifiers give roughly the same boost as a **30× increase in model
+reasoning, and summarises that verifiers give roughly the same boost as a $30\times$ **increase in model
 size** (§1, §4.2).
 
 A student question about the plot follows here and is mostly inaudible in the captions (≈11:44–12:31).
@@ -221,7 +221,7 @@ correct but whose intermediate steps were not (≈26:32). The paper defines the 
 *convincing* means rated highly by the current best PRM, and *wrong-answer* means the solution reaches
 an **incorrect** final answer — so the PRM must be wrong about at least one of its steps (§2.4). The
 lecture credits this strategy with being **2.6 times** more data-efficient than choosing samples at
-random (≈26:32). In the paper the 2.6× figure comes from its small-scale synthetic experiments,
+random (≈26:32). In the paper the $2.6\times$ figure comes from its small-scale synthetic experiments,
 estimated from the slopes of the best-fit lines with and without active learning (§4.2, Figure 4a).
 
 The lecture's labelled example: *The denominator of a fraction is 7 less than 3 times the numerator.
@@ -408,7 +408,7 @@ $$Pass@K = \frac{1}{n} \sum_{i=1}^{n} \mathbf{1}\left(\exists j \in [K]: y_{ij} 
 
 is the fraction of queries with at least one correct response — the best any selector could do. A
 verification strategy's **success rate** is how often the response it selects is correct, and the
-**generation–verification gap** is Pass@K minus the success rate.
+**generation–verification gap** is $\text{Pass@}K$ minus the success rate.
 
 ![Weaver, Figure 1](../raw/images/03-robust-verification/weaver-figure-1.jpg)
 
@@ -499,14 +499,14 @@ most on GPQA Diamond (+10.1%) and MMLU Pro (+5.1%) (§5.2, Figure 4).
 paper's Table 2 sets out the same four dimensions — sample count, model size, verifier count and total
 inference compute — and adding verifiers is the axis Weaver introduces (§5.2).
 
-**More generations.** The lecture describes a comparison with a dashed Pass@K oracle line — what a
+**More generations.** The lecture describes a comparison with a dashed $\text{Pass@}K$ oracle line — what a
 perfect selector would achieve — a *supervised* Weaver fitted with a large labelled set, the
 *unsupervised* Weaver using 1% of each dataset's labels, a naive ensemble (still of filtered,
 good verifiers), majority voting, and Multi-Agent Verification (≈1:00:07–1:01:40). All the verifier
 ensembles do much better than majority voting and **Multi-Agent Verification (MAV)**, which prompts
 LLMs to score a response on different aspects, rubric-style, and does little better than majority
 voting — or worse, in two cases (≈1:01:40). In the paper's main-body version, Weaver keeps narrowing
-the gap to Pass@K as $K$ grows from $2^0$ to $2^{10}$, while the other verification strategies plateau
+the gap to $\text{Pass@}K$ as $K$ grows from $2^0$ to $2^{10}$, while the other verification strategies plateau
 after a few generations, most visibly on GPQA (§5.2, Figure 3). Figure 3's caption does not name a
 supervised Weaver variant, so the chart in the lecture may be a different version of it.
 
@@ -527,7 +527,7 @@ College and MMLU Pro:
 | Multi-Agent Verification | 71.6% |
 | Weaver | 87.7% |
 | o3-mini (one sample) | 86.7% |
-| Oracle verification (Pass@100) | 91.9% |
+| Oracle verification ($\text{Pass@100}$) | 91.9% |
 
 **Weak to strong.** Weaver narrows the gap *between model classes* (≈1:02:29). With Llama 3.1 8B
 Instruct generating and a pool of verifiers of 8B and below, the lecture gives an average of 70%,
@@ -592,7 +592,7 @@ be distilled into a much smaller model that keeps much of the quality.
   sampling still lets them explore more of the solution space (≈1:08:51–1:10:25). See
   [reasoning models](reasoning-models.md).
 - **Will repeated sampling move entirely into training?** That is the hoped-for direction — a model
-  very good at pass@1 is more efficient. The catch is that sharpening a model's distribution toward
+  very good at $\text{pass@}1$ is more efficient. The catch is that sharpening a model's distribution toward
   one answer can lose the creativity and diversity of its solutions, which remain valuable
   (≈1:10:25–1:11:59).
 - **Should generator and verifier come from the same model family?** A good research question. Models

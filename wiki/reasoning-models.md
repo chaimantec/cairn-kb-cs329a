@@ -34,7 +34,7 @@ is that the model "itself is producing this chain of thought" (≈33:34). See
 
 Compared with GPT-4o, reasoning models such as o1 do better on math calculation, data analysis and
 programming, but not necessarily on personal writing or editing text (≈34:20–35:06). OpenAI's o1
-release showed pass@1 accuracy on the AIME math benchmark rising log-linearly with test-time compute
+release showed $\text{pass@}1$ accuracy on the AIME math benchmark rising log-linearly with test-time compute
 (≈30:27–31:14).
 
 ## Why they work — lecture 1's answers to students
@@ -43,7 +43,7 @@ release showed pass@1 accuracy on the AIME math benchmark rising log-linearly wi
   generalized thinker"; decomposition, backtracking and analysis are learned skills that generalize
   (≈35:53). Chowdhery's complementary view: a base model already produces some good reasoning chains
   among many but does not know which is correct, and train-time and test-time scaling largely teach it
-  which is correct — raising **pass@1**, where repeated sampling raises **pass@k** or coverage (≈36:41).
+  which is correct — raising $\text{pass@}1$, where repeated sampling raises $\text{pass@}k$ or coverage (≈36:41).
   Generating long thinking is expensive, but it leads to better answers (≈36:41–37:30).
 - **A separate model for the reasoning?** Reasoning ability has grown with size, so you would use the
   larger model's traces, perhaps with a smaller model summarizing. And "at least currently" models

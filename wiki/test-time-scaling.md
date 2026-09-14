@@ -18,14 +18,14 @@ are (≈21:44).
 The name comes from the infinite monkey theorem — a monkey typing forever would eventually produce
 Shakespeare — with the LLM as the monkey (≈20:08).
 
-### Coverage, pass@1 and pass@k
+### Coverage, $\text{pass@}1$ and $\text{pass@}k$
 
 Two measurements recur, and it matters which one a result reports.
 
 - **Coverage** is the fraction of problems for which **at least one** of the samples is correct. It
-  is what a system with a perfect verifier could achieve. Lecture 1 treats **pass@k** as the same
+  is what a system with a perfect verifier could achieve. Lecture 1 treats $\text{pass@}k$ as the same
   kind of number (≈36:41).
-- **pass@1** is the accuracy of a single answer.
+- $\text{pass@}1$ is the accuracy of a single answer.
 
 In Large Language Monkeys, raising the samples per problem from 1 to 10,000 on math and coding
 benchmarks let smaller open models, worse than GPT-4o with one sample, overtake it on coverage in
@@ -33,7 +33,7 @@ every case shown (≈22:34); for some problems only three or four of the 10,000 
 (≈24:09). The lecture's reading is that models "already know a whole lot more than what you get out
 of them when you just ask them once" (≈23:21). Chowdhery's framing connects the two metrics: a base
 model already produces some correct reasoning chains among many but cannot tell which, so much of
-train-time and test-time scaling "comes down to it learns which is correct" — raising pass@1 toward
+train-time and test-time scaling "comes down to it learns which is correct" — raising $\text{pass@}1$ toward
 what coverage showed was reachable (≈36:41).
 
 ### Practical limits raised in lecture 1
@@ -50,7 +50,7 @@ what coverage showed was reachable (≈36:41).
 
 ## Scaling the length of thought
 
-A second form scales how long a single model thinks. OpenAI's o1 release showed **pass@1** accuracy
+A second form scales how long a single model thinks. OpenAI's o1 release showed $\text{pass@}1$ accuracy
 on the AIME math benchmark rising log-linearly with test-time compute — the kind of curve previously
 shown only for training compute (≈30:27–31:14). See [reasoning models](reasoning-models.md).
 
@@ -95,11 +95,11 @@ be spent (lecture 3, ≈1:00:07).
 
 ## Allocating compute by difficulty
 
-Which strategy is best depends on the question. Binning questions by the model's pass@1 and choosing
-the best strategy per bin — the **compute-optimal** strategy — beats best-of-N with up to 4× less
+Which strategy is best depends on the question. Binning questions by the model's $\text{pass@}1$ and choosing
+the best strategy per bin — the **compute-optimal** strategy — beats $\text{best-of-}N$ with up to $4\times$ less
 test-time compute; easy questions do best with fully sequential revisions, harder ones with a balance
 (lecture 2, ≈34:45–37:57; Snell et al., §3, §6.2). In a FLOPs-matched comparison, test-time compute on a
-small model can beat a ~14× larger pretrained model on easy and medium questions or at low inference
+small model can beat a $\sim 14\times$ larger pretrained model on easy and medium questions or at low inference
 load, but pretraining wins on the hardest questions (lecture 2, ≈37:57–41:53; Snell et al., §7).
 
 ## Inference-time architectures
@@ -113,7 +113,7 @@ into one was "surprisingly a very effective method", and adding layers helps, mu
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): repeated sampling, coverage, o1's
-  log-linear pass@1 curve, and the questions about latency, temperature and verifiers.
+  log-linear $\text{pass@}1$ curve, and the questions about latency, temperature and verifiers.
 - [Lecture 2 — Test-Time Compute Scaling](02-test-time-compute-scaling.md): the dedicated lecture —
   Large Language Monkeys and its inference scaling law, why the law is a power law, the
   generation–verification gap, Snell et al.'s revisions, PRM search and compute-optimal allocation, and
