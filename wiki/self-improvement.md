@@ -140,6 +140,82 @@ class reaches for chain-of-thought training data and a STaR-style loop (≈43:59
 of its own verification: a model trained to write new test inputs, whose outputs are used to cluster the
 samples (Li et al. 2022, §4.6).
 
+## The three things that stop it
+
+[Lecture 9](09-future-research-areas.md), the closing lecture, organizes the open problems of
+self-improvement into three (≈3:57–6:17): the loop is "still limited to narrow domains like math and
+coding", so **diversity** of reasoning chains is what keeps it from stalling; **verification** is what
+decides whether the loop can run at all outside those domains; and the **prompts** the loop trains on
+are still "selected very statically and require humans to select them". Each of the lecture's three
+papers is a direction on one of the three.
+
+### Diversity: why one model's own outputs stop helping
+
+The failure is easy to describe. Iterative fine-tuning generates solutions, filters out the wrong
+ones by rejection sampling, and trains on the good ones — and variants like STaR add reasoning chains
+to the process. But if a **single** model generates that data, "it will generate solutions that will
+be very similar", and "the performance increase will stop after a few iterations or after tens of
+iterations" (≈7:51). The lecture's explanation compares it with pre-training: the pre-training corpus
+is diverse "because it was generated over such a long time by humans", and that diversity is part of
+why it helps — whereas one model prompting itself "will not have very diverse responses even at high
+temperatures" (≈7:51). This is the same ceiling the course saw in lecture 6, where RL raised majority
+voting without raising $\text{pass@}k$ (see
+[reinforcement learning](reinforcement-learning.md)).
+
+The paper the lecture presents — described only as "coming from multi-agent finetuning" (≈6:17) —
+answers with **multiple specialized agents**. **Generation agents** fine-tuned from the same base
+model produce diverse initial answers; a summarization step runs across their answers; a **critic
+agent** critiques that updated set and the critique is added to the input; the generation agents
+produce updated answers using the summary of the others; and majority voting runs on top
+(≈8:38–11:47). The loop can continue as a **debate**. Training data comes out of it two ways: the
+generation models are fine-tuned on prompt–response pairs filtered for agreement with the **majority
+vote**, and the critics are fine-tuned on trajectories where an answer is correct at the start and
+corrected through the debate, so "the critic model is learning how to contrast the correct and the
+incorrect answer" (≈10:13–11:47). Diversity therefore exists *before* the critique stage, which is
+what "majority voting for free" means (≈10:13).
+
+The lecture reads the results on two axes — negative log likelihood, "just a proxy for performance",
+and embedding dissimilarity, higher meaning more diverse (≈12:35). Over math, across three
+open-source models, the multi-agent version kept improving across fine-tuning iterations while
+single-agent fine-tuning "collapses or doesn't continue to improve", and the responses "continue to
+stay quite diverse"; the improvement also carried to an adjacent domain, GSM8K (≈13:22–14:08). The
+takeaway: "if you want self-improvement, the reasoning chains that are provided to the model to drive
+those need to be diverse in some way" (≈14:08).
+
+### Verification: the loop needs a checker that has no answer key
+
+Lecture 3's problem was picking the right answer; lecture 9's is verifying the **reasoning**, in
+domains where the final answer is the only signal available. The lecture's paper — **DeepSeekMath-V2**
+(≈14:53)— starts from the fact that reward based on matching the ground truth "enabled saturation of
+multiple benchmarks", while "even when you have the correct answer, you might not have the correct
+reasoning" (≈15:40). Theorem proving needs "rigorous step-by-step derivation, which the final output
+doesn't quite give you" (≈15:40). See [verifiers](verifiers.md) for the meta-verifier this adds.
+
+### Data: letting the model choose what to learn
+
+The third bottleneck is where the training prompts come from. Human-curated reasoning traces and
+expert-written question–answer pairs mean that "if you're constructing such a model in math, then you
+need math experts. If it's an IMO problems, then you need IMO experts, or if it is [coding], then you
+need strong software coders" — and "as the models continue to surpass human intelligence, the ability
+to find more and more experts and more and more such tasks starts to be limiting" (≈23:25–24:12). In
+the lecture's third paper, "a single model can both propose tasks and then solve them", so that no
+external source of data is needed. See
+[the LLM training pipeline](llm-training-pipeline.md) and
+[reinforcement learning](reinforcement-learning.md) for how the tasks are chosen and validated.
+
+### What the lecture says is still missing
+
+The lecture's own summary of the three is that diversity "continues to be an open problem", that
+verification should be broken "in a way where we are not bottlenecked by humans or tasks that are
+verified only through human experts", and that "there's only so much data that can be curated by
+humans for what prompts go in" (≈32:44–33:32). Its largest open direction is **continual learning**:
+humans improve continuously as they solve problems, whereas models learn in "mostly this offline
+process" — experiences are generated, and "maybe after some time, there's this fine-tuning process of
+the model", which "is not something that happens on the go" (≈53:19–54:05). The lecture frames this
+as the mismatch a concept like continual learning could address, and the
+[training pipeline page](llm-training-pipeline.md) records the two alternatives the class discussed:
+updating weights, or not touching them and extending the effective context instead.
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the test-time-to-training loop, test
@@ -157,3 +233,6 @@ samples (Li et al. 2022, §4.6).
 - [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
   searching a model's outputs (AlphaCode, AlphaCode 2, Search-o1), model-generated test inputs, and distilling a
   search system into a reasoning model.
+- [Lecture 9 — Future Research Areas](09-future-research-areas.md): the closing lecture, which names the three
+  bottlenecks — diversity of reasoning chains (multi-agent fine-tuning), verification without a reference
+  solution, and the human data bottleneck — and puts continual learning first among the open directions.

@@ -167,6 +167,26 @@ lecture 8, ≈40:45). METR notes that its scaffolds used relatively little infer
 runs cost less than 10% of what a human expert would be paid for the same task, which leaves room to spend more (Kwa et
 al. 2025, v2, §8.2, Figure 13).
 
+## The part nobody has explained
+
+[Lecture 9](09-future-research-areas.md), closing the course, puts the fundamentals of test-time
+scaling at the top of its open directions (≈51:42). The field's practical approach is "through RL,
+through collecting this data and then fine-tuning the models", and the lecture treats that as
+evidence "that there is more here": first, *why* the effect exists at all — "what does it suggest
+from the model that as we ask the model a question over and over again through test time scaling,
+what is happening that these correct answers are coming out?" — and second, "what are the best
+practices to distill these successful trajectories back to the model" (≈52:31). The same gap shows up
+in the lecture's summary of the quarter, where it places the connection between fine-tuning, online
+learning and test-time scaling at the centre of a "synthetic data flywheel" that the course describes
+but does not yet explain (≈55:39–56:25). See [self-improvement](self-improvement.md).
+
+A second direction is infrastructural (≈54:51). Test-time scaling as this page describes it —
+repeated sampling, revisions to previous generations, tool calls — "is very different from the
+current mainstream chatbot usage, which is just mostly single turn back and forth with the model",
+which leaves "a lot of opportunities for doing systems and inference optimization work for these
+type[s] of test scaling". The lecture names work from Mirhoseini's lab in this area and expects it to
+matter more as these methods "becoming more and more mainstream" (≈55:39).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): repeated sampling, coverage, o1's
@@ -185,3 +205,6 @@ al. 2025, v2, §8.2, Figure 13).
 - [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
   AlphaCode's million samples narrowed to 10 submissions, $10\text{@}k$ versus $\text{pass@}k$, selection as the
   bottleneck, and AlphaCode 2 matching a million samples with about 100.
+- [Lecture 9 — Future Research Areas](09-future-research-areas.md): why repeated sampling works as an
+  unexplained open question, distilling successful trajectories, and the inference-optimization work that
+  repeated sampling, revisions and tool calls need.

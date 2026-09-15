@@ -172,6 +172,23 @@ the repository's maintainers (§6.2, §6.4). GDPval finds the same gap in profes
 GPT-5 "struggled to figure out context" (Patwardhan et al. 2025, appendix A.2.7), and in the lecture's words "humans are
 basically architecting the set of problems" (≈46:12).
 
+## What an environment is for
+
+A student asks [lecture 9](09-future-research-areas.md) whether the environment an agent learns in
+can be created by agents themselves, referring to a paper in which the environment supplies the
+post-training data (≈1:03:34). The answer reframes the question as one about the **task distribution**
+rather than about tooling (≈1:04:19–1:05:07). In the era of narrow intelligence, simulations could be
+written for games and used as environments for toy tasks; "the reason environments matter in the
+current generation [is] that they are proxies for real-world tasks". So it is not "so much that
+there's a paper for agents to self-create environments" — it is "what is the set of tasks that you're
+trying to represent", and if there is an easy way to simulate them, whether agents or software build
+the simulation "is fairly straightforward". The question that decides whether an environment is worth
+building is whether it "is a reasonable proxy of how the model will interact with the real world to
+get feedback" — and games are the easy case, because "it's kind of a finite space to explore"
+(≈1:05:07). The same lecture's discussion of slow verification — a chip-design simulation that takes
+days per reward signal, a lab experiment — is about what happens when the environment cannot answer
+quickly (≈35:04). See [verifiers](verifiers.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the LLM-to-agent transition, workflow
@@ -185,3 +202,7 @@ basically architecting the set of problems" (≈46:12).
 - [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
   Search-o1's search calls inside a reasoning chain as a deep research agent, and AlphaCode 2 as a system of
   generating and scoring models.
+- [Lecture 8 — Agentic Evaluations and Long Horizon Tasks](08-agentic-evaluations-and-long-horizon-tasks.md):
+  METR's time horizon and failure modes, and why long horizons do not mean reliable work.
+- [Lecture 9 — Future Research Areas](09-future-research-areas.md): the closing lecture's restatement of what an
+  agent is, and what an environment is for when the task distribution is the thing being designed.

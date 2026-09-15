@@ -84,6 +84,39 @@ tasks (§7.1, §8.3). GDPval's expert-judged win rate for OpenAI's frontier mode
 over time" (Patwardhan et al. 2025, Figure 6). The lecture uses the contrast as a caution: an exponential trend in
 horizon length does not mean reliable work at those lengths (lecture 8, ≈36:05–37:40).
 
+## Efficiency: a second axis after capability
+
+[Lecture 9](09-future-research-areas.md) adds an axis the earlier lectures do not use. Test-time and
+train-time scaling both buy capability with compute, and the lecture's second half asks what that
+capability costs in **energy**, since "you're now doing a lot more inference. And there's a cost to
+this intelligence" (≈39:49). Its measure is a rate rather than a total:
+
+$$\text{intelligence per watt} = \frac{\text{average task accuracy}}{\text{average power draw to solve the task}}$$
+
+with "local models" defined as those with **20 billion active parameters or less** (≈46:59).
+
+The demand side of the lecture's argument is a growth curve of the same kind the course's scaling
+laws describe, but for serving rather than training (≈41:26–43:00): Google Cloud grew "in something
+in the order of $1200\times$ in the last 20 months" in compute serving, NVIDIA "had a $10\times$
+year-over-year kind of growth", and standing up that demand is described as needing "something in the
+order of 250 gigawatt of data centers". The lecture calls it "one of the fastest growing compute
+demands that we are seeing in history" (≈43:00). Against that, the work found that "something in the
+order of 77% of requests are for task[s] like practical guidance, information… or writing" — queries
+that do not need "the very best frontier models", and that smaller local models can already address
+(≈43:47).
+
+The measured trends, on the study's own metric (≈48:32–50:55): local models improved **3.1x** in the
+share of chat queries they could address between 2023 and the lecture, reaching **88.7%**; local
+accelerators still lag enterprise chips on efficiency, an Apple M4 Max delivering **$1.5\times$**
+lower intelligence per watt than a B200; and intelligence efficiency overall improved **$5.3\times$**
+in two years, which the lecture decomposes into **$3.1\times$ from better models** and **$1.7\times$
+from better hardware**. A separate hardware trend supports the same conclusion: since 2012 there was
+"something like $126\times$ improvement in the GPU memory of the local accelerators", with laptops
+holding "something in the order of 100 gigabyte of memory" (≈44:37). The lecture's reading is that
+more of this traffic can be served "on our edge device… on our laptop or on our phone device in the
+future" (≈50:55), and it names energy as likely to be "the most kind of valuable resource that we
+have going forward" (≈58:01).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the three axes, model-size history, few-shot
@@ -94,3 +127,6 @@ horizon length does not mean reliable work at those lengths (lecture 8, ≈36:05
   outputs as a substitute for parameters.
 - [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
   AlphaCode's log-linear solve rate in samples and compute, with steeper slopes for larger models.
+- [Lecture 9 — Future Research Areas](09-future-research-areas.md): intelligence per watt — accuracy over
+  power draw — against the growth in inference demand, local models versus frontier models, and how much
+  of the two-year gain came from models and how much from hardware.

@@ -138,6 +138,29 @@ cut test-time sampling, since a model that gets better at solving problems in an
 to search with RL; that paper is not on the reading list (≈1:08:19). The closing Q&A also mentions efforts to
 train calibration with RL or RLHF (≈1:10:41).
 
+## Choosing the tasks, not just the answers
+
+Every method above takes the training prompts as given. [Lecture 9](09-future-research-areas.md)
+presents a paper in which one model **proposes its own tasks and solves them**, with the reward split
+between the two roles (≈22:39–27:18). The proposer's reward is a function of how the solver does: zero
+if the solver never succeeds on the task, and **$1$ minus the solver's average success rate** if it
+sometimes does. That selects for tasks that are "not trivial and… not impossible" — where the solver
+"sometime[s] succeed[s] and sometimes fail[s]" — and it makes the proposer's objective "to generate
+tasks for optimal task difficulty at a current set of model weights", so that as the model improves
+"the proposer should learn to propose harder problems" (≈27:18–28:04).
+
+The lecture describes the relationship between the two roles as "almost like game theory where the
+proposer and solver are slightly adversarial, but overall, they are helping each other improve in some
+ways" (≈30:26). Two design details make it work: proposed tasks are **validated** before training —
+program integrity, safety checks, and determinism across repeated runs, so the proposal stage cannot
+"just hack and come up with garbage tasks" (≈28:04) — and the tasks accumulate in a buffer the
+proposer samples from, which the lecture calls "this idea of curriculum learning that is evolving over
+time" (≈28:52). The results reported are state of the art on coding benchmarks with no human-curated
+prompts, beating models trained on tens of thousands of expert examples, with larger models gaining
+more (≈29:40–31:12). The task constructions themselves — deduction, abduction and induction — are on
+[the LLM training pipeline](llm-training-pipeline.md), and why task selection matters is on
+[self-improvement](self-improvement.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): RLHF, and the open question of why RL works.
@@ -151,3 +174,6 @@ train calibration with RL or RLHF (≈1:10:41).
   DeepSeekMath's GRPO and unified view, and DAPO's fixes for RL at scale.
 - [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md): GOLD
   as offline RL in AlphaCode's fine-tuning, RL to reduce test-time sampling, and Search-R1 versus Search-o1.
+- [Lecture 9 — Future Research Areas](09-future-research-areas.md): a proposer rewarded by solver success rate, so
+  the training tasks sit at the edge of what the model can do; validation and a task buffer that turn the loop
+  into an evolving curriculum.

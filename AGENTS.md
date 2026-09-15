@@ -162,12 +162,17 @@ explicit `--clip` boxes taken from the page geometry, and all 25 passed the text
   said in a lecture — it is the start of the transcript paragraph containing the statement. Cite the
   course website for logistics it states, and say when the two disagree.
 - **Files are named by Cairn catalog position**, not by the site's schedule row. The catalog has
-  nine videos and the site twenty rows. Positions 1–6 are rows 1–6, position 7 is row 8 and position 8 is row 17;
-  by title, position 9 is row 20. Positions 2–8 are confirmed against their transcripts — 2, 3, 4, 6, 7 and 8 each
-  discuss every reading of their row, and 5 discusses three of its five. Confirm position 9 the same way
-  before ingesting its readings, and record the resolution in the lecture page and `sources.md`. Rows 7, 13 and
+  nine videos and the site twenty rows. Positions 1–6 are rows 1–6, position 7 is row 8, position 8 is row 17 and
+  position 9 is row 20. Positions 2–8 are confirmed against their transcripts — 2, 3, 4, 6, 7 and 8 each
+  discuss every reading of their row, and 5 discusses three of its five — and position 9 is confirmed by its
+  content rather than by a reading list, since row 20 lists none: it is the last lecture of the quarter, it
+  recaps the whole course and it says it will "cover some future research areas" (≈3:57). Rows 7, 13 and
   14 list readings but have no video in the catalog. Lecture 7's remark about "scientist style of work that folks
   covered last lecture" fits row 7, which lists *The AI Scientist*.
+- **A lecture can present papers that are not readings.** Lecture 9 presents key ideas from three papers the
+  site does not list for its row or for any other row, and names only one of them. They are described on the
+  lecture page at the depth the lecture does, with no transcription, no figures and **no link** — the lecture
+  gives no URL, and supplying one from outside the course is the invention this KB forbids.
 - **Never invent course content.** If a source is unclear, say so on the page. Do not fill the gap
   from outside knowledge — the chat presents these pages as authoritative material from this course.
   Recovering a mangled term from unambiguous context is reading the source; supplying a model name,

@@ -8,12 +8,18 @@ original URL as the course website links it.
 
 - **Run 1** (complete): lecture 1 — Course Overview. The site lists **no readings** for it, so
   it is transcript-only. Also: site crawl, download of every listed reading to disk, `sources.md`.
+- **Later runs** (complete): catalog positions 2–8, one lecture at a time, each built in its own
+  session — 2026-09-13 to 2026-09-15.
+- **Current run** (2026-09-15): lecture 9 — Future Research Areas, the last one. The site lists
+  **no readings** for row 20 either, so this is the second transcript-only lecture; it presents
+  three papers the site never lists, which this KB describes but does not ingest or link. With this
+  run the KB covers all nine recorded lectures.
 
 ## Catalog position ↔ site schedule row
 
 The catalog's 9 videos do not map 1:1 onto the site's 20-row schedule (which includes midterm
-presentations and guest lectures that are not in the playlist). Tentative, by title — confirm each
-against its transcript before ingesting that lecture's readings:
+presentations and guest lectures that are not in the playlist). **Every position is now confirmed
+against its transcript** — see [sources.md](sources.md) for how each was resolved:
 
 | catalog | video title | site row | readings listed |
 |---|---|---|---|
@@ -23,7 +29,7 @@ against its transcript before ingesting that lecture's readings:
 | 4 | Learning from Feedback with Tools/Code | 4 Learning from feedback with tools/code | 3 |
 | 5 | Planning and Multi-Step Reasoning | 5 Multi-step Reasoning/Planning | 5 |
 | 6 | Train Time Scaling/Scaling RL | 6 Train Time Scaling/Scaling RL | 3 |
-| 7 | Self-Improvement and Deep Research Agents | 7 Open-Ended Evolution… and/or 8 Self improvement with Search & Deep Research Agents | 3 + 3 — **unresolved** |
+| 7 | Self-Improvement and Deep Research Agents | 8 Self improvement with Search & Deep Research Agents (row 7 has no video) | 3 — resolved |
 | 8 | Agentic Evaluations and Long Horizon Tasks | 17 Agentic Evaluations & Long-Horizon Tasks | 3 |
 | 9 | Future Research Areas | 20 Future Research Areas | none |
 
@@ -47,7 +53,8 @@ list readings but have no video in the catalog.
 - [x] 07 edited transcript (Sonnet copy-edit; the agent was killed by a session limit after writing all 93 paragraphs but before its header lists, so the parent adjudicated the diff and wrote the header. 93/93 timestamps identical, number multisets identical except the declared "AlphaCode two"→"AlphaCode 2"; ratio outliers 11:01, 20:30, 35:23, 53:17 are inserted [Ed] turn-boundary notes. Restorations accepted: HumanEval, CodeContests (V2), AlphaGo 2→AlphaCode 2, pass@k/pass@1, Azalia, STaR, Reason-in-Documents; parent added MuSiQue and corrected the intro's claim that AlphaCode 2 has a LaTeX source. All wiki/topic-page lecture quotes re-checked: two adjusted (a comma; "bottlenecking" quote paraphrased))
 - [x] 08 Part 8 | Agentic Evaluations and Long Horizon Tasks — video 8JAqLnTaZu4 (verbatim → raw/transcripts/original/, 97 paragraphs, [0:05]–[1:15:08])
 - [x] 08 edited transcript (Sonnet copy-edit; 97/97 timestamps identical, number multisets identical, ratios 0.94–1.09; terminology checked against METR v2 and DeepScholar-Bench v1 after a mid-task switch from the later revisions. Parent corrected header notes that misattributed sources: METR v2's related work cites MLAgentBench, not MLE-bench; GDPval cites SWE-Lancer only as a software-engineering evaluation; the \$400 and 89% figures are GDPval appendix values (\$398.46, 89.07%) and 1.6x/1.4x its appendix Table 2; "it" at ≈38:27 is no longer asserted to be Claude Opus 4.1; an outside-knowledge gloss on Hugging Face dropped)
-- [ ] 09 Part 9 | Future Research Areas — video AyO6wyu4DEg
+- [x] 09 Part 9 | Future Research Areas — video AyO6wyu4DEg (verbatim → raw/transcripts/original/, 87 paragraphs, [0:05]–[1:07:28], 9,458 words)
+- [x] 09 edited transcript (Sonnet copy-edit, written incrementally in three appends; 87/87 timestamps identical, number multisets identical except the declared pass@1 and the 160-trillion repeat inside an [Ed] note, ratios 0.96-1.16 where the two outliers are the inserted [Ed] notes. Parent restored *best-of-32* from the agent's *best@32* (lecture 2's transcript and the wiki write it best-of-N); accepted the AIME, MMLU Pro, KernelBench, KV caches, wet lab, `the LLMs themselves` and AlphaEvolve restorations after checking each against the course site and the repo's other transcripts; kept TRPO, 'Professor Ray', 'super GPQA', 'natural reasoning', GP200/GP300 and 'the absolute zero paper' as captioned)
 
 ## Crawl
 - [x] Fetch course site index: https://cs329a.stanford.edu/ (excluding pastprojects.html — student work)
@@ -104,6 +111,11 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] 09 — none listed; nothing to ingest
 
 ## Wiki
+- [x] wiki/09-future-research-areas.md (written by the parent from the verbatim captions while the transcript agent ran; transcript-only — the site lists no readings for row 20, so nothing is ingested and no figures exist; section per lecture section, the three papers it presents described at the depth the lecture gives them and not linked)
+- [x] 09 — page's quotes re-checked against the edited transcript (161 quotes swept; 15 corrected to the edited wording — 'it's not just', 'gets selected', 'for generation', 'the final answer', 'from these per watt', 'for example, on our laptop', 'that's fairly straightforward', 'do require'→requoted, 'several agents'→'multiple agents', the 'side of…' elision filled, the reward-hacking quote completed — and the two passages the captions garble (CNML, 'bio disturbance') now say so inline)
+- [x] Topic pages updated for lecture 9 (self-improvement: the three bottlenecks and the multi-agent diversity section; verifiers: verifying the verifier; llm-training-pipeline: where the prompts come from, and continual learning; scaling-laws: intelligence per watt; test-time-scaling: what nobody has explained; reinforcement-learning: choosing the tasks; agentic-workflows: what an environment is for — and its Lectures list gained the lecture 8 entry it was missing; no new pages)
+- [x] INDEX.md — lecture 9, coverage 9 of 9 (the coverage note now says so), positions 2–9 confirmed, the three-papers-not-readings note, topic one-liners for six pages, raw/papers note
+- [x] sources.md row 20 + a Row 20 section, AGENTS.md (position 9 confirmed, papers-not-readings rule), kb.json (coverage 9/9, 28 caveats, mapping resolved, lecture 9's caption ambiguities)
 - [x] wiki/08-agentic-evaluations-and-long-horizon-tasks.md (Opus; drafted from the verbatim captions and the METR v2, GDPval and DeepScholar-Bench v1 LaTeX main bodies, with GDPval appendix passages cited by section; 14 figures embedded — METR 1, 2, 5, 6, 11, 12; GDPval 2, 5, 6, 7, 8; DeepScholar-Bench 1, 2, 3; version choice and lecture-vs-paper discrepancies stated)
 - [x] 08 — page's quotes re-checked against the edited transcript (78 quotes; 8 transcript quotes reworded to the edited wording — "it is", "were to give", "a taxonomy, of the set", "architecting the set of problems" (also in agentic-workflows), "assess document importance", "even if you say, OK", "look good on that plot", "some notion of state, or memory"; the rest are paper quotes or matched); check_math 0 errors, 0 warnings on both renderers
 - [x] Topic pages updated for lecture 8 (retrieval-and-deep-research: evaluating deep research; agentic-workflows: how long and how reliably; scaling-laws: trends in what agents can do; verifiers: judging open-ended work; test-time-scaling: effort and retries on professional tasks; no new pages)

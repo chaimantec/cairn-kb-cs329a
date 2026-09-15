@@ -205,6 +205,47 @@ It validates them against over 200 expert annotations, with 70% to 82% agreement
 Table 4). METR avoids judging altogether by scoring every task automatically, which the paper lists among the ways its
 tasks differ from real work (Kwa et al. 2025, v2, §7.2.1).
 
+## Verifying the verifier
+
+[Lecture 9](09-future-research-areas.md) closes the course with the case where the verifier itself is
+the thing that needs checking. The failure mode is specific: in theorem proving, models "are often
+trained on quantitative reasoning, so the proofs that they might generate are mathematically invalid.
+And if you ask them to verify, they will claim that the incorrect proofs are valid" — so **LLM as a
+judge does not work here** (≈16:26). A human expert reading the same proof does something different:
+they see that "this next step is not following from the last step or there's reasoning gaps"
+(≈16:26). And a verifier can also award a correct score to an incorrect chain by coming up with
+**fabricated errors** (≈18:48).
+
+The paper the lecture presents, **DeepSeekMath-V2**, trains verifiers on that human ability. Humans
+identify issues in proofs **without any reference solutions**, LLMs are trained on those judgements
+until they can critique proofs themselves, and the labelling can then be automated so it no longer
+depends on humans (≈17:15–18:48). What is added on top is a **meta-verifier**: a block that "will
+review the verifier's analysis for whether it makes sense or whether there are issues with the
+proofs" (≈18:01). Meta-verification asks two questions of every identified issue — **does it actually
+exist**, and **does the score follow from it** — and experts annotate the quality of that evaluation
+to train it (≈18:48–19:34). The lecture frames the whole thing as one more layer of the same idea:
+reasoning chains, then a verifier over those chains, then a judgement of "is this evaluation correct
+or not" (≈19:34).
+
+In the architecture, the verifier is trained to take the issues and **score proofs on a scale of
+$0.5$ and $1$**; the verifier then improves the generator, the generator produces harder proofs,
+"which will then go improve the verifier", and the result is a loop (≈18:01). The results the lecture
+reports are on IMO problems and one other competition set (*whose name the captions garble*):
+**$\text{pass@}1$ proof score climbs across eight iterations**, and at $\text{best-of-}32$ — the best
+of 32 generated proofs — it reaches "almost… 42% in proof score for IMO shortlist of 2024" (≈20:23).
+The lecture calls it "quite promising as a hill-climbing technique" (≈20:23). See
+[test-time scaling](test-time-scaling.md) for $\text{best-of-}N$.
+
+The lecture's recipe for taking this to other domains is three ingredients (≈21:54): verifiers that
+can **identify issues without reference solutions**; **an additional meta-verification block** to
+reduce hallucinated issues; and **an incentive for the generator to maximize quality through
+deliberate reasoning**. Its stated limit is that this "is still limited by domains where verification
+is easier rather than more difficult" (≈22:39). Where verification is not just hard but **slow**, the
+lecture gives a different recipe: train a **reward model that predicts the outcome** of the expensive
+simulation or experiment from offline data, and use it as the verification object — with the caveat
+that "the generality of the reward model is a function of how much data you have. And it can be
+inaccurate and that can cause problems" (≈37:28–38:16).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): verifiers in repeated sampling, the
@@ -222,3 +263,6 @@ tasks differ from real work (Kwa et al. 2025, v2, §7.2.1).
 - [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
   AlphaCode's example-test filter and clustering by behaviour on generated inputs, and AlphaCode 2's learned
   scoring model.
+- [Lecture 9 — Future Research Areas](09-future-research-areas.md): DeepSeekMath-V2's verifier trained to find
+  proof issues with no reference solution, the meta-verifier that checks the verifier, and reward models as
+  stand-ins where the real verification signal takes days to arrive.

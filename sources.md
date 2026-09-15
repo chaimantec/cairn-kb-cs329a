@@ -4,11 +4,11 @@ Every document the course website (<https://cs329a.stanford.edu/>) links as cour
 
 **The course publishes no slides** on its public site — the instructors upload lecture materials to Canvas — so the course material this knowledge base draws on is the **paper readings** listed per lecture in the site's schedule. **Cite every paper at the original URL below.** The PDFs were downloaded to `raw/pdfs/papers/` on the machine that built this KB, but that directory is **gitignored and not in this repo**: the local filenames are recorded so a future build can find them, and are not links.
 
-**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5); AlphaCode, from row 8 (lecture 7); and row 17's three readings (lecture 8), in the versions current on the lecture date — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3, 5 and 8, and all three readings of row 6 (lecture 6), are linked only, for licence reasons. Lecture 1 lists no readings.
+**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5); AlphaCode, from row 8 (lecture 7); and row 17's three readings (lecture 8), in the versions current on the lecture date — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3, 5 and 8, and all three readings of row 6 (lecture 6), are linked only, for licence reasons. **Lectures 1 and 9 list no readings**, and both are built from their transcripts alone.
 
 ## Schedule rows and catalog positions
 
-The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–8 are confirmed against their transcripts: positions 2, 3, 4 and 6 each discuss every reading of their row, position 5 discusses three of its row's five, position 7 discusses all three readings of row 8, and position 8 all three of row 17. The mapping of position 9 below is by title and tentative. See [INDEX](INDEX.md).
+The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–8 are confirmed against their transcripts: positions 2, 3, 4 and 6 each discuss every reading of their row, position 5 discusses three of its row's five, position 7 discusses all three readings of row 8, and position 8 all three of row 17. Position 9 is row 20, confirmed by its transcript — it is the quarter's last lecture, it opens by recapping the whole course and says it will "cover some future research areas" (≈3:57). See [INDEX](INDEX.md).
 
 | Site row | Date | Topic | Catalog position | Readings |
 |---|---|---|---|---|
@@ -23,7 +23,7 @@ The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this K
 | 13 | Mon Nov 3 | Agentic Frameworks for Software Engineering | — (no video in catalog) | 3 |
 | 14 | Fri Nov 7 | Augmenting Agents with Memory (guest lecturer Junchen Jiang, LMCache, UChicago) | — (no video in catalog) | 3 |
 | 17 | Mon Nov 17 | Agentic Evaluations & Long-Horizon Tasks | 8 (confirmed) | 3 — ingested (METR v2, DeepScholar-Bench v1) |
-| 20 | Fri Dec 5 | Future Research Areas | 9 | none listed |
+| 20 | Fri Dec 5 | Future Research Areas | 9 (confirmed) | none listed |
 
 Rows 9, 15, 16, 18 and 19 are guest lectures and rows 10–12 are midterm presentations; none of them lists readings or appears in the catalog.
 
@@ -130,3 +130,9 @@ Catalog position 8, confirmed: its transcript names all three readings at the st
 | Measuring AI Ability to Complete Long Tasks (Kwa et al. 2025) | <https://arxiv.org/abs/2503.14499> | v2, <https://arxiv.org/abs/2503.14499v2> | CC BY 4.0 | [main body](raw/papers/08-metr-long-tasks.md) (appendices not transcribed) | `raw/pdfs/papers/2503.14499v2-measuring-ai-ability-to-complete-long-tasks.pdf` (the 2026-09-13 download, `2503.14499-…`, is v4) | 2026-09-15 |
 | GDPVal: Evaluating AI Model Performance on Real-World Economically Valuable Tasks (Patwardhan et al. 2025) | <https://arxiv.org/abs/2510.04374> | v1 (the only version) | CC BY 4.0 | [main body](raw/papers/08-gdpval.md) (appendices not transcribed) | `raw/pdfs/papers/2510.04374-gdpval.pdf` | 2026-09-13 |
 | DeepScholar-Bench: A Live Benchmark and Automated Evaluation for Generative Research Synthesis (Patel et al. 2025) | <https://arxiv.org/abs/2508.20033> | v1, <https://arxiv.org/abs/2508.20033v1> | CC BY 4.0 | [main body](raw/papers/08-deepscholar-bench.md) (appendices not transcribed) | `raw/pdfs/papers/2508.20033v1-deepscholar-bench.pdf` (the 2026-09-13 download, `2508.20033-…`, is v2) | 2026-09-15 |
+
+## Row 20 — Future Research Areas (Fri Dec 5) — no readings listed
+
+Catalog position 9, confirmed. The site's "Paper Readings" column is empty for this row, so the lecture is **transcript-only** and this KB ingests nothing for it: [lecture 9](wiki/09-future-research-areas.md) is cited to the transcript by timestamp throughout, as [lecture 1](wiki/01-course-overview.md) is.
+
+The lecture itself presents key ideas from **three papers that the site does not list** — as row 20's list, or under any other row: a multi-agent fine-tuning paper the lecture describes only as "coming from multi-agent finetuning" (≈6:17); **DeepSeekMath-V2**, the one paper it names (≈14:53), a different work from the *DeepSeekMath* paper the site lists under row 6; and an unnamed paper on a model that proposes and solves its own tasks (≈22:39), which a student calls "the Absolute Zero paper" (≈1:03:34). None is transcribed here and none is linked — the lecture gives no URL for any of them, and this KB does not supply one from outside the course.
