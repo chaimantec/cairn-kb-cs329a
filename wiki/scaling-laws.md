@@ -73,6 +73,17 @@ related point about data: its 7B base model, pre-trained on curated math web dat
 times larger, which the authors take as showing that "the number of parameters is not the only key factor in
 mathematical reasoning capability" (Shao et al. 2024, §1.1, §2.3). See [reinforcement learning](reinforcement-learning.md).
 
+## Trends in what agents can do
+
+[Lecture 8](08-agentic-evaluations-and-long-horizon-tasks.md) tracks capability over time rather than loss. METR
+regresses the logarithm of each frontier model's 50% time horizon on its release date, and finds the horizon "has
+doubled every 212 days" since 2019, with a 95% confidence interval of 171–249 days. The 80% horizon doubles at a
+similar rate from a much lower level (Kwa et al. 2025, v2, §4.2, §4.2.1). Extrapolated, the trend reaches a one-month
+(167 working hours) horizon on software tasks between late 2028 and early 2031, if it continues and generalizes to real
+tasks (§7.1, §8.3). GDPval's expert-judged win rate for OpenAI's frontier models has instead "increased roughly linearly
+over time" (Patwardhan et al. 2025, Figure 6). The lecture uses the contrast as a caution: an exponential trend in
+horizon length does not mean reliable work at those lengths (lecture 8, ≈36:05–37:40).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the three axes, model-size history, few-shot

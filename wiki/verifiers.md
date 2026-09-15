@@ -193,6 +193,18 @@ Selection still falls short. In AlphaCode, perfect selection stays well ahead of
 (§5.3.5, Figure 8), and the AlphaCode 2 report says its system "relies heavily on being able to filter out
 obviously bad code samples" (*Discussion and Conclusion*). See [test-time scaling](test-time-scaling.md).
 
+## Judging open-ended work
+
+Some outputs have no test to run. [Lecture 8](08-agentic-evaluations-and-long-horizon-tasks.md)'s benchmarks judge them
+in two ways. **GDPval** uses human experts from the relevant occupation, who rank unlabeled deliverables side by side;
+a comparison took over an hour on average. It also trains an experimental automated grader, which agrees with expert
+graders 66% of the time, against 71% agreement between experts (Patwardhan et al. 2025, §2.5). **DeepScholar-Bench**
+uses LLM judges throughout: a pairwise preference against the human-written section, evaluated twice with positions
+swapped to avoid position bias; nugget extraction; graded relevance; and entailment between claims and cited sources.
+It validates them against over 200 expert annotations, with 70% to 82% agreement (Patel et al. 2025, v1, §3, §5.4,
+Table 4). METR avoids judging altogether by scoring every task automatically, which the paper lists among the ways its
+tasks differ from real work (Kwa et al. 2025, v2, §7.2.1).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): verifiers in repeated sampling, the

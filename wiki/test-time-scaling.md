@@ -156,6 +156,17 @@ of sequential tokens, by 39% on problems where the baseline needs more than 8,00
 better accuracy (≈25:04–26:38, ≈44:41; Biju et al. 2025, §4.2). See
 [reasoning models](reasoning-models.md).
 
+## Effort and retries on professional tasks
+
+[Lecture 8](08-agentic-evaluations-and-long-horizon-tasks.md) shows test-time compute helping on real work. On GDPval,
+more reasoning effort improved o3 and GPT-5, and $\text{best-of-}N$ sampling with $N=4$ and a GPT-5 judge was among the
+scaffolding changes that raised GPT-5's performance (Patwardhan et al. 2025, §3.4, Figure 9). In the paper's appendix
+analysis, a loop in which an expert reviews the output, resamples up to $n$ times and otherwise does the task
+themselves makes GPT-5 about 1.4 times faster and 1.6 times cheaper than an unaided expert (appendix A.2.1, Table 2;
+lecture 8, ≈40:45). METR notes that its scaffolds used relatively little inference compute: more than 80% of successful
+runs cost less than 10% of what a human expert would be paid for the same task, which leaves room to spend more (Kwa et
+al. 2025, v2, §8.2, Figure 13).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): repeated sampling, coverage, o1's

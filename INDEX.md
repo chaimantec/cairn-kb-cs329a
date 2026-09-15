@@ -8,10 +8,11 @@ and memory, then multi-step reasoning, planning and evaluation, with guest lectu
 labs. Students read research papers for each lecture, do three homeworks, and carry out an original
 research project.
 
-> **Coverage note — partial.** This knowledge base covers **catalog lectures 1–7 of 9**
+> **Coverage note — partial.** This knowledge base covers **catalog lectures 1–8 of 9**
 > (Course Overview; Test-Time Compute Scaling; Robust Verification; Learning from Feedback with
 > Tools/Code; Planning and Multi-Step Reasoning; Train Time Scaling/Scaling RL; Self-Improvement and Deep
-> Research Agents). It says nothing about lectures 8 and 9. Do not cite it as covering the course.
+> Research Agents; Agentic Evaluations and Long Horizon Tasks). It says nothing about lecture 9. Do not
+> cite it as covering the course.
 >
 > **No slides; papers are the course material.** The course publishes no slides on its public site
 > (lecture materials go to Canvas). The course material is the **paper reading list** the site gives
@@ -29,16 +30,19 @@ research project.
 > cited on the lecture page but not reproduced, and lecture 6 has no images. **Of lecture 7's three readings**,
 > AlphaCode is transcribed main body only, relying on its arXiv CC BY 4.0 licence although the PDF prints an
 > all-rights-reserved notice; the AlphaCode 2 Technical Report (all rights reserved) and Search-o1 (arXiv
-> non-exclusive) are linked only. Figures are the papers' own, shown with their printed captions; this KB
+> non-exclusive) are linked only. **Lecture 8's three readings** (METR's time-horizon paper, GDPval,
+> DeepScholar-Bench) are all CC BY 4.0 and transcribed main body only, from the arXiv versions current on the
+> lecture date — METR's v2 and DeepScholar-Bench's v1, both since revised. Figures are the papers' own, shown
+> with their printed captions; this KB
 > writes no descriptions of charts. Papers are always cited at their **original URL**; see
 > [sources.md](sources.md).
 >
 > **Numbering.** The Cairn catalog has nine videos, "Part 1" to "Part 9"; the site's schedule has
 > twenty rows, including guest lectures and midterm presentations that are not in the playlist.
 > Repo files use the **catalog position**. Positions 1–6 are site rows 1–6 and position 7 ("Self-Improvement
-> and Deep Research Agents") is row 8; row 7 has no video in the catalog. Positions 2–7 are confirmed against
-> their transcripts. By title, position 8 is row 17 and position 9 is row 20, which stays tentative until
-> those lectures are built.
+> and Deep Research Agents") is row 8, and position 8 ("Agentic Evaluations and Long Horizon Tasks") is row 17; row 7 has no video in
+> the catalog. Positions 2–8 are confirmed against their transcripts. By title, position 9 is row 20, which
+> stays tentative until that lecture is built.
 
 ## Lectures
 
@@ -96,6 +100,15 @@ research project.
   with about 100; the class discussion of difficulty and building reasoning in; Search-o1's agentic search inside a
   reasoning chain and Reason-in-Documents, with GPQA, human-expert and multi-hop QA results; and the closing Q&A on
   overconfidence. Embeds AlphaCode's figures and links its full text; AlphaCode 2 and Search-o1 are linked only.
+- [Lecture 8 — Agentic Evaluations and Long Horizon Tasks](wiki/08-agentic-evaluations-and-long-horizon-tasks.md) —
+  how to measure what agents can do, three ways. METR's time horizon: task length in skilled-human time at 50% and
+  80% success, the three task suites and human baselines, the logistic fit, doubling about every seven months, how
+  agents fail, the messiness, SWE-bench and internal-PR checks, and the one-month extrapolation. GDPval's expert-judged
+  win rates on real professional work: 44 occupations in 9 sectors, approaching parity but improving roughly linearly,
+  instruction-following failures, speed and cost with expert review, and why context matters. DeepScholar-Bench's live
+  benchmark for writing related-work sections: knowledge synthesis, retrieval quality and verifiability metrics, no
+  system above .19, and oracle-retrieval ablations. Plus the lecture's synthesis of the three and the closing Q&A.
+  Embeds figures from all three readings and links their full text (METR v2, DeepScholar-Bench v1).
 
 ## Topics
 
@@ -106,14 +119,16 @@ as they are built.
   pass@1 vs pass@k, the inference scaling law, revisions and PRM search, compute-optimal allocation by
   difficulty, inference-time architectures, o1's log-linear curve, tree search over agent actions
   (LATS), running the independent parts of one reasoning trace in parallel (SPRINT), where test time and
-  train time differ (lecture 6), and choosing 10 submissions from a million samples (AlphaCode, AlphaCode 2).
+  train time differ (lecture 6), choosing 10 submissions from a million samples (AlphaCode, AlphaCode 2), and
+  reasoning effort, $\text{best-of-}N$ and retry loops on professional tasks (GDPval).
 - [Verifiers](wiki/verifiers.md) — what a verifier does, unit tests and other verifiable domains,
   verifiers vs LLM judges, the generation–verification gap as measured in Large Language Monkeys,
   training a verifier, outcome vs process reward models, step labels without humans, ensembles of
   weak verifiers, public and private tests inside an RL loop, AI feedback as a judge, and LLM judges
   as a search value (LATS) and a step-wise process reward (SWiRL), the known final answer as STaR's filter and
   DAPO's rule-based reward, and example tests, clustering by behaviour and a learned scoring model for code
-  (AlphaCode, AlphaCode 2).
+  (AlphaCode, AlphaCode 2), and expert pairwise grading and LLM judges validated against humans for open-ended work
+  (GDPval, DeepScholar-Bench).
 - [Chain of thought](wiki/chain-of-thought.md) — the tennis-ball prompting example, why it only works
   in large models, chain-of-thought fine-tuning, whether it was emergent or trained, and why
   ungrounded reasoning hallucinates where ReAct's tool use does not, and STaR's bootstrapping of rationales from a
@@ -133,13 +148,13 @@ as they are built.
 - [Scaling laws](wiki/scaling-laws.md) — loss vs compute, data and parameters, model sizes from BERT
   to GPT-4, few-shot learning, emergent abilities, the saturation that turned attention to
   inference, inference scaling laws for repeated sampling, and AlphaCode's log-linear solve rate in samples and
-  compute.
+  compute, and METR's exponential trend in agent time horizons against GDPval's roughly linear one.
 - [Agents and agentic workflows](wiki/agentic-workflows.md) — what makes an agent, today's static
   workflows, building blocks and orchestration patterns (chaining, routing, parallelization,
   orchestrator, evaluator, verifier), coding agents, applications, ReAct's reason–act loop,
   coding agents trained on their own test runs, and planning over many steps (LATS's tree search,
-  SPRINT's planner and parallel executors, SWiRL's multi-step tool use), and search calls inside a reasoning
-  chain (Search-o1).
+  SPRINT's planner and parallel executors, SWiRL's multi-step tool use), search calls inside a reasoning
+  chain (Search-o1), and how long and how reliably agents work (METR's time horizon, failure modes, context).
 - [Self-improvement](wiki/self-improvement.md) — the course's central idea: test-time generation as
   training data, test generation in coding, feedback as the limit, model-labelled rewards, feedback from
   the environment, code execution and a constitution, training on self-generated multi-step
@@ -149,7 +164,7 @@ as they are built.
 - [Retrieval and deep research agents](wiki/retrieval-and-deep-research.md) — deep research as a workflow
   pattern, retrieval proposed for test-time answers, search as an agent's action (ReAct, SWiRL), and Search-o1's
   search inside a reasoning chain: why retrieving once is not enough, agentic RAG, Reason-in-Documents, results,
-  and the class's open questions.
+  and the class's open questions; and evaluating deep research systems with DeepScholar-Bench.
 - [Course logistics](wiki/course-logistics.md) — format, Canvas/Ed/Gradescope, the grading
   breakdown and due dates (including where the site contradicts itself), project rules, late days
   and audits.
@@ -162,14 +177,15 @@ as they are built.
 - [`raw/transcripts/original/`](raw/transcripts/original/) — the verbatim auto-captions, kept as the
   reference for what was actually said.
 - [`raw/papers/`](raw/papers/) — full text of the paper readings ingested so far (lecture 2's four,
-  Weaver for lecture 3, lecture 4's three, LATS and SWiRL for lecture 5, and AlphaCode for lecture 7), transcribed from arXiv LaTeX source with printed
+  Weaver for lecture 3, lecture 4's three, LATS and SWiRL for lecture 5, AlphaCode for lecture 7, and lecture 8's three), transcribed from arXiv LaTeX source with printed
   section, figure and table numbers. Cite a paper by section, figure or table. Large Language Monkeys
   includes its appendix; the others are main body only.
 - [`raw/images/`](raw/images/) — figures cropped from those papers' PDFs with their printed captions,
-  embedded in the paper files and the lecture pages. Only lectures 2–5 and 7 have images; lecture 3's are
-  Weaver's alone, lecture 5's are LATS's and SWiRL's, and lecture 7's are AlphaCode's. Use an image path you have read in a file; never construct one.
+  embedded in the paper files and the lecture pages. Only lectures 2–5, 7 and 8 have images; lecture 3's are
+  Weaver's alone, lecture 5's are LATS's and SWiRL's, lecture 7's are AlphaCode's, and lecture 8's come from all
+  three of its readings. Use an image path you have read in a file; never construct one.
 - [`sources.md`](sources.md) — every paper reading on the course site, grouped by schedule row, with
-  its original URL and the catalog position it tentatively belongs to.
+  its original URL and the catalog position it belongs to (confirmed for positions 1–8).
 - [`kb.json`](kb.json) — machine-readable coverage and provenance, including known caveats.
 - [`SEE_ALSO.md`](SEE_ALSO.md) — sibling knowledge bases (CS336, CS224N) worth reading for this
   course, and what each is good for.

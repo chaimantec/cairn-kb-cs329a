@@ -4,11 +4,11 @@ Every document the course website (<https://cs329a.stanford.edu/>) links as cour
 
 **The course publishes no slides** on its public site — the instructors upload lecture materials to Canvas — so the course material this knowledge base draws on is the **paper readings** listed per lecture in the site's schedule. **Cite every paper at the original URL below.** The PDFs were downloaded to `raw/pdfs/papers/` on the machine that built this KB, but that directory is **gitignored and not in this repo**: the local filenames are recorded so a future build can find them, and are not links.
 
-**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5); and AlphaCode, from row 8 (lecture 7) — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3, 5 and 8, and all three readings of row 6 (lecture 6), are linked only, for licence reasons. Lecture 1 lists no readings.
+**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5); AlphaCode, from row 8 (lecture 7); and row 17's three readings (lecture 8), in the versions current on the lecture date — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3, 5 and 8, and all three readings of row 6 (lecture 6), are linked only, for licence reasons. Lecture 1 lists no readings.
 
 ## Schedule rows and catalog positions
 
-The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–7 are confirmed against their transcripts: positions 2, 3, 4 and 6 each discuss every reading of their row, position 5 discusses three of its row's five, and position 7 discusses all three readings of row 8. The mapping of positions 8 and 9 below is by title and tentative. See [INDEX](INDEX.md).
+The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–8 are confirmed against their transcripts: positions 2, 3, 4 and 6 each discuss every reading of their row, position 5 discusses three of its row's five, position 7 discusses all three readings of row 8, and position 8 all three of row 17. The mapping of position 9 below is by title and tentative. See [INDEX](INDEX.md).
 
 | Site row | Date | Topic | Catalog position | Readings |
 |---|---|---|---|---|
@@ -22,7 +22,7 @@ The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this K
 | 8 | Fri Oct 17 | Self improvement with Search & Deep Research Agents | 7 (confirmed) | 3 — AlphaCode ingested; 2 linked only (licence) |
 | 13 | Mon Nov 3 | Agentic Frameworks for Software Engineering | — (no video in catalog) | 3 |
 | 14 | Fri Nov 7 | Augmenting Agents with Memory (guest lecturer Junchen Jiang, LMCache, UChicago) | — (no video in catalog) | 3 |
-| 17 | Mon Nov 17 | Agentic Evaluations & Long-Horizon Tasks | 8 | 3 |
+| 17 | Mon Nov 17 | Agentic Evaluations & Long-Horizon Tasks | 8 (confirmed) | 3 — ingested (METR v2, DeepScholar-Bench v1) |
 | 20 | Fri Dec 5 | Future Research Areas | 9 | none listed |
 
 Rows 9, 15, 16, 18 and 19 are guest lectures and rows 10–12 are midterm presentations; none of them lists readings or appears in the catalog.
@@ -119,10 +119,14 @@ Catalog position 7, confirmed: its transcript discusses all three readings, in o
 | MemGPT: Towards LLMs as Operating Systems (Packer et al, 2023) | <https://arxiv.org/abs/2310.08560> | `raw/pdfs/papers/2310.08560-memgpt.pdf` | 2026-09-13 |
 | CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion | <http://arxiv.org/abs/2405.16444> | `raw/pdfs/papers/2405.16444-cacheblend.pdf` | 2026-09-13 |
 
-## Row 17 — Agentic Evaluations & Long-Horizon Tasks (Mon Nov 17) — 3 readings
+## Row 17 — Agentic Evaluations & Long-Horizon Tasks (Mon Nov 17) — 3 readings, lecture built
 
-| Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
-|---|---|---|---|
-| Measuring AI Ability to Complete Long Tasks | <https://arxiv.org/abs/2503.14499> | `raw/pdfs/papers/2503.14499-measuring-ai-ability-to-complete-long-tasks.pdf` | 2026-09-13 |
-| GDPVal: Evaluating AI Model Performance on Real-World Economically Valuable Tasks | <https://arxiv.org/abs/2510.04374> | `raw/pdfs/papers/2510.04374-gdpval.pdf` | 2026-09-13 |
-| DeepScholar-Bench: A Live Benchmark and Automated Evaluation for Generative Research Synthesis | <https://arxiv.org/abs/2508.20033> | `raw/pdfs/papers/2508.20033-deepscholar-bench.pdf` | 2026-09-13 |
+Catalog position 8, confirmed: its transcript names all three readings at the start and discusses them in order. Licences were checked on each arXiv abstract page on 2026-09-15: **all three are CC BY 4.0**, and their main bodies are transcribed in this KB (the appendices are not).
+
+**Two of the three were revised after the lecture** (Mon Nov 17, 2025), and the revisions change numbers and names the lecture quotes. By user decision, this KB transcribes the version that was current on the lecture date, which is also the one the lecture quotes. For the METR paper that is **v2** (30 March 2025); its v3 and v4 (2026) retitle it *Measuring AI Ability to Complete Long Software Tasks* and change its headline results. For DeepScholar-Bench it is **v1** (27 August 2025); its v2 (February 2026) renames DeepScholar-base and reports new results. GDPval has only v1. The versioned LaTeX sources were fetched from `https://arxiv.org/e-print/<id>v<n>` on 2026-09-15 to `raw/pdfs/papers/src/<id>v<n>/`, and GDPval's to `raw/pdfs/papers/src/2510.04374/` (gitignored, not in repo). The abstract URLs below serve the latest version. The site lists GDPval as "GDPVal"; the paper prints "GDPval".
+
+| Paper | Original URL | Version transcribed | Licence | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
+|---|---|---|---|---|---|---|
+| Measuring AI Ability to Complete Long Tasks (Kwa et al. 2025) | <https://arxiv.org/abs/2503.14499> | v2, <https://arxiv.org/abs/2503.14499v2> | CC BY 4.0 | [main body](raw/papers/08-metr-long-tasks.md) (appendices not transcribed) | `raw/pdfs/papers/2503.14499v2-measuring-ai-ability-to-complete-long-tasks.pdf` (the 2026-09-13 download, `2503.14499-…`, is v4) | 2026-09-15 |
+| GDPVal: Evaluating AI Model Performance on Real-World Economically Valuable Tasks (Patwardhan et al. 2025) | <https://arxiv.org/abs/2510.04374> | v1 (the only version) | CC BY 4.0 | [main body](raw/papers/08-gdpval.md) (appendices not transcribed) | `raw/pdfs/papers/2510.04374-gdpval.pdf` | 2026-09-13 |
+| DeepScholar-Bench: A Live Benchmark and Automated Evaluation for Generative Research Synthesis (Patel et al. 2025) | <https://arxiv.org/abs/2508.20033> | v1, <https://arxiv.org/abs/2508.20033v1> | CC BY 4.0 | [main body](raw/papers/08-deepscholar-bench.md) (appendices not transcribed) | `raw/pdfs/papers/2508.20033v1-deepscholar-bench.pdf` (the 2026-09-13 download, `2508.20033-…`, is v2) | 2026-09-15 |

@@ -82,6 +82,25 @@ which is about reasoning over documents once retrieved (≈1:05:12–1:06:00).
 Search-R1, which is not on the reading list and teaches the model to search with reinforcement learning
 (≈1:08:19). See [reinforcement learning](reinforcement-learning.md).
 
+## Evaluating deep research
+
+[Lecture 8](08-agentic-evaluations-and-long-horizon-tasks.md) turns to measuring these systems with
+**DeepScholar-Bench** (Patel et al. 2025, v1). Its task is one a student had asked AI to do: write the related-work
+section of a recent arXiv paper by retrieving, synthesizing and citing prior work (lecture 8, ≈51:40–52:26; §2). A
+re-runnable pipeline scrapes the dataset from papers published after the release of Llama-4, the main open-source model
+it benchmarks, to keep it current and uncontaminated (§2.1–§2.2). Systems are scored on three dimensions:
+**knowledge synthesis** (organization, and coverage of the essential-fact "nuggets" in the human-written section),
+**retrieval quality** (relevance, coverage of the important references, and how highly cited the sources are) and
+**verifiability** (whether citations support their claims, and whether claims are covered by citations) (§3, Table 1).
+
+No system it tests scores above .19 across all metrics (§5.2.1). Among prior methods, OpenAI's DeepResearch writes the
+best-organized reports and covers the most nuggets, but its Nugget Coverage is .392, its Reference Coverage .187 and
+its Document Importance .124, and its citations are less verifiable than a simple LOTUS-based pipeline's (Table 2).
+Handing a pipeline the human exemplar's important references nearly saturates retrieval quality and verifiability, but
+lifts Nugget Coverage only to about .5. So finding the right sources and surfacing the key facts from them are both
+still open (§5.3, Table 3). The lecture's summary is that agents miss the foundational papers an expert knows, and
+"it's great English, but not necessarily covering all the key facts" (≈55:32–57:07).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): deep research as an end-to-end agent task, and web

@@ -155,6 +155,23 @@ The same lecture describes AlphaCode 2 as almost a multi-agent system: one famil
 and another family scores them, which gives more tricks than depending on what a single model can do
 (≈34:37–35:23).
 
+## How long, and how reliably
+
+[Lecture 8](08-agentic-evaluations-and-long-horizon-tasks.md) measures what agents can do. METR's **time horizon** is
+the length of task, in the time a skilled human takes, that an agent completes with a given probability. The 50%
+horizon of frontier agents has doubled about every seven months since 2019, reaching 59 minutes for Claude 3.7 Sonnet,
+whose 80% horizon is around 15 minutes (Kwa et al. 2025, v2, §4.2, §4.2.1). The paper credits better tool use,
+adapting to mistakes rather than repeating them, and logical reasoning (§5). Its hand-labelled failures of GPT-4 and
+o1 agents fall into poor planning and tool choice, incorrect reasoning, premature task abandonment and repeating failed
+actions. Repeated failed actions account for 12 of GPT-4's 31 failures and 2 of o1's 32 (Table 3). The class's
+explanations for why coding agents got better were context engineering (including compaction), planning and
+re-planning, user feedback and memory (lecture 8, ≈16:34–19:43).
+
+Agents also do worse on "messier" tasks, and on a real code base they perform like low-context contractors rather than
+the repository's maintainers (§6.2, §6.4). GDPval finds the same gap in professional work. When prompts omit context,
+GPT-5 "struggled to figure out context" (Patwardhan et al. 2025, appendix A.2.7), and in the lecture's words "humans are
+basically architecting the set of problems" (≈46:12).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the LLM-to-agent transition, workflow

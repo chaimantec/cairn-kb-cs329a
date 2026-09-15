@@ -64,7 +64,16 @@ the role slide decks play in other Cairn KBs.
   **CC BY 4.0**, but the published PDF prints "© 2022 DeepMind. All rights reserved". The user decided to rely on
   the arXiv licence grant, so its main body is transcribed and its figures committed. The AlphaCode 2 Technical
   Report is a PDF on Google DeepMind's storage that prints "All rights reserved", and Search-o1 carries the
-  non-exclusive licence, so both are linked, discussed and cited only.
+  non-exclusive licence, so both are linked, discussed and cited only. Lecture 8's three (METR's *Measuring AI
+  Ability to Complete Long Tasks*, GDPval, DeepScholar-Bench) were checked on 2026-09-15 and are all CC BY 4.0, so
+  their main bodies are transcribed and their figures committed.
+- **Transcribe the version the lecture was taught from.** A reading can be revised on arXiv after the lecture, and
+  the abstract link then serves text whose numbers and names no longer match what the lecturer quotes. Two of
+  lecture 8's readings were: METR's paper is at v4 (retitled *…Long Software Tasks*) and DeepScholar-Bench at v2.
+  By user decision the KB transcribes the version current on the lecture date — METR's v2 and DeepScholar-Bench's
+  v1 — fetched from `https://arxiv.org/e-print/<id>v<n>` into `raw/pdfs/papers/src/<id>v<n>/`, and says so in the
+  paper file's front matter, the lecture page and `sources.md`. Check a reading's arXiv submission history against
+  the lecture date before transcribing it.
 
 ### Paper files (`raw/papers/`)
 
@@ -93,7 +102,7 @@ Each ingested reading is two files, named by the catalog lecture that lists it:
 
 ### Images
 
-Only **lectures 2, 3, 4, 5 and 7** have images, each named `<paper>-figure-N` after the paper file it
+Only **lectures 2, 3, 4, 5, 7 and 8** have images, each named `<paper>-figure-N` after the paper file it
 belongs to. Lecture 2: every figure in the transcribed parts of its four readings, in
 `raw/images/02-test-time-compute-scaling/`. Lecture 3: **Weaver's Figures 1–6 only** (its main body),
 in `raw/images/03-robust-verification/` — the other three lecture 3 readings are not licensed for
@@ -103,8 +112,10 @@ readings — ReAct Figures 1–3, RLEF Figures 1–4, Constitutional AI Figures 
 readings only — LATS Figures 1–2 and SWiRL Figures 1–8 — in `raw/images/05-planning-and-multi-step-reasoning/`;
 SPRINT, ADaPT and *Wider or Deeper?* have none. Lecture 7: **AlphaCode's main-body figures only** — Figures 1–4
 and 6–13 — in `raw/images/07-self-improvement-and-deep-research-agents/`; AlphaCode's Figure 5 is a text listing,
-transcribed as text, and the AlphaCode 2 Technical Report and Search-o1 have none. Lectures 1, 6, 8 and 9 have no
-images; lecture 6's three readings are not licensed for republication.
+transcribed as text, and the AlphaCode 2 Technical Report and Search-o1 have none. Lecture 8: the main-body figures of all three
+readings, from the versions transcribed — METR's v2 Figures 1–13, GDPval Figures 1–9 and DeepScholar-Bench v1
+Figures 1–3 — in `raw/images/08-agentic-evaluations-and-long-horizon-tasks/`; their numbers follow those versions,
+not the current arXiv ones. Lectures 1, 6 and 9 have no images; lecture 6's three readings are not licensed for republication.
 
 Constitutional AI prints its figure labels with no colon ("Figure 1" then the caption), which the
 skill's `extract_paper_figures.py` did not recognise as a caption when lecture 4 was built. Its crops
@@ -117,6 +128,10 @@ of Figures 1, 3 and 6, and grew Figure 7's box downward over a table. Those four
 `--clip` boxes taken from the page's text and drawing positions, and all twelve passed the text-layer check.
 Figure 3's caption sits beside its code listing and includes a numbered list, so the check's "text below the
 caption" flag on it is the caption's own list, confirmed in the LaTeX.
+
+Lecture 8's crops needed two hand-set boxes of 25. The script found no graphics near the caption of METR's (v2)
+Figure 9, and GDPval's Figure 2 box began inside the last line of the paragraph above it. Both were re-cropped with
+explicit `--clip` boxes taken from the page geometry, and all 25 passed the text-layer check.
 
 - Each image is **one figure as published, cropped from the paper's PDF together with its
   caption** — not the whole page. They are reproduced under the papers' CC BY 4.0 licences (AlphaCode's as
@@ -147,10 +162,10 @@ caption" flag on it is the caption's own list, confirmed in the LaTeX.
   said in a lecture — it is the start of the transcript paragraph containing the statement. Cite the
   course website for logistics it states, and say when the two disagree.
 - **Files are named by Cairn catalog position**, not by the site's schedule row. The catalog has
-  nine videos and the site twenty rows. Positions 1–6 are rows 1–6 and position 7 is row 8; by title, position 8
-  is row 17 and position 9 is row 20. Positions 2–7 are confirmed against their transcripts — 2, 3, 4, 6 and 7 each
-  discuss every reading of their row, and 5 discusses three of its five. Confirm positions 8 and 9 the same way
-  before ingesting their readings, and record the resolution in the lecture page and `sources.md`. Rows 7, 13 and
+  nine videos and the site twenty rows. Positions 1–6 are rows 1–6, position 7 is row 8 and position 8 is row 17;
+  by title, position 9 is row 20. Positions 2–8 are confirmed against their transcripts — 2, 3, 4, 6, 7 and 8 each
+  discuss every reading of their row, and 5 discusses three of its five. Confirm position 9 the same way
+  before ingesting its readings, and record the resolution in the lecture page and `sources.md`. Rows 7, 13 and
   14 list readings but have no video in the catalog. Lecture 7's remark about "scientist style of work that folks
   covered last lecture" fits row 7, which lists *The AI Scientist*.
 - **Never invent course content.** If a source is unclear, say so on the page. Do not fill the gap
