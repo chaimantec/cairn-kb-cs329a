@@ -15,6 +15,7 @@ wiki prose is not delegated, because nothing scores it.
 
 | Path                | Contents                                                      |
 | ------------------- | ------------------------------------------------------------- |
+| `README.md`         | Front door for a human or a non-Cairn agent landing on the repo. Short by design — it points at `INDEX.md` and `kb.json` for anything countable rather than restating it, so keep it that way. |
 | `INDEX.md`          | Entry point. Course summary + annotated table of contents.    |
 | `wiki/`             | Durable pages: one per lecture, plus cross-lecture topics.    |
 | `raw/transcripts/`  | Edited lecture transcripts with `[MM:SS]` paragraph marks.    |

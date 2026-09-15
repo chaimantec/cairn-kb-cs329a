@@ -179,6 +179,7 @@ Budget rules from the user (2026-09-13): **one subagent at a time**; for papers 
 - [x] verify_kb.py clean, and its review section read
 - [x] Commit and push
 - [x] PATCH kbUrl onto the catalog entry
+- [x] Post-build (2026-09-15, user request): `README.md` added — a short front door for a human or a non-Cairn agent landing on the repo, pointing at `INDEX.md` and `kb.json` for anything countable rather than restating counts (same reasoning that removed `IMAGES.md`). `AGENTS.md` layout table gains a row for it; verify_kb.py re-run clean, re-checked the four numeric prose claims against the measured image distribution; committed and pushed
 
 ## Resume notes — lecture 2 (written 2026-09-13, before the wiki step)
 
