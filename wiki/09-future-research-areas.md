@@ -373,7 +373,8 @@ we can wait minutes. Maybe we can allow one hour." The reason is what RL trainin
 or thousands of steps of iteration", against which "we can't wait like days or someone human in the
 loop to collect the reward" (≈35:53). Truly non-verifiable also includes **creativity and subjective metrics** —
 creative writing, where "designing an exact reward function for that is hard" — and where a modelled
-reward lets "the RL or the agent can do reward hacking if the model is slightly off base" (≈36:41).
+reward opens the door to reward hacking: "the RL or the agent can do reward hacking if the model is
+slightly off base" (≈36:41).
 
 ### A student's question: how do people attack the hard-to-verify domains?
 
