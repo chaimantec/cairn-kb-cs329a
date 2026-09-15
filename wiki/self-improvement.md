@@ -126,6 +126,20 @@ generalizes far out of domain (≈1:03:08). RL gets better at what a model can a
 what it knows" (≈1:10:06–1:10:52). This sharpens the open question from lecture 1 above; see
 [reinforcement learning](reinforcement-learning.md).
 
+## Search first, then build it in
+
+[Lecture 7](07-self-improvement-and-deep-research-agents.md), titled *Self-Improvement and Deep Research
+Agents*, improves results by **searching** a model's outputs rather than updating the model: "the solutions
+lie in the search space of the models" (≈0:52). Its link to self-improvement runs through the class
+discussion. The lecturer describes a line of research that first builds a system that reasons well and closes
+the loop — like AlphaCode 2, with one family of models generating and another scoring — and then distils that
+knowledge into a single model, which becomes a large reasoning model (≈34:37). Asked how to cut AlphaCode 2's
+wasted samples, the lecturer offers refinement with feedback and a model improved with RL, each of which
+reduces what test-time search has to do (≈32:18–33:51). Asked how to build reasoning into a code model, the
+class reaches for chain-of-thought training data and a STaR-style loop (≈43:59). AlphaCode also generates part
+of its own verification: a model trained to write new test inputs, whose outputs are used to cluster the
+samples (Li et al. 2022, §4.6).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the test-time-to-training loop, test
@@ -140,3 +154,6 @@ what it knows" (≈1:10:06–1:10:52). This sharpens the open question from lect
   training data.
 - [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): STaR's bootstrapped rationales
   and rationalization, and RL making a model more consistent rather than more capable.
+- [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
+  searching a model's outputs (AlphaCode, AlphaCode 2, Search-o1), model-generated test inputs, and distilling a
+  search system into a reasoning model.

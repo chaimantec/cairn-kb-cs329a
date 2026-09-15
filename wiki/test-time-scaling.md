@@ -105,6 +105,22 @@ verifier more, it adds verifiers to an ensemble, and the lecture lists more gene
 generator and verifier models, and more verifiers as separate axes along which inference compute can
 be spent (lecture 3, ≈1:00:07).
 
+[Lecture 7](07-self-improvement-and-deep-research-agents.md) shows the ceiling at its starkest. AlphaCode
+samples up to a million programs per competitive-programming problem but may submit only 10. Filtering on
+the problem's example tests removes about 99% of the samples. Clustering the survivors by their outputs on
+generated test inputs then picks one program per behaviour (Li et al. 2022, §4.5, §4.6). The paper's metric
+for this setting is $n\text{@}k$, the share of problems solved with $n$ submissions chosen from $k$ samples,
+so $\text{pass@}k = k\text{@}k$ (§2.2). With 10 submissions the solve rate still rises log-linearly with the
+number of samples. Filtering and clustering "clearly enable scaling" where random selection stays flat, but a
+large gap remains to the $\text{pass@}k$ upper bound of perfect selection (§5.3.1, §5.3.5, Figures 6 and 8).
+The lecture calls selection the bottleneck (lecture 7, ≈12:36, ≈18:55).
+
+AlphaCode 2 attacks the gap from both ends: a stronger policy (fine-tuned Gemini Pro) and a learned
+**scoring model** that picks the best sample from each of the 10 largest clusters. It matches AlphaCode's
+million-sample solve rate with about 100 samples (AlphaCode Team 2023, *Evaluation*; lecture 7,
+≈29:51–30:39). As AlphaCode's authors had put it, a better model with a higher slope "can reach the same
+solve rate with exponentially fewer samples" (Li et al. 2022, §5.3.1).
+
 ## Allocating compute by difficulty
 
 Which strategy is best depends on the question. Binning questions by the model's $\text{pass@}1$ and choosing
@@ -155,3 +171,6 @@ better accuracy (≈25:04–26:38, ≈44:41; Biju et al. 2025, §4.2). See
   trace.
 - [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): o1's train-time curve, and
   the loop from test-time outputs back into training.
+- [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
+  AlphaCode's million samples narrowed to 10 submissions, $10\text{@}k$ versus $\text{pass@}k$, selection as the
+  bottleneck, and AlphaCode 2 matching a million samples with about 100.

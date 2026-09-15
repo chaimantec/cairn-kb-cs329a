@@ -115,8 +115,8 @@ Test-time compute is cheap to add once a model is trained: with a good verifier 
 almost without limit, and repeated sampling tells us a correct solution exists (≈12:29–13:16). The lecturer
 previews papers for "next Friday" that make search effectively infinite, naming AlphaCode (≈12:29; the
 captions mark the name as uncertain). The site lists *Competition-Level Code Generation with AlphaCode* under schedule
-row 8, Self improvement with Search & Deep Research Agents, on Fri Oct 17 — the Friday after this lecture; see
-[sources](../sources.md). Train-time scaling is harder in two ways: it has to be scaled
+row 8, Self improvement with Search & Deep Research Agents, on Fri Oct 17 — the Friday after this lecture — and
+[lecture 7](07-self-improvement-and-deep-research-agents.md) covers it. Train-time scaling is harder in two ways: it has to be scaled
 correctly, and the closed feedback loop needs **enough successes** to learn from (≈13:16).
 
 The two serve different goals. A pre-trained model has some level of capability in the domains it has seen.

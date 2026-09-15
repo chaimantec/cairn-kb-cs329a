@@ -91,6 +91,27 @@ model and appeared as training progressed (Yu et al. 2025, §4.4, Table 2). Deep
 majority-vote accuracy but not $\text{Pass@}K$, making its model more consistent rather than more capable (Shao et al.
 2024, §5.2.2). See [reinforcement learning](reinforcement-learning.md).
 
+## When knowledge runs out
+
+A long chain of thought has a failure mode of its own: a gap in what the model knows.
+[Lecture 7](07-self-improvement-and-deep-research-agents.md) points to the uncertain wording such gaps produce
+in reasoning chains on GPQA — "perhaps", "alternatively", "wait" — and to the gap propagating through the rest
+of the chain (≈47:03–47:51). Search-o1 measures it with QwQ-32B-Preview on the GPQA diamond set, where
+"perhaps" averages over 30 occurrences per reasoning process. It argues that "an extended chain of thought may
+cause overthinking and increased risks of knowledge insufficiency" (Li et al. 2025, §1, Figure 1). Its remedy
+is to let the model search mid-reasoning and condense what it finds; see
+[retrieval and deep research](retrieval-and-deep-research.md).
+
+The paper also compares reasoning and instruction-tuned models as search users. With agentic RAG, the
+non-reasoning Qwen2.5-32B does about as well as with standard RAG on GPQA and worse on math and code. The
+authors read this as showing that "ordinary LLMs cannot effectively utilize search as a tool to solve complex
+reasoning tasks" (§4.4). Without retrieval, though, the reasoning model QwQ-32B is no better on open-domain QA
+than Qwen2.5-32B — slightly lower average exact match, 30.7 against 31.3 (§4.5).
+
+The lecture closes on calibration. Aggregated token log probabilities show models tend to be overconfident —
+right half the time but, say, 80% sure — and whether models know what they know is an open research area
+(≈1:09:54–1:12:15).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): reasoning behaviours, the o1 example, o1 vs
@@ -99,3 +120,6 @@ majority-vote accuracy but not $\text{Pass@}K$, making its model more consistent
   training of a reasoning model to plan and execute in parallel.
 - [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): the thinking patterns again,
   and whether reflection emerges during RL.
+- [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
+  knowledge gaps in long reasoning chains and Search-o1's search inside them, and the closing Q&A on
+  overconfidence.

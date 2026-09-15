@@ -4,11 +4,11 @@ Every document the course website (<https://cs329a.stanford.edu/>) links as cour
 
 **The course publishes no slides** on its public site — the instructors upload lecture materials to Canvas — so the course material this knowledge base draws on is the **paper readings** listed per lecture in the site's schedule. **Cite every paper at the original URL below.** The PDFs were downloaded to `raw/pdfs/papers/` on the machine that built this KB, but that directory is **gitignored and not in this repo**: the local filenames are recorded so a future build can find them, and are not links.
 
-**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); and LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5) — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3 and 5, and all three readings of row 6 (lecture 6), are linked only, for licence reasons. Lecture 1 lists no readings.
+**Ingested so far:** the four row-2 readings (catalog lecture 2); Weaver, the one CC BY 4.0 reading of row 3 (lecture 3); row 4's three readings (lecture 4); LATS and SWiRL, the two CC BY 4.0 readings of row 5 (lecture 5); and AlphaCode, from row 8 (lecture 7) — their full text, transcribed from the arXiv LaTeX source, is linked in the tables below. The other readings of rows 3, 5 and 8, and all three readings of row 6 (lecture 6), are linked only, for licence reasons. Lecture 1 lists no readings.
 
 ## Schedule rows and catalog positions
 
-The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–6 are confirmed against their transcripts: positions 2, 3, 4 and 6 each discuss every reading of their row, and position 5 discusses three of its row's five. The rest of the mapping below is by title and tentative. See [INDEX](INDEX.md).
+The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this KB are named by **catalog position**. Positions 2–7 are confirmed against their transcripts: positions 2, 3, 4 and 6 each discuss every reading of their row, position 5 discusses three of its row's five, and position 7 discusses all three readings of row 8. The mapping of positions 8 and 9 below is by title and tentative. See [INDEX](INDEX.md).
 
 | Site row | Date | Topic | Catalog position | Readings |
 |---|---|---|---|---|
@@ -18,8 +18,8 @@ The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this K
 | 4 | Fri Oct 3 | Learning from feedback with tools/code | 4 (confirmed) | 3 — ingested |
 | 5 | Mon Oct 6 | Multi-step Reasoning/Planning | 5 (confirmed) | 5 — LATS and SWiRL ingested; 3 linked only (licence) |
 | 6 | Fri Oct 10 | Train Time Scaling/Scaling RL | 6 (confirmed) | 3 — linked only (licence) |
-| 7 | Mon Oct 13 | Open-Ended Evolution of Self-Improving Agents | 7 (tentative — shares a video with row 8) | 3 |
-| 8 | Fri Oct 17 | Self improvement with Search & Deep Research Agents | 7 (tentative — shares a video with row 7) | 3 |
+| 7 | Mon Oct 13 | Open-Ended Evolution of Self-Improving Agents | — (no video in catalog) | 3 |
+| 8 | Fri Oct 17 | Self improvement with Search & Deep Research Agents | 7 (confirmed) | 3 — AlphaCode ingested; 2 linked only (licence) |
 | 13 | Mon Nov 3 | Agentic Frameworks for Software Engineering | — (no video in catalog) | 3 |
 | 14 | Fri Nov 7 | Augmenting Agents with Memory (guest lecturer Junchen Jiang, LMCache, UChicago) | — (no video in catalog) | 3 |
 | 17 | Mon Nov 17 | Agentic Evaluations & Long-Horizon Tasks | 8 | 3 |
@@ -27,7 +27,7 @@ The site's schedule has 20 rows; the Cairn catalog has 9 videos. Files in this K
 
 Rows 9, 15, 16, 18 and 19 are guest lectures and rows 10–12 are midterm presentations; none of them lists readings or appears in the catalog.
 
-Evidence for position 7, not yet confirmation: lecture 6 (row 6, Fri Oct 10) previews AlphaCode — a row 8 reading — as one of the papers for "next Friday", which is row 8's date (lecture 6 transcript, ≈12:29).
+Position 7 is row 8, confirmed by its transcript: it discusses AlphaCode, AlphaCode 2 and Search-o1 in order, and none of row 7's readings. Lecture 6 (row 6, Fri Oct 10) had previewed AlphaCode for "next Friday", row 8's date (lecture 6 transcript, ≈12:29). Row 7 has no video in the catalog; lecture 7 refers to "a scientist style of work that folks covered last lecture" (≈45:31–46:18), which fits row 7's *The AI Scientist*.
 
 ## Row 2 — Test-time Compute Scaling (Fri Sep 26) — 4 readings, ingested
 
@@ -83,7 +83,9 @@ Catalog position 6, confirmed: its transcript discusses all three readings, in o
 | DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models | <https://arxiv.org/abs/2402.03300> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2402.03300-deepseekmath.pdf` | 2026-09-13 |
 | DAPO: An Open-Source LLM Reinforcement Learning System at Scale | <https://arxiv.org/abs/2503.14476> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2503.14476-dapo.pdf` | 2026-09-13 |
 
-## Row 7 — Open-Ended Evolution of Self-Improving Agents (Mon Oct 13) — 3 readings
+## Row 7 — Open-Ended Evolution of Self-Improving Agents (Mon Oct 13) — 3 readings, no video
+
+No recording of this lecture is in the Cairn catalog, so none of its readings is ingested. Catalog position 7 is row 8, below. Lecture 7 refers to "a scientist style of work that folks covered last lecture" (≈45:31–46:18), which fits this row's *The AI Scientist*.
 
 | Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
 |---|---|---|---|
@@ -91,13 +93,15 @@ Catalog position 6, confirmed: its transcript discusses all three readings, in o
 | The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery (Lu et al. 2024) | <https://arxiv.org/abs/2408.06292> | `raw/pdfs/papers/2408.06292-the-ai-scientist.pdf` | 2026-09-13 |
 | AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms | <https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf> | `raw/pdfs/papers/alphaevolve-alphaevolve.pdf` | 2026-09-13 |
 
-## Row 8 — Self improvement with Search & Deep Research Agents (Fri Oct 17) — 3 readings
+## Row 8 — Self improvement with Search & Deep Research Agents (Fri Oct 17) — 3 readings, lecture built
 
-| Paper | Original URL | Local file (gitignored, not in repo) | Fetched |
-|---|---|---|---|
-| Competition-Level Code Generation with AlphaCode | <https://arxiv.org/pdf/2203.07814> | `raw/pdfs/papers/2203.07814-competition-level-code-generation-with-alphacode.pdf` | 2026-09-13 |
-| AlphaCode 2 Technical Report | <https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf> | `raw/pdfs/papers/alphacode2-tech-report-alphacode-2-technical-report.pdf` | 2026-09-13 |
-| Search-o1: Agentic Search-Enhanced Large Reasoning Models | <https://arxiv.org/pdf/2501.05366> | `raw/pdfs/papers/2501.05366-search-o1.pdf` | 2026-09-13 |
+Catalog position 7, confirmed: its transcript discusses all three readings, in order. Licences were checked on 2026-09-15. **AlphaCode**'s arXiv abstract page lists CC BY 4.0, although the published PDF prints "© 2022 DeepMind. All rights reserved". The KB relies on the arXiv licence grant (a user decision) and transcribes its main body; the appendices are not transcribed. Its LaTeX source was fetched from `https://arxiv.org/e-print/2203.07814` on 2026-09-15 to `raw/pdfs/papers/src/2203.07814/` (gitignored, not in repo). The **AlphaCode 2 Technical Report** is a PDF on Google DeepMind's storage that prints "© 2023 Google DeepMind. All rights reserved", and **Search-o1** carries arXiv's non-exclusive licence. Both are linked, discussed and cited in [the lecture page](wiki/07-self-improvement-and-deep-research-agents.md), not transcribed, and none of their figures is committed. Search-o1's LaTeX source was fetched to `raw/pdfs/papers/src/2501.05366/` (gitignored) and read for the wiki.
+
+| Paper | Original URL | Licence | Full text in this KB | Local PDF (gitignored, not in repo) | Fetched |
+|---|---|---|---|---|---|
+| Competition-Level Code Generation with AlphaCode | <https://arxiv.org/pdf/2203.07814> | CC BY 4.0 on arXiv; the PDF prints all rights reserved | [main body](raw/papers/07-alphacode.md) (appendices not transcribed) | `raw/pdfs/papers/2203.07814-competition-level-code-generation-with-alphacode.pdf` | 2026-09-13 |
+| AlphaCode 2 Technical Report | <https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf> | all rights reserved (PDF notice) | not transcribed (licence) | `raw/pdfs/papers/alphacode2-tech-report-alphacode-2-technical-report.pdf` | 2026-09-13 |
+| Search-o1: Agentic Search-Enhanced Large Reasoning Models | <https://arxiv.org/pdf/2501.05366> | arXiv non-exclusive | not transcribed (licence) | `raw/pdfs/papers/2501.05366-search-o1.pdf` | 2026-09-13 |
 
 ## Row 13 — Agentic Frameworks for Software Engineering (Mon Nov 3) — 3 readings
 

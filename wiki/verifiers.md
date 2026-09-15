@@ -170,6 +170,29 @@ with too little signal cannot drive the loop. Math and code have final answers, 
 many domains have signals that good, and whether an ensemble of verifiers can cover one verifier's gaps, are open
 questions (≈1:04:40–1:06:11). See [reinforcement learning](reinforcement-learning.md).
 
+## Example tests, behaviour and a learned scorer
+
+[Lecture 7](07-self-improvement-and-deep-research-agents.md) chooses 10 submissions from up to a million
+programs with three cheap checks.
+
+- **Example tests.** The tests printed in the problem statement act as a filter that a correct program cannot
+  fail. Fewer than 1% of AlphaCode's samples pass them, so filtering removes more than 99% (Li et al. 2022,
+  §5.3.5, Table 9).
+- **Behaviour on generated inputs.** Where no further verifier exists, a separate model writes new test
+  inputs from the problem description, and programs that give identical outputs are grouped. The reasoning is
+  that "there are many ways solutions can be incorrect while correct solutions tend to behave the same". The
+  generated inputs need not even be valid to be useful for grouping (§4.6).
+- **A learned scoring model.** AlphaCode 2 fine-tunes a Gemini Pro model to give each sample an estimated
+  correctness between 0 and 1, and submits the best-scoring sample from each of the 10 largest clusters
+  (AlphaCode Team 2023, *Scoring Model*). The lecture calls it a reward model — "a learned approximation of
+  what should be given high score and what should be given low score" — in contrast to clustering's heuristic
+  (≈25:52). It also argues that the scorer's training data should differ from the policies' to avoid
+  contamination (≈35:23–36:10).
+
+Selection still falls short. In AlphaCode, perfect selection stays well ahead of filtering plus clustering
+(§5.3.5, Figure 8), and the AlphaCode 2 report says its system "relies heavily on being able to filter out
+obviously bad code samples" (*Discussion and Conclusion*). See [test-time scaling](test-time-scaling.md).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): verifiers in repeated sampling, the
@@ -184,3 +207,6 @@ questions (≈1:04:40–1:06:11). See [reinforcement learning](reinforcement-lea
   LLM judge as LATS's value function and as SWiRL's step-wise process reward.
 - [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): the final answer as STaR's
   filter and DAPO's rule-based reward, and reward hacking versus too little signal.
+- [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
+  AlphaCode's example-test filter and clustering by behaviour on generated inputs, and AlphaCode 2's learned
+  scoring model.

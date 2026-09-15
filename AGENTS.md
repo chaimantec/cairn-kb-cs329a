@@ -60,7 +60,11 @@ the role slide decks play in other Cairn KBs.
   4.0**, whose non-commercial and share-alike terms would attach to a transcription in a KB that a
   commercial product reads, so it too is linked and discussed only, with no figures. Lecture 6's three (STaR,
   DeepSeekMath, DAPO) were checked on 2026-09-15 and all carry the non-exclusive licence, so all three are linked,
-  discussed and cited only.
+  discussed and cited only. Lecture 7's three were checked on 2026-09-15. AlphaCode's arXiv abstract page lists
+  **CC BY 4.0**, but the published PDF prints "© 2022 DeepMind. All rights reserved". The user decided to rely on
+  the arXiv licence grant, so its main body is transcribed and its figures committed. The AlphaCode 2 Technical
+  Report is a PDF on Google DeepMind's storage that prints "All rights reserved", and Search-o1 carries the
+  non-exclusive licence, so both are linked, discussed and cited only.
 
 ### Paper files (`raw/papers/`)
 
@@ -89,7 +93,7 @@ Each ingested reading is two files, named by the catalog lecture that lists it:
 
 ### Images
 
-Only **lectures 2, 3, 4 and 5** have images, each named `<paper>-figure-N` after the paper file it
+Only **lectures 2, 3, 4, 5 and 7** have images, each named `<paper>-figure-N` after the paper file it
 belongs to. Lecture 2: every figure in the transcribed parts of its four readings, in
 `raw/images/02-test-time-compute-scaling/`. Lecture 3: **Weaver's Figures 1–6 only** (its main body),
 in `raw/images/03-robust-verification/` — the other three lecture 3 readings are not licensed for
@@ -97,8 +101,10 @@ republication, so none of their figures is here. Lecture 4: every main-body figu
 readings — ReAct Figures 1–3, RLEF Figures 1–4, Constitutional AI Figures 1–10 — in
 `raw/images/04-learning-from-feedback-with-tools-code/`. Lecture 5: the main-body figures of its two CC BY
 readings only — LATS Figures 1–2 and SWiRL Figures 1–8 — in `raw/images/05-planning-and-multi-step-reasoning/`;
-SPRINT, ADaPT and *Wider or Deeper?* have none. Lectures 1 and 6–9 have no images; lecture 6's three readings are
-not licensed for republication.
+SPRINT, ADaPT and *Wider or Deeper?* have none. Lecture 7: **AlphaCode's main-body figures only** — Figures 1–4
+and 6–13 — in `raw/images/07-self-improvement-and-deep-research-agents/`; AlphaCode's Figure 5 is a text listing,
+transcribed as text, and the AlphaCode 2 Technical Report and Search-o1 have none. Lectures 1, 6, 8 and 9 have no
+images; lecture 6's three readings are not licensed for republication.
 
 Constitutional AI prints its figure labels with no colon ("Figure 1" then the caption), which the
 skill's `extract_paper_figures.py` did not recognise as a caption when lecture 4 was built. Its crops
@@ -106,8 +112,15 @@ were made with a copy whose caption pattern also accepts "Figure N" followed by 
 they passed the same text-layer check as every other crop. The skill's script has since taken the same
 pattern, regression-tested to give identical crops on the other ten lecture 2–4 paper PDFs.
 
+AlphaCode's figures needed hand-set boxes for four of the twelve. The script found no graphics near the captions
+of Figures 1, 3 and 6, and grew Figure 7's box downward over a table. Those four were cropped with explicit
+`--clip` boxes taken from the page's text and drawing positions, and all twelve passed the text-layer check.
+Figure 3's caption sits beside its code listing and includes a numbered list, so the check's "text below the
+caption" flag on it is the caption's own list, confirmed in the LaTeX.
+
 - Each image is **one figure as published, cropped from the paper's PDF together with its
-  caption** — not the whole page. They are reproduced under the papers' CC BY 4.0 licences, and the
+  caption** — not the whole page. They are reproduced under the papers' CC BY 4.0 licences (AlphaCode's as
+  listed on its arXiv page), and the
   attribution is the paper file's front matter (authors, arXiv URL, licence), under which every image
   sits beside its own caption.
 - **Link images relatively**, like every other file here: `../images/02-…` from `raw/papers/`,
@@ -115,7 +128,8 @@ pattern, regression-tested to give identical crops on the other ten lecture 2–
   renderable URL.
 - **Use an image path you have actually read in a file.** Never construct one from the naming
   pattern, and never assume a figure has an image because its neighbours do: the power-laws paper's
-  Figure 8 is an algorithm box, transcribed as text, with no image. The paper files carry every
+  Figure 8 is an algorithm box, transcribed as text, with no image, and so is AlphaCode's Figure 5, a text
+  listing. The paper files carry every
   image; `grep -o 'raw/images/[^)]*' wiki/02-*.md` lists the ones a wiki page uses.
 - For numbers, use a paper's transcribed tables and text. Never state a value read off a figure.
 
@@ -133,11 +147,12 @@ pattern, regression-tested to give identical crops on the other ten lecture 2–
   said in a lecture — it is the start of the transcript paragraph containing the statement. Cite the
   course website for logistics it states, and say when the two disagree.
 - **Files are named by Cairn catalog position**, not by the site's schedule row. The catalog has
-  nine videos and the site twenty rows; by title, positions 1–6 are rows 1–6, position 8 is row 17,
-  position 9 is row 20, and position 7 may be row 7, row 8 or both. Positions 2–6 are confirmed against their
-  transcripts — 2, 3, 4 and 6 each discuss every reading of their row, and 5 discusses three of its five; confirm each later position the
-  same way before ingesting its readings, and record the resolution in the lecture page
-  and `sources.md`. Rows 13 and 14 list readings but have no video in the catalog.
+  nine videos and the site twenty rows. Positions 1–6 are rows 1–6 and position 7 is row 8; by title, position 8
+  is row 17 and position 9 is row 20. Positions 2–7 are confirmed against their transcripts — 2, 3, 4, 6 and 7 each
+  discuss every reading of their row, and 5 discusses three of its five. Confirm positions 8 and 9 the same way
+  before ingesting their readings, and record the resolution in the lecture page and `sources.md`. Rows 7, 13 and
+  14 list readings but have no video in the catalog. Lecture 7's remark about "scientist style of work that folks
+  covered last lecture" fits row 7, which lists *The AI Scientist*.
 - **Never invent course content.** If a source is unclear, say so on the page. Do not fill the gap
   from outside knowledge — the chat presents these pages as authoritative material from this course.
   Recovering a mangled term from unambiguous context is reading the source; supplying a model name,

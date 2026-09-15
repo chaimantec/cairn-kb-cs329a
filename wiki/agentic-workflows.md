@@ -139,6 +139,22 @@ answer. It learns from its own offline trajectories, without calling tools durin
 which decomposes a sub-task only when the executor cannot carry it out (Prasad et al. 2024, abstract);
 the recording does not discuss it.
 
+## Search inside the reasoning loop
+
+[Lecture 7](07-self-improvement-and-deep-research-agents.md) builds a **deep research agent** — the kind of
+system homework 3 asks for — on a large reasoning model. Search-o1 lets the model write a search query between
+special symbols whenever it hits a knowledge gap mid-reasoning. Generation pauses, a web search runs, and a
+separate **Reason-in-Documents** step by the same model condenses the retrieved pages into what the reasoning
+needs before generation resumes (lecture 7, ≈49:23–56:34; Li et al. 2025, §3.3–§3.5). Compared with ReAct's
+loop, the tool call lives inside one long chain of thought, can recur many times, and has its raw output
+filtered before the main chain sees it. The lecture contrasts this prompting-based design with Search-R1,
+which trains the search behaviour with RL (≈1:08:19). See
+[retrieval and deep research](retrieval-and-deep-research.md).
+
+The same lecture describes AlphaCode 2 as almost a multi-agent system: one family of models produces programs
+and another family scores them, which gives more tricks than depending on what a single model can do
+(≈34:37–35:23).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): the LLM-to-agent transition, workflow
@@ -149,3 +165,6 @@ the recording does not discuss it.
 - [Lecture 5 — Planning and Multi-Step Reasoning](05-planning-and-multi-step-reasoning.md):
   LATS's tree search over actions, SPRINT's planner and parallel executors, and SWiRL's step-wise RL
   for multi-step tool use.
+- [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
+  Search-o1's search calls inside a reasoning chain as a deep research agent, and AlphaCode 2 as a system of
+  generating and scoring models.

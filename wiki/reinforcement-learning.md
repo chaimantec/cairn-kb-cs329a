@@ -126,6 +126,18 @@ ability is already in the pre-trained model is "not completely well understood" 
 ≈52:12; see [self-improvement](self-improvement.md)). Learning from failures, and algorithms robust to noisy rewards,
 are among lecture 6's open problems (≈1:06:57).
 
+## Around search
+
+[Lecture 7](07-self-improvement-and-deep-research-agents.md) touches RL at three points. AlphaCode fine-tunes
+with **GOLD**, "an offline RL algorithm which allows the model to both learn from tokens it already assigns high
+likelihood to, and to ignore tokens that are not in its distribution". It was adopted because a problem has
+many correct solutions and only one needs to be found (Li et al. 2022, §4.3); AlphaCode 2 fine-tunes Gemini Pro
+with the same objective (AlphaCode Team 2023, *Policy and Fine-Tuning*). The lecturer suggests RL as a way to
+cut test-time sampling, since a model that gets better at solving problems in an RL loop needs fewer samples
+(≈33:04). And the lecture contrasts Search-o1's prompting-based search with **Search-R1**, which teaches a model
+to search with RL; that paper is not on the reading list (≈1:08:19). The closing Q&A also mentions efforts to
+train calibration with RL or RLHF (≈1:10:41).
+
 ## Lectures
 
 - [Lecture 1 — Course Overview](01-course-overview.md): RLHF, and the open question of why RL works.
@@ -137,3 +149,5 @@ are among lecture 6's open problems (≈1:06:57).
   judge, and RL versus SFT on multi-step data.
 - [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): STaR as bare-bones RL,
   DeepSeekMath's GRPO and unified view, and DAPO's fixes for RL at scale.
+- [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md): GOLD
+  as offline RL in AlphaCode's fine-tuning, RL to reduce test-time sampling, and Search-R1 versus Search-o1.

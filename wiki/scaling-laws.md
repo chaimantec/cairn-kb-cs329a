@@ -54,6 +54,15 @@ of very hard problems: Schaeffer et al. (2025, §3) prove that $-\log(\text{pass
 power law in $k$ exactly when single-attempt success rates have a power-law density near zero. See
 [test-time scaling](test-time-scaling.md).
 
+[Lecture 7](07-self-improvement-and-deep-research-agents.md) shows a similar pattern surviving a submission
+limit. AlphaCode's solve rate on CodeContests scales approximately log-linearly with the number of samples $k$,
+both for $\text{pass@}k$ and when only 10 of the $k$ samples may be submitted, tapering off slightly in the
+second case. Larger models have higher slopes, so "a better model with a higher slope can reach the same solve
+rate with exponentially fewer samples" (Li et al. 2022, §5.3.1, Figure 6). The solve rate also scales
+approximately log-linearly with training compute, and as sampling compute grows, so does the model size that
+makes best use of it (§5.3.1, Figure 7). Asked why the relationship takes this shape, the lecturer points back
+to lecture 2's readings (lecture 7, ≈21:15–22:03).
+
 ## Training compute in place of parameters
 
 [Lecture 6](06-train-time-scaling-scaling-rl.md) adds a third kind of compute. One of its opening insights is that the
@@ -72,3 +81,5 @@ mathematical reasoning capability" (Shao et al. 2024, §1.1, §2.3). See [reinfo
   compute and why they take a power-law form.
 - [Lecture 6 — Train Time Scaling/Scaling RL](06-train-time-scaling-scaling-rl.md): training compute on a model's own
   outputs as a substitute for parameters.
+- [Lecture 7 — Self-Improvement and Deep Research Agents](07-self-improvement-and-deep-research-agents.md):
+  AlphaCode's log-linear solve rate in samples and compute, with steeper slopes for larger models.
